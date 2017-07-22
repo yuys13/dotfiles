@@ -1,0 +1,7 @@
+[user]
+	name = yuys13
+	email = yuys13@users.noreply.github.com
+[push]
+	default = simple
+[hub]
+	protocol = https

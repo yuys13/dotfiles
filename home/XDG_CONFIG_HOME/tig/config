@@ -1,0 +1,21 @@
+## escape default keybind
+# bind generic g view-grep
+bind generic <Esc>g view-grep
+# bind main G :toggle commit-title-graph
+bind main <Esc>G :toggle commit-title-graph
+# bind main F :toggle commit-title-refs
+bind main <Esc>F :toggle commit-title-refs
+
+
+## vim like scrolling
+bind generic g move-first-line
+bind generic G move-last-line
+bind main G move-last-line
+bind generic <Ctrl-F> move-page-down
+bind generic <Ctrl-B> move-page-up
+
+bind main F ?git fetch
+
+bind refs n !git checkout -b %(prompt) %(branch)
+bind refs F ?git fetch -p
+

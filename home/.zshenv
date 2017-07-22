@@ -32,6 +32,15 @@ if [ -z "${LS_COLORS}" ]; then
     fi
 fi
 
+## Editor
+if which nvim > /dev/null 2>&1; then
+    export EDITOR=nvim
+elif which vim > /dev/null 2>&1; then
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+
 ## Local setting
 if [ -f ${XDG_DATA_HOME}/zsh/zshenv ]; then
     source ${XDG_DATA_HOME}/zsh/zshenv

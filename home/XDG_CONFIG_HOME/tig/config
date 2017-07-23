@@ -18,8 +18,12 @@ bind main G move-last-line
 bind generic <Ctrl-F> move-page-down
 bind generic <Ctrl-B> move-page-up
 
+## main-view command
 bind main F ?git fetch
 
+## refs-view command
 bind refs N <git checkout -b "%(prompt Enter new branch name: )" %(branch)
 bind refs F ?git fetch -p
+bind refs <Ctrl-F> ?git merge %(branch) --ff-only
+bind refs M ?git merge %(branch) --no-ff
 

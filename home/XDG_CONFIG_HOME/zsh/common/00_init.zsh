@@ -1,7 +1,4 @@
 ## INIT
-# COLOR
-autoload -Uz colors
-colors
 # COMMON
 setopt nobeep
 setopt print_eight_bit

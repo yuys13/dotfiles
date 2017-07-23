@@ -32,3 +32,6 @@ bind refs          F  ?git fetch -p
 bind refs    <Ctrl-F> ?git merge %(branch) --ff-only
 bind refs          M  ?git merge %(branch) --no-ff
 
+## status-view command
+bind status        D  ?git clean -df
+

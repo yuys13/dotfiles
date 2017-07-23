@@ -34,4 +34,5 @@ bind refs          M  ?git merge %(branch) --no-ff
 
 ## status-view command
 bind status        D  ?git clean -df
+bind status        +  !git commit --amend
 

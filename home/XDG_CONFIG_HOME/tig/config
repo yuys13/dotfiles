@@ -1,3 +1,7 @@
+## display
+set main-view-id-display = yes
+set refs-view-id-display = yes
+
 ## escape default keybind
 # bind generic g view-grep
 bind generic <Esc>g view-grep

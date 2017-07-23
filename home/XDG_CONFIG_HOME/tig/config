@@ -1,6 +1,9 @@
 ## display
+# id
 set main-view-id-display = yes
 set refs-view-id-display = yes
+# merge diff
+set diff-options = -m --first-parent
 
 ## escape default keybind
 # bind generic g view-grep

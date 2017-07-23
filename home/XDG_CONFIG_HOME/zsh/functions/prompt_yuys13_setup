@@ -10,7 +10,7 @@ prompt_yuys13_setup () {
 
     prompt_opts=(cr subst percent)
     ## PROMPT
-    PROMPT="%F{green}[%n@%m]%f %~ ${prompt_newline}%(!.#.$) "
+    PROMPT="%F{green}[%n@%m]%f %~ %(?,,%F{red})(%?)%f${prompt_newline}%(!.#.$) "
 
     autoload -Uz vcs_info
 

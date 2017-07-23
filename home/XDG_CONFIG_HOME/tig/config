@@ -6,29 +6,29 @@ set refs-view-id-display = yes
 set diff-options = -m --first-parent
 
 ## escape default keybind
-# bind generic g view-grep
-bind generic <Esc>g view-grep
-# bind main G :toggle commit-title-graph
-bind main <Esc>G :toggle commit-title-graph
-# bind main F :toggle commit-title-refs
-bind main <Esc>F :toggle commit-title-refs
+# bind generic       g  view-grep
+bind generic  <Esc>g  view-grep
+# bind main          G  :toggle commit-title-graph
+bind main     <Esc>G :toggle commit-title-graph
+# bind main          F  :toggle commit-title-refs
+bind main     <Esc>F :toggle commit-title-refs
 
 
 ## vim like scrolling
-bind generic g move-first-line
-bind generic G move-last-line
-bind main G move-last-line
+bind generic       g  move-first-line
+bind generic       G  move-last-line
+bind main          G  move-last-line
 bind generic <Ctrl-F> move-page-down
 bind generic <Ctrl-B> move-page-up
 
 ## main-view command
-bind main F ?git fetch
-bind main ^ ?git reset --soft HEAD^
-bind main H ?git reset --hard %(commit)
+bind main          F  ?git fetch
+bind main          ^  ?git reset --soft HEAD^
+bind main          H  ?git reset --hard %(commit)
 
 ## refs-view command
-bind refs N <git checkout -b "%(prompt Enter new branch name: )" %(branch)
-bind refs F ?git fetch -p
-bind refs <Ctrl-F> ?git merge %(branch) --ff-only
-bind refs M ?git merge %(branch) --no-ff
+bind refs          N  <git checkout -b "%(prompt Enter new branch name: )" %(branch)
+bind refs          F  ?git fetch -p
+bind refs    <Ctrl-F> ?git merge %(branch) --ff-only
+bind refs          M  ?git merge %(branch) --no-ff
 

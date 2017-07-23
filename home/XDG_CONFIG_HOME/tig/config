@@ -23,6 +23,8 @@ bind generic <Ctrl-B> move-page-up
 
 ## main-view command
 bind main F ?git fetch
+bind main ^ ?git reset --soft HEAD^
+bind main H ?git reset --hard %(commit)
 
 ## refs-view command
 bind refs N <git checkout -b "%(prompt Enter new branch name: )" %(branch)

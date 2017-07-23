@@ -20,6 +20,6 @@ bind generic <Ctrl-B> move-page-up
 
 bind main F ?git fetch
 
-bind refs n !git checkout -b %(prompt) %(branch)
+bind refs N <git checkout -b "%(prompt Enter new branch name: )" %(branch)
 bind refs F ?git fetch -p
 

@@ -24,7 +24,7 @@ update:
 init:
 	@bash $(BASEPATH)/bin/install.sh
 
-install: update link init
+install: init link
 
 clean:
 	@$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)

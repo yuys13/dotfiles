@@ -16,7 +16,7 @@ list:
 
 link:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(val);)
-	@$(foreach val, $(XDG_CONFIGS), ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) $(HOME)/.config/$(val);)
+	@$(foreach val, $(XDG_CONFIGS), if [ -z "${XDG_CONFIG_HOME}" ]; then ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) $(HOME)/.config/$(val); else ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) ${XDG_CONFIG_HOME}/$(val); fi;)
 
 update:
 	git pull origin master
@@ -24,8 +24,9 @@ update:
 init:
 	@bash $(BASEPATH)/bin/install.sh
 
-install: update link init
+install: init link
 
 clean:
 	@$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
+	@$(foreach val, $(XDG_CONFIGS), if [ -z "${XDG_CONFIG_HOME}" ]; then unlink $(HOME)/.config/$(val); else unlink ${XDG_CONFIG_HOME}/$(val); fi;)
 

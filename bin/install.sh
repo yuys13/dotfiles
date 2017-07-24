@@ -4,6 +4,16 @@ cd $(dirname $0)
 
 . ./util/functions.sh
 
+if [ -n "${XDG_CONFIG_HOME}" ]; then
+    if [ ! -e ${XDG_CONFIG_HOME} ]; then
+        mkdir -p ${XDG_CONFIG_HOME}
+    fi
+else
+    if [ ! -e ~/.config ]; then
+        mkdir -p ~/.config
+    fi
+fi
+
 #for file in ${BASEPATH%/}/bin/$(get_uname)/*.sh
 for file in $(get_uname)/*.sh
 do
@@ -13,5 +23,5 @@ do
   fi
 done
 
-echo complete!
+echo complete install!
 

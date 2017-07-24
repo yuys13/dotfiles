@@ -14,7 +14,6 @@ else
     fi
 fi
 
-
 #for file in ${BASEPATH%/}/bin/$(get_uname)/*.sh
 for file in $(get_uname)/*.sh
 do

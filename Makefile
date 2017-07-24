@@ -28,4 +28,5 @@ install: update link init
 
 clean:
 	@$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
+	@$(foreach val, $(XDG_CONFIGS), if [ -z "${XDG_CONFIG_HOME}" ]; then unlink $(HOME)/.config/$(val); else unlink ${XDG_CONFIG_HOME}/$(val); fi;)
 

@@ -19,7 +19,7 @@ link:
 	@$(foreach val, $(XDG_CONFIGS), if [ -z "${XDG_CONFIG_HOME}" ]; then ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) $(HOME)/.config/$(val); else ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) ${XDG_CONFIG_HOME}/$(val); fi;)
 
 update:
-	git pull origin master
+	git pull --ff-only
 
 init:
 	@bash $(BASEPATH)/bin/install.sh

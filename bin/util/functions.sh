@@ -38,7 +38,7 @@ package_install () {
     fi
   elif is_osx; then
     if which brew > /dev/null 2>&1; then
-      brew -y install $@
+      brew install $@
     else
       echo "cannot filed package manager"
       exit 1

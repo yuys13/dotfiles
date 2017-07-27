@@ -37,8 +37,12 @@ setopt pushd_ignore_dups
 # coloes
 case ${OSTYPE} in
     darwin*)
-        export CLICOLOR=1
-        alias ls='ls -G'
+        if which gls > /dev/null 2>&1; then
+            alias ls='gls -F --color=auto'
+        else
+            export CLICOLOR=1
+            alias ls='ls -G'
+        fi
         ;;
     linux*)
         alias ls='ls -F --color=auto'
@@ -47,6 +51,8 @@ esac
 # alias
 alias la='ls -a'
 alias ll='ls -l'
+alias lla='ls -la'
+
 # after cd
 __list_directory_contents () { ls }
 add-zsh-hook chpwd __list_directory_contents

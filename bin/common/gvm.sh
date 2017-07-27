@@ -3,7 +3,7 @@
 cd $(dirname $0)
 . ../util/functions.sh
 
-if is_osx; then
+if is_darwin; then
     return
 fi
 

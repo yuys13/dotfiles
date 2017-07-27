@@ -29,6 +29,8 @@ fpath=( \
 if [ -z "${LS_COLORS}" ]; then
     if which dircolors > /dev/null; then
         eval "$(dircolors -b)"
+    elif which gdircolors > /dev/null; then
+        eval "$(gdircolors -b)"
     fi
 fi
 

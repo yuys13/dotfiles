@@ -16,7 +16,7 @@ is_ubuntu() {
   [ -f /etc/lsb-release ] && grep Ubuntu /etc/lsb-release > /dev/null 2>&1
 }
 
-is_osx() {
+is_darwin() {
  [ "$(get_uname)" = darwin ]
 }
 
@@ -36,9 +36,9 @@ package_install () {
       echo "cannot filed package manager"
       exit 1
     fi
-  elif is_osx; then
+  elif is_darwin; then
     if which brew > /dev/null 2>&1; then
-      brew -y install $@
+      brew install $@
     else
       echo "cannot filed package manager"
       exit 1

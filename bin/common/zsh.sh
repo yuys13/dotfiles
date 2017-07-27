@@ -7,7 +7,9 @@ if is_ubuntu; then
   package_install gawk
 fi
 
-package_install zsh
+if ! which zsh > /dev/null 2>&1; then
+    package_install zsh
+fi
 
 echo create XDG Base Directories
 

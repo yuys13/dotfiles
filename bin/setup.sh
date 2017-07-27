@@ -8,7 +8,7 @@ is_linux() {
     [ "$(get_uname)" = linux ]
 }
 
-is_osx() {
+is_darwin() {
     [ "$(get_uname)" = darwin ]
 }
 
@@ -28,7 +28,7 @@ package_install () {
             echo "cannot filed package manager"
             exit 1
         fi
-    elif is_osx; then
+    elif is_darwin; then
         if which brew > /dev/null 2>&1; then
             brew install $@
         else

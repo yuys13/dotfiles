@@ -14,7 +14,7 @@ else
     fi
 fi
 
-if is_osx && ! which brew >> /dev/null 2>&1; then
+if is_darwin && ! which brew >> /dev/null 2>&1; then
     /usr/bin/ruby -e "$(curl -fsSL https:/raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 

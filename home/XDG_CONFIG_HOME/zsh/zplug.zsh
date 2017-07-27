@@ -13,7 +13,6 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:"fzf"
 zplug "junegunn/fzf", use:shell
-zplug "jhawthorn/fzy", as:command, if:"which cc", hook-build:'make'
 zplug "b4b4r07/enhancd", use:init.sh
 
 if [ -f ${0:A:h}/${$(uname):l}/${0:A:t} ]; then

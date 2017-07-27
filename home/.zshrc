@@ -3,6 +3,11 @@ for rc in ${XDG_CONFIG_HOME}/zsh/common/<->_*.zsh; do
     source $rc
 done
 
+## per OSType
+if [ -f ${XDG_CONFIG_HOME}/zsh/${$(uname):l}/zshrc ]; then
+    source ${XDG_CONFIG_HOME}/zsh/${$(uname):l}/zshrc
+fi
+
 ## Plugins
 if [[ -f ~/.zplug/init.zsh ]]; then
     source ~/.zplug/init.zsh

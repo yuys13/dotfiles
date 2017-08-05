@@ -9,3 +9,6 @@
 	tool = vimdiff
 [hub]
 	protocol = https
+[ghq]
+	root = ~/dev/src
+	root = ~/go/src

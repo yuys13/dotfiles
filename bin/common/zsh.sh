@@ -3,10 +3,6 @@
 cd $(dirname $0)
 . ../util/functions.sh
 
-if is_ubuntu; then
-  package_install gawk
-fi
-
 if ! which zsh > /dev/null 2>&1; then
     package_install zsh
 fi
@@ -25,6 +21,9 @@ if [ ! -e ~/.local/share/zsh ]; then
     mkdir -p ~/.local/share/zsh
 fi
 
-#curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh
+if is_ubuntu; then
+  package_install gawk
+fi
+
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 

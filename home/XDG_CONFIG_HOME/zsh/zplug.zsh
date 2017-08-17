@@ -19,3 +19,8 @@ if [ -f ${0:A:h}/${$(uname):l}/${0:A:t} ]; then
     source ${0:A:h}/${$(uname):l}/${0:A:t}
 fi
 
+zplug "${XDG_CONFIG_HOME}/zsh/plugins/ghq-fzf", from:local
+if zplug check "${XDG_CONFIG_HOME}/zsh/plugins/ghq-fzf"; then
+    alias repos=ghq-fzf
+    alias gorepos="ghq-fzf \^${GOPATH}"
+fi

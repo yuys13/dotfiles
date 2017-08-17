@@ -1,0 +1,11 @@
+ghq-fzf () {
+    if [ $# -gt 0 ]; then
+        local repo=$(ghq list -p | ${GHQ_FZF_GREP_TOOL} ${GHQ_FZF_GREP_OPTS} $1 | fzf ${GHQ_FZF_OPTS})
+    else
+        local repo=$(ghq list -p | fzf ${GHQ_FZF_OPTS})
+    fi
+    if [ -n "${repo}" ]; then
+        cd ${repo}
+    fi
+}
+

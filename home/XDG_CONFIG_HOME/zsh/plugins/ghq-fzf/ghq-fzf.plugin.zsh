@@ -6,7 +6,8 @@ if ! type fzf >/dev/null 2>&1; then
 fi
 
 if [ -z "${GHQ_FZF_OPTS}" ]; then
-    export GHQ_FZF_OPTS=(--reverse -0 -1)
+    typeset -g -a GHQ_FZF_OPTS
+    GHQ_FZF_OPTS=(--reverse -0 -1)
 fi
 if [ -z "${GHQ_FZF_GREP_TOOL}"]; then
     if type hw >/dev/null 2>&1; then

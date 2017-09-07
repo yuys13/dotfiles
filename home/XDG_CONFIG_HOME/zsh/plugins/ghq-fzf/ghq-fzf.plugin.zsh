@@ -12,7 +12,8 @@ fi
 if [ -z "${GHQ_FZF_GREP_TOOL}" ]; then
     if type hw >/dev/null 2>&1; then
         export GHQ_FZF_GREP_TOOL="hw"
-        export GHQ_FZF_GREP_OPTS=(-e )
+        typeset -g -a GHQ_FZF_GREP_OPTS
+        GHQ_FZF_GREP_OPTS=(-e )
     else
         export GHQ_FZF_GREP_TOOL="grep"
     fi

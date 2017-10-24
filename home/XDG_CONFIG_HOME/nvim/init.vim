@@ -44,3 +44,15 @@ endif
 
 "End dein Scripts-------------------------
 
+" Display
+set number
+
+" Search
+set ignorecase
+set smartcase
+
+" Clipboard
+set clipboard&
+set clipboard^=unnamed
+set clipboard^=unnamedplus
+

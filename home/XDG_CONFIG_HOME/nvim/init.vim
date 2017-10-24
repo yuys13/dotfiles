@@ -3,6 +3,11 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
 " XDG Base Directory
 let s:data_home = empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME

@@ -13,6 +13,11 @@ let s:dein_dir = s:data_home . '/dein'
 let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:dein_conf_dir = s:config_home . '/nvim/dein'
 
+" auto install
+if !isdirectory(s:dein_repo)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo))
+endif
+
 let &runtimepath = &runtimepath . "," . s:dein_repo
 
 if isdirectory(s:dein_repo) && dein#load_state(s:dein_dir)
@@ -27,10 +32,10 @@ endif
 filetype plugin indent on
 syntax enable
 
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+" install not installed plugins on startup.
+if isdirectory(s:dein_repo) && dein#check_install()
+  call dein#install()
+endif
 
 "End dein Scripts-------------------------
 

@@ -9,7 +9,7 @@ let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:config_home = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
 
 " dein Dirs
-let s:dein_dir = s:data_home . '/dein'
+let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:dein_conf_dir = s:config_home . '/nvim/dein'
 

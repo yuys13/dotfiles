@@ -21,7 +21,7 @@ zstyle ':completion:*:default' menu select=2
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 elif which gdircolors > /dev/null; then
-    eval "$(gdircolors -b)"
+        eval "$(gdircolors -b ~/.dir_colors(N-.))"
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 else
     zstyle ':completion:*:default' list-colors ''

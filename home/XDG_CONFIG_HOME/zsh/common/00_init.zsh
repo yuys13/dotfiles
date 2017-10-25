@@ -52,6 +52,9 @@ esac
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
+if type nvim > /dev/null 2>&1; then
+    alias vi='nvim'
+fi
 
 # after cd
 __list_directory_contents () { ls }

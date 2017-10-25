@@ -82,6 +82,7 @@ if has("autocmd")
     autocmd BufWritePre * endif
     autocmd BufWritePost * if &binary && &modifiable | silent %!xxd -g 1
     autocmd BufWritePost * set nomod | endif
+  augroup END
 
 else
 

@@ -46,6 +46,8 @@ endif
 
 " Display
 set number
+set list
+set listchars=tab:»-,trail:-,nbsp:+,extends:»,precedes:«
 
 " Search
 set ignorecase

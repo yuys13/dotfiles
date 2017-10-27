@@ -28,7 +28,8 @@ let &runtimepath = &runtimepath . "," . s:dein_repo
 if isdirectory(s:dein_repo) && dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  call dein#load_toml(s:nvim_conf_dir . '/dein.toml')
+  call dein#load_toml(s:nvim_conf_dir . '/dein.toml', {'lazy': 0})
+  call dein#load_toml(s:nvim_conf_dir . '/deinlazy.toml', {'lazy': 1})
 
   call dein#end()
   call dein#save_state()

@@ -1,0 +1,11 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+let g:solarized_termtrans=1
+set background=dark
+au MyAutoCmd VimEnter * nested colorscheme solarized
+'''
+

@@ -19,3 +19,6 @@ let g:airline_solarized_bg='dark'
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+

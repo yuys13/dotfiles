@@ -28,3 +28,10 @@ on_i = 1
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
+[[plugins]]
+repo = 'majutsushi/tagbar'
+on_cmd = 'TagbarToggle'
+hook_add = '''
+nnoremap <F8> :TagbarToggle<CR>
+'''
+

@@ -13,7 +13,6 @@ au MyAutoCmd VimEnter * nested colorscheme solarized
 repo = 'vim-airline/vim-airline'
 depends = 'vim-airline/vim-airline_themes'
 hook_add = '''
-let g:airline_theme = 'solarized'
 let g:airline_solarized_bg='dark'
 '''
 

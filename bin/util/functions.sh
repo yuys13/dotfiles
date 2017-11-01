@@ -5,7 +5,7 @@ to_lower() {
 }
 
 is_linux() {
- [ "$(get_uname)" = linux ]
+  [ "$(get_uname)" = linux ]
 }
 
 is_centos() {
@@ -17,7 +17,7 @@ is_ubuntu() {
 }
 
 is_darwin() {
- [ "$(get_uname)" = darwin ]
+  [ "$(get_uname)" = darwin ]
 }
 
 get_uname() {

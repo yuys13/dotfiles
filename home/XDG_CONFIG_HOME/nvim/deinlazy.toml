@@ -32,6 +32,10 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]]
+repo = 'zchee/deoplete-zsh'
+on_ft = 'zsh'
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 

@@ -24,3 +24,6 @@ repo = 'vim-airline/vim-airline-themes'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+

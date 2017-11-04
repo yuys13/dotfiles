@@ -27,3 +27,6 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'Shougo/neco-syntax'
 
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+

@@ -14,8 +14,8 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/yuys13/dotfiles/master/b
 #### Manually
 
 ```console
-git clone https://github.com/yuys13/dotfiles ${HOME}/
-cd ${HOME}/dotfiles
+git clone https://github.com/yuys13/dotfiles ${HOME}/dev/src/github.com/yuys13/dotfiles
+cd ${HOME}/dev/src/github.com/yuys13/dotfiles
 make install
 ```
 
@@ -30,20 +30,8 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/yuys13/dotfiles/master/b
 #### Manually
 
 ```console
-git clone https://github.com/yuys13/dotfiles ${HOME}/
-cd ${HOME}/dotfiles
-make link
-```
-
-or
-
-```console
-cd ${HOME}
-curl -L -O https://github.com/yuys13/dotfiles/archive/master.zip
-unzip master.zip
-rm master.zip
-mv dotfiles-master dotfiles
-cd ${HOME}/dotfiles
+git clone https://github.com/yuys13/dotfiles ${HOME}/dev/src/github.com/yuys13/dotfiles
+cd ${HOME}/dev/src/github.com/yuys13/dotfiles
 make link
 ```
 

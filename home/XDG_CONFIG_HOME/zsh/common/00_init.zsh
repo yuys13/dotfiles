@@ -50,8 +50,10 @@ case ${OSTYPE} in
 esac
 # alias
 alias la='ls -a'
+alias l.='ls -d .*'
 alias ll='ls -l'
 alias lla='ls -la'
+alias ll.='ls -l -d .*'
 if type nvim > /dev/null 2>&1; then
   alias vi='nvim'
 fi

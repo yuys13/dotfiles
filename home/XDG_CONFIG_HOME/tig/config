@@ -37,6 +37,7 @@ bind refs          M  ?git merge %(branch) --no-ff
 
 ## status-view command
 bind status        D  ?git clean -df
-bind status        +  !git commit --amend
+bind status        C  !git commit --verbose
+bind status        +  !git commit --verbose --amend
 bind status        S  !git stash save "%(prompt Enter stash comment: )"
 

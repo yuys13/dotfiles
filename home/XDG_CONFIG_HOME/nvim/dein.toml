@@ -28,5 +28,8 @@ repo = 'tpope/vim-fugitive'
 repo = 'Shougo/neco-syntax'
 
 [[plugins]]
+repo = 'zplug/vim-zplug'
+
+[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 

@@ -11,3 +11,4 @@ prompt_reset_setup () {
 
 prompt_reset_setup "$@"
 
+# vim: ft=zsh

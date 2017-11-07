@@ -13,3 +13,5 @@
 	root = ~/dev/src
 	root = ~/go/src
 	root = ~/.cache/dein/repos
+
+# vim: ft=gitconfig

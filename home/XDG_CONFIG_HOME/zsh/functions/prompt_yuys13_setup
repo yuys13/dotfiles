@@ -30,3 +30,4 @@ prompt_yuys13_setup () {
 
 prompt_yuys13_setup "$@"
 
+# vim: ft=zsh

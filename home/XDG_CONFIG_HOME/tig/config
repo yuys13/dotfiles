@@ -29,6 +29,10 @@ bind main          F  !git fetch
 bind main          ^  ?git reset --soft HEAD^
 bind main          H  ?git reset --hard %(commit)
 
+## diff bindings
+bind diff          l  scroll-right
+bind diff          h  scroll-left
+
 ## refs bindings
 bind refs          N  <git checkout -b "%(prompt Enter new branch name: )" %(branch)
 bind refs          F  ?git fetch -p
@@ -40,4 +44,8 @@ bind status        C  !git commit --verbose
 bind status        +  !git commit --verbose --amend
 bind status        S  !git stash save "%(prompt Enter stash comment: )"
 bind status        D  ?git clean -df
+
+## stage bindings
+bind stage         l  scroll-right
+bind stage         h  scroll-left
 

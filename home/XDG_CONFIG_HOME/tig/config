@@ -35,8 +35,8 @@ bind diff          h  scroll-left
 
 ## refs bindings
 bind refs          N  <git checkout -b "%(prompt Enter new branch name: )" %(branch)
-bind refs          F  ?git fetch -p
-bind refs    <Ctrl-F> ?git merge %(branch) --ff-only
+bind refs          P  ?git fetch --prune
+bind refs          F  ?git merge %(branch) --ff-only
 bind refs          M  ?git merge %(branch) --no-ff
 
 ## status bindings

@@ -1,6 +1,19 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
+hook_add = '''
+" prefix
+nnoremap [Denite] <NOP>
+nmap <Space>d [Denite]
+
+" keymap
+nnoremap <silent> [Denite]f :<C-u>Denite file_rec<CR>
+nnoremap <silent> [Denite]g :<C-u>Denite -auto-highlight -mode=normal grep<CR>
+nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -auto-highlight -mode=normal grep<CR>
+nnoremap <silent> [Denite]h :<C-u>Denite help<CR>
+nnoremap <silent> [Denite]b :<C-u>Denite buffer<CR>
+
+'''
 hook_source = '''
 " Change default prompt
 call denite#custom#option('default', 'prompt', '>')

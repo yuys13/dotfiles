@@ -19,9 +19,9 @@ function __update_terminai_message() {
     echo -ne "\033]0;${USER}@${HOST}:${PWD/${HOME}/~}\007"
 }
 case "${TERM}" in
-kterm* | xterm*)
-    add-zsh-hook precmd __update_terminai_message
-    ;;
+    kterm* | xterm*)
+        add-zsh-hook precmd __update_terminai_message
+        ;;
 esac
 
 # display exec cmd

@@ -4,7 +4,7 @@ cd $(dirname $0)
 . ../util/functions.sh
 
 if is_ubuntu; then
-  return
+    return
 fi
 
 if ! which nvim > /dev/null 2>&1; then

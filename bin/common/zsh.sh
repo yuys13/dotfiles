@@ -22,7 +22,7 @@ if [ ! -e ~/.local/share/zsh ]; then
 fi
 
 if is_ubuntu; then
-  package_install gawk
+    package_install gawk
 fi
 
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh

@@ -8,6 +8,6 @@ if is_ubuntu; then
 fi
 
 if ! which nvim > /dev/null 2>&1; then
-  package_install neovim
+    package_install neovim
 fi
 

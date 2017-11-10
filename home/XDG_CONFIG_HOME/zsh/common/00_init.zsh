@@ -16,10 +16,10 @@ setopt hist_reduce_blanks
 
 ## TERMINAL
 function __update_terminai_message() {
-  echo -ne "\033]0;${USER}@${HOST}:${PWD/${HOME}/~}\007"
+    echo -ne "\033]0;${USER}@${HOST}:${PWD/${HOME}/~}\007"
 }
 case "${TERM}" in
-  kterm* | xterm*)
+kterm* | xterm*)
     add-zsh-hook precmd __update_terminai_message
     ;;
 esac
@@ -36,17 +36,17 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 # coloes
 case ${OSTYPE} in
-  darwin*)
-    if which gls > /dev/null 2>&1; then
-      alias ls='gls -F --color=auto'
-    else
-      export CLICOLOR=1
-      alias ls='ls -G'
-    fi
-    ;;
-  linux*)
-    alias ls='ls -F --color=auto'
-    ;;
+    darwin*)
+        if which gls > /dev/null 2>&1; then
+            alias ls='gls -F --color=auto'
+        else
+            export CLICOLOR=1
+            alias ls='ls -G'
+        fi
+        ;;
+    linux*)
+        alias ls='ls -F --color=auto'
+        ;;
 esac
 # alias
 alias la='ls -a'
@@ -55,7 +55,7 @@ alias ll='ls -l'
 alias lla='ls -la'
 alias ll.='ls -l -d .*'
 if type nvim > /dev/null 2>&1; then
-  alias vi='nvim'
+    alias vi='nvim'
 fi
 
 # after cd

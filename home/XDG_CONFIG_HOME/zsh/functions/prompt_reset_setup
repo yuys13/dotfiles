@@ -1,12 +1,12 @@
 # reset prompt theme
 
 prompt_reset_setup () {
-  PS1="%m%#"
-  PS2="%_>"
-  PS3="%m%#"
-  PS4="%m%#"
-  RPS1=""
-  RPS2=""
+    PS1="%m%#"
+    PS2="%_>"
+    PS3="%m%#"
+    PS4="%m%#"
+    RPS1=""
+    RPS2=""
 }
 
 prompt_reset_setup "$@"

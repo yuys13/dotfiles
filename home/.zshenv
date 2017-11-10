@@ -14,35 +14,35 @@ typeset -U path cdpath fpath manpath
 export GOPATH=${HOME}/go
 
 path=( \
-  ${HOME}/bin(N-/) \
-  ${HOME}/.zplug/bin(N-/) \
-  ${GOPATH}/bin(N-/) \
-  $path \
-  )
+    ${HOME}/bin(N-/) \
+    ${HOME}/.zplug/bin(N-/) \
+    ${GOPATH}/bin(N-/) \
+    $path \
+)
 fpath=( \
-  ${XDG_DATA_HOME}/zsh/functions(N-/) \
-  ${XDG_CONFIG_HOME}/zsh/functions(N-/) \
-  $fpath \
-  )
+    ${XDG_DATA_HOME}/zsh/functions(N-/) \
+    ${XDG_CONFIG_HOME}/zsh/functions(N-/) \
+    $fpath \
+)
 
 ## dir color
 if [ -z "${LS_COLORS}" ]; then
-  if which dircolors > /dev/null; then
-    eval "$(dircolors -b)"
-  fi
+    if which dircolors > /dev/null; then
+        eval "$(dircolors -b)"
+    fi
 fi
 
 ## Editor
 if which nvim > /dev/null 2>&1; then
-  export EDITOR=nvim
+    export EDITOR=nvim
 elif which vim > /dev/null 2>&1; then
-  export EDITOR=vim
+    export EDITOR=vim
 else
-  export EDITOR=vi
+    export EDITOR=vi
 fi
 
 ## Local setting
 if [ -f ${XDG_DATA_HOME}/zsh/zshenv ]; then
-  source ${XDG_DATA_HOME}/zsh/zshenv
+    source ${XDG_DATA_HOME}/zsh/zshenv
 fi
 

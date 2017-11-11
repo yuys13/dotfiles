@@ -64,9 +64,16 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'scrooloose/nerdtree'
+on_cmd = 'NERDTreeToggle'
+hook_add = '''
+  nnoremap <Space>sh :<C-u>NERDTreeToggle<CR>
+'''
+
+[[plugins]]
 repo = 'majutsushi/tagbar'
 on_cmd = 'TagbarToggle'
 hook_add = '''
-  nnoremap <F8> :TagbarToggle<CR>
+  nnoremap <Space>sl :<C-u>TagbarToggle<CR>
 '''
 

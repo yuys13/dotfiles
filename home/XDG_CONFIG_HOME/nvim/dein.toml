@@ -4,18 +4,18 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
-let g:solarized_termtrans=1
-set background=dark
-au MyAutoCmd VimEnter * nested colorscheme solarized
+  let g:solarized_termtrans=1
+  set background=dark
+  au MyAutoCmd VimEnter * nested colorscheme solarized
 '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 depends = 'vim-airline/vim-airline_themes'
 hook_add = '''
-let g:airline_solarized_bg='dark'
+  let g:airline_solarized_bg='dark'
 
-let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#enabled = 1
 '''
 
 [[plugins]]

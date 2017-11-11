@@ -2,37 +2,36 @@
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_add = '''
-" prefix
-nnoremap [Denite] <NOP>
-nmap <Space>d [Denite]
+  " prefix
+  nnoremap [Denite] <NOP>
+  nmap <Space>d [Denite]
 
-" keymap
-nnoremap <silent> [Denite]f :<C-u>Denite file_rec<CR>
-nnoremap <silent> [Denite]g :<C-u>Denite -auto-highlight -mode=normal grep<CR>
-nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -auto-highlight -mode=normal grep<CR>
-nnoremap <silent> [Denite]h :<C-u>Denite help<CR>
-nnoremap <silent> [Denite]b :<C-u>Denite buffer<CR>
-
+  " keymap
+  nnoremap <silent> [Denite]f :<C-u>Denite file_rec<CR>
+  nnoremap <silent> [Denite]g :<C-u>Denite -auto-highlight -mode=normal grep<CR>
+  nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -auto-highlight -mode=normal grep<CR>
+  nnoremap <silent> [Denite]h :<C-u>Denite help<CR>
+  nnoremap <silent> [Denite]b :<C-u>Denite buffer<CR>
 '''
 hook_source = '''
-" Change default prompt
-call denite#custom#option('default', 'prompt', '>')
+  " Change default prompt
+  call denite#custom#option('default', 'prompt', '>')
 
-" Change mappings.
-call denite#custom#map('insert', '<esc>', '<denite:enter_mode:normal>', 'noremap')
-call denite#custom#map('normal', '<esc>', '<denite:quit>', 'noremap')
+  " Change mappings.
+  call denite#custom#map('insert', '<esc>', '<denite:enter_mode:normal>', 'noremap')
+  call denite#custom#map('normal', '<esc>', '<denite:quit>', 'noremap')
 
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+  call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 
-call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
+  call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
 '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_i = 1
 hook_source = '''
-let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 1
 '''
 
 [[plugins]]
@@ -53,21 +52,21 @@ deppends = 'neosnippet-snippets'
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = '''
-imap <C-k>     <Plug>(neosnippet_jump_or_expand)
-smap <C-k>     <Plug>(neosnippet_jump_or_expand)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+  imap <C-k>     <Plug>(neosnippet_jump_or_expand)
+  smap <C-k>     <Plug>(neosnippet_jump_or_expand)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#expand_word_boundary = 1
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_completed_snippet = 1
+  let g:neosnippet#expand_word_boundary = 1
 
-"let g:neosnippet#snippets_directory = 'path/to/snippets'
+  "let g:neosnippet#snippets_directory = 'path/to/snippets'
 '''
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
 on_cmd = 'TagbarToggle'
 hook_add = '''
-nnoremap <F8> :TagbarToggle<CR>
+  nnoremap <F8> :TagbarToggle<CR>
 '''
 

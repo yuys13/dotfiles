@@ -75,8 +75,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
+if = 'executable("ctags")'
 on_cmd = 'TagbarToggle'
 hook_add = '''
   nnoremap <Space>sl :<C-u>TagbarToggle<CR>
+  let g:tagbar_autoshowtag = 1
 '''
 

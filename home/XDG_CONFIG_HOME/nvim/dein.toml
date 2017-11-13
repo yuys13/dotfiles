@@ -36,3 +36,13 @@ repo = 'zplug/vim-zplug'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim'
+if = 'executable("ctags") || executable("gtags")'
+hook_add = '''
+  let g:loaded_gentags#ctags = !executable("ctags")
+  let g:loaded_gentags#gtags = !executable("gtags")
+  let g:gen_tags#ctags_auto_gen  = executable("ctags")
+  let g:gen_tags#gtags_auto_gen  = executable("gtags")
+'''
+

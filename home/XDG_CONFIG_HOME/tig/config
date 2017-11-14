@@ -28,6 +28,8 @@ bind generic <Ctrl-B> move-page-up
 bind main          F  !git fetch
 bind main          ^  ?git reset --soft HEAD^
 bind main          H  ?git reset --hard %(commit)
+bind main          !  ?git revert %(commit)
+bind main    <Ctrl-R> ?git rebase --interactive %(commit)
 
 ## diff bindings
 bind diff          l  scroll-right
@@ -38,6 +40,7 @@ bind refs          N  <git checkout -b "%(prompt Enter new branch name: )" %(bra
 bind refs          P  ?git fetch --prune
 bind refs          F  ?git merge %(branch) --ff-only
 bind refs          M  ?git merge %(branch) --no-ff
+bind refs    <Ctrl-R> ?git rebase %(branch)
 
 ## status bindings
 bind status        C  !git commit --verbose

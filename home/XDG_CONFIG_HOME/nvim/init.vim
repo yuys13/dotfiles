@@ -20,7 +20,7 @@ let s:nvim_conf_dir = s:config_home . '/nvim'
 
 " auto install
 if !isdirectory(s:dein_repo)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo))
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo
 endif
 
 let &runtimepath = &runtimepath . "," . s:dein_repo

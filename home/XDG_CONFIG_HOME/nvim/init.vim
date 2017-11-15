@@ -66,3 +66,7 @@ set clipboard&
 set clipboard^=unnamed
 set clipboard^=unnamedplus
 
+if executable('tig')
+  nnoremap <silent> tig :<C-u>tabnew<CR>:te tig<CR>
+endif
+

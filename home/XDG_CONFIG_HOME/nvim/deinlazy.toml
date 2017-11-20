@@ -42,12 +42,24 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_if = 1
+
+[[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = 'zsh'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
+
+[[plugins]]
+repo = 'artur-shaik/vim-javacomplete2'
+if = 'executable("javac")'
+on_ft = 'java'
+hook_source = '''
+  autocmd MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'

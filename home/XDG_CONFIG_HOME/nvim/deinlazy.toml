@@ -68,7 +68,6 @@ hook_source = '''
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
-depends = 'nerdtree-git-plugin'
 on_cmd = 'NERDTreeToggle'
 hook_add = '''
   nnoremap <Space>sh :<C-u>NERDTreeToggle<CR>
@@ -76,6 +75,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
+on_source = 'nerdtree'
 
 [[plugins]]
 repo = 'majutsushi/tagbar'

@@ -4,7 +4,6 @@ setopt nobeep
 setopt print_eight_bit
 setopt ignore_eof
 autoload -Uz add-zsh-hook
-autoload -Uz is-at-least
 
 ## KEY BIND
 bindkey -e

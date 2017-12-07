@@ -1,11 +1,7 @@
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 zplug "zsh-users/zsh-completions"
-if is-at-least 5.0.8; then
-    zplug "zsh-users/zsh-autosuggestions", hook-load:'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"'
-else
-    zplug "zsh-users/zsh-autosuggestions", hook-load:'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"', at:'v0.4.0'
-fi
+zplug "zsh-users/zsh-autosuggestions", hook-load:'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"'
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then

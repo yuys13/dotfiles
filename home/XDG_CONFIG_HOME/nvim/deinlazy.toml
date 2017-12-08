@@ -13,6 +13,8 @@ hook_add = '''
   nnoremap <silent> [Denite]wg :<C-u>DeniteCursorWord -auto-highlight -mode=normal grep<CR>
   nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -auto-highlight -mode=normal line<CR>
   nnoremap <silent> [Denite]/ :<C-u>Denite -auto-highlight -auto-resize line<CR>
+  nnoremap <silent> [Denite]t :<C-u>Denite tag<CR>
+  nnoremap <silent> [Denite]<C-]> :<C-u>DeniteCursorWord -mode=normal tag<CR>
   nnoremap <silent> [Denite]r :<C-u>Denite -resume<CR>
   nnoremap <silent> [Denite]h :<C-u>Denite help<CR>
   nnoremap <silent> [Denite]b :<C-u>Denite buffer<CR>

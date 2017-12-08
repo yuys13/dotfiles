@@ -46,3 +46,6 @@ hook_add = '''
   let g:gen_tags#gtags_auto_gen  = executable("gtags")
 '''
 
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+

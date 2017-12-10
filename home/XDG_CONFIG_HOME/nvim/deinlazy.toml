@@ -111,3 +111,12 @@ hook_add = '''
   let g:tagbar_autoshowtag = 1
 '''
 
+[[plugins]]
+repo = 'kannokanno/previm'
+on_cmd = 'PrevimOpen'
+
+[[plugins]]
+repo = 'ywatase/mdt.vim'
+if = 'executable("mdt")'
+on_cmd = 'Mdt'
+

@@ -1,7 +1,14 @@
-## Common settings
-for rc in ${XDG_CONFIG_HOME}/zsh/common/<->_*.zsh; do
+## Initial settings
+for rc in ${XDG_CONFIG_HOME}/zsh/init/<->_*.zsh; do
     source $rc
 done
+
+## Local initial settings
+if [[ -d ${XDG_CONFIG_HOME}/zsh/local/init ]]; then
+    for rc in ${XDG_CONFIG_HOME}/zsh/local/init/<->_*.zsh; do
+        source $rc
+    done
+fi
 
 ## per OSType
 if [ -f ${XDG_CONFIG_HOME}/zsh/${$(uname):l}/zshrc ]; then
@@ -25,7 +32,7 @@ if [[ -f ~/.zplug/init.zsh ]]; then
 fi
 
 ## Local setting
-if [ -f ${XDG_DATA_HOME}/zsh/zshrc ]; then
-    source ${XDG_DATA_HOME}/zsh/zshrc
+if [ -f ${XDG_CONFIG_HOME}/zsh/local/zshrc ]; then
+    source ${XDG_CONFIG_HOME}/zsh/local/zshrc
 fi
 

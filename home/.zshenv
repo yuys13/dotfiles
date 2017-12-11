@@ -42,7 +42,7 @@ else
 fi
 
 ## Local setting
-if [ -f ${XDG_DATA_HOME}/zsh/zshenv ]; then
-    source ${XDG_DATA_HOME}/zsh/zshenv
+if [ -f ${XDG_CONFIG_HOME}/zsh/local/zshenv ]; then
+    source ${XDG_CONFIG_HOME}/zsh/local/zshenv
 fi
 

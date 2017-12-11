@@ -19,20 +19,21 @@ let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:nvim_conf_dir = s:config_home . '/nvim'
 
 " auto install
-if !isdirectory(s:dein_repo)
+if !isdirectory(s:dein_repo) && executable('git')
   execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo
 endif
 
-let &runtimepath = &runtimepath . "," . s:dein_repo
+if isdirectory(s:dein_repo)
+  let &runtimepath = &runtimepath . "," . s:dein_repo
+  if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
 
-if isdirectory(s:dein_repo) && dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+    call dein#load_toml(s:nvim_conf_dir . '/dein.toml', {'lazy': 0})
+    call dein#load_toml(s:nvim_conf_dir . '/deinlazy.toml', {'lazy': 1})
 
-  call dein#load_toml(s:nvim_conf_dir . '/dein.toml', {'lazy': 0})
-  call dein#load_toml(s:nvim_conf_dir . '/deinlazy.toml', {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
+    call dein#end()
+    call dein#save_state()
+  endif
 endif
 
 filetype plugin indent on

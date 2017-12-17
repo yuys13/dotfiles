@@ -7,10 +7,10 @@ hook_add = '''
   nmap <Space>d [Denite]
 
   " keymap
-  nnoremap <silent> [Denite]f :<C-u>Denite file_rec<CR>
+  nnoremap <silent> [Denite]f :<C-u>Denite `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
   nnoremap <silent> [Denite]o :<C-u>Denite -auto-highlight -mode=normal outline<CR>
-  nnoremap <silent> [Denite]/ :<C-u>Denite -mode=normal grep<CR>
-  nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -mode=normal grep<CR>
+  nnoremap <silent> [Denite]/ :<C-u>Denite -no-empty -mode=normal grep<CR>
+  nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -no-empty -mode=normal grep<CR>
   nnoremap <silent> [Denite]t :<C-u>Denite tag<CR>
   nnoremap <silent> [Denite]<C-]> :<C-u>DeniteCursorWord -mode=normal tag<CR>
   nnoremap <silent> [Denite]r :<C-u>Denite -resume<CR>
@@ -30,6 +30,28 @@ hook_source = '''
   call denite#custom#option('ft', 'prompt', 'set ft =')
   call denite#custom#option('history', 'prompt', ':')
   call denite#custom#option('line', 'prompt', '/')
+
+  " alias
+  call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+  call denite#custom#var('file_rec/git', 'command',
+        \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+  " file_rec
+  if executable('ag')
+    call denite#custom#var('file_rec', 'command',
+          \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+  endif
+
+  " grep source
+  if executable('rg')
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts',
+          \ ['--vimgrep', '--no-heading'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+  endif
 
   " Change mappings.
   call denite#custom#map('insert', '<esc>', '<denite:enter_mode:normal>', 'noremap')

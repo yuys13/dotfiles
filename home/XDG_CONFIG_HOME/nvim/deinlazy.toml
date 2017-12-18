@@ -123,7 +123,7 @@ on_ft = 'go'
 repo = 'scrooloose/nerdtree'
 on_cmd = 'NERDTreeToggle'
 hook_add = '''
-  nnoremap <Space>tr :<C-u>NERDTreeToggle<CR>
+  nnoremap <silent> <Space>tr :<C-u>NERDTreeToggle<CR>
 '''
 
 [[plugins]]
@@ -135,7 +135,7 @@ repo = 'majutsushi/tagbar'
 if = 'executable("ctags")'
 on_cmd = 'TagbarToggle'
 hook_add = '''
-  nnoremap <Space>tag :<C-u>TagbarToggle<CR>
+  nnoremap <silent> <Space>tag :<C-u>TagbarToggle<CR>
   let g:tagbar_autoshowtag = 1
 '''
 

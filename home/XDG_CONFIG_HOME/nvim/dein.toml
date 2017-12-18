@@ -67,3 +67,11 @@ hook_add = '''
   nmap <Space>nohl <Plug>(quickhl-manual-reset)
 '''
 
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+  " Map movement through errors without wrapping.
+  nmap <silent> <C-k> <Plug>(ale_previous)
+  nmap <silent> <C-j> <Plug>(ale_next)
+'''
+

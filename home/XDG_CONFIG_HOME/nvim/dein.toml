@@ -31,20 +31,16 @@ repo = 'airblade/vim-gitgutter'
 repo = 'Shougo/neco-syntax'
 
 [[plugins]]
-repo = 'zplug/vim-zplug'
-
-[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'jsfaint/gen_tags.vim'
-if = 'executable("ctags") || executable("gtags")'
-hook_add = '''
-  let g:loaded_gentags#ctags = !executable("ctags")
-  let g:loaded_gentags#gtags = !executable("gtags")
-  let g:gen_tags#ctags_auto_gen  = executable("ctags")
-  let g:gen_tags#gtags_auto_gen  = executable("gtags")
-'''
+repo = 'zchee/deoplete-zsh'
+
+[[plugins]]
+repo = 'zplug/vim-zplug'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -53,12 +49,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-  let g:netrw_nogx = 1 " disable netrw's gx mapping.
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-'''
+repo = 'Xuyuanp/nerdtree-git-plugin'
 
 [[plugins]]
 repo = 't9md/vim-quickhl'
@@ -74,4 +65,26 @@ hook_add = '''
   nmap <silent> <C-k> <Plug>(ale_previous)
   nmap <silent> <C-j> <Plug>(ale_next)
 '''
+
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim'
+if = 'executable("ctags") || executable("gtags")'
+hook_add = '''
+  let g:loaded_gentags#ctags = !executable("ctags")
+  let g:loaded_gentags#gtags = !executable("gtags")
+  let g:gen_tags#ctags_auto_gen  = executable("ctags")
+  let g:gen_tags#gtags_auto_gen  = executable("gtags")
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+  let g:netrw_nogx = 1 " disable netrw's gx mapping.
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
+'''
+
+[[plugins]]
+repo = 'ywatase/mdt.vim'
+if = 'executable("mdt")'
 

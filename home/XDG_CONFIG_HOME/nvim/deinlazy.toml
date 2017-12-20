@@ -79,14 +79,6 @@ repo = 'Shougo/neoinclude.vim'
 on_if = 1
 
 [[plugins]]
-repo = 'zchee/deoplete-zsh'
-on_ft = 'zsh'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
 repo = 'artur-shaik/vim-javacomplete2'
 if = 'executable("javac")'
 on_ft = 'java'
@@ -127,10 +119,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-on_source = 'nerdtree'
-
-[[plugins]]
 repo = 'majutsushi/tagbar'
 if = 'executable("ctags")'
 on_cmd = 'TagbarToggle'
@@ -142,9 +130,4 @@ hook_add = '''
 [[plugins]]
 repo = 'kannokanno/previm'
 on_cmd = 'PrevimOpen'
-
-[[plugins]]
-repo = 'ywatase/mdt.vim'
-if = 'executable("mdt")'
-on_cmd = 'Mdt'
 

@@ -8,6 +8,8 @@ hook_add = '''
 
   " keymap
   nnoremap <silent> [Denite]f :<C-u>Denite `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+  nnoremap <silent> [Denite]if :<C-u>Denite file_rec/gitignore<CR>
+  nnoremap <silent> [Denite]af :<C-u>Denite file_rec/all<CR>
   nnoremap <silent> [Denite]o :<C-u>Denite -auto-highlight -mode=normal outline<CR>
   nnoremap <silent> [Denite]/ :<C-u>Denite -no-empty -mode=normal grep<CR>
   nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -no-empty -mode=normal grep<CR>
@@ -35,6 +37,12 @@ hook_source = '''
   call denite#custom#alias('source', 'file_rec/git', 'file_rec')
   call denite#custom#var('file_rec/git', 'command',
         \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+  call denite#custom#alias('source', 'file_rec/gitignore', 'file_rec')
+  call denite#custom#var('file_rec/gitignore', 'command',
+        \ ['git', 'ls-files', '-co', '--exclude-standard', '-i'])
+
+  call denite#custom#alias('source', 'file_rec/all', 'file_rec')
 
   " file_rec
   if executable('ag')

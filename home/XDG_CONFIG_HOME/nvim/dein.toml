@@ -59,6 +59,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
   " Map movement through errors without wrapping.

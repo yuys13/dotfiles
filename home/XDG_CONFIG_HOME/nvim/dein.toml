@@ -64,6 +64,17 @@ repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
+  let g:ale_linters = {
+        \'go': ['go build', 'gofmt', 'golint', 'gosimple', 'go vet', 'staticcheck'],
+        "\'go': ['gometalinter', 'gofmt'],
+        \}
+
+  let g:ale_fix_on_save = 1
+  let g:ale_go_gofmt_options = '-s'
+  let g:ale_fixers = {
+        \'go': ['gofmt', 'goimports'],
+        \}
+
   " Map movement through errors without wrapping.
   nmap <silent> <C-k> <Plug>(ale_previous)
   nmap <silent> <C-j> <Plug>(ale_next)

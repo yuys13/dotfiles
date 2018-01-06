@@ -95,6 +95,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_source = '''
   let g:deoplete#enable_at_startup = 1
@@ -118,7 +119,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-depends = 'neosnippet-snippets'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = '''

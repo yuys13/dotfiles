@@ -28,6 +28,9 @@ repo = 'tpope/vim-fugitive'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'Shougo/neco-syntax'
 
 [[plugins]]

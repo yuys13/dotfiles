@@ -19,13 +19,14 @@ hook_add = '''
 
   nnoremap <silent> [Denite]b :<C-u>Denite -buffer-name=buf buffer<CR>
   nnoremap <silent> [Denite]h :<C-u>Denite -buffer-name=help help<CR>
-  nnoremap <silent> [Denite]FT :<C-u>Denite -buffer-name=ft filetype<CR>
   nnoremap <silent> [Denite]<C-r> :<C-u>Denite -buffer-name=history command_history<CR>
 
   nnoremap <silent> [Denite]cd :<C-u>DeniteProjectDir -buffer-name=cd -default-action=cd directory_rec<CR>
 
   nnoremap <silent> / :<C-u>Denite -auto-highlight -auto-resize -buffer-name=line line<CR>
   nnoremap <silent> * :<C-u>DeniteCursorWord -auto-highlight -auto-resize -buffer-name=line -mode=normal line<CR>
+
+  nnoremap <silent> FT :<C-u>Denite -buffer-name=ft filetype<CR>
 
   nnoremap T :<C-u>Denite -buffer-name=toggle menu:toggle<CR>
 '''

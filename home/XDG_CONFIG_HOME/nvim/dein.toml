@@ -10,19 +10,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-depends = 'vim-airline/vim-airline_themes'
-hook_add = '''
-  let g:airline_solarized_bg='dark'
-  let g:airline_theme='solarized'
-
-  let g:airline#extensions#tabline#enabled = 1
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]

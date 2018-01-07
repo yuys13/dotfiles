@@ -86,6 +86,7 @@ hook_source = '''
   let s:menus.toggle.command_candidates = [
         \['tagbar', 'TagbarToggle'],
         \['nerdtree', 'NERDTreeToggle'],
+        \['indentLine', 'IndentLinesToggle'],
         \['ale', 'ALEToggle'],
         \['wrap', 'set wrap! wrap?'],
         \['expandtab', 'set expandtab! wrap?'],

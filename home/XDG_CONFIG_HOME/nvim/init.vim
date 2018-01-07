@@ -9,9 +9,12 @@ augroup MyAutoCmd
 augroup END
 
 " XDG Base Directory
-let s:data_home = empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
-let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:config_home = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
+let s:data_home =
+      \ empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
+let s:cache_home =
+      \ empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:config_home =
+      \ empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
 
 " dein Dirs
 let s:dein_dir = s:cache_home . '/dein'
@@ -51,6 +54,7 @@ set number
 set nowrap
 set list
 set listchars=tab:¦-,trail:-,nbsp:+,extends:»,precedes:«
+set colorcolumn=80
 
 " Tab
 set expandtab

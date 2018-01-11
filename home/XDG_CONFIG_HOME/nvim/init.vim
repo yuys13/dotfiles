@@ -17,7 +17,6 @@ let s:config_home =
 " dein Dirs
 let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-let s:nvim_conf_dir = s:config_home . '/nvim'
 
 " auto install
 if !isdirectory(s:dein_repo) && executable('git')
@@ -29,8 +28,8 @@ if isdirectory(s:dein_repo)
   if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
-    call dein#load_toml(s:nvim_conf_dir . '/dein.toml', {'lazy': 0})
-    call dein#load_toml(s:nvim_conf_dir . '/deinlazy.toml', {'lazy': 1})
+    call dein#load_toml(expand('<sfile>:p:h') . '/dein.toml', {'lazy': 0})
+    call dein#load_toml(expand('<sfile>:p:h') . '/deinlazy.toml', {'lazy': 1})
 
     call dein#end()
     call dein#save_state()

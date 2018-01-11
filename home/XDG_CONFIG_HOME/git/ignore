@@ -1,0 +1,9 @@
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# vim-localrc
+.local.vimrc
+.local.*.vimrc
+

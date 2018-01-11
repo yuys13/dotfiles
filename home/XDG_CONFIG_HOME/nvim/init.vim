@@ -1,13 +1,11 @@
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+scriptencoding utf-8
 
 " reset augroup
 augroup MyAutoCmd
   autocmd!
 augroup END
 
+"dein Scripts-----------------------------
 " XDG Base Directory
 let s:data_home =
       \ empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
@@ -27,7 +25,7 @@ if !isdirectory(s:dein_repo) && executable('git')
 endif
 
 if isdirectory(s:dein_repo)
-  let &runtimepath = &runtimepath . "," . s:dein_repo
+  let &runtimepath = &runtimepath . ',' . s:dein_repo
   if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 

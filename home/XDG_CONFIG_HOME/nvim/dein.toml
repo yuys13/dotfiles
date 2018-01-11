@@ -4,7 +4,7 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
-  let g:solarized_termtrans=1
+  let g:solarized_termtrans = 1
   set background=dark
   autocmd MyAutoCmd VimEnter * nested colorscheme solarized
 '''
@@ -64,16 +64,16 @@ hook_add = '''
 
   " linters
   let g:ale_linters = {
-        \'go': ['go build', 'gofmt', 'golint', 'gosimple', 'go vet', 'staticcheck'],
-        "\'go': ['gometalinter', 'gofmt'],
-        \}
+        \ 'go': ['go build', 'gofmt', 'golint',
+        \        'gosimple', 'go vet', 'staticcheck'],
+        \ }
 
   " fixers
   let g:ale_fix_on_save = 1
   let g:ale_go_gofmt_options = '-s'
   let g:ale_fixers = {
-        \'go': ['gofmt', 'goimports'],
-        \}
+        \ 'go': ['gofmt', 'goimports'],
+        \ }
 
   " Map movement through errors without wrapping.
   nmap <silent> <C-k> <Plug>(ale_previous)

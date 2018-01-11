@@ -59,11 +59,16 @@ repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
+  " messages
+  let g:ale_echo_msg_format = '[%linter%] %code: %%s [%severity%]'
+
+  " linters
   let g:ale_linters = {
         \'go': ['go build', 'gofmt', 'golint', 'gosimple', 'go vet', 'staticcheck'],
         "\'go': ['gometalinter', 'gofmt'],
         \}
 
+  " fixers
   let g:ale_fix_on_save = 1
   let g:ale_go_gofmt_options = '-s'
   let g:ale_fixers = {

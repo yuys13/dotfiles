@@ -10,90 +10,30 @@ hook_add = '''
   nnoremap <silent> [Denite]f :<C-u>Denite `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
   nnoremap <silent> [Denite]if :<C-u>Denite file_rec/gitignore<CR>
   nnoremap <silent> [Denite]af :<C-u>Denite file_rec/all<CR>
-  nnoremap <silent> [Denite]o :<C-u>Denite -auto-highlight -mode=normal outline<CR>
-  nnoremap <silent> [Denite]/ :<C-u>Denite -no-empty -mode=normal grep<CR>
-  nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord -no-empty -mode=normal grep<CR>
+  nnoremap <silent> [Denite]o :<C-u>Denite outline -auto-highlight -mode=normal<CR>
+  nnoremap <silent> [Denite]/ :<C-u>Denite grep -no-empty -mode=normal<CR>
+  nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord grep -no-empty -mode=normal<CR>
   nnoremap <silent> [Denite]t :<C-u>Denite tag<CR>
-  nnoremap <silent> [Denite]<C-]> :<C-u>DeniteCursorWord -mode=normal tag<CR>
+  nnoremap <silent> [Denite]<C-]> :<C-u>DeniteCursorWord tag -mode=normal<CR>
+
   nnoremap <silent> [Denite]r :<C-u>Denite -resume<CR>
+  nnoremap <silent> [Denite]n :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
+  nnoremap <silent> [Denite]p :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 
-  nnoremap <silent> [Denite]b :<C-u>Denite -buffer-name=buf buffer<CR>
-  nnoremap <silent> [Denite]h :<C-u>Denite -buffer-name=help help<CR>
-  nnoremap <silent> [Denite]<C-r> :<C-u>Denite -buffer-name=history command_history<CR>
+  nnoremap <silent> [Denite]b :<C-u>Denite buffer -buffer-name=buf<CR>
+  nnoremap <silent> [Denite]h :<C-u>Denite help -buffer-name=help<CR>
+  nnoremap <silent> [Denite]<C-r> :<C-u>Denite command_history -buffer-name=history<CR>
 
-  nnoremap <silent> [Denite]cd :<C-u>DeniteProjectDir -buffer-name=cd -default-action=cd directory_rec<CR>
+  nnoremap <silent> [Denite]cd :<C-u>DeniteProjectDir directory_rec -buffer-name=cd -default-action=cd<CR>
 
-  nnoremap <silent> / :<C-u>Denite -auto-highlight -auto-resize -buffer-name=line line<CR>
-  nnoremap <silent> * :<C-u>DeniteCursorWord -auto-highlight -auto-resize -buffer-name=line -mode=normal line<CR>
+  nnoremap <silent> / :<C-u>Denite line -auto-highlight -auto-resize -buffer-name=line<CR>
+  nnoremap <silent> * :<C-u>DeniteCursorWord line -auto-highlight -auto-resize -buffer-name=line -mode=normal<CR>
 
-  nnoremap <silent> FT :<C-u>Denite -buffer-name=ft filetype<CR>
+  nnoremap <silent> FT :<C-u>Denite filetype -buffer-name=ft<CR>
 
-  nnoremap T :<C-u>Denite -buffer-name=toggle menu:toggle<CR>
+  nnoremap T :<C-u>Denite menu:toggle -buffer-name=toggle<CR>
 '''
-hook_source = '''
-  " Change default prompt
-  call denite#custom#option('default', 'prompt', '>')
-  call denite#custom#option('help', 'prompt', 'help?')
-  call denite#custom#option('ft', 'prompt', 'set ft =')
-  call denite#custom#option('history', 'prompt', ':')
-  call denite#custom#option('cd', 'prompt', 'cd')
-  call denite#custom#option('line', 'prompt', '/')
-  call denite#custom#option('toggle', 'prompt', 'toggle')
-
-  " alias
-  call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-  call denite#custom#var('file_rec/git', 'command',
-        \ ['git', 'ls-files', '-co', '--exclude-standard'])
-
-  call denite#custom#alias('source', 'file_rec/gitignore', 'file_rec')
-  call denite#custom#var('file_rec/gitignore', 'command',
-        \ ['git', 'ls-files', '-co', '--exclude-standard', '-i'])
-
-  call denite#custom#alias('source', 'file_rec/all', 'file_rec')
-
-  " file_rec
-  if executable('ag')
-    call denite#custom#var('file_rec', 'command',
-          \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-  endif
-
-  " grep source
-  if executable('rg')
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts',
-          \ ['--vimgrep', '--no-heading'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-  endif
-
-  " Change mappings.
-  call denite#custom#map('insert', '<esc>', '<denite:enter_mode:normal>', 'noremap')
-  call denite#custom#map('normal', '<esc>', '<denite:quit>', 'noremap')
-
-  call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-
-  call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
-
-  " Add custom menus
-  let s:menus = {}
-
-  let s:menus.toggle = {
-        \ 'description': 'toggle plugin/option'
-        \ }
-  let s:menus.toggle.command_candidates = [
-        \['tagbar', 'TagbarToggle'],
-        \['nerdtree', 'NERDTreeToggle'],
-        \['indentLine', 'IndentLinesToggle'],
-        \['ale', 'ALEToggle'],
-        \['wrap', 'set wrap! wrap?'],
-        \['expandtab', 'set expandtab! wrap?'],
-        \]
-
-  call denite#custom#var('menu', 'menus', s:menus)
-'''
+hook_source = 'source ~/.config/nvim/rc/denite.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'

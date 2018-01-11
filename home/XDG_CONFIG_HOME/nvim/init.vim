@@ -31,6 +31,15 @@ if isdirectory(s:dein_repo)
     call dein#load_toml(expand('<sfile>:p:h') . '/dein.toml', {'lazy': 0})
     call dein#load_toml(expand('<sfile>:p:h') . '/deinlazy.toml', {'lazy': 1})
 
+    if filereadable(expand('<sfile>:p:h') . '/local/dein.toml')
+      call dein#load_toml(expand('<sfile>:p:h') . '/local/dein.toml',
+            \ {'lazy': 0})
+    endif
+    if filereadable(expand('<sfile>:p:h') . '/local/deinlazy.toml')
+      call dein#load_toml(expand('<sfile>:p:h') . '/local/deinlazy.toml',
+            \ {'lazy': 1})
+    endif
+
     call dein#end()
     call dein#save_state()
   endif

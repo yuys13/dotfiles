@@ -17,6 +17,8 @@ path=( \
     ${HOME}/bin(N-/) \
     ${HOME}/.zplug/bin(N-/) \
     ${GOPATH}/bin(N-/) \
+    ${XDG_DATA_HOME}/node_modules/bin(N-/) \
+    ${HOME}/.local/bin(N-/) \
     $path \
 )
 fpath=( \

@@ -6,7 +6,7 @@ let g:lightline = {
       \   'mode_map': { 'c': 'NORMAL' },
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ],
-      \               [ 'hunks', 'fugitive' ],
+      \               [ 'hunks', 'branch' ],
       \               [ 'readonly', 'filename', 'modified' ] ],
       \     'right': [ [ 'percent', 'lineinfo' ],
       \                [ 'filetype', 'fileencoding', 'denitepath' ],
@@ -14,15 +14,14 @@ let g:lightline = {
       \   },
       \   'component_function': {
       \     'mode': 'MyLightlineMode',
-      \     'modified': 'MyLightlineModified',
-      \     'readonly': 'MyLightlineReadonly',
-      \     'filename': 'MyLightlineFilename',
-      \     'fugitive': 'MyLightlineBranch',
       \     'hunks': 'MyLightlineHunks',
+      \     'branch': 'MyLightlineBranch',
+      \     'filename': 'MyLightlineFilename',
+      \     'modified': 'MyLightlineModified',
+      \     'tag': 'MyLightlineCurrentTag',
       \     'filetype': 'MyLightlineFiletype',
       \     'fileencoding': 'MyLightlineFileencoding',
       \     'denitepath': 'MyLightlineDenitepath',
-      \     'tag': 'MyLightlineCurrentTag',
       \     'percent': 'MyLightlinePercent',
       \     'lineinfo': 'MyLightlineLineinfo'
       \   },
@@ -49,23 +48,16 @@ autocmd MyAutoCmd User ALELintPre call MyLightlineAlePre()
 autocmd MyAutoCmd User ALELintPost call MyLightlineAlePost()
 
 " functions
-function! MyLightlineModified() abort
-  return &filetype =~? 'help\|man\|denite' ? '' :
-        \ &modified ? '+' :
-        \ &modifiable ? '' : '-'
-endfunction
-
-function! MyLightlineReadonly() abort
-  return &filetype !~? 'help\|man\|denite' && &readonly ? 'RO' : ''
-endfunction
-
-function! MyLightlineFilename() abort
-  return (&filetype ==? 'denite' ? denite#get_status('sources') :
-        \  &filetype =~? 'tagbar\|nerdtree' ? '' :
-        \  &filetype =~? 'help\|man' ? expand('%:t') :
-        \  winwidth(0) > 150 ? expand('%') :
-        \  winwidth(0) > 110 ? pathshorten(expand('%')) :
-        \ '' !=# expand('%:t') ? expand('%:t') :'[No Name]')
+function! MyLightlineMode() abort
+  if &filetype ==? 'denite'
+    let l:mode = substitute(denite#get_status('mode'), '[ -]*', '', 'g')
+    call lightline#link(tolower(l:mode[0]))
+    return 'Denite'
+  endif
+  if winwidth(0) <= 60
+    return ''
+  endif
+  return lightline#mode()
 endfunction
 
 function! MyLightlineHunks() abort
@@ -96,38 +88,23 @@ function! MyLightlineBranch() abort
   return fugitive#head()
 endfunction
 
-function! MyLightlineFiletype() abort
-  if winwidth(0) <= 70 || &filetype ==? 'denite'
-    return ''
-  endif
-  return &filetype
+function! MyLightlineReadonly() abort
+  return &filetype !~? 'help\|man\|denite' && &readonly ? 'RO' : ''
 endfunction
 
-function! MyLightlineFileencoding() abort
-  if winwidth(0) <= 70 || &filetype ==? 'denite'
-    return ''
-  endif
-  return (&fileencoding !=# '' ? &fileencoding : &encoding) .
-        \ '[' . &fileformat . ']'
+function! MyLightlineFilename() abort
+  return (&filetype ==? 'denite' ? denite#get_status('sources') :
+        \  &filetype =~? 'tagbar\|nerdtree' ? '' :
+        \  &filetype =~? 'help\|man' ? expand('%:t') :
+        \  winwidth(0) > 150 ? expand('%') :
+        \  winwidth(0) > 110 ? pathshorten(expand('%')) :
+        \ '' !=# expand('%:t') ? expand('%:t') :'[No Name]')
 endfunction
 
-function! MyLightlineDenitepath() abort
-  if &filetype !=? 'denite'
-    return ''
-  endif
-  return denite#get_status('path')
-endfunction
-
-function! MyLightlineMode() abort
-  if &filetype ==? 'denite'
-    let l:mode = substitute(denite#get_status('mode'), '[ -]*', '', 'g')
-    call lightline#link(tolower(l:mode[0]))
-    return 'Denite'
-  endif
-  if winwidth(0) <= 60
-    return ''
-  endif
-  return lightline#mode()
+function! MyLightlineModified() abort
+  return &filetype =~? 'help\|man\|denite' ? '' :
+        \ &modified ? '+' :
+        \ &modifiable ? '' : '-'
 endfunction
 
 function! MyLightlineCurrentTag() abort
@@ -185,9 +162,26 @@ function! s:lightlineAle(mode)
   return l:counts.total ? '' : 'OK'
 endfunction
 
-function! MyLightlineLineinfo() abort
-  return &filetype ==? 'denite' ? denite#get_status('linenr') :
-        \ printf('%3d:%-2d', line('.'), col('.'))
+function! MyLightlineFiletype() abort
+  if winwidth(0) <= 70 || &filetype ==? 'denite'
+    return ''
+  endif
+  return &filetype
+endfunction
+
+function! MyLightlineFileencoding() abort
+  if winwidth(0) <= 70 || &filetype ==? 'denite'
+    return ''
+  endif
+  return (&fileencoding !=# '' ? &fileencoding : &encoding) .
+        \ '[' . &fileformat . ']'
+endfunction
+
+function! MyLightlineDenitepath() abort
+  if &filetype !=? 'denite'
+    return ''
+  endif
+  return denite#get_status('path')
 endfunction
 
 function! MyLightlinePercent() abort
@@ -198,3 +192,9 @@ function! MyLightlinePercent() abort
     return printf('%3d%%', 100 * line('.') / line('$'))
   endif
 endfunction
+
+function! MyLightlineLineinfo() abort
+  return &filetype ==? 'denite' ? denite#get_status('linenr') :
+        \ printf('%3d:%-2d', line('.'), col('.'))
+endfunction
+

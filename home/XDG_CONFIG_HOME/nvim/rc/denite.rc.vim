@@ -1,3 +1,8 @@
+" for lightline
+if exists('g:lightline')
+  call denite#custom#option('_', 'statusline', v:false)
+endif
+
 " Change default prompt
 call denite#custom#option('default', 'prompt', '>')
 call denite#custom#option('help', 'prompt', 'help?')

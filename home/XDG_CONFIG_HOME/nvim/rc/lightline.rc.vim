@@ -9,7 +9,7 @@ let g:lightline = {
       \               [ 'hunks', 'fugitive' ],
       \               [ 'readonly', 'filepath', 'filename', 'modified' ] ],
       \     'right': [ [ 'percent', 'lineinfo' ],
-      \                [ 'filetype', 'fileencoding' ],
+      \                [ 'filetype', 'fileencoding', 'denitepath' ],
       \                [ 'ale_warning', 'ale_error', 'tag' ] ],
       \   },
       \   'component_function': {
@@ -20,10 +20,12 @@ let g:lightline = {
       \     'filename': 'MyLightlineFilename',
       \     'fugitive': 'MyLightlineBranch',
       \     'hunks': 'MyLightlineHunks',
-      \     'fileformat': 'MyLightlineFileformat',
       \     'filetype': 'MyLightlineFiletype',
       \     'fileencoding': 'MyLightlineFileencoding',
-      \     'tag': 'MyLightlineCurrentTag'
+      \     'denitepath': 'MyLightlineDenitepath',
+      \     'tag': 'MyLightlineCurrentTag',
+      \     'percent': 'MyLightlinePercent',
+      \     'lineinfo': 'MyLightlineLineinfo'
       \   },
       \   'component_expand': {
       \     'readonly': 'MyLightlineReadonly',
@@ -49,28 +51,26 @@ autocmd MyAutoCmd User ALELintPost call MyLightlineAlePost()
 
 " functions
 function! MyLightlineModified()
-  return &filetype =~? 'help\|man' ? '' :
+  return &filetype =~? 'help\|man\|denite' ? '' :
         \ &modified ? '+' :
         \ &modifiable ? '' : '-'
 endfunction
 
 function! MyLightlineReadonly()
-  return &filetype !~? 'help\|man' && &readonly ? 'RO' : ''
+  return &filetype !~? 'help\|man\|denite' && &readonly ? 'RO' : ''
 endfunction
 
 function! MyLightlineFilepath()
   if winwidth(0) <= 150
         \ || expand('%:h') ==# '.' || expand('%:h') ==# ''
-        \ || &filetype =~? 'help\|man'
+        \ || &filetype =~? 'help\|man\|denite'
     return ''
   endif
   return expand('%:h') . '/'
 endfunction
 
 function! MyLightlineFilename()
-  return (&filetype ==? 'vimfiler' ? vimfiler#get_status_string() :
-        \  &filetype ==? 'unite' ? unite#get_status_string() :
-        \  &filetype ==? 'vimshell' ? vimshell#get_status_string() :
+  return (&filetype ==? 'denite' ? denite#get_status('sources') :
         \  &filetype ==? 'tagbar' ? '' :
         \  &filetype ==? 'nerdtree' ? '' :
         \ '' !=# expand('%:t') ? expand('%:t') :'[No Name]')
@@ -104,23 +104,34 @@ function! MyLightlineBranch()
   return fugitive#head()
 endfunction
 
-function! MyLightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
 function! MyLightlineFiletype()
-  return winwidth(0) > 70 ? &filetype : ''
+  if winwidth(0) <= 70 || &filetype ==? 'denite'
+    return ''
+  endif
+  return &filetype
 endfunction
 
 function! MyLightlineFileencoding()
-  if winwidth(0) <= 70
+  if winwidth(0) <= 70 || &filetype ==? 'denite'
     return ''
   endif
   return (&fileencoding !=# '' ? &fileencoding : &encoding) .
         \ '[' . &fileformat . ']'
 endfunction
 
+function! MyLightlineDenitepath()
+  if &filetype !=? 'denite'
+    return ''
+  endif
+  return denite#get_status('path')
+endfunction
+
 function! MyLightlineMode()
+  if &filetype ==? 'denite'
+    let l:mode = substitute(denite#get_status('mode'), '[ -]*', '', 'g')
+    call lightline#link(tolower(l:mode[0]))
+    return 'Denite'
+  endif
   if winwidth(0) <= 60
     return ''
   endif
@@ -160,7 +171,7 @@ function! MyLightlineAlePost()
 endfunction
 
 function! s:lightlineAle(mode)
-  if !exists('g:ale_buffer_info') || &filetype ==# 'denite'
+  if !exists('g:ale_buffer_info') || &filetype ==? 'denite'
     return ''
   endif
   if s:ale_running
@@ -182,3 +193,16 @@ function! s:lightlineAle(mode)
   return l:counts.total ? '' : 'OK'
 endfunction
 
+function! MyLightlineLineinfo()
+  return &filetype ==? 'denite' ? denite#get_status('linenr') :
+        \ printf('%3d:%-2d', line('.'), col('.'))
+endfunction
+
+function! MyLightlinePercent()
+  if &filetype ==? 'denite'
+    let l:nr = split(substitute(denite#get_status('linenr'), ' ', '', 'g'), '/')
+    return printf('%3d%%', 100 * l:nr[0] / l:nr[1])
+  else
+    return printf('%3d%%', 100 * line('.') / line('$'))
+  endif
+endfunction

@@ -61,13 +61,15 @@ endfunction
 
 function! MyLightlineFilename() abort
   return (&filetype ==? 'denite' ? denite#get_status('sources') :
-        \  &filetype ==? 'tagbar' ? '' :
-        \  &filetype ==? 'nerdtree' ? '' :
+        \  &filetype =~? 'tagbar\|nerdtree' ? '' :
+        \  &filetype =~? 'help\|man' ? expand('%:t') :
+        \  winwidth(0) > 150 ? expand('%') :
+        \  winwidth(0) > 110 ? pathshorten(expand('%')) :
         \ '' !=# expand('%:t') ? expand('%:t') :'[No Name]')
 endfunction
 
 function! MyLightlineHunks() abort
-  if winwidth(0) <= 150
+  if winwidth(0) <= 100
         \ || !exists('*GitGutterGetHunkSummary')
         \ || !get(g:, 'gitgutter_enabled', 0)
     return ''
@@ -129,7 +131,7 @@ function! MyLightlineMode() abort
 endfunction
 
 function! MyLightlineCurrentTag() abort
-  if winwidth(0) <= 100
+  if winwidth(0) <= 90
         \ || exists(':TagbarToggle') != 2
     return ''
   endif

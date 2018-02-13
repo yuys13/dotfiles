@@ -68,7 +68,7 @@ hook_add = '''
   " linters
   let g:ale_linters = {
         \ 'go': ['go build', 'gofmt', 'golint',
-        \        'gosimple', 'go vet', 'staticcheck'],
+        \        'gosimple', 'gotype', 'go vet', 'staticcheck'],
         \ }
 
   " fixers

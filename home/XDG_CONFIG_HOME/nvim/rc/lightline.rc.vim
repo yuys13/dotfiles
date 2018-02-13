@@ -7,7 +7,7 @@ let g:lightline = {
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ],
       \               [ 'hunks', 'fugitive' ],
-      \               [ 'readonly', 'filepath', 'filename', 'modified' ] ],
+      \               [ 'readonly', 'filename', 'modified' ] ],
       \     'right': [ [ 'percent', 'lineinfo' ],
       \                [ 'filetype', 'fileencoding', 'denitepath' ],
       \                [ 'ale_warning', 'ale_error', 'tag' ] ],
@@ -16,7 +16,6 @@ let g:lightline = {
       \     'mode': 'MyLightlineMode',
       \     'modified': 'MyLightlineModified',
       \     'readonly': 'MyLightlineReadonly',
-      \     'filepath': 'MyLightlineFilepath',
       \     'filename': 'MyLightlineFilename',
       \     'fugitive': 'MyLightlineBranch',
       \     'hunks': 'MyLightlineHunks',
@@ -58,15 +57,6 @@ endfunction
 
 function! MyLightlineReadonly() abort
   return &filetype !~? 'help\|man\|denite' && &readonly ? 'RO' : ''
-endfunction
-
-function! MyLightlineFilepath() abort
-  if winwidth(0) <= 150
-        \ || expand('%:h') ==# '.' || expand('%:h') ==# ''
-        \ || &filetype =~? 'help\|man\|denite'
-    return ''
-  endif
-  return expand('%:h') . '/'
 endfunction
 
 function! MyLightlineFilename() abort

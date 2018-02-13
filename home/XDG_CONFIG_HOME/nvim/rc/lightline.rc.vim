@@ -50,17 +50,17 @@ autocmd MyAutoCmd User ALELintPre call MyLightlineAlePre()
 autocmd MyAutoCmd User ALELintPost call MyLightlineAlePost()
 
 " functions
-function! MyLightlineModified()
+function! MyLightlineModified() abort
   return &filetype =~? 'help\|man\|denite' ? '' :
         \ &modified ? '+' :
         \ &modifiable ? '' : '-'
 endfunction
 
-function! MyLightlineReadonly()
+function! MyLightlineReadonly() abort
   return &filetype !~? 'help\|man\|denite' && &readonly ? 'RO' : ''
 endfunction
 
-function! MyLightlineFilepath()
+function! MyLightlineFilepath() abort
   if winwidth(0) <= 150
         \ || expand('%:h') ==# '.' || expand('%:h') ==# ''
         \ || &filetype =~? 'help\|man\|denite'
@@ -69,14 +69,14 @@ function! MyLightlineFilepath()
   return expand('%:h') . '/'
 endfunction
 
-function! MyLightlineFilename()
+function! MyLightlineFilename() abort
   return (&filetype ==? 'denite' ? denite#get_status('sources') :
         \  &filetype ==? 'tagbar' ? '' :
         \  &filetype ==? 'nerdtree' ? '' :
         \ '' !=# expand('%:t') ? expand('%:t') :'[No Name]')
 endfunction
 
-function! MyLightlineHunks()
+function! MyLightlineHunks() abort
   if winwidth(0) <= 150
         \ || !exists('*GitGutterGetHunkSummary')
         \ || !get(g:, 'gitgutter_enabled', 0)
@@ -97,21 +97,21 @@ function! MyLightlineHunks()
   return join(l:ret, ' ')
 endfunction
 
-function! MyLightlineBranch()
+function! MyLightlineBranch() abort
   if winwidth(0) <= 75 || !exists('*fugitive#head')
     return ''
   endif
   return fugitive#head()
 endfunction
 
-function! MyLightlineFiletype()
+function! MyLightlineFiletype() abort
   if winwidth(0) <= 70 || &filetype ==? 'denite'
     return ''
   endif
   return &filetype
 endfunction
 
-function! MyLightlineFileencoding()
+function! MyLightlineFileencoding() abort
   if winwidth(0) <= 70 || &filetype ==? 'denite'
     return ''
   endif
@@ -119,14 +119,14 @@ function! MyLightlineFileencoding()
         \ '[' . &fileformat . ']'
 endfunction
 
-function! MyLightlineDenitepath()
+function! MyLightlineDenitepath() abort
   if &filetype !=? 'denite'
     return ''
   endif
   return denite#get_status('path')
 endfunction
 
-function! MyLightlineMode()
+function! MyLightlineMode() abort
   if &filetype ==? 'denite'
     let l:mode = substitute(denite#get_status('mode'), '[ -]*', '', 'g')
     call lightline#link(tolower(l:mode[0]))
@@ -138,7 +138,7 @@ function! MyLightlineMode()
   return lightline#mode()
 endfunction
 
-function! MyLightlineCurrentTag()
+function! MyLightlineCurrentTag() abort
   if winwidth(0) <= 100
         \ || exists(':TagbarToggle') != 2
     return ''
@@ -146,26 +146,26 @@ function! MyLightlineCurrentTag()
   return tagbar#currenttag('%s','')
 endfunction
 
-function! MyLightlineAleError()
+function! MyLightlineAleError() abort
   return s:lightlineAle(0)
 endfunction
 
-function! MyLightlineAleWarning()
+function! MyLightlineAleWarning() abort
   return s:lightlineAle(1)
 endfunction
 
-function! MyLightlineAleInfo()
+function! MyLightlineAleInfo() abort
   return s:lightlineAle(2)
 endfunction
 
 let s:ale_running = 0
 
-function! MyLightlineAlePre()
+function! MyLightlineAlePre() abort
   let s:ale_running = 1
   call lightline#update()
 endfunction
 
-function! MyLightlineAlePost()
+function! MyLightlineAlePost() abort
   let s:ale_running = 0
   call lightline#update()
 endfunction
@@ -193,12 +193,12 @@ function! s:lightlineAle(mode)
   return l:counts.total ? '' : 'OK'
 endfunction
 
-function! MyLightlineLineinfo()
+function! MyLightlineLineinfo() abort
   return &filetype ==? 'denite' ? denite#get_status('linenr') :
         \ printf('%3d:%-2d', line('.'), col('.'))
 endfunction
 
-function! MyLightlinePercent()
+function! MyLightlinePercent() abort
   if &filetype ==? 'denite'
     let l:nr = split(substitute(denite#get_status('linenr'), ' ', '', 'g'), '/')
     return printf('%3d%%', 100 * l:nr[0] / l:nr[1])

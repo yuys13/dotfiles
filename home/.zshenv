@@ -21,7 +21,6 @@ path=( \
     $path \
 )
 fpath=( \
-    ${XDG_DATA_HOME}/zsh/functions(N-/) \
     ${XDG_CONFIG_HOME}/zsh/functions(N-/) \
     $fpath \
 )

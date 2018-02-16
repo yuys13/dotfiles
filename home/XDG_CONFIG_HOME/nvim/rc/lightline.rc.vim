@@ -187,6 +187,9 @@ endfunction
 function! MyLightlinePercent() abort
   if &filetype ==? 'denite'
     let l:nr = split(substitute(denite#get_status('linenr'), ' ', '', 'g'), '/')
+    if l:nr[1] == 0
+      return printf('%3d%%', 100)
+    endif
     return printf('%3d%%', 100 * l:nr[0] / l:nr[1])
   else
     return printf('%3d%%', 100 * line('.') / line('$'))

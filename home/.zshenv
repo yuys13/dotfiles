@@ -10,11 +10,14 @@ export SAVEHIST=${HISTSIZE}
 
 ## Path
 typeset -U path cdpath fpath manpath
+typeset -gxTU INFOPATH infopath
 
 export GOPATH=${HOME}/go
 
 path=( \
     ${HOME}/bin(N-/) \
+    ${HOME}/.linuxbrew/bin(N-/) \
+    ${HOME}/.linuxbrew/sbin(N-/) \
     ${HOME}/.zplug/bin(N-/) \
     ${GOPATH}/bin(N-/) \
     ${HOME}/.local/bin(N-/) \
@@ -22,7 +25,16 @@ path=( \
 )
 fpath=( \
     ${XDG_CONFIG_HOME}/zsh/functions(N-/) \
+    ${HOME}/.linuxbrew/share/zsh/site-functions(N-/) \
     $fpath \
+)
+manpath=( \
+    ${HOME}/.linuxbrew/share/man(N-/) \
+    $manpath \
+)
+infopath=( \
+    ${HOME}/.linuxbrew/share/info(N-/) \
+    $infopath \
 )
 
 ## dir color

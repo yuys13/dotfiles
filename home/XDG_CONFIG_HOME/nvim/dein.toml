@@ -14,6 +14,9 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/rc/lightline.rc.vim'
 
 [[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
 repo = 'thinca/vim-localrc'
 
 [[plugins]]

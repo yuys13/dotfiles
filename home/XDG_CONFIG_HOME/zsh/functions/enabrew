@@ -1,0 +1,38 @@
+enabrew () {
+    if ! type brew > /dev/null; then
+        local brew_prefix=""
+        if [[ -d ${HOME}/.linuxbrew ]]; then
+            brew_prefix=${HOME}/.linuxbrew
+        elif [[ -d /home/linuxbrew/.linuxbrew ]]; then
+            brew_prefix=/home/linuxbrew/.linuxbrew
+        fi
+
+        path=( \
+            ${brew_prefix}/bin(N-/) \
+            ${brew_prefix}/sbin(N-/) \
+            $path \
+            )
+    fi
+
+    if ! type brew > /dev/null; then
+        echo brew not found
+        return 1
+    fi
+
+    fpath=( \
+        $(brew --prefix)/share/zsh/site-functions(N-/) \
+        $fpath
+    )
+
+    manpath=( \
+        $(brew --prefix)/share/man(N-/) \
+        $manpath
+    )
+
+    typeset -gxTU INFOPATH infopath
+    infopath=( \
+        $(brew --prefix)/share/info(N-/) \
+        $infopath
+    )
+}
+# vim: ft=zsh

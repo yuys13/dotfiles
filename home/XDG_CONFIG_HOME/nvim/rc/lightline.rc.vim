@@ -50,8 +50,7 @@ autocmd MyAutoCmd User ALELintPost call MyLightlineAlePost()
 " functions
 function! MyLightlineMode() abort
   if &filetype ==? 'denite'
-    let l:mode = substitute(denite#get_status('mode'), '[ -]*', '', 'g')
-    call lightline#link(tolower(l:mode[0]))
+    call lightline#link(tolower(denite#get_status('raw_mode')[0]))
     return 'Denite'
   endif
   if winwidth(0) <= 60
@@ -186,11 +185,12 @@ endfunction
 
 function! MyLightlinePercent() abort
   if &filetype ==? 'denite'
-    let l:nr = split(substitute(denite#get_status('linenr'), ' ', '', 'g'), '/')
-    if l:nr[1] == 0
+    let l:line_total = denite#get_status('line_total')
+    if l:line_total[1] == 0
       return printf('%3d%%', 100)
     endif
-    return printf('%3d%%', 100 * l:nr[0] / l:nr[1])
+    let l:line_cursor = denite#get_status('line_cursor')
+    return printf('%3d%%', 100 * l:line_cursor / l:line_total)
   else
     return printf('%3d%%', 100 * line('.') / line('$'))
   endif

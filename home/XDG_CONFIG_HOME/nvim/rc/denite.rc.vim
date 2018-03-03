@@ -90,8 +90,9 @@ let s:menus.toggle.command_candidates = [
       \ ['nerdtree', 'NERDTreeToggle'],
       \ ['indentLine', 'IndentLinesToggle'],
       \ ['ale', 'ALEToggle'],
-      \ ['wrap', 'set wrap! wrap?'],
-      \ ['expandtab', 'set expandtab! wrap?'],
+      \ ['wrap', 'set wrap!'],
+      \ ['expandtab', 'set expandtab!'],
+      \ ['relativenumber', 'set relativenumber!'],
       \]
 
 call denite#custom#var('menu', 'menus', s:menus)

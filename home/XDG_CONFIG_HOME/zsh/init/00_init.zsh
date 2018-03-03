@@ -63,7 +63,11 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # after cd
-__list_directory_contents () { ls }
+__list_directory_contents () {
+    if [[ -o interactive ]]; then
+        ls
+    fi
+}
 add-zsh-hook chpwd __list_directory_contents
 
 ## GLOB

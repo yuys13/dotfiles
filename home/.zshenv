@@ -25,13 +25,6 @@ fpath=( \
     $fpath \
 )
 
-## dir color
-if [ -z "${LS_COLORS}" ]; then
-    if which dircolors > /dev/null; then
-        eval "$(dircolors -b)"
-    fi
-fi
-
 ## Editor
 if which nvim > /dev/null 2>&1; then
     export EDITOR=nvim

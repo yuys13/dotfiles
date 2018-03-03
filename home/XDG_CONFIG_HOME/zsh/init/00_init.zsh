@@ -34,7 +34,11 @@ REPORTTIME=3
 ## DIRECTORY
 setopt auto_pushd
 setopt pushd_ignore_dups
-# coloes
+# colors
+autoload -Uz solarize
+if [[ -f ${XDG_DATA_HOME%/}/zsh/solarized ]]; then
+    solarize
+fi
 case ${OSTYPE} in
     darwin*)
         if which gls > /dev/null 2>&1; then

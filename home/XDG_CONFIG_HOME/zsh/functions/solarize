@@ -1,0 +1,39 @@
+solarize () {
+    local dircolors_repo=seebi/dircolors-solarized
+    local dircolors_file=dircolors.ansi-dark
+
+    if ! type ghq > /dev/null; then
+        if ! type go > /dev/null; then
+            echo please install golang manually
+            return 1
+        fi
+        if ! go get -u github.com/motemen/ghq; then
+            echo please install ghq manually
+            return 1
+        fi
+    fi
+
+    local github_dir=$(ghq root)/github.com
+
+    if ! [[ -d ${github_dir%/}/${dircolors_repo} ]]; then
+        ghq get ${dircolors_repo}
+    fi
+
+    local dircolors_filepath=${github_dir%/}/${dircolors_repo%/}/${dircolors_file}
+
+    # set LS_COLORS
+    if type dircolors > /dev/null; then
+        eval $(dircolors -b ${dircolors_filepath}(N-.))
+    elif type gdircolors > /dev/null; then
+        eval $(gdircolors -b ${dircolors_filepath}(N-.))
+    fi
+
+    # set list-colors
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+    #set ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
+    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
+
+    export SOLARIZED=1
+}
+# vim: ft=zsh

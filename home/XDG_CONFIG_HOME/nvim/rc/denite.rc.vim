@@ -24,7 +24,12 @@ call denite#custom#var('file_rec/gitignore', 'command',
 call denite#custom#alias('source', 'file_rec/all', 'file_rec')
 
 " file_rec
-if executable('ag')
+if executable('fd')
+  call denite#custom#var('file_rec', 'command',
+        \ ['fd', '--follow', '--color', 'never', '--type', 'f', ''])
+  call denite#custom#var('directory_rec', 'command',
+        \ ['fd', '--follow', '--color', 'never', '--type', 'd', ''])
+elseif executable('ag')
   call denite#custom#var('file_rec', 'command',
         \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 endif

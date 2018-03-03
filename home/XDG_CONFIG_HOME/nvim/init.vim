@@ -60,7 +60,7 @@ set number
 set nowrap
 set list
 set listchars=tab:¦-,trail:-,nbsp:+,extends:»,precedes:«
-set colorcolumn=80
+set colorcolumn=81
 
 " Tab
 set expandtab

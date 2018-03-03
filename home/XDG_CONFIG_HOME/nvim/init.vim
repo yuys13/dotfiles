@@ -61,6 +61,7 @@ set nowrap
 set list
 set listchars=tab:¦-,trail:-,nbsp:+,extends:»,precedes:«
 set colorcolumn=81
+set cursorline
 
 " Tab
 set expandtab

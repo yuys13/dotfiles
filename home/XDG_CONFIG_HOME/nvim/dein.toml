@@ -46,7 +46,7 @@ repo = 'cespare/vim-toml'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = '''
-  let g:indentLine_fileTypeExclude = ['', 'help', 'nerdtree']
+  let g:indentLine_bufTypeExclude = ['nofile', 'help']
 '''
 
 [[plugins]]

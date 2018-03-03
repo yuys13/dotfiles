@@ -72,6 +72,7 @@ set softtabstop=4
 " Search
 set ignorecase
 set smartcase
+set inccommand=split
 
 " Clipboard
 set clipboard&

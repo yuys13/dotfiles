@@ -29,6 +29,10 @@ if [[ -f ~/.zplug/init.zsh ]]; then
         echo
     fi
     zplug load #--verbose
+    # Oops .zplug/init.zsh cannot use hub alias
+    if type hub > /dev/null 2>&1; then
+        eval "$(hub alias -s)"
+    fi
 fi
 
 ## Local setting

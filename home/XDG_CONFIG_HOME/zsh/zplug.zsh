@@ -1,7 +1,8 @@
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-autosuggestions", \
+    hook-load:"if [[ -n $SOLARIZED ]]; then ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'; fi"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then

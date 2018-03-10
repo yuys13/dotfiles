@@ -30,6 +30,7 @@ hook_add = '''
   nnoremap <silent> * :<C-u>DeniteCursorWord line -auto-highlight -auto-resize -buffer-name=line -mode=normal<CR>
 
   nnoremap <silent> FT :<C-u>Denite filetype -buffer-name=ft<CR>
+  nnoremap <silent> [Denite]cs :<C-u>Denite colorscheme -buffer-name=cs<CR>
 
   nnoremap T :<C-u>Denite menu:toggle -buffer-name=toggle<CR>
 '''

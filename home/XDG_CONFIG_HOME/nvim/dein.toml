@@ -16,6 +16,24 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'jonathanfilip/vim-lucius'
+hook_add = '''
+  if empty($SOLARIZED)
+    set background=dark
+    autocmd MyAutoCmd VimEnter * nested colorscheme lucius
+  endif
+'''
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/rc/lightline.rc.vim'
 

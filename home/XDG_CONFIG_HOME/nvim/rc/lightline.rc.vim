@@ -2,7 +2,6 @@
 set showtabline=2
 
 let g:lightline = {
-      \   'colorscheme': 'solarized',
       \   'mode_map': { 'c': 'NORMAL' },
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ],
@@ -41,6 +40,15 @@ let g:lightline = {
       \     'right': ''
       \   },
       \ }
+
+" colorscheme
+function! s:followColorScheme() abort
+  let g:lightline.colorscheme=g:colors_name
+  call lightline#init()
+  call lightline#colorscheme()
+endfunction
+
+autocmd MyAutoCmd ColorScheme * nested call s:followColorScheme()
 
 " autocmd for ALE
 autocmd MyAutoCmd User ALELint call lightline#update()

@@ -1,3 +1,5 @@
+" hide mode
+set noshowmode
 " showtabline always
 set showtabline=2
 

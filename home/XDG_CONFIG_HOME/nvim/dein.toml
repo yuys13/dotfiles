@@ -110,9 +110,9 @@ hook_add = '''
   nmap <Space>g [gtags]
 
   " keymap
-  nnoremap <silent> [gtags]d :<C-u>DeniteCursorword gtags-def -buf-name=gtags -mode=normal<CR>
-  nnoremap <silent> [gtags]r :<C-u>DeniteCursorword gtags-ref -buf-name=gtags -mode=normal<CR>
-  nnoremap <silent> [gtags]c :<C-u>DeniteCursorword gtags-context -buf-name=gtags -mode=normal<CR>
+  nnoremap <silent> [gtags]d :<C-u>DeniteCursorWord gtags_def -buffer-name=gtags -mode=normal<CR>
+  nnoremap <silent> [gtags]r :<C-u>DeniteCursorWord gtags_ref -buffer-name=gtags -mode=normal<CR>
+  nnoremap <silent> [gtags]c :<C-u>DeniteCursorWord gtags_context -buffer-name=gtags -mode=normal<CR>
 '''
 
 [[plugins]]

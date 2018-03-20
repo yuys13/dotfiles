@@ -50,7 +50,7 @@ function! s:followColorScheme() abort
   call lightline#colorscheme()
 endfunction
 
-autocmd MyAutoCmd ColorScheme * nested call s:followColorScheme()
+autocmd MyAutoCmd ColorScheme * call s:followColorScheme()
 
 " autocmd for ALE
 autocmd MyAutoCmd User ALELint call lightline#update()

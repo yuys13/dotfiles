@@ -45,7 +45,11 @@ let g:lightline = {
 
 " colorscheme
 function! s:followColorScheme() abort
-  let g:lightline.colorscheme=g:colors_name
+  if g:colors_name =~? 'solarized\|molokai\|jellybeans\|deus\|darcula'
+    let g:lightline.colorscheme=g:colors_name
+  else
+    let g:lightline.colorscheme='default'
+  endif
   call lightline#init()
   call lightline#colorscheme()
 endfunction

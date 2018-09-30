@@ -23,6 +23,7 @@ hook_add = '''
   nnoremap <silent> [Denite]b :<C-u>Denite buffer -buffer-name=buf<CR>
   nnoremap <silent> [Denite]h :<C-u>Denite help -buffer-name=help<CR>
   nnoremap <silent> [Denite]<C-r> :<C-u>Denite command_history -buffer-name=history<CR>
+  nnoremap <silent> [Denite]ein :<C-u>Denite dein_log -mode=normal<CR>
 
   nnoremap <silent> [Denite]cd :<C-u>DeniteProjectDir directory_rec -buffer-name=cd -default-action=cd<CR>
 

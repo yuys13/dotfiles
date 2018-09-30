@@ -68,6 +68,12 @@ repo = 'zplug/vim-zplug'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
+repo = 'elzr/vim-json'
+hook_add = '''
+  let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = '''
   let g:indentLine_bufTypeExclude = ['nofile', 'help']

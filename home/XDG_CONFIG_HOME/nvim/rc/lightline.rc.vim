@@ -190,7 +190,7 @@ function! MyLightlineDenitepath() abort
   if &filetype !=? 'denite'
     return ''
   endif
-  return substitute(denite#get_status('path'), $HOME, '~', '')
+  return substitute(denite#get_status('path'), '^[' . $HOME, '[~', '')
 endfunction
 
 function! MyLightlinePercent() abort

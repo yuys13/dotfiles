@@ -32,7 +32,7 @@ hook_add = '''
   nnoremap <silent> FT :<C-u>Denite filetype -buffer-name=ft<CR>
   nnoremap <silent> [Denite]cs :<C-u>Denite colorscheme -buffer-name=cs<CR>
 
-  nnoremap T :<C-u>Denite menu:toggle -buffer-name=toggle<CR>
+  nnoremap <silent> T :<C-u>Denite menu:toggle -buffer-name=toggle<CR>
 '''
 hook_source = 'source ~/.config/nvim/rc/denite.rc.vim'
 

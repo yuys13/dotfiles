@@ -13,24 +13,24 @@ call denite#custom#option('line', 'prompt', '/')
 call denite#custom#option('toggle', 'prompt', 'toggle')
 
 " alias
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command',
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-call denite#custom#alias('source', 'file_rec/gitignore', 'file_rec')
-call denite#custom#var('file_rec/gitignore', 'command',
+call denite#custom#alias('source', 'file/rec/gitignore', 'file/rec')
+call denite#custom#var('file/rec/gitignore', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard', '-i'])
 
-call denite#custom#alias('source', 'file_rec/all', 'file_rec')
+call denite#custom#alias('source', 'file/rec/all', 'file/rec')
 
-" file_rec
+" file/rec
 if executable('fd')
-  call denite#custom#var('file_rec', 'command',
+  call denite#custom#var('file/rec', 'command',
         \ ['fd', '--follow', '--color', 'never', '--type', 'f', ''])
   call denite#custom#var('directory_rec', 'command',
         \ ['fd', '--follow', '--color', 'never', '--type', 'd', ''])
 elseif executable('ag')
-  call denite#custom#var('file_rec', 'command',
+  call denite#custom#var('file/rec', 'command',
         \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 endif
 

@@ -1,3 +1,4 @@
+# vim: ft=gitconfig
 [user]
 	name = yuys13
 	email = yuys13@users.noreply.github.com
@@ -5,13 +6,15 @@
 	default = simple
 [diff]
 	tool = vimdiff
+[difftool "vimdiff"]
+	path = nvim
 [merge]
 	tool = vimdiff
+[mergetool "vimdiff"]
+	path = nvim
 [hub]
 	protocol = https
 [ghq]
 	root = ~/dev/src
 	root = ~/go/src
 	root = ~/.cache/dein/repos
-
-# vim: ft=gitconfig

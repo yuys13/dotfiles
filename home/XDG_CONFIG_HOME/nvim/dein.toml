@@ -38,6 +38,14 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/rc/lightline.rc.vim'
 
 [[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+  let g:EasyMotion_do_mapping = 0
+  nmap s <Plug>(easymotion-s2)
+  let g:EasyMotion_space_jump_first = 1
+'''
+
+[[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]

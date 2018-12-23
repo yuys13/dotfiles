@@ -93,6 +93,7 @@ let s:menus.toggle.command_candidates = [
       \ ['wrap', 'set wrap!'],
       \ ['expandtab', 'set expandtab!'],
       \ ['relativenumber', 'set relativenumber!'],
+      \ ['cursorcolumn', 'set cursorcolumn!'],
       \]
 
 call denite#custom#var('menu', 'menus', s:menus)

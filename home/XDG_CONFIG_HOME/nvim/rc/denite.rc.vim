@@ -89,6 +89,7 @@ let s:menus.toggle.command_candidates = [
       \ ['tagbar', 'TagbarToggle'],
       \ ['nerdtree', 'NERDTreeToggle'],
       \ ['indentLine', 'IndentLinesToggle'],
+      \ ['TableMode', 'TableModeToggle'],
       \ ['ale', 'ALEToggle'],
       \ ['wrap', 'set wrap!'],
       \ ['expandtab', 'set expandtab!'],

@@ -93,7 +93,7 @@ repo = 'Xuyuanp/nerdtree-git-plugin'
 [[plugins]]
 repo = 't9md/vim-quickhl'
 hook_add = '''
-  nmap <Space>* <Plug>(quickhl-manual-this)
+  nmap <Space>hl <Plug>(quickhl-manual-this)
   nmap <Space>nohl <Plug>(quickhl-manual-reset)
 '''
 

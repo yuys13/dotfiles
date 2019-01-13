@@ -1,7 +1,4 @@
 ## COMPLETION
-autoload -Uz compinit
-compinit
-
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list #_history

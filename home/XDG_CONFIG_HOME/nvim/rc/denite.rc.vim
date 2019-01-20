@@ -53,6 +53,12 @@ call denite#custom#map(
       \ 'noremap'
       \)
 call denite#custom#map(
+      \ 'insert',
+      \ 'jj',
+      \ '<denite:enter_mode:normal>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
       \ 'normal',
       \ '<esc>',
       \ '<denite:quit>',

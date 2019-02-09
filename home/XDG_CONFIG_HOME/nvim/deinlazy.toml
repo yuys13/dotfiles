@@ -7,7 +7,7 @@ hook_add = '''
   nmap <Space>d [Denite]
 
   " keymap
-  nnoremap <silent> [Denite]f :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+  nnoremap <silent> [Denite]f :<C-u>Denite buffer `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
   nnoremap <silent> [Denite]if :<C-u>Denite file/rec/gitignore<CR>
   nnoremap <silent> [Denite]af :<C-u>Denite file/rec/all<CR>
   nnoremap <silent> [Denite]o :<C-u>Denite outline -auto-highlight -mode=normal<CR>

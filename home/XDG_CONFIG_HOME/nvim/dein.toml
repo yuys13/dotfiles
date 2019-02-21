@@ -67,7 +67,7 @@ repo = 'Shougo/neco-syntax'
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'zchee/deoplete-zsh'
+repo = 'deoplete-plugins/deoplete-zsh'
 
 [[plugins]]
 repo = 'zplug/vim-zplug'

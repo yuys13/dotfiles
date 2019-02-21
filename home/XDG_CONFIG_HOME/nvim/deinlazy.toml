@@ -115,6 +115,10 @@ repo = 'scrooloose/nerdtree'
 on_cmd = 'NERDTreeToggle'
 
 [[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+on_source = 'nerdtree'
+
+[[plugins]]
 repo = 'majutsushi/tagbar'
 if = 'executable("ctags")'
 on_cmd = 'TagbarToggle'
@@ -128,7 +132,7 @@ on_cmd = 'PrevimOpen'
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
-on_event = 'InsertEnter'
+on_cmd = 'TableModeToggle'
 hook_add = '''
   let g:table_mode_corner = '|'
 '''

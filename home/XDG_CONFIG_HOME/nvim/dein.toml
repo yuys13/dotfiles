@@ -49,6 +49,9 @@ hook_add = '''
 repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 hook_add = '''
   let g:linediff_first_buffer_command = 'new'

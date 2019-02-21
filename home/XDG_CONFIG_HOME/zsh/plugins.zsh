@@ -25,6 +25,24 @@
         done
     fi
 
+    if type fzf > /dev/null; then # ghq already checked
+        ghq_fzf () {
+            local selected_repo=$(ghq list -p | fzf --reverse --height 40%)
+            if [[ -z $selected_repo ]]; then
+                zle redisplay
+                return 0
+            fi
+
+            BUFFER=" cd ${selected_repo}"
+            zle accept-line
+
+            zle reset-prompt
+        }
+
+        zle -N ghq_fzf
+        bindkey "^g" ghq_fzf
+    fi
+
     # ghq
     fpath=( \
         ${GOPATH}/src/github.com/motemen/ghq/zsh(N-/) \

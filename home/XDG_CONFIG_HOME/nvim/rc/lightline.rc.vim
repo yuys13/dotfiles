@@ -10,7 +10,7 @@ let g:lightline = {
       \               [ 'hunks', 'branch' ],
       \               [ 'readonly', 'filename', 'modified' ] ],
       \     'right': [ [ 'percent', 'lineinfo' ],
-      \                [ 'filetype', 'fileencoding', 'denitepath' ],
+      \                [ 'ale_info', 'filetype', 'fileencoding', 'denitepath' ],
       \                [ 'ale_warning', 'ale_error', 'tag' ] ],
       \   },
       \   'component_function': {
@@ -170,6 +170,11 @@ function! s:lightlineAle(mode)
   elseif a:mode == 1 " Warning
     let l:warnings = l:counts.warning + l:counts.style_warning
     return l:warnings ? 'W:' .  l:warnings : ''
+  endif
+
+  " a:mode == 2 Info
+  if getbufvar(bufnr(''), 'ale_linted', 0) == 0
+    return ''
   endif
 
   return l:counts.total ? '' : 'OK'

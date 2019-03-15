@@ -56,7 +56,7 @@ repo = 'AndrewRadev/linediff.vim'
 hook_add = '''
   let g:linediff_first_buffer_command = 'new'
   let g:linediff_second_buffer_command = 'vertical new'
-  autocmd User LinediffBufferReady nnoremap <buffer> q :LinediffReset<cr>
+  autocmd MyAutoCmd User LinediffBufferReady nnoremap <buffer> q :LinediffReset<cr>
 '''
 
 [[plugins]]

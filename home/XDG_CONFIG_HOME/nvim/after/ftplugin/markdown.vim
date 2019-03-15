@@ -1,4 +1,4 @@
-setlocal colorcolumn=73
+setlocal conceallevel=0
 
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|'
@@ -6,4 +6,4 @@ else
   let b:undo_ftplugin = ''
 endif
 
-let b:undo_ftplugin .= 'setlocal colorcolumn<'
+let b:undo_ftplugin .= 'setlocal conceallevel<'

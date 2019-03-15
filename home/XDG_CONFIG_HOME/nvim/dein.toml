@@ -96,6 +96,7 @@ hook_add = '''
 repo = 'Yggdroot/indentLine'
 hook_add = '''
   let g:indentLine_bufTypeExclude = ['nofile', 'help']
+  let g:indentLine_fileTypeExclude = ['']
 
   function s:myIndentLineReset() abort
     if exists('b:indentLine_enabled') ? b:indentLine_enabled :

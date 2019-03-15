@@ -96,6 +96,16 @@ hook_add = '''
 repo = 'Yggdroot/indentLine'
 hook_add = '''
   let g:indentLine_bufTypeExclude = ['nofile', 'help']
+
+  function s:myIndentLineReset() abort
+    if exists('b:indentLine_enabled') ? b:indentLine_enabled :
+          \ get(g:, 'indentLine_enabled', 0)
+      IndentLinesReset
+    endif
+  endfunction
+
+  " for vim-precious
+  autocmd MyAutoCmd User PreciousFileType call s:myIndentLineReset()
 '''
 
 [[plugins]]
@@ -166,4 +176,18 @@ hook_add = '''
 [[plugins]]
 repo = 'ywatase/mdt.vim'
 if = 'executable("mdt")'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+hook_add = '''
+let g:precious_enable_switch_CursorMoved = {
+      \	"help" : 0
+      \}
+let g:precious_enable_switch_CursorMoved_i= {
+      \	"help" : 0
+      \}
+let g:precious_enable_switch_CursorHold= {
+      \	"help" : 0
+      \}
+'''
 

@@ -106,6 +106,10 @@ function! MyLightlineReadonly() abort
 endfunction
 
 function! MyLightlineFilename() abort
+  " for linediff
+  if exists('b:differ.description')
+    return b:differ.description
+  endif
   return (&filetype ==? 'denite' ? denite#get_status('sources') :
         \  &filetype =~? 'tagbar\|nerdtree' ? '' :
         \  &filetype =~? 'help\|man' ? expand('%:t') :

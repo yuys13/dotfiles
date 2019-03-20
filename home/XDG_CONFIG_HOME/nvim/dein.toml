@@ -54,9 +54,11 @@ repo = 'bronson/vim-trailing-whitespace'
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 hook_add = '''
-  let g:linediff_first_buffer_command = 'new'
+  let g:linediff_first_buffer_command = 'topleft new'
   let g:linediff_second_buffer_command = 'vertical new'
   autocmd MyAutoCmd User LinediffBufferReady nnoremap <buffer> q :LinediffReset<cr>
+
+  let g:linediff_modify_statusline = 0
 '''
 
 [[plugins]]

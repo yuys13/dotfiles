@@ -1,5 +1,7 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+rev = '67475c7'
+frozen = 1
 on_cmd = 'Denite'
 hook_add = '''
   " prefix

@@ -182,15 +182,16 @@ if = 'executable("mdt")'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+if = 0
 hook_add = '''
 let g:precious_enable_switch_CursorMoved = {
-      \	"help" : 0
+      \	'help' : 0
       \}
 let g:precious_enable_switch_CursorMoved_i= {
-      \	"help" : 0
+      \	'help' : 0
       \}
 let g:precious_enable_switch_CursorHold= {
-      \	"help" : 0
+      \	'*' : 0
       \}
 '''
 

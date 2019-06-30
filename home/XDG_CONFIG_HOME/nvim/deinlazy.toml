@@ -29,11 +29,11 @@ hook_add = '''
 
   nnoremap <silent> [Denite]cd :<C-u>DeniteProjectDir directory_rec -buffer-name=cd -default-action=cd<CR>
 
-  nnoremap <silent> <Space>/ :<C-u>Denite line -auto-highlight -auto-resize -buffer-name=line<CR>
-  nnoremap <silent> <Space>* :<C-u>DeniteCursorWord line -auto-highlight -auto-resize -buffer-name=line -mode=normal<CR>
+  "nnoremap <silent> <Space>/ :<C-u>Denite line -auto-highlight -auto-resize -buffer-name=line<CR>
+  "nnoremap <silent> <Space>* :<C-u>DeniteCursorWord line -auto-highlight -auto-resize -buffer-name=line -mode=normal<CR>
 
-  nnoremap <silent> FT :<C-u>Denite filetype -buffer-name=ft<CR>
-  nnoremap <silent> [Denite]cs :<C-u>Denite colorscheme -buffer-name=cs<CR>
+  "nnoremap <silent> FT :<C-u>Denite filetype -buffer-name=ft<CR>
+  "nnoremap <silent> [Denite]cs :<C-u>Denite colorscheme -buffer-name=cs<CR>
 
   nnoremap <silent> T :<C-u>Denite menu:toggle -buffer-name=toggle<CR>
 '''

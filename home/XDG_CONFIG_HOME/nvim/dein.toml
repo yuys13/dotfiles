@@ -61,6 +61,54 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = '~/dev/src/github.com/junegunn/fzf'
+if = 'executable("fzf")'
+hook_add = '''
+  let $FZF_DEFAULT_OPTS = '--reverse'
+  autocmd MyAutoCmd FileType fzf set laststatus=0
+        \| autocmd MyAutoCmd BufLeave <buffer> set laststatus=2
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+if = 'executable("fzf")'
+hook_add = '''
+  let g:fzf_command_prefix = 'Fzf'
+
+  command! -bang -nargs=? -complete=dir FzfFiles
+        \ call fzf#vim#files(<q-args>,
+        \ fzf#vim#with_preview('right:50%', '?'),
+        \ <bang>0)
+
+  command! -bang -nargs=? -complete=dir FzfGFiles
+        \ call fzf#vim#gitfiles(<q-args>,
+        \ fzf#vim#with_preview('right:50%', '?'),
+        \ <bang>0)
+
+  command! -bang -nargs=* FzfRg
+        \ call fzf#vim#grep(
+        \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+        \    fzf#vim#with_preview('right:50%', '?'),
+        \   <bang>0)
+
+  " prefix
+  nnoremap [FZF] <NOP>
+  nmap <Space>f [FZF]
+  nnoremap <expr> [FZF]f (len(system('git rev-parse')) ? ':FzfFiles' : ':FzfGFiles')."\<cr>"
+  nnoremap [FZF]af :<C-u>FzfFiles<CR>
+  nnoremap [FZF]b :<C-u>FzfBuffer<CR>
+  nnoremap [FZF]t :<C-u>FzfTags<CR>
+  nnoremap [FZF]: :<C-u>FzfHistory:<CR>
+  nnoremap [FZF]h :<C-u>FzfHelptags<CR>
+  nnoremap [FZF]/ :<C-u>FzfRg<Space>
+
+  nnoremap FT :<C-u>FzfFiletypes<CR>
+  nnoremap [FZF]cs :<C-u>FzfColors<CR>
+
+  nnoremap <Space>/ :<C-u>FzfBLines<CR>
+'''
+
+[[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 hook_add = '''
   let g:linediff_first_buffer_command = 'topleft new'

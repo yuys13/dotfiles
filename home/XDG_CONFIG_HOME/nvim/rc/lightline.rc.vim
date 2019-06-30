@@ -110,6 +110,11 @@ function! MyLightlineFilename() abort
   if exists('b:differ.description')
     return b:differ.description
   endif
+  " for partedit
+  if exists('b:partedit')
+    return b:partedit.filename .
+          \ '[' . b:partedit.firstline . '-' . b:partedit.lastline . ']'
+  endif
   return (&filetype ==? 'denite' ? denite#get_status('sources') :
         \  &filetype =~? 'tagbar\|nerdtree' ? '' :
         \  &filetype =~? 'help\|man' ? expand('%:t') :

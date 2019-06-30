@@ -52,6 +52,12 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
+repo = 'yuys13/partedit.vim'
+hook_add = '''
+  nmap <silent> <Space>pe <Plug>(partedit_start_context)
+'''
+
+[[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 hook_add = '''
   let g:linediff_first_buffer_command = 'topleft new'
@@ -193,5 +199,16 @@ let g:precious_enable_switch_CursorMoved_i= {
 let g:precious_enable_switch_CursorHold= {
       \	'*' : 0
       \}
+
+  " for PartEdit
+  function! PartEditGetContext()
+    let l:con = context_filetype#get(precious#base_filetype())
+    let l:ret = {
+          \ 'filetype': l:con.filetype,
+          \ 'firstline': l:con.range[0][0],
+          \ 'lastline': l:con.range[1][0],
+          \}
+    return l:ret
+  endfunction
 '''
 

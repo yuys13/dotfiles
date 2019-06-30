@@ -120,7 +120,6 @@ on_source = 'nerdtree'
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
-if = 'executable("ctags")'
 on_cmd = 'TagbarToggle'
 hook_add = '''
   let g:tagbar_autoshowtag = 1

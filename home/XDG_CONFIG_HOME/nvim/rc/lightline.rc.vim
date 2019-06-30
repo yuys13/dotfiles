@@ -57,9 +57,9 @@ endfunction
 autocmd MyAutoCmd ColorScheme * call s:followColorScheme()
 
 " autocmd for ALE
-autocmd MyAutoCmd User ALELint call lightline#update()
-autocmd MyAutoCmd User ALELintPre call MyLightlineAlePre()
-autocmd MyAutoCmd User ALELintPost call MyLightlineAlePost()
+autocmd MyAutoCmd User ALEJobStarted call lightline#update()
+autocmd MyAutoCmd User ALELintPost call lightline#update()
+autocmd MyAutoCmd User ALEFixPost call lightline#update()
 
 " functions
 function! MyLightlineMode() abort
@@ -144,25 +144,16 @@ function! MyLightlineAleInfo() abort
   return s:lightlineAle(2)
 endfunction
 
-let s:ale_running = 0
-
-function! MyLightlineAlePre() abort
-  let s:ale_running = 1
-  call lightline#update()
-endfunction
-
-function! MyLightlineAlePost() abort
-  let s:ale_running = 0
-  call lightline#update()
-endfunction
-
 function! s:lightlineAle(mode)
   if !exists('g:ale_buffer_info') || &filetype ==? 'denite'
     return ''
   endif
-  if s:ale_running
+  if ale#engine#IsCheckingBuffer(bufnr(''))
     " it shows an icon in linting with the `warning` color.
     return a:mode == 1 ? 'linting...' : ''
+  endif
+  if getbufvar(bufnr(''), 'ale_linted', 0) == 0
+    return ''
   endif
 
   let l:buffer = bufnr('%')

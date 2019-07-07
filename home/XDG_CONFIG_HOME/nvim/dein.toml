@@ -28,6 +28,9 @@ hook_add = '''
 repo = 'tomasr/molokai'
 
 [[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
 repo = 'w0ng/vim-hybrid'
 
 [[plugins]]

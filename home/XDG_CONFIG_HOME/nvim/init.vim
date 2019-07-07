@@ -74,7 +74,11 @@ set clipboard^=unnamed
 set clipboard^=unnamedplus
 
 " Keymap
-inoremap <silent> jj <ESC>
+inoremap <silent> jj <Esc>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
 
 if executable('tig')
   nnoremap <silent> tig :<C-u>tabnew<CR>:te tig<CR>

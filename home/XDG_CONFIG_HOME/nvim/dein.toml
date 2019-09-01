@@ -44,6 +44,12 @@ hook_add = 'source ~/.config/nvim/rc/lightline.rc.vim'
 repo = 'tpope/vim-surround'
 
 [[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = '''
   let g:EasyMotion_do_mapping = 0

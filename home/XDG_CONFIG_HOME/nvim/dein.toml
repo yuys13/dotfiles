@@ -67,7 +67,7 @@ hook_add = '''
 repo = '~/dev/src/github.com/junegunn/fzf'
 if = 'executable("fzf")'
 hook_add = '''
-  let $FZF_DEFAULT_OPTS = '--reverse'
+  let $FZF_DEFAULT_OPTS = '--reverse --border'
   autocmd MyAutoCmd FileType fzf set laststatus=0
         \| autocmd MyAutoCmd BufLeave <buffer> set laststatus=2
 '''
@@ -97,8 +97,11 @@ hook_add = '''
   " prefix
   nnoremap [FZF] <NOP>
   nmap <Space>f [FZF]
-  nnoremap <expr> [FZF]f (len(system('git rev-parse')) ? ':FzfFiles' : ':FzfGFiles')."\<cr>"
+  nnoremap <expr> [FZF]f (len(system('git rev-parse')) ?
+        \':FzfFiles' :
+        \':FzfGFiles -co --exclude-standard')."\<cr>"
   nnoremap [FZF]af :<C-u>FzfFiles<CR>
+  nnoremap [FZF]if :<C-u>FzfGFiles -co --exclude-standard -i<CR>
   nnoremap [FZF]b :<C-u>FzfBuffer<CR>
   nnoremap [FZF]t :<C-u>FzfTags<CR>
   nnoremap [FZF]: :<C-u>FzfHistory:<CR>

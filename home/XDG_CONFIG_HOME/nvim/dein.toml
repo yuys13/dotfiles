@@ -59,6 +59,12 @@ repo = 'tyru/caw.vim'
 repo = 'tpope/vim-repeat'
 
 [[plugins]]
+repo = 'cohama/lexima.vim'
+hook_add = '''
+ let g:lexima_ctrlh_as_backspace = 1
+'''
+
+[[plugins]]
 repo = 'easymotion/vim-easymotion'
 if = 0
 hook_add = '''

@@ -290,6 +290,15 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'kassio/neoterm'
+hook_add = '''
+ nnoremap <Space>nl :<C-u>rightbelow vertical Tnew<CR>
+ nnoremap <Space>nh :<C-u>vertical Tnew<CR>
+ nmap <Space>nn <Plug>(neoterm-repl-send-line)
+ vmap <Space>nn <Plug>(neoterm-repl-send)
+'''
+
+[[plugins]]
 repo = 'tyru/open-browser.vim'
 hook_add = '''
   let g:netrw_nogx = 1 " disable netrw's gx mapping.

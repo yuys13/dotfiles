@@ -60,6 +60,7 @@ repo = 'tpope/vim-repeat'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
+if = 0
 hook_add = '''
   let g:EasyMotion_do_mapping = 0
   nmap s <Plug>(easymotion-s2)

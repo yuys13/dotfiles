@@ -17,12 +17,21 @@ hook_add = '''
 
 [[plugins]]
 repo = 'jonathanfilip/vim-lucius'
+
+[[plugins]]
+repo = 'dracula/vim'
 hook_add = '''
   if empty($SOLARIZED)
     set background=dark
-    autocmd MyAutoCmd VimEnter * nested colorscheme lucius
+    autocmd MyAutoCmd VimEnter * nested colorscheme dracula
   endif
 '''
+
+[[plugins]]
+repo = 'junegunn/seoul256.vim'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
 
 [[plugins]]
 repo = 'tomasr/molokai'

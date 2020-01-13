@@ -7,11 +7,11 @@ let g:lightline = {
       \   'mode_map': { 'c': 'NORMAL' },
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ],
-      \               [ 'hunks', 'branch' ],
+      \               [ 'branch', 'hunks' ],
       \               [ 'readonly', 'filename', 'modified' ] ],
       \     'right': [ [ 'percent', 'lineinfo' ],
-      \                [ 'ale_info', 'filetype', 'fileencoding', 'denitepath' ],
-      \                [ 'ale_warning', 'ale_error', 'tag' ] ],
+      \                [ 'ale_ok', 'ale_info', 'filetype', 'fileencoding', 'denitepath' ],
+      \                [ 'ale_linting', 'ale_warning', 'ale_error', 'tag' ] ],
       \   },
       \   'component_function': {
       \     'mode': 'MyLightlineMode',
@@ -24,18 +24,21 @@ let g:lightline = {
       \     'fileencoding': 'MyLightlineFileencoding',
       \     'denitepath': 'MyLightlineDenitepath',
       \     'percent': 'MyLightlinePercent',
-      \     'lineinfo': 'MyLightlineLineinfo'
+      \     'lineinfo': 'MyLightlineLineinfo',
       \   },
       \   'component_expand': {
       \     'readonly': 'MyLightlineReadonly',
       \     'ale_error': 'MyLightlineAleError',
       \     'ale_warning': 'MyLightlineAleWarning',
       \     'ale_info': 'MyLightlineAleInfo',
+      \     'ale_ok': 'MyLightlineAleOK',
+      \     'ale_linting': 'MyLightlineAleLinting',
       \   },
       \   'component_type': {
       \     'readonly': 'warning',
       \     'ale_error': 'error',
       \     'ale_warning': 'warning',
+      \     'ale_linting': 'warning',
       \   },
       \   'subseparator': {
       \     'left': '',
@@ -138,46 +141,65 @@ function! MyLightlineCurrentTag() abort
 endfunction
 
 function! MyLightlineAleError() abort
-  return s:lightlineAle(0)
+  if !s:aleLinted()
+    return ''
+  endif
+
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:errors = l:counts.error + l:counts.style_error
+
+  return l:errors ?  'E:' . l:errors : ''
 endfunction
 
 function! MyLightlineAleWarning() abort
-  return s:lightlineAle(1)
+  if !s:aleLinted()
+    return ''
+  endif
+
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:warnings = l:counts.warning + l:counts.style_warning
+
+  return l:warnings ? 'W:' .  l:warnings : ''
 endfunction
 
 function! MyLightlineAleInfo() abort
-  return s:lightlineAle(2)
+  if !s:aleLinted()
+    return ''
+  endif
+
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:errors = l:counts.error + l:counts.style_error
+  let l:warnings = l:counts.warning + l:counts.style_warning
+  let l:infos = l:counts.total - l:errors - l:warnings
+
+  return l:infos ? 'I:' . l:infos : ''
 endfunction
 
-function! s:lightlineAle(mode)
-  if !exists('g:ale_buffer_info') || &filetype ==? 'denite'
-    return ''
-  endif
-  if ale#engine#IsCheckingBuffer(bufnr(''))
-    " it shows an icon in linting with the `warning` color.
-    return a:mode == 1 ? 'linting...' : ''
-  endif
-  if getbufvar(bufnr(''), 'ale_linted', 0) == 0
+function! MyLightlineAleOK() abort
+  if !s:aleLinted()
     return ''
   endif
 
-  let l:buffer = bufnr('%')
-  let l:counts = ale#statusline#Count(l:buffer)
-
-  if a:mode == 0 " Error
-    let l:errors = l:counts.error + l:counts.style_error
-    return l:errors ?  'E:' . l:errors : ''
-  elseif a:mode == 1 " Warning
-    let l:warnings = l:counts.warning + l:counts.style_warning
-    return l:warnings ? 'W:' .  l:warnings : ''
-  endif
-
-  " a:mode == 2 Info
-  if getbufvar(bufnr(''), 'ale_linted', 0) == 0
+  let l:counts = ale#statusline#Count(bufnr(''))
+  if l:counts.total > 0
     return ''
   endif
 
-  return l:counts.total ? '' : 'OK'
+  return 'OK'
+endfunction
+
+function! MyLightlineAleLinting() abort
+  if ale#engine#IsCheckingBuffer(bufnr('')) == 1
+    return 'linting...'
+  endif
+
+  return ''
+endfunction
+
+function! s:aleLinted() abort
+  return get(g:, 'ale_enabled', 0) == 1
+    \ && getbufvar(bufnr(''), 'ale_linted', 0) > 0
+    \ && ale#engine#IsCheckingBuffer(bufnr('')) == 0
 endfunction
 
 function! MyLightlineFiletype() abort

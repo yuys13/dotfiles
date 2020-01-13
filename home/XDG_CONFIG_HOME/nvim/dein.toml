@@ -138,7 +138,7 @@ hook_add = '''
         \ fzf#vim#with_preview('right:50%', '?'),
         \ <bang>0)
 
-  command! -bang -nargs=? -complete=dir FzfGFiles
+  command! -bang -nargs=? FzfGFiles
         \ call fzf#vim#gitfiles(<q-args>,
         \ fzf#vim#with_preview('right:50%', '?'),
         \ <bang>0)

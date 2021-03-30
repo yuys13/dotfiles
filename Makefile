@@ -19,6 +19,7 @@ list: ## Show list of target to create symbolic links
 .PHONY: link
 link: ## Create symbolic links for dotfiles
 	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(val);)
+	@$(foreach val, $(XDG_CONFIGS), chmod 700 $(DOTPATH)/XDG_CONFIG_HOME/$(val);)
 	@$(foreach val, $(XDG_CONFIGS), if [ -z "${XDG_CONFIG_HOME}" ]; then ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) $(HOME)/.config/$(val); else ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) ${XDG_CONFIG_HOME}/$(val); fi;)
 
 .PHONY: update

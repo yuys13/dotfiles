@@ -48,29 +48,9 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-on_ft = ['rust', 'go', 'python', 'typescript']
-hook_add = '''
-  let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'go': ['gopls'],
-    \ 'python': ['pyls'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ }
-
-    function! LC_maps()
-      if has_key(g:LanguageClient_serverCommands, &filetype)
-        nnoremap <buffer> <silent> <Space>lc :call LanguageClient_contextMenu()<CR>
-        nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
-        nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-      endif
-    endfunction
-
-    autocmd MyAutoCmd FileType * call LC_maps()
-'''
+repo = 'lighttiger2505/deoplete-vim-lsp'
+depends = ['deoplete.nvim']
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
@@ -107,6 +87,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'fatih/vim-go'
+if = 0
 on_ft = 'go'
 hook_source = '''
   " for ALE

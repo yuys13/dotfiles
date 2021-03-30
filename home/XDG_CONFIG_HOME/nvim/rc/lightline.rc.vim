@@ -98,10 +98,10 @@ function! MyLightlineHunks() abort
 endfunction
 
 function! MyLightlineBranch() abort
-  if winwidth(0) <= 75 || !exists('*fugitive#head')
+  if winwidth(0) <= 75 || !exists('*FugitiveHead')
     return ''
   endif
-  return fugitive#head()
+  return FugitiveHead()
 endfunction
 
 function! MyLightlineReadonly() abort

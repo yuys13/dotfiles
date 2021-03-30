@@ -45,7 +45,7 @@
 
     # ghq
     fpath=( \
-        ${GOPATH}/src/github.com/motemen/ghq/zsh(N-/) \
+        ${GOPATH}/src/github.com/x-motemen/ghq/misc/zsh(N-/) \
         $fpath \
     )
 

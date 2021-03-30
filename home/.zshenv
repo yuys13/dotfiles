@@ -26,7 +26,9 @@ fpath=( \
 )
 
 ## Editor
-if which nvim > /dev/null 2>&1; then
+if test -n ${EDITOR} -a "${EDITOR[(w)0]}" = 'nvr'; then
+    export EDITOR
+elif which nvim > /dev/null 2>&1; then
     export EDITOR=nvim
 elif which vim > /dev/null 2>&1; then
     export EDITOR=vim

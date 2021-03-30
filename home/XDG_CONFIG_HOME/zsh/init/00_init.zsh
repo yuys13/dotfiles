@@ -58,8 +58,8 @@ alias l.='ls -d .*'
 alias ll='ls -l'
 alias lla='ls -la'
 alias ll.='ls -l -d .*'
-if type nvim > /dev/null 2>&1; then
-    alias vi='nvim'
+if test -n ${EDITOR}; then
+    alias vi=${EDITOR}
 fi
 
 # after cd

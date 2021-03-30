@@ -57,8 +57,8 @@ set listchars=tab:¦-,trail:-,nbsp:+,extends:»,precedes:«
 set colorcolumn=80
 set cursorline
 
-autocmd MyAutoCmd TermOpen * set nonumber
-autocmd MyAutoCmd TermOpen * set norelativenumber
+autocmd MyAutoCmd TermOpen * setlocal nonumber
+autocmd MyAutoCmd TermOpen * setlocal norelativenumber
 
 " Tab
 set expandtab

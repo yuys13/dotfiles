@@ -15,6 +15,5 @@
 [hub]
 	protocol = https
 [ghq]
-	root = ~/dev/src
-	root = ~/go/src
 	root = ~/.cache/dein/repos
+	root = ~/dev/src

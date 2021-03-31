@@ -373,3 +373,23 @@ augroup END
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'edkolev/tmuxline.vim'
+hook_add = '''
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+      \ 'left' : '',
+      \ 'left_alt': '',
+      \ 'right' : '',
+      \ 'right_alt' : '',
+      \ 'space' : ' '}
+let g:tmuxline_preset = {
+    \'a'       : '#{?client_prefix,PREFIX,#S}',
+    \'win'     : ['#I','#W'],
+    \'cwin'    : ['#I','#W','#F'],
+    \'x'       : '%Y-%m-%d(%a)',
+    \'y'       : '%H:%M:%S',
+    \'z'       : '#H',
+    \'options' : {'status-justify' : 'left'}}
+'''

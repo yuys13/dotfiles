@@ -284,11 +284,19 @@ hook_add = '''
   let g:ale_go_gofmt_options = '-s'
   let g:ale_fixers = {
         \ 'go': ['gofmt', 'goimports'],
+        \ 'python': ['black', 'isort'],
+        \ 'typescript': ['prettier'],
+        \ 'typescriptreact': ['prettier'],
+        \ 'javascript': ['prettier'],
+        \ 'javascriptreact': ['prettier'],
         \ }
 
   " Map movement through errors without wrapping.
   nmap <silent> <C-k> <Plug>(ale_previous)
   nmap <silent> <C-j> <Plug>(ale_next)
+
+  " Dockerfile
+  let g:ale_dockerfile_hadolint_use_docker = 'yes'
 '''
 
 [[plugins]]

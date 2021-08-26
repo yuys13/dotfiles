@@ -61,14 +61,6 @@ repo = 'Shougo/neoinclude.vim'
 on_if = 1
 
 [[plugins]]
-repo = 'artur-shaik/vim-javacomplete2'
-if = 'executable("javac")'
-on_ft = 'java'
-hook_source = '''
-  autocmd MyAutoCmd FileType java setlocal omnifunc=javacomplete#Complete
-'''
-
-[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'

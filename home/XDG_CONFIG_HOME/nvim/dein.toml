@@ -46,6 +46,29 @@ repo = 'w0ng/vim-hybrid'
 repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
+repo = 'vim-airline/vim-airline'
+if = 0
+depends = 'vim-airline/vim-airline_themes'
+hook_add = '''
+set noshowmode
+" let g:airline_solarized_bg='dark'
+let g:airline_theme='dracula'
+let g:airline_symbols_ascii = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
+
+nnoremap [Buffer] <NOP>
+nmap <Space>b [Buffer]
+
+nnoremap <silent> [Buffer]n :<C-u>bnext<CR>
+nnoremap <silent> [Buffer]p :<C-u>bprevious<CR>
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/rc/lightline.rc.vim'
 

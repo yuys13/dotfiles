@@ -293,7 +293,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'jsfaint/gen_tags.vim'
-if = 'executable("ctags") || executable("gtags")'
+# if = 'executable("ctags") || executable("gtags")'
+if = 0
 hook_add = '''
   let g:loaded_gentags#ctags = !executable("ctags")
   let g:loaded_gentags#gtags = !executable("gtags")

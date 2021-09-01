@@ -45,28 +45,27 @@ repo = 'w0ng/vim-hybrid'
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
 
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-if = 0
-depends = 'vim-airline/vim-airline_themes'
-hook_add = '''
-set noshowmode
-" let g:airline_solarized_bg='dark'
-let g:airline_theme='dracula'
-let g:airline_symbols_ascii = 1
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tmuxline#enabled = 0
-
-nnoremap [Buffer] <NOP>
-nmap <Space>b [Buffer]
-
-nnoremap <silent> [Buffer]n :<C-u>bnext<CR>
-nnoremap <silent> [Buffer]p :<C-u>bprevious<CR>
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
+# [[plugins]]
+# repo = 'vim-airline/vim-airline'
+# depends = 'vim-airline/vim-airline_themes'
+# hook_add = '''
+# set noshowmode
+# " let g:airline_solarized_bg='dark'
+# let g:airline_theme='dracula'
+# let g:airline_symbols_ascii = 1
+#
+# let g:airline#extensions#tabline#enabled = 1
+# let g:airline#extensions#tmuxline#enabled = 0
+#
+# nnoremap [Buffer] <NOP>
+# nmap <Space>b [Buffer]
+#
+# nnoremap <silent> [Buffer]n :<C-u>bnext<CR>
+# nnoremap <silent> [Buffer]p :<C-u>bprevious<CR>
+# '''
+#
+# [[plugins]]
+# repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -81,21 +80,19 @@ repo = 'tyru/caw.vim'
 [[plugins]]
 repo = 'tpope/vim-repeat'
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
-if = 0
-hook_add = '''
- let g:lexima_ctrlh_as_backspace = 1
-'''
+# [[plugins]]
+# repo = 'cohama/lexima.vim'
+# hook_add = '''
+#  let g:lexima_ctrlh_as_backspace = 1
+# '''
 
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-if = 0
-hook_add = '''
-  let g:EasyMotion_do_mapping = 0
-  nmap s <Plug>(easymotion-s2)
-  let g:EasyMotion_space_jump_first = 1
-'''
+# [[plugins]]
+# repo = 'easymotion/vim-easymotion'
+# hook_add = '''
+#   let g:EasyMotion_do_mapping = 0
+#   nmap s <Plug>(easymotion-s2)
+#   let g:EasyMotion_space_jump_first = 1
+# '''
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
@@ -270,16 +267,15 @@ hook_add = '''
   let g:ale_dockerfile_hadolint_use_docker = 'yes'
 '''
 
-[[plugins]]
-repo = 'jsfaint/gen_tags.vim'
+# [[plugins]]
+# repo = 'jsfaint/gen_tags.vim'
 # if = 'executable("ctags") || executable("gtags")'
-if = 0
-hook_add = '''
-  let g:loaded_gentags#ctags = !executable("ctags")
-  let g:loaded_gentags#gtags = !executable("gtags")
-  let g:gen_tags#ctags_auto_gen  = executable("ctags")
-  let g:gen_tags#gtags_auto_gen  = executable("gtags")
-'''
+# hook_add = '''
+#   let g:loaded_gentags#ctags = !executable("ctags")
+#   let g:loaded_gentags#gtags = !executable("gtags")
+#   let g:gen_tags#ctags_auto_gen  = executable("ctags")
+#   let g:gen_tags#gtags_auto_gen  = executable("gtags")
+# '''
 
 [[plugins]]
 repo = 'ozelentok/denite-gtags'
@@ -315,31 +311,30 @@ hook_add = '''
 repo = 'ywatase/mdt.vim'
 if = 'executable("mdt")'
 
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-if = 0
-hook_add = '''
-let g:precious_enable_switch_CursorMoved = {
-      \	'help' : 0
-      \}
-let g:precious_enable_switch_CursorMoved_i= {
-      \	'help' : 0
-      \}
-let g:precious_enable_switch_CursorHold= {
-      \	'*' : 0
-      \}
-
-  " for PartEdit
-  function! PartEditGetContext()
-    let l:con = context_filetype#get(precious#base_filetype())
-    let l:ret = {
-          \ 'filetype': l:con.filetype,
-          \ 'firstline': l:con.range[0][0],
-          \ 'lastline': l:con.range[1][0],
-          \}
-    return l:ret
-  endfunction
-'''
+# [[plugins]]
+# repo = 'osyo-manga/vim-precious'
+# hook_add = '''
+# let g:precious_enable_switch_CursorMoved = {
+#      \	'help' : 0
+#      \}
+# let g:precious_enable_switch_CursorMoved_i= {
+#      \	'help' : 0
+#      \}
+# let g:precious_enable_switch_CursorHold= {
+#      \	'*' : 0
+#      \}
+#
+#   " for PartEdit
+#   function! PartEditGetContext()
+#     let l:con = context_filetype#get(precious#base_filetype())
+#     let l:ret = {
+#          \ 'filetype': l:con.filetype,
+#          \ 'firstline': l:con.range[0][0],
+#          \ 'lastline': l:con.range[1][0],
+#          \}
+#     return l:ret
+#   endfunction
+# '''
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'

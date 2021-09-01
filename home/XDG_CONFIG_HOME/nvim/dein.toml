@@ -257,6 +257,7 @@ hook_add = '''
         \ 'typescriptreact': ['prettier'],
         \ 'javascript': ['prettier'],
         \ 'javascriptreact': ['prettier'],
+        \ 'json': ['prettier'],
         \ }
 
   " Map movement through errors without wrapping.

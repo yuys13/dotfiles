@@ -4,6 +4,8 @@
 	email = yuys13@users.noreply.github.com
 [push]
 	default = simple
+[pull]
+	ff = only
 [diff]
 	tool = vimdiff
 [difftool "vimdiff"]

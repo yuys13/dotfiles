@@ -109,7 +109,10 @@ if has('langmap') && exists('+langnoremap')
 endif
 
 " Setting greo tools
-if executable('hw')
+if executable('rg')
+  let &grepprg = 'rg --vimgrep --smart-case --hidden'
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+elseif executable('hw')
   set grepprg=hw\ --no-group\ --no-color
 elseif executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor

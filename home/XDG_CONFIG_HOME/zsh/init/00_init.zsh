@@ -1,4 +1,32 @@
 ## INIT
+## Path
+typeset -U path cdpath fpath manpath
+
+export GOPATH=${HOME}/go
+
+path=( \
+    ${HOME}/bin(N-/) \
+    ${HOME}/.zplug/bin(N-/) \
+    ${GOPATH}/bin(N-/) \
+    ${HOME}/.local/bin(N-/) \
+    $path \
+)
+fpath=( \
+    ${XDG_CONFIG_HOME}/zsh/functions(N-/) \
+    $fpath \
+)
+
+## Editor
+if test -n ${EDITOR} -a "${EDITOR[(w)0]}" = 'nvr'; then
+    export EDITOR
+elif which nvim > /dev/null 2>&1; then
+    export EDITOR=nvim
+elif which vim > /dev/null 2>&1; then
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+
 # COMMON
 setopt nobeep
 setopt print_eight_bit

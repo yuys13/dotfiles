@@ -13,3 +13,5 @@ if [ -f ${XDG_CONFIG_HOME}/zsh/local/zshenv ]; then
     source ${XDG_CONFIG_HOME}/zsh/local/zshenv
 fi
 
+# END .zshenv
+# touch ~/.config/zsh/local/zshenv

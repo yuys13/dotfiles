@@ -45,3 +45,5 @@ if [ -f ${XDG_CONFIG_HOME}/zsh/local/zshrc ]; then
     source ${XDG_CONFIG_HOME}/zsh/local/zshrc
 fi
 
+# END .zshrc
+# touch ~/.config/zsh/local/zshrc

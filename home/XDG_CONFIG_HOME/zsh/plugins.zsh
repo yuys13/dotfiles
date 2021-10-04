@@ -35,6 +35,24 @@
     }
 
     if type fzf > /dev/null; then
+        function bd_list () {
+            local dir=$PWD
+            for i in {1..20}; do
+                dir=$(dirname "$dir")
+                echo "$dir"
+                if [ "$dir" = "/" ]; then
+                    break
+                fi
+            done
+        }
+
+        function bd () {
+            local dir=$(bd_list | fzf --reverse --height 40%)
+            if [ -n "$dir" ]; then
+                builtin cd $dir
+            fi
+        }
+
         if type ghq > /dev/null; then
             ghq_fzf () {
                 local selected_repo=$(ghq list -p | fzf --reverse --height 40%)

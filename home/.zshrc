@@ -33,11 +33,8 @@ if [[ -f ~/.zplug/init.zsh ]]; then
     if type hub > /dev/null 2>&1; then
         eval "$(hub alias -s)"
     fi
-elif type ghq > /dev/null; then
-    source ${XDG_CONFIG_HOME}/zsh/plugins.zsh
 else
-    autoload -Uz compinit
-    compinit
+    source ${XDG_CONFIG_HOME}/zsh/plugins.zsh
 fi
 
 ## Local setting

@@ -27,6 +27,13 @@
         done
     fi
 
+    gcd () {
+        local dir=$(git rev-parse --show-toplevel)
+        if [ -n "$dir" ]; then
+            builtin cd $dir
+        fi
+    }
+
     if type fzf > /dev/null; then
         if type ghq > /dev/null; then
             ghq_fzf () {

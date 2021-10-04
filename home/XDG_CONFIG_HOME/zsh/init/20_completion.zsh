@@ -15,6 +15,13 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 
 zstyle ':completion:*:default' menu select=2
+if [ -z "$LS_COLORS" ]; then
+    if type dircolors > /dev/null 2>&1; then
+        eval $(dircolors)
+    elif type gdircolors > /dev/null 2>&1; then
+        eval $(gdircolors)
+    fi
+fi
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 else

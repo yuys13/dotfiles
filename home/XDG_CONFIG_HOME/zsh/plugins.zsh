@@ -22,6 +22,10 @@
     # fzf
     if [ -d ${github}/junegunn/fzf ]; then
         export FZF_CTRL_R_OPTS="--layout=reverse"
+        if type fd > /dev/null 2>&1; then
+            export FZF_ALT_C_COMMAND="fd -t d"
+        fi
+
         for rc in ${github}/junegunn/fzf/shell/*.zsh; do
             source $rc
         done

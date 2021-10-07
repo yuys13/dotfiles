@@ -6,6 +6,11 @@
     local omz_root=${github}/robbyrussell/oh-my-zsh
 
     ## Load plugins
+    # powerlevel10k
+    if [ -d ${github}/romkatv/powerlevel10k ]; then
+        source ${github}/romkatv/powerlevel10k/powerlevel10k.zsh-theme
+    fi
+
     # zsh-completions
     if [ -d ${zsh_users}/zsh-completions ]; then
         source ${zsh_users}/zsh-completions/zsh-completions.plugin.zsh

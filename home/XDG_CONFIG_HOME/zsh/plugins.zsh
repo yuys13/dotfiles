@@ -17,7 +17,7 @@
     fi
 
     # zsh-autosuggestions
-    if [ -d ${zsh-users}/zsh-autosuggestions ]; then
+    if [ -d ${zsh_users}/zsh-autosuggestions ]; then
         source ${zsh_users}/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
         if [[ -n $SOLARIZED ]]; then
             ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10';

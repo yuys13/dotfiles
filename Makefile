@@ -24,7 +24,7 @@ link: ## Create symbolic links for dotfiles
 
 .PHONY: update
 update: ## (Obsoleted) Update dotfiles
-	git pull --ff-only
+	git fetch origin master:master
 
 .PHONY: init
 init: ## (Obsoleted) Exec bin/install.sh

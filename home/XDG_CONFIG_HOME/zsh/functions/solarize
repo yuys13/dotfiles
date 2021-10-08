@@ -1,22 +1,12 @@
 solarize () {
+    local github_url='https://github.com'
+    local github_dir=${HOME}/dev/src/github.com
+
     local dircolors_repo=seebi/dircolors-solarized
     local dircolors_file=dircolors.ansi-dark
 
-    if ! type ghq > /dev/null; then
-        if ! type go > /dev/null; then
-            echo please install golang manually
-            return 1
-        fi
-        if ! go get -u github.com/motemen/ghq; then
-            echo please install ghq manually
-            return 1
-        fi
-    fi
-
-    local github_dir=$(ghq root)/github.com
-
     if ! [[ -d ${github_dir%/}/${dircolors_repo} ]]; then
-        ghq get ${dircolors_repo}
+        git clone --depth 1 ${github_url}/${dircolors_repo} ${github_dir%/}/${dircolors_repo}
     fi
 
     local dircolors_filepath=${github_dir%/}/${dircolors_repo%/}/${dircolors_file}

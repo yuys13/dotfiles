@@ -1,0 +1,27 @@
+plugin_install () {
+    local github='https://github.com'
+    local repo="${HOME}/dev/src/github.com"
+
+    local plugins=()
+    plugins=(${plugins} zsh-users/zsh-completions )
+    plugins=(${plugins} zsh-users/zsh-autosuggestions )
+    plugins=(${plugins} zsh-users/zsh-syntax-highlighting )
+    plugins=(${plugins} junegunn/fzf )
+    plugins=(${plugins} romkatv/powerlevel10k )
+
+    echo "install { $plugins }"
+
+    local pids=()
+    for p in $plugins; do
+        echo git clone ${github}/${p} ${repo}/${p}
+        git clone ${github}/${p} ${repo}/${p} &
+        pids=($pids $!)
+    done
+
+    echo "install procs { $pids }"
+
+    for p in pids; do
+        wait $pid
+    done
+}
+# vim: ft=zsh

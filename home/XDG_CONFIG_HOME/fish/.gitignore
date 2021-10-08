@@ -1,0 +1,5 @@
+/conf.d/
+/completions/
+/functions/*
+!/functions/__init_fisher.fish
+/fish_variables

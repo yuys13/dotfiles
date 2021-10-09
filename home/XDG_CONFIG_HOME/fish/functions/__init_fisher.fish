@@ -2,6 +2,16 @@ function __init_fisher
     set -q fish_user_paths
     or set -U fish_user_paths ~/bin ~/go/bin
 
+    if not set -q EDITOR
+        if type nvim >/dev/null
+            set -U EDITOR nvim
+        else if type vim >/dev/null
+            set -U EDITOR vim
+        else
+            set -U EDITOR vi
+        end
+    end
+
     set -q theme_powerline_fonts
     or set -U theme_powerline_fonts no
 

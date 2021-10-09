@@ -1,5 +1,7 @@
-/conf.d/
-/completions/
+*
+!/.gitignore
+!/fish_plugins
+!/functions/
 /functions/*
 !/functions/__init_fisher.fish
-/fish_variables
+!/functions/vi.fish

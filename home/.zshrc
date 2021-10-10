@@ -49,9 +49,6 @@ if [ -f ${XDG_CONFIG_HOME}/zsh/local/zshrc ]; then
     source ${XDG_CONFIG_HOME}/zsh/local/zshrc
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # END .zshrc
 # touch ~/.config/zsh/local/zshrc
 

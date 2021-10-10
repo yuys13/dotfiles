@@ -13,6 +13,10 @@ plugin_install () {
 
     local pids=()
     for p in $plugins; do
+        if [ -e  ${repo}/${p} ]; then
+            echo already exist: ${repo}/${p}
+            continue
+        fi
         echo git clone ${github}/${p} ${repo}/${p}
         git clone ${github}/${p} ${repo}/${p} &
         pids=($pids $!)

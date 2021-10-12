@@ -22,7 +22,7 @@ solarize () {
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
     #set ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
-    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
 
     export SOLARIZED=1
 }

@@ -257,6 +257,7 @@ hook_add = '''
   let g:ale_go_gofmt_options = '-s'
   let g:ale_fixers = {
         \ 'go': ['gofmt', 'goimports'],
+        \ 'rust': ['rustfmt'],
         \ 'python': ['black', 'isort'],
         \ 'typescript': ['prettier'],
         \ 'typescriptreact': ['prettier'],
@@ -271,6 +272,9 @@ hook_add = '''
 
   " Dockerfile
   let g:ale_dockerfile_hadolint_use_docker = 'yes'
+
+  " rust
+  let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 '''
 
 # [[plugins]]

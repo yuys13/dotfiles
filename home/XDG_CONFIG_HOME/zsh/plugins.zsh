@@ -9,13 +9,15 @@
     # powerlevel10k
     if [ -d ${github}/romkatv/powerlevel10k ]; then
         source ${github}/romkatv/powerlevel10k/powerlevel10k.zsh-theme
+        # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+        [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
+    else
+        prompt yuys13
     fi
 
     # zsh-completions
     if [ -d ${zsh_users}/zsh-completions ]; then
         source ${zsh_users}/zsh-completions/zsh-completions.plugin.zsh
-        # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-        [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
     fi
 
     # zsh-autosuggestions

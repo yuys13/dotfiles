@@ -6,5 +6,5 @@ promptinit
 setopt transient_rprompt
 
 ## Prompt setup
-prompt yuys13
+# prompt yuys13
 

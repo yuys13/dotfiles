@@ -17,5 +17,5 @@
 [hub]
 	protocol = https
 [ghq]
-	root = ~/.cache/dein/repos
+	# root = ~/.cache/dein/repos
 	root = ~/src

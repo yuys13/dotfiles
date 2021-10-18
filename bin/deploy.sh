@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/bash -e
 
-if ! which git >/dev/null 2>&1; then
+if ! command -v git >/dev/null 2>&1; then
     echo git not installed.
     exit 1
 fi

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 to_lower() {
     cat - | tr "[:upper:]" "[:lower:]"
@@ -13,24 +13,24 @@ is_darwin() {
 }
 
 get_uname() {
-    echo $(uname | to_lower)
+    uname | to_lower
 }
 
 package_install () {
     if is_linux; then
-        if which dnf > /dev/null 2>&1; then
-            sudo dnf install $@
-        elif which yum > /dev/null 2>&1; then
-            sudo yum install $@
-        elif which apt > /dev/null 2>&1; then
-            sudo apt install $@
+        if command -v dnf >/dev/null 2>&1; then
+            sudo dnf install "$@"
+        elif command -v yum >/dev/null 2>&1; then
+            sudo yum install "$@"
+        elif command -v apt >/dev/null 2>&1; then
+            sudo apt install "$@"
         else
             echo "cannot filed package manager"
             exit 1
         fi
     elif is_darwin; then
-        if which brew > /dev/null 2>&1; then
-            brew install $@
+        if command -v brew >/dev/null 2>&1; then
+            brew install "$@"
         else
             echo "cannot filed package manager"
             exit 1
@@ -41,11 +41,11 @@ package_install () {
     fi
 }
 
-if ! which git >/dev/null 2>&1; then
+if ! command -v git >/dev/null 2>&1; then
     package_install git
 fi
 
-if ! which git >/dev/null 2>&1; then
+if ! command -v git >/dev/null 2>&1; then
     echo git not installed.
     exit 1
 fi

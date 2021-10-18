@@ -1,6 +1,6 @@
 () {
     # Repository root
-    local ghq_root=${HOME}/dev/src
+    local ghq_root=${HOME}/src
     local github=${ghq_root}/github.com
     local zsh_users=${github}/zsh-users
     local omz_root=${github}/robbyrussell/oh-my-zsh

@@ -18,4 +18,4 @@
 	protocol = https
 [ghq]
 	root = ~/.cache/dein/repos
-	root = ~/dev/src
+	root = ~/src

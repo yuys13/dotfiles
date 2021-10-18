@@ -107,7 +107,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = '~/dev/src/github.com/junegunn/fzf'
+repo = '~/src/github.com/junegunn/fzf'
 if = 'executable("fzf")'
 hook_add = '''
   let $FZF_DEFAULT_OPTS = '--reverse'

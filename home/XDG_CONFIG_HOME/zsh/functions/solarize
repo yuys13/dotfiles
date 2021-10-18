@@ -1,6 +1,6 @@
 solarize () {
     local github_url='https://github.com'
-    local github_dir=${HOME}/dev/src/github.com
+    local github_dir=${HOME}/src/github.com
 
     local dircolors_repo=seebi/dircolors-solarized
     local dircolors_file=dircolors.ansi-dark

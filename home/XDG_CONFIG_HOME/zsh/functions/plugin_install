@@ -1,6 +1,6 @@
 plugin_install () {
     local github='https://github.com'
-    local repo="${HOME}/dev/src/github.com"
+    local repo="${HOME}/src/github.com"
 
     local plugins=()
     plugins=(${plugins} zsh-users/zsh-completions )

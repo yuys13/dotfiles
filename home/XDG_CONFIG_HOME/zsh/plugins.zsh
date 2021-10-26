@@ -30,6 +30,10 @@
     if [ -d ${github}/junegunn/fzf ]; then
         if type fd > /dev/null 2>&1; then
             export FZF_ALT_C_COMMAND="fd -t d"
+            export FZF_CTRL_T_COMMAND='fd -t f -L -H -E .git'
+        fi
+        if type bat > /dev/null 2>&1; then
+            export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
         fi
 
         for rc in ${github}/junegunn/fzf/shell/*.zsh; do

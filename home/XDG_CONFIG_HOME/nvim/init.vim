@@ -62,6 +62,10 @@ let g:vimsyn_embrd = 'lPr'
 autocmd MyAutoCmd TermOpen * setlocal nonumber
 autocmd MyAutoCmd TermOpen * setlocal norelativenumber
 
+if $COLORTERM=='truecolor'
+  set termguicolors
+endif
+
 " Tab
 set expandtab
 set shiftwidth=4

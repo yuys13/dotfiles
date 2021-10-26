@@ -7,6 +7,8 @@ set main-view-id-display = yes
 set refs-view-id-display = yes
 # merge diff
 set diff-options = -m --first-parent
+# color
+color cursor black green bold
 
 ## escape default keybind
 # bind generic       g  view-grep
@@ -16,39 +18,38 @@ bind main     <Esc>G :toggle commit-title-graph
 # bind main          F  :toggle commit-title-refs
 bind main     <Esc>F :toggle commit-title-refs
 
-
-## vim like scrolling
+# vim like scrolling
 bind generic       g  move-first-line
 bind generic       G  move-last-line
 bind main          G  move-last-line
 bind generic <Ctrl-F> move-page-down
 bind generic <Ctrl-B> move-page-up
 
-## main bindings
+# main bindings
 bind main          F  !git fetch
 bind main          ^  ?git reset --soft HEAD^
 bind main          H  ?git reset --hard %(commit)
 bind main          !  ?git revert %(commit)
 bind main    <Ctrl-R> ?git rebase --interactive %(commit)
 
-## diff bindings
+# diff bindings
 bind diff          l  scroll-right
 bind diff          h  scroll-left
 
-## refs bindings
+# refs bindings
 bind refs          N  <git checkout -b "%(prompt Enter new branch name: )" %(branch)
 bind refs          P  ?git fetch --prune
 bind refs          F  ?git merge %(branch) --ff-only
 bind refs          M  ?git merge %(branch) --no-ff
 bind refs    <Ctrl-R> ?git rebase %(branch)
 
-## status bindings
+# status bindings
 bind status        C  !git commit --verbose
 bind status        +  !git commit --verbose --amend
 bind status        S  !git stash save "%(prompt Enter stash comment: )"
 bind status        D  ?git clean -df
 
-## stage bindings
+# stage bindings
 bind stage         l  scroll-right
 bind stage         h  scroll-left
 

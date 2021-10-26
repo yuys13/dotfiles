@@ -28,7 +28,6 @@
 
     # fzf
     if [ -d ${github}/junegunn/fzf ]; then
-        export FZF_CTRL_R_OPTS="--layout=reverse"
         if type fd > /dev/null 2>&1; then
             export FZF_ALT_C_COMMAND="fd -t d"
         fi
@@ -46,6 +45,7 @@
     }
 
     if type fzf > /dev/null; then
+        export FZF_DEFAULT_OPTS=${FZF_DEFAULT_OPTS:-"--layout=reverse --height 40%"}
         function bd_list () {
             local dir=$PWD
             for i in {1..20}; do
@@ -58,7 +58,7 @@
         }
 
         function bd () {
-            local dir=$(bd_list | fzf --reverse --height 40%)
+            local dir=$(bd_list | fzf)
             if [ -n "$dir" ]; then
                 builtin cd $dir
             fi
@@ -66,7 +66,7 @@
 
         if type ghq > /dev/null; then
             ghq_fzf () {
-                local selected_repo=$(ghq list -p | fzf --reverse --height 40%)
+                local selected_repo=$(ghq list -p | fzf)
                 if [[ -z $selected_repo ]]; then
                     zle redisplay
                     return 0

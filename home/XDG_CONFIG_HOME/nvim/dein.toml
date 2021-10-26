@@ -110,7 +110,6 @@ hook_add = '''
 repo = '~/src/github.com/junegunn/fzf'
 if = 'executable("fzf")'
 hook_add = '''
-  let $FZF_DEFAULT_OPTS = '--reverse'
   if executable('rg')
     let $FZF_DEFAULT_COMMAND = 'rg --files'
   endif

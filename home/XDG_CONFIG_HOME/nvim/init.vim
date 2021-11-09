@@ -57,7 +57,7 @@ set listchars=tab:¦-,trail:-,nbsp:+,extends:»,precedes:«
 set colorcolumn=80
 set cursorline
 
-let g:vimsyn_embrd = 'lPr'
+let g:vimsyn_embed = 'lPr'
 
 autocmd MyAutoCmd TermOpen * setlocal nonumber
 autocmd MyAutoCmd TermOpen * setlocal norelativenumber

@@ -263,6 +263,7 @@ hook_add = '''
         \ 'javascript': ['prettier'],
         \ 'javascriptreact': ['prettier'],
         \ 'json': ['prettier'],
+        \ 'fish': ['fish_indent'],
         \ }
 
   " Map movement through errors without wrapping.

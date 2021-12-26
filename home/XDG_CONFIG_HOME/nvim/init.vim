@@ -39,7 +39,7 @@ set clipboard^=unnamed
 set clipboard^=unnamedplus
 
 " Keymap
-inoremap <silent> jj <Esc>
+imap <silent> jj <Esc>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>

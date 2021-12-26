@@ -169,16 +169,16 @@ local init = function()
     opt = true,
     config = function()
       vim.cmd [[
-      if empty($SOLARIZED)
-        let g:solarized_termtrans = 0
-        let g:solarized_termcolors = 256
-      else
-        let g:solarized_termtrans = 1
-        let g:solarized_termcolors = 16
-        set background=dark
-        autocmd MyAutoCmd VimEnter * nested colorscheme solarized
-        endif
-        ]]
+            if empty($SOLARIZED)
+              let g:solarized_termtrans = 0
+              let g:solarized_termcolors = 256
+            else
+              let g:solarized_termtrans = 1
+              let g:solarized_termcolors = 16
+              set background=dark
+              autocmd MyAutoCmd VimEnter * nested colorscheme solarized
+              endif
+              ]]
     end,
   }
 
@@ -239,10 +239,10 @@ local init = function()
     'tyru/open-browser.vim',
     setup = function()
       vim.cmd [[
-      let g:netrw_nogx = 1 " disable netrw's gx mapping.
-      nmap gx <Plug>(openbrowser-smart-search)
-      vmap gx <Plug>(openbrowser-smart-search)
-      ]]
+            let g:netrw_nogx = 1 " disable netrw's gx mapping.
+            nmap gx <Plug>(openbrowser-smart-search)
+            vmap gx <Plug>(openbrowser-smart-search)
+            ]]
     end,
   }
 
@@ -250,20 +250,20 @@ local init = function()
     'Yggdroot/indentLine',
     setup = function()
       vim.cmd [[
-      let g:indentLine_showFirstIndentLevel = 1
-      let g:indentLine_bufTypeExclude = ['nofile', 'help']
-      let g:indentLine_fileTypeExclude = ['']
-
-      function! s:myIndentLineReset() abort
-        if exists('b:indentLine_enabled') ? b:indentLine_enabled :
-              \ get(g:, 'indentLine_enabled', 0)
-          IndentLinesReset
-        endif
-      endfunction
-
-      " for vim-precious
-      autocmd MyAutoCmd User PreciousFileType call s:myIndentLineReset()
-      ]]
+            let g:indentLine_showFirstIndentLevel = 1
+            let g:indentLine_bufTypeExclude = ['nofile', 'help']
+            let g:indentLine_fileTypeExclude = ['']
+  
+            function! s:myIndentLineReset() abort
+              if exists('b:indentLine_enabled') ? b:indentLine_enabled :
+                    \ get(g:, 'indentLine_enabled', 0)
+                IndentLinesReset
+              endif
+            endfunction
+  
+            " for vim-precious
+            autocmd MyAutoCmd User PreciousFileType call s:myIndentLineReset()
+            ]]
     end,
   }
 
@@ -271,9 +271,9 @@ local init = function()
     't9md/vim-quickhl',
     setup = function()
       vim.cmd [[
-        nmap <Space>hl <Plug>(quickhl-manual-this)
-        nmap <Space>nohl <Plug>(quickhl-manual-reset)
-      ]]
+              nmap <Space>hl <Plug>(quickhl-manual-this)
+              nmap <Space>nohl <Plug>(quickhl-manual-reset)
+            ]]
     end,
   }
 
@@ -281,11 +281,11 @@ local init = function()
     'kassio/neoterm',
     setup = function()
       vim.cmd [[
-      nnoremap <Space>nl :<C-u>rightbelow vertical Tnew<CR>
-      nnoremap <Space>nh :<C-u>vertical Tnew<CR>
-      nmap <Space>nn <Plug>(neoterm-repl-send-line)
-      vmap <Space>nn <Plug>(neoterm-repl-send)
-    ]]
+            nnoremap <Space>nl :<C-u>rightbelow vertical Tnew<CR>
+            nnoremap <Space>nh :<C-u>vertical Tnew<CR>
+            nmap <Space>nn <Plug>(neoterm-repl-send-line)
+            vmap <Space>nn <Plug>(neoterm-repl-send)
+          ]]
     end,
   }
 
@@ -308,10 +308,7 @@ local init = function()
   }
 
   use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup {}
-    end,
+    'cohama/lexima.vim',
   }
 end
 

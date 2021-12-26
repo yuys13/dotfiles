@@ -17,5 +17,6 @@
 [hub]
 	protocol = https
 [ghq]
-	# root = ~/.cache/dein/repos
+	; root = ~/.cache/dein/repos
+	; root = ~/.local/share/nvim/site/pack/packer
 	root = ~/src

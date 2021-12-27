@@ -42,7 +42,7 @@ local init = function()
     config = function()
       local null_ls = require 'null-ls'
       null_ls.setup {
-        -- you can reuse a shared lspconntomljkjk on_attach callback here
+        -- you can reuse a shared lspconfig on_attach callback here
         on_attach = function(client)
           if client.resolved_capabilities.document_formatting then
             vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'

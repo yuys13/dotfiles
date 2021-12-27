@@ -82,7 +82,18 @@ lsp_installer.on_server_ready(function(server)
       },
     }
   end
-
+  -- if server.name == 'efm' then
+  --   opts.init_options = { document_range_formatting = true }
+  --   opts.filetypes = { 'lua' }
+  --   opts.settings = {
+  --     rootMarks = '.git',
+  --     languages = {
+  --       lua = {
+  --         { formatCommand = 'stylua -s --stdin-filepath ${INPUT} -', formatStdin = true },
+  --       },
+  --     },
+  --   }
+  -- end
   -- disable document_formatting
   if server.name == 'tsserver' or server.name == 'rust_analyzer' then
     opts.on_attach = function(client, bufnr)

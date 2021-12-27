@@ -22,18 +22,15 @@ local init = function()
     },
   }
 
-  use 'hrsh7th/cmp-nvim-lsp'
-
   use {
     'hrsh7th/nvim-cmp',
-    opt = true,
-    event = 'InsertEnter',
     config = function()
       require 'rc.nvim-cmp'
     end,
     requires = {
       { 'hrsh7th/vim-vsnip', opt = true },
       { 'hrsh7th/vim-vsnip-integ', opt = true },
+      { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },

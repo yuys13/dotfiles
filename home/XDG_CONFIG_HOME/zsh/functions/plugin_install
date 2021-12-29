@@ -17,8 +17,8 @@ plugin_install () {
             echo already exist: ${repo}/${p}
             continue
         fi
-        echo git clone ${github}/${p} ${repo}/${p}
-        git clone ${github}/${p} ${repo}/${p} &
+        echo git clone --depth 1 ${github}/${p} ${repo}/${p}
+        git clone --depth 1 ${github}/${p} ${repo}/${p} &
         pids=($pids $!)
     done
 

@@ -53,6 +53,9 @@ local init = function()
           null_ls.builtins.diagnostics.hadolint,
           -- Fish shell
           null_ls.builtins.formatting.fish_indent,
+          -- Git
+          null_ls.builtins.code_actions.gitsigns,
+          null_ls.builtins.diagnostics.gitlint,
           -- Go
           null_ls.builtins.formatting.gofmt,
           null_ls.builtins.formatting.goimports,
@@ -88,9 +91,6 @@ local init = function()
           null_ls.builtins.diagnostics.vint,
           -- YAML
           null_ls.builtins.diagnostics.yamllint,
-
-          -- Git
-          null_ls.builtins.code_actions.gitsigns,
         },
       }
     end,

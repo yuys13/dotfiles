@@ -363,6 +363,16 @@ local init = function()
   use {
     'cohama/lexima.vim',
   }
+
+  use {
+    'AndrewRadev/linediff.vim',
+    setup = function()
+      vim.g.linediff_modify_statusline = 0
+      vim.g.linediff_first_buffer_command = 'topleft new'
+      vim.g.linediff_second_buffer_command = 'vertical new'
+      vim.cmd [[autocmd MyAutoCmd User LinediffBufferReady nnoremap <buffer> q :LinediffReset<cr>]]
+    end,
+  }
 end
 
 return packer.startup {

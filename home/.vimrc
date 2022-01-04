@@ -1,6 +1,11 @@
+scriptencoding utf-8
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+if &compatible
+  " vint: -ProhibitSetNoCompatible
+  set nocompatible
+  " vint: +ProhibitSetNoCompatible
+endif
 
 " Keymap
 inoremap <silent> jj <ESC>
@@ -33,7 +38,7 @@ set clipboard^=unnamedplus
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
+if &t_Co > 2 || has('gui_running')
   syntax on
   set hlsearch
 endif
@@ -51,7 +56,7 @@ if has('mouse')
 endif
 
 " Only do this part when compiled with support for autocommands.
-if has("autocmd")
+if has('autocmd')
 
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
@@ -96,7 +101,7 @@ endif " has("autocmd")
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
-if !exists(":DiffOrig")
+if !exists(':DiffOrig')
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
         \ | wincmd p | diffthis
 endif

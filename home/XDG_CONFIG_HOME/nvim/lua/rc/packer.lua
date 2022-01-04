@@ -87,6 +87,11 @@ local init = function()
             end,
             extra_args = { '-i', '4' },
           },
+          -- Text
+          null_ls.builtins.diagnostics.textlint.with {
+            prefer_local = 'node_modules/.bin',
+            filetypes = { 'markdown' },
+          },
           -- Vim script
           null_ls.builtins.diagnostics.vint,
           -- YAML

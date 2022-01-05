@@ -202,6 +202,9 @@ local init = function()
 
   use { 'dracula/vim', as = 'dracula', config = 'vim.cmd[[colorscheme dracula]]' }
   use { 'cocopon/iceberg.vim', opt = true }
+  use { 'romainl/vim-dichromatic', opt = true }
+  use { 'PierreCapo/voir.vim', opt = true }
+  use { 'machakann/vim-colorscheme-tatami', opt = true }
   use { 'jonathanfilip/vim-lucius', opt = true }
   use { 'junegunn/seoul256.vim', opt = true }
   use { 'joshdick/onedark.vim', opt = true }
@@ -223,6 +226,9 @@ local init = function()
       ]]
     end,
   }
+  use { 'sainnhe/edge' }
+  use { 'folke/tokyonight.nvim' }
+  use { 'rebelot/kanagawa.nvim' }
 
   use {
     'nvim-lualine/lualine.nvim',

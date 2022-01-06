@@ -244,19 +244,16 @@ local init = function()
   use { 'tomasr/molokai', opt = true }
   use {
     'altercation/vim-colors-solarized',
-    opt = true,
     config = function()
-      vim.cmd [[
-        if empty($SOLARIZED)
-          let g:solarized_termtrans = 0
-          let g:solarized_termcolors = 256
-        else
-          let g:solarized_termtrans = 1
-          let g:solarized_termcolors = 16
-          set background=dark
-          autocmd MyAutoCmd VimEnter * nested colorscheme solarized
-          endif
-      ]]
+      if vim.env.SOLARIZED == nil then
+        vim.g.solarized_termtrans = 0
+        vim.g.solarized_termcolors = 256
+      else
+        vim.g.solarized_termtrans = 1
+        vim.g.solarized_termcolors = 16
+        vim.o.background = 'dark'
+        vim.cmd [[autocmd MyAutoCmd VimEnter * nested colorscheme solarized]]
+      end
     end,
   }
   use { 'sainnhe/edge' }
@@ -268,11 +265,11 @@ local init = function()
     config = function()
       vim.o.showmode = false
       require('lualine').setup {
-        options = {
-          icons_enabled = false,
-          section_separators = '',
-          component_separators = '',
-        },
+        -- options = {
+        --   icons_enabled = false,
+        --   section_separators = '',
+        --   component_separators = '',
+        -- },
       }
     end,
   }
@@ -280,7 +277,9 @@ local init = function()
 
   use {
     'yuys13/partedit.vim',
-    setup = 'vim.cmd[[nmap <silent> <Space>pe <Plug>(partedit_start_context)]]',
+    setup = function()
+      vim.api.nvim_set_keymap('n', '<Space>pe', '<Plug>(partedit_start_context)', { silent = true })
+    end,
     requires = { { 'Shougo/context_filetype.vim' } },
   }
 
@@ -319,11 +318,9 @@ local init = function()
   use {
     'tyru/open-browser.vim',
     setup = function()
-      vim.cmd [[
-        let g:netrw_nogx = 1 " disable netrw's gx mapping.
-        nmap gx <Plug>(openbrowser-smart-search)
-        vmap gx <Plug>(openbrowser-smart-search)
-      ]]
+      vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
+      vim.api.nvim_set_keymap('n', 'gx', '<Plug>(openbrowser-smart-search)', {})
+      vim.api.nvim_set_keymap('v', 'gx', '<Plug>(openbrowser-smart-search)', {})
     end,
   }
 
@@ -346,33 +343,27 @@ local init = function()
   use {
     'Yggdroot/indentLine',
     setup = function()
-      vim.cmd [[
-        let g:indentLine_showFirstIndentLevel = 1
-        let g:indentLine_bufTypeExclude = ['nofile', 'help']
-        let g:indentLine_fileTypeExclude = ['']
-      ]]
+      vim.g.indentLine_showFirstIndentLevel = 1
+      vim.g.indentLine_bufTypeExclude = { 'nofile', 'help', 'terminal' }
+      vim.g.indentLine_fileTypeExclude = { '' }
     end,
   }
 
   use {
     't9md/vim-quickhl',
     setup = function()
-      vim.cmd [[
-          nmap <Space>hl <Plug>(quickhl-manual-this)
-          nmap <Space>nohl <Plug>(quickhl-manual-reset)
-      ]]
+      vim.api.nvim_set_keymap('n', '<Space>hl', '<Plug>(quickhl-manual-this)', {})
+      vim.api.nvim_set_keymap('n', '<Space>nohl', '<Plug>(quickhl-manual-reset)', {})
     end,
   }
 
   use {
     'kassio/neoterm',
     setup = function()
-      vim.cmd [[
-        nnoremap <Space>nl :<C-u>rightbelow vertical Tnew<CR>
-        nnoremap <Space>nh :<C-u>vertical Tnew<CR>
-        nmap <Space>nn <Plug>(neoterm-repl-send-line)
-        vmap <Space>nn <Plug>(neoterm-repl-send)
-      ]]
+      vim.api.nvim_set_keymap('n', '<Space>nl', '<Cmd>rightbelow vertical Tnew<CR>', { noremap = true })
+      vim.api.nvim_set_keymap('n', '<Space>nh', '<Cmd>vertical Tnew<CR>', { noremap = true })
+      vim.api.nvim_set_keymap('n', '<Space>nn', '<Plug>(neoterm-repl-send-line)', {})
+      vim.api.nvim_set_keymap('v', '<Space>nn', '<Plug>(neoterm-repl-send)', {})
     end,
   }
 

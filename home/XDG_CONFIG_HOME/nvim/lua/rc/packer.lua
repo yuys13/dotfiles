@@ -373,6 +373,9 @@ local init = function()
 
   use {
     'cohama/lexima.vim',
+    setup = function()
+      vim.g.lexima_ctrlh_as_backspace = 1
+    end,
   }
 
   use {

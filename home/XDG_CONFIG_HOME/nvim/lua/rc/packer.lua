@@ -29,14 +29,45 @@ local init = function()
       require 'rc.nvim-cmp'
     end,
     requires = {
-      { 'hrsh7th/vim-vsnip', opt = true },
-      { 'hrsh7th/vim-vsnip-integ', opt = true },
+      { 'hrsh7th/vim-vsnip' },
+      { 'hrsh7th/vim-vsnip-integ' },
+      { 'hrsh7th/cmp-vsnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
       { 'onsails/lspkind-nvim' },
     },
+  }
+
+  use {
+    'hrsh7th/vim-vsnip',
+    setup = function()
+      vim.api.nvim_set_keymap(
+        'i',
+        '<Tab>',
+        "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'",
+        { expr = true, noremap = false }
+      )
+      vim.api.nvim_set_keymap(
+        's',
+        '<Tab>',
+        "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'",
+        { expr = true, noremap = false }
+      )
+      vim.api.nvim_set_keymap(
+        'i',
+        '<S-Tab>',
+        "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'",
+        { expr = true, noremap = false }
+      )
+      vim.api.nvim_set_keymap(
+        's',
+        '<S-Tab>',
+        "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'",
+        { expr = true, noremap = false }
+      )
+    end,
   }
 
   use {

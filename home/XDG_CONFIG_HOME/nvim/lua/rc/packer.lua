@@ -19,6 +19,7 @@ local init = function()
     requires = {
       { 'williamboman/nvim-lsp-installer' },
       { 'folke/lua-dev.nvim' },
+      { 'ray-x/lsp_signature.nvim' },
     },
   }
 

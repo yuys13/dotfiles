@@ -233,7 +233,7 @@ local init = function()
 
   use {
     'nvim-treesitter/playground',
-    disable = true,
+    cmd = 'TSPlaygroundToggle',
   }
 
   use { 'dracula/vim', as = 'dracula', config = 'vim.cmd[[colorscheme dracula]]' }
@@ -247,7 +247,8 @@ local init = function()
   use { 'tomasr/molokai', opt = true }
   use {
     'altercation/vim-colors-solarized',
-    config = function()
+    opt = true,
+    setup = function()
       if vim.env.SOLARIZED == nil then
         vim.g.solarized_termtrans = 0
         vim.g.solarized_termcolors = 256
@@ -314,12 +315,15 @@ local init = function()
 
   use {
     'kannokanno/previm',
-    -- cmd = 'PrevimOpen',
-    requires = 'tyru/open-browser.vim',
+    ft = { 'markdown', 'rst', 'asciidoc' },
+    config = function()
+      vim.cmd [[packadd open-browser.vim]]
+    end,
   }
 
   use {
     'tyru/open-browser.vim',
+    keys = '<Plug>(openbrowser-smart-search)',
     setup = function()
       vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
       vim.api.nvim_set_keymap('n', 'gx', '<Plug>(openbrowser-smart-search)', {})
@@ -354,6 +358,7 @@ local init = function()
 
   use {
     't9md/vim-quickhl',
+    keys = '<Plug>(quickhl-manual-this)',
     setup = function()
       vim.api.nvim_set_keymap('n', '<Space>hl', '<Plug>(quickhl-manual-this)', {})
       vim.api.nvim_set_keymap('n', '<Space>nohl', '<Plug>(quickhl-manual-reset)', {})
@@ -362,6 +367,7 @@ local init = function()
 
   use {
     'kassio/neoterm',
+    cmd = 'Tnew',
     setup = function()
       vim.api.nvim_set_keymap('n', '<Space>nl', '<Cmd>rightbelow vertical Tnew<CR>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<Space>nh', '<Cmd>vertical Tnew<CR>', { noremap = true })
@@ -372,6 +378,7 @@ local init = function()
 
   use {
     'terrortylor/nvim-comment',
+    event = 'BufEnter',
     config = function()
       require('nvim_comment').setup()
     end,
@@ -390,6 +397,7 @@ local init = function()
 
   use {
     'kyazdani42/nvim-tree.lua',
+    cmd = 'NvimTreeToggle',
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
@@ -400,6 +408,7 @@ local init = function()
 
   use {
     'cohama/lexima.vim',
+    event = 'InsertEnter',
     setup = function()
       vim.g.lexima_ctrlh_as_backspace = 1
     end,
@@ -407,6 +416,7 @@ local init = function()
 
   use {
     'AndrewRadev/linediff.vim',
+    cmd = 'Linediff',
     setup = function()
       vim.g.linediff_modify_statusline = 0
       vim.g.linediff_first_buffer_command = 'topleft new'

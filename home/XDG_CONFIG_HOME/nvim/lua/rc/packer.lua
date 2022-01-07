@@ -124,6 +124,9 @@ local init = function()
           null_ls.builtins.diagnostics.textlint.with {
             prefer_local = 'node_modules/.bin',
             filetypes = { 'markdown' },
+            condition = function(utils)
+              return utils.root_has_file { '.textlintrc' }
+            end,
           },
           -- Vim script
           null_ls.builtins.diagnostics.vint,

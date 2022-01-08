@@ -327,7 +327,7 @@ local init = function()
     setup = function()
       vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
       vim.api.nvim_set_keymap('n', 'gx', '<Plug>(openbrowser-smart-search)', {})
-      vim.api.nvim_set_keymap('v', 'gx', '<Plug>(openbrowser-smart-search)', {})
+      vim.api.nvim_set_keymap('x', 'gx', '<Plug>(openbrowser-smart-search)', {})
     end,
   }
 
@@ -372,7 +372,7 @@ local init = function()
       vim.api.nvim_set_keymap('n', '<Space>nl', '<Cmd>rightbelow vertical Tnew<CR>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<Space>nh', '<Cmd>vertical Tnew<CR>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<Space>nn', '<Plug>(neoterm-repl-send-line)', {})
-      vim.api.nvim_set_keymap('v', '<Space>nn', '<Plug>(neoterm-repl-send)', {})
+      vim.api.nvim_set_keymap('x', '<Space>nn', '<Plug>(neoterm-repl-send)', {})
     end,
   }
 

@@ -147,6 +147,12 @@ local init = function()
       vim.api.nvim_set_keymap('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<Space>fr', '<Cmd>Telescope resume<CR>', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<Space>fg', '<Cmd>Telescope git_files<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap(
+        'n',
+        '<Space>fig',
+        '<Cmd>lua require("telescope.builtin").git_files({git_command={"git","ls-files","--exclude-standard","-coi"}})<CR>',
+        { noremap = true, silent = true }
+      )
 
       vim.api.nvim_set_keymap('n', '<Space>f*', '<Cmd>Telescope grep_string<CR>', { noremap = true, silent = true })
 

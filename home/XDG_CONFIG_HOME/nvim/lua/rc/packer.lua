@@ -346,7 +346,6 @@ local init = function()
 
   use {
     'lukas-reineke/indent-blankline.nvim',
-    disable = true,
     config = function()
       require('indent_blankline').setup {
         -- space_char_blankline = ' ',
@@ -354,16 +353,17 @@ local init = function()
         buftype_exclude = { 'nofile', 'help', 'terminal' },
         filetype_exclude = { '' },
         show_trailing_blankline_indent = false,
-        show_current_context = true,
-        show_current_context_start = true,
+        -- show_current_context = true,
+        -- show_current_context_start = true,
       }
     end,
   }
 
   use {
     'Yggdroot/indentLine',
+    disable = true,
     setup = function()
-      vim.g.indentLine_showFirstIndentLevel = 1
+      vim.g.indentLine_showFirstIndentLevel = true
       vim.g.indentLine_bufTypeExclude = { 'nofile', 'help', 'terminal' }
       vim.g.indentLine_fileTypeExclude = { '' }
     end,

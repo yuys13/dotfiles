@@ -51,7 +51,7 @@ if executable('nvr')
 endif
 
 if executable('tig')
-  nnoremap <silent> <Space>tig :<C-u>tabnew<CR>:te tig<CR>:tunmap <buffer> jj<CR>
+  nnoremap <silent> <Space>tig <Cmd>tabnew<CR>:te tig<CR>:tunmap <buffer> jj<CR>i
 endif
 
 lua << EOF

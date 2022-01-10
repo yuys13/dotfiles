@@ -12,6 +12,9 @@
         # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
         [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
     else
+        autoload -Uz promptinit
+        promptinit
+        setopt transient_rprompt
         prompt yuys13
     fi
 

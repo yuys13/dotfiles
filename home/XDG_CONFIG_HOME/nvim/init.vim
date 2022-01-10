@@ -68,6 +68,7 @@ command! PackerUpdate packadd packer.nvim | lua require('rc.packer').update()
 command! PackerSync packadd packer.nvim | lua require('rc.packer').sync()
 command! PackerClean packadd packer.nvim | lua require('rc.packer').clean()
 command! PackerCompile packadd packer.nvim | lua require('rc.packer').compile()
+command! PackerStatus packadd packer.nvim | lua require('rc.packer').status()
 
 augroup packer_user_config
   autocmd!

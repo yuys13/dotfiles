@@ -430,6 +430,16 @@ local init = function()
       vim.cmd [[autocmd MyAutoCmd User LinediffBufferReady nnoremap <buffer> q :LinediffReset<cr>]]
     end,
   }
+
+  use { 'norcalli/nvim-colorizer.lua', disable = not vim.o.termguicolors, cmd = 'ColorizerToggle' }
+  use { 'folke/twilight.nvim', cmd = 'Twilight' }
+  use {
+    'rbtnn/vim-emphasiscursor',
+    cmd = 'EmphasisCursor',
+    -- setup = function()
+    --   vim.api.nvim_set_keymap('n', '<Esc><Esc>', '<Cmd>EmphasisCursor<CR>', { noremap = true })
+    -- end,
+  }
 end
 
 return packer.startup {

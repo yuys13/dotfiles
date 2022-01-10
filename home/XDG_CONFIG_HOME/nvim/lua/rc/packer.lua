@@ -150,7 +150,7 @@ local init = function()
       vim.api.nvim_set_keymap(
         'n',
         '<Space>fig',
-        '<Cmd>lua require("telescope.builtin").git_files({git_command={"git","ls-files","--exclude-standard","-coi"}})<CR>',
+        '<Cmd>lua require"telescope.builtin".git_files{git_command={"git","ls-files","--exclude-standard","-coi"}}<CR>',
         { noremap = true, silent = true }
       )
 

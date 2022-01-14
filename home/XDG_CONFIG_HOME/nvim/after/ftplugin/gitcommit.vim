@@ -1,4 +1,4 @@
-setlocal colorcolumn=73
+setlocal colorcolumn=72
 
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|'

@@ -6,13 +6,16 @@ export GOPATH=${HOME}/go
 
 path=( \
     ${HOME}/bin(N-/) \
+    /opt/homebrew/bin(N-/) \
     ${HOME}/.zplug/bin(N-/) \
     ${GOPATH}/bin(N-/) \
+    ${HOME}/.luarocks/bin(N-/) \
     ${HOME}/.local/bin(N-/) \
     $path \
 )
 fpath=( \
     ${XDG_CONFIG_HOME}/zsh/functions(N-/) \
+    /opt/homebrew/share//zsh/site-functions(N-/) \
     $fpath \
 )
 

@@ -42,6 +42,13 @@ local init = function()
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
+      {
+        'tamago324/cmp-zsh',
+        config = function()
+          require('cmp_zsh').setup { zshrc = false, filetypes = { 'zsh' } }
+        end,
+      },
+      { 'mtoohey31/cmp-fish', ft = 'fish' },
       { 'onsails/lspkind-nvim' },
     },
   }

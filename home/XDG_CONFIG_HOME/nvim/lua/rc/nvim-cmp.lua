@@ -28,6 +28,8 @@ cmp.setup {
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
+    { name = 'zsh' },
+    { name = 'fish' },
     { name = 'path' },
     { name = 'buffer' },
   }),
@@ -37,9 +39,11 @@ cmp.setup {
       menu = {
         buffer = '[Buffer]',
         -- cmdline = '[CmdLine]',
+        fish = '[fish]',
         nvim_lsp = '[LSP]',
         path = '[Path]',
         vsnip = '[Vsnip]',
+        zsh = '[ZSH]',
       },
     },
   },

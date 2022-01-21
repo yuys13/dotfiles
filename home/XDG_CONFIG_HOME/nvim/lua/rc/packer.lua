@@ -294,17 +294,16 @@ local init = function()
     'nvim-lualine/lualine.nvim',
     config = function()
       vim.o.showmode = false
-      require('lsp-status').register_progress()
       require('lualine').setup {
         -- options = {
         --   icons_enabled = false,
         --   section_separators = '',
         --   component_separators = '',
         -- },
-        sections = { lualine_c = { 'filename', "require'lsp-status'.status()" } },
+        sections = { lualine_c = { 'filename', 'lsp_progress' } },
       }
     end,
-    requires = { 'nvim-lua/lsp-status.nvim' },
+    requires = { 'arkav/lualine-lsp-progress' },
   }
   use 'editorconfig/editorconfig-vim'
 

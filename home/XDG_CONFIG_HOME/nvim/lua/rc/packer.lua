@@ -317,6 +317,9 @@ local init = function()
 
   use {
     'lambdalisue/gina.vim',
+    config = function()
+      vim.fn['gina#custom#mapping#nmap']('status', '<C-l>', '<Cmd>e<CR>', { noremap = 1, silent = 1 })
+    end,
   }
 
   use {

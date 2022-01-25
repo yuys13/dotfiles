@@ -2,6 +2,8 @@
 [user]
 	name = yuys13
 	email = yuys13@users.noreply.github.com
+[commit]
+	verbose = true
 [push]
 	default = simple
 [pull]

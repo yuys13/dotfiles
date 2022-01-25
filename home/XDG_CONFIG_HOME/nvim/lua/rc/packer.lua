@@ -315,8 +315,10 @@ local init = function()
     requires = { { 'Shougo/context_filetype.vim' } },
   }
 
-  use 'tpope/vim-fugitive'
-  -- use 'airblade/vim-gitgutter'
+  use {
+    'lambdalisue/gina.vim',
+  }
+
   use {
     'lewis6991/gitsigns.nvim',
     requires = {

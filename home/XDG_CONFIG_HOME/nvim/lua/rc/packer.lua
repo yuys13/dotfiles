@@ -412,8 +412,12 @@ local init = function()
     end,
   }
 
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
+  use {
+    'machakann/vim-sandwich',
+    config = function()
+      vim.cmd [[runtime macros/sandwich/keymap/surround.vim]]
+    end,
+  }
 
   use {
     'liuchengxu/vista.vim',

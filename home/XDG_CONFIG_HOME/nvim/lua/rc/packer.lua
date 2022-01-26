@@ -30,6 +30,13 @@ local init = function()
   }
 
   use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup {}
+    end,
+  }
+
+  use {
     'hrsh7th/nvim-cmp',
     config = function()
       require 'rc.nvim-cmp'
@@ -300,10 +307,8 @@ local init = function()
         --   section_separators = '',
         --   component_separators = '',
         -- },
-        sections = { lualine_c = { 'filename', 'lsp_progress' } },
       }
     end,
-    requires = { 'arkav/lualine-lsp-progress' },
   }
   use 'editorconfig/editorconfig-vim'
 

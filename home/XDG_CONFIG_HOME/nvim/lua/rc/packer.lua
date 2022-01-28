@@ -134,7 +134,6 @@ local init = function()
           null_ls.builtins.formatting.isort,
           -- null_ls.builtins.formatting.reorder_python_imports,
           -- Rust
-          null_ls.builtins.formatting.rustfmt,
           -- Shell script
           null_ls.builtins.code_actions.shellcheck,
           null_ls.builtins.diagnostics.shellcheck,

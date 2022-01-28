@@ -95,7 +95,7 @@ lsp_installer.on_server_ready(function(server)
   --   }
   -- end
   -- disable document_formatting
-  if server.name == 'tsserver' or server.name == 'rust_analyzer' then
+  if server.name == 'tsserver' then
     opts.on_attach = function(client, bufnr)
       on_attach(client, bufnr)
       client.resolved_capabilities.document_formatting = false

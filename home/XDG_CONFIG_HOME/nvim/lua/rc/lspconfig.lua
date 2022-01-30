@@ -36,25 +36,26 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+local function on_attach_without_formatting(client, bufnr)
+  on_attach(client, bufnr)
+  client.resolved_capabilities.document_formatting = false
+end
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local lsp_installer = require 'nvim-lsp-installer'
-
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-
-  -- (optional) Customize the options passed to the server
-  -- if server.name == "tsserver" then
-  --     opts.root_dir = function() ... end
-  -- end
-  if server.name == 'sumneko_lua' then
+-- Overriding the default LSP server options
+local enhance_server_opts = {
+  ['jsonls'] = function(opts)
+    opts.on_attach = on_attach_without_formatting
+    opts.settings = {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+      },
+    }
+  end,
+  ['sumneko_lua'] = function(opts)
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, 'lua/?.lua')
     table.insert(runtime_path, 'lua/?/init.lua')
@@ -81,32 +82,28 @@ lsp_installer.on_server_ready(function(server)
         },
       },
     }
-  end
-  -- if server.name == 'efm' then
-  --   opts.init_options = { document_range_formatting = true }
-  --   opts.filetypes = { 'lua' }
-  --   opts.settings = {
-  --     rootMarks = '.git',
-  --     languages = {
-  --       lua = {
-  --         { formatCommand = 'stylua -s --stdin-filepath ${INPUT} -', formatStdin = true },
-  --       },
-  --     },
-  --   }
-  -- end
-  -- disable document_formatting
-  if server.name == 'tsserver' or server.name == 'stylelint_lsp' or server.name == 'jsonls' then
-    opts.on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-      client.resolved_capabilities.document_formatting = false
-    end
-  end
-  if server.name == 'jsonls' then
-    opts.settings = {
-      json = {
-        schemas = require('schemastore').json.schemas(),
-      },
-    }
+  end,
+  ['stylelint_lsp'] = function(opts)
+    opts.on_attach = on_attach_without_formatting
+  end,
+  ['tsserver'] = function(opts)
+    opts.on_attach = on_attach_without_formatting
+  end,
+}
+
+local lsp_installer = require 'nvim-lsp-installer'
+
+-- Register a handler that will be called for all installed servers.
+-- Alternatively, you may also register handlers on specific server instances instead (see example below).
+lsp_installer.on_server_ready(function(server)
+  local opts = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+
+  if enhance_server_opts[server.name] then
+    -- Enhance the default opts with the server-specific ones
+    enhance_server_opts[server.name](opts)
   end
 
   -- This setup() function is exactly the same as lspconfig's setup function.

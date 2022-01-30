@@ -95,11 +95,18 @@ lsp_installer.on_server_ready(function(server)
   --   }
   -- end
   -- disable document_formatting
-  if server.name == 'tsserver' or server.name == 'stylelint_lsp' then
+  if server.name == 'tsserver' or server.name == 'stylelint_lsp' or server.name == 'jsonls' then
     opts.on_attach = function(client, bufnr)
       on_attach(client, bufnr)
       client.resolved_capabilities.document_formatting = false
     end
+  end
+  if server.name == 'jsonls' then
+    opts.settings = {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+      },
+    }
   end
 
   -- This setup() function is exactly the same as lspconfig's setup function.

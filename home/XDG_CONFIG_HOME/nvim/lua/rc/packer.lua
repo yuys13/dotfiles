@@ -29,6 +29,8 @@ local init = function()
     end,
   }
 
+  use 'b0o/SchemaStore.nvim'
+
   use {
     'j-hui/fidget.nvim',
     config = function()

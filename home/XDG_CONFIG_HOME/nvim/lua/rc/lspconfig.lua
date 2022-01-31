@@ -55,6 +55,15 @@ local enhance_server_opts = {
       },
     }
   end,
+  ['rust_analyzer'] = function(opts)
+    opts.settings = {
+      ['rust-analyzer'] = {
+        checkOnSave = {
+          command = 'clippy',
+        },
+      },
+    }
+  end,
   ['sumneko_lua'] = function(opts)
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, 'lua/?.lua')

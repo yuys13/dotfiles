@@ -67,36 +67,6 @@ local init = function()
   }
 
   use {
-    'hrsh7th/vim-vsnip',
-    setup = function()
-      vim.api.nvim_set_keymap(
-        'i',
-        '<Tab>',
-        "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'",
-        { expr = true, noremap = false }
-      )
-      vim.api.nvim_set_keymap(
-        's',
-        '<Tab>',
-        "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'",
-        { expr = true, noremap = false }
-      )
-      vim.api.nvim_set_keymap(
-        'i',
-        '<S-Tab>',
-        "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'",
-        { expr = true, noremap = false }
-      )
-      vim.api.nvim_set_keymap(
-        's',
-        '<S-Tab>',
-        "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'",
-        { expr = true, noremap = false }
-      )
-    end,
-  }
-
-  use {
     'jose-elias-alvarez/null-ls.nvim',
     config = function()
       local null_ls = require 'null-ls'

@@ -284,7 +284,10 @@ local init = function()
       }
     end,
   }
+
   use 'editorconfig/editorconfig-vim'
+
+  use 'thinca/vim-localrc'
 
   use {
     'yuys13/partedit.vim',

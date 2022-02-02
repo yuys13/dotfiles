@@ -19,6 +19,7 @@ local init = function()
     requires = {
       { 'williamboman/nvim-lsp-installer' },
       { 'folke/lua-dev.nvim' },
+      { 'b0o/SchemaStore.nvim' },
     },
   }
 
@@ -28,8 +29,6 @@ local init = function()
       require('lsp_signature').setup()
     end,
   }
-
-  use 'b0o/SchemaStore.nvim'
 
   use {
     'j-hui/fidget.nvim',
@@ -358,16 +357,6 @@ local init = function()
         -- show_current_context = true,
         -- show_current_context_start = true,
       }
-    end,
-  }
-
-  use {
-    'Yggdroot/indentLine',
-    disable = true,
-    setup = function()
-      vim.g.indentLine_showFirstIndentLevel = true
-      vim.g.indentLine_bufTypeExclude = { 'nofile', 'help', 'terminal' }
-      vim.g.indentLine_fileTypeExclude = { '' }
     end,
   }
 

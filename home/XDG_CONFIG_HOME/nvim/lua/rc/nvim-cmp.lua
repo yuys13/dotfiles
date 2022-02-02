@@ -31,14 +31,14 @@ cmp.setup {
       else
         cmp.complete()
       end
-    end, { 'i', 'c' }),
+    end, { 'i' }),
     ['<C-p>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
       else
         cmp.complete()
       end
-    end, { 'i', 'c' }),
+    end, { 'i' }),
 
     ['<Tab>'] = cmp.mapping(function(fallback)
       if vim.fn['vsnip#available'](1) == 1 then

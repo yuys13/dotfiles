@@ -42,6 +42,14 @@ local init = function()
   }
 
   use {
+    'github/copilot.vim',
+    setup = function()
+      vim.g.copilot_no_map = true
+      vim.api.nvim_set_keymap('i', '<C-f>', 'copilot#Accept("")', { silent = true, script = true, expr = true })
+    end,
+  }
+
+  use {
     'hrsh7th/nvim-cmp',
     config = function()
       require 'rc.nvim-cmp'

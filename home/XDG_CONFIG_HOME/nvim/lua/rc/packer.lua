@@ -140,6 +140,8 @@ local init = function()
           null_ls.builtins.diagnostics.vint,
           -- YAML
           null_ls.builtins.diagnostics.yamllint,
+          -- zsh
+          null_ls.builtins.diagnostics.zsh,
         },
       }
     end,

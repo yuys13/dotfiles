@@ -452,7 +452,16 @@ local init = function()
     --   vim.api.nvim_set_keymap('n', '<Esc><Esc>', '<Cmd>EmphasisCursor<CR>', { noremap = true })
     -- end,
   }
-  use { 'mattn/vim-sonictemplate', event = 'CmdlineEnter' }
+  use {
+    'mattn/vim-sonictemplate',
+    event = 'CmdlineEnter',
+    setup = function()
+      vim.g.loaded_sonictemplate_vim = true
+    end,
+    config = function()
+      vim.cmd [[command! -nargs=1 -complete=customlist,sonictemplate#complete Template call sonictemplate#apply(<f-args>, "n")]]
+    end,
+  }
 end
 
 return packer.startup {

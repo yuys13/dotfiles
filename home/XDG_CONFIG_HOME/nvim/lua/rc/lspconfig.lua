@@ -65,11 +65,12 @@ local enhance_server_opts = {
     }
   end,
   ['sumneko_lua'] = function(opts)
+    opts.on_attach = on_attach_without_formatting
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, 'lua/?.lua')
     table.insert(runtime_path, 'lua/?/init.lua')
 
-    opts['settings'] = {
+    opts.settings = {
       Lua = {
         runtime = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)

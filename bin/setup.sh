@@ -16,7 +16,7 @@ get_uname() {
     uname | to_lower
 }
 
-package_install () {
+package_install() {
     if is_linux; then
         if command -v dnf >/dev/null 2>&1; then
             sudo dnf install "$@"
@@ -53,4 +53,3 @@ fi
 git clone https://github.com/yuys13/dotfiles.git "${HOME}"/src/github.com/yuys13/dotfiles
 cd "${HOME}"/src/github.com/yuys13/dotfiles
 make install
-

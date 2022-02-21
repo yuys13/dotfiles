@@ -24,7 +24,7 @@ get_uname() {
     uname | to_lower
 }
 
-package_install () {
+package_install() {
     if is_linux; then
         if command -v dnf >/dev/null 2>&1; then
             sudo dnf -y install "$@"
@@ -48,4 +48,3 @@ package_install () {
         exit 2
     fi
 }
-

@@ -15,13 +15,12 @@ else
     fi
 fi
 
-if is_darwin && ! command -v brew >> /dev/null 2>&1; then
+if is_darwin && ! command -v brew >>/dev/null 2>&1; then
     /usr/bin/ruby -e "$(curl -fsSL https:/raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 #for file in ${BASEPATH%/}/bin/$(get_uname)/*.sh
-for file in "$(get_uname)"/*.sh
-do
+for file in "$(get_uname)"/*.sh; do
     if [ -f "${file}" ]; then
         echo bash "${file}"
         bash "${file}"
@@ -29,4 +28,3 @@ do
 done
 
 echo complete install!
-

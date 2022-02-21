@@ -46,6 +46,8 @@ local init = function()
     setup = function()
       vim.g.copilot_no_maps = true
       vim.api.nvim_set_keymap('i', '<C-f>', 'copilot#Accept("")', { silent = true, script = true, expr = true })
+      vim.api.nvim_set_keymap('i', '<M-[>', '<Cmd>call copilot#Next()<CR>', { silent = true, script = true })
+      vim.api.nvim_set_keymap('i', '<M-]>', '<Cmd>call copilot#Previous()<CR>', { silent = true, script = true })
     end,
   }
 

@@ -119,9 +119,8 @@ local init = function()
           null_ls.builtins.diagnostics.shellcheck,
           null_ls.builtins.formatting.shfmt.with {
             condition = function(utils)
-              return not utils.root_has_file { '.editorconfig' }
+              return utils.root_has_file { '.editorconfig' }
             end,
-            extra_args = { '-i', '4' },
           },
           -- Text
           null_ls.builtins.diagnostics.textlint.with {

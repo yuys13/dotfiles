@@ -41,6 +41,9 @@ set clipboard&
 set clipboard^=unnamed
 set clipboard^=unnamedplus
 
+" Mouse
+set mouse=a
+
 " Keymap
 imap <silent> jj <Esc>
 cnoremap <C-a> <Home>

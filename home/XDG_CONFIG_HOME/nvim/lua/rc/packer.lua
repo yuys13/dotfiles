@@ -463,6 +463,8 @@ local init = function()
       vim.cmd [[command! -nargs=1 -complete=customlist,sonictemplate#complete Template call sonictemplate#apply(<f-args>, "n")]]
     end,
   }
+
+  use 'DanilaMihailov/beacon.nvim'
 end
 
 return packer.startup {

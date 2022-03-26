@@ -286,11 +286,11 @@ local init = function()
     config = function()
       vim.o.showmode = false
       require('lualine').setup {
-        -- options = {
-        --   icons_enabled = false,
-        --   section_separators = '',
-        --   component_separators = '',
-        -- },
+        options = {
+          icons_enabled = false,
+          section_separators = '',
+          component_separators = '',
+        },
       }
     end,
   }

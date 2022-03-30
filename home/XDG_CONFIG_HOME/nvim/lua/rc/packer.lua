@@ -253,7 +253,14 @@ local init = function()
     cmd = 'TSPlaygroundToggle',
   }
 
-  use { 'dracula/vim', as = 'dracula', config = 'vim.cmd[[colorscheme dracula]]' }
+  use {
+    'dracula/vim',
+    as = 'dracula',
+    config = function()
+      vim.cmd 'colorscheme dracula'
+      vim.cmd 'autocmd MyAutoCmd User PackerComplete runtime after/plugin/dracula.vim'
+    end,
+  }
   use { 'cocopon/iceberg.vim', opt = true }
   use { 'romainl/vim-dichromatic', opt = true }
   use { 'PierreCapo/voir.vim', opt = true }

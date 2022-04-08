@@ -38,6 +38,9 @@ autoload -Uz add-zsh-hook
 
 ## KEY BIND
 bindkey -e
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
 
 ## HISTORY
 setopt share_history

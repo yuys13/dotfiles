@@ -1,4 +1,4 @@
-## INIT
+# INIT
 ## Path
 typeset -U path cdpath fpath manpath
 
@@ -22,9 +22,9 @@ fpath=( \
 ## Editor
 if test -n ${EDITOR} -a "${EDITOR[(w)0]}" = 'nvr'; then
     export EDITOR
-elif which nvim > /dev/null 2>&1; then
+elif type nvim >/dev/null 2>&1; then
     export EDITOR=nvim
-elif which vim > /dev/null 2>&1; then
+elif type vim >/dev/null 2>&1; then
     export EDITOR=vim
 else
     export EDITOR=vi
@@ -74,7 +74,7 @@ if [[ -f ${XDG_DATA_HOME%/}/zsh/solarized ]]; then
 fi
 case ${OSTYPE} in
     darwin*)
-        if which gls > /dev/null 2>&1; then
+        if type gls >/dev/null 2>&1; then
             alias ls='gls -F --color=auto'
         else
             export CLICOLOR=1

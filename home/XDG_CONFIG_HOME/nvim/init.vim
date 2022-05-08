@@ -12,6 +12,8 @@ set list
 set listchars=tab:¦-,trail:-,nbsp:+,extends:»,precedes:«
 set colorcolumn=80
 set cursorline
+set breakindent
+set showbreak=↪
 
 set diffopt&
 set diffopt+=vertical

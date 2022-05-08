@@ -222,8 +222,25 @@ local init = function()
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
-        -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-        ensure_installed = 'maintained',
+        -- A list of parser names, or "all"
+        ensure_installed = {
+          'bash',
+          'dockerfile',
+          'fish',
+          'go',
+          'gomod',
+          'javascript',
+          'json',
+          'jsonc',
+          'lua',
+          'make',
+          'rust',
+          'toml',
+          'tsx',
+          'typescript',
+          'vim',
+          'yaml',
+        },
 
         -- Install languages synchronously (only applied to `ensure_installed`)
         sync_install = false,

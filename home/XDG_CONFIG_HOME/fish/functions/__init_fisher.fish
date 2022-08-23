@@ -12,12 +12,6 @@ function __init_fisher
         end
     end
 
-    set -q theme_powerline_fonts
-    or set -U theme_powerline_fonts no
-
-    set -q theme_nerd_fonts
-    or set -U theme_nerd_fonts no
-
     set -q FZF_DEFAULT_OPTS
     or set -U FZF_DEFAULT_OPTS --layout=reverse --height 40%
 
@@ -29,4 +23,3 @@ function __init_fisher
 
     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/HEAD/functions/fisher.fish | source && fisher update
 end
-

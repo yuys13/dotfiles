@@ -11,6 +11,9 @@
         source ${github}/romkatv/powerlevel10k/powerlevel10k.zsh-theme
         # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
         [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
+    elif [ -d /usr/share/zsh-theme-powerlevel10k ]; then
+        source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+        [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
     else
         autoload -Uz promptinit
         promptinit
@@ -27,19 +30,18 @@
     if [ -d ${zsh_users}/zsh-autosuggestions ]; then
         source ${zsh_users}/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+    elif [ -d /usr/share/zsh/plugins/zsh-autosuggestions ]; then
+        source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     fi
 
     # fzf
     if [ -d ${github}/junegunn/fzf ]; then
-        if type fd > /dev/null 2>&1; then
-            export FZF_ALT_C_COMMAND="fd -t d"
-            export FZF_CTRL_T_COMMAND='fd -t f -L -H -E .git'
-        fi
-        if type bat > /dev/null 2>&1; then
-            export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
-        fi
-
         for rc in ${github}/junegunn/fzf/shell/*.zsh; do
+            source $rc
+        done
+    elif [ -d /usr/share/fzf ]; then
+        for rc in /usr/share/fzf/*.zsh; do
             source $rc
         done
     fi
@@ -52,6 +54,14 @@
     }
 
     if type fzf > /dev/null; then
+        if type fd > /dev/null 2>&1; then
+            export FZF_ALT_C_COMMAND="fd -t d"
+            export FZF_CTRL_T_COMMAND='fd -t f -L -H -E .git'
+        fi
+        if type bat > /dev/null 2>&1; then
+            export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
+        fi
+
         export FZF_DEFAULT_OPTS=${FZF_DEFAULT_OPTS:-"--layout=reverse --height 40%"}
         function bd_list () {
             local dir=$PWD
@@ -90,16 +100,12 @@
         fi
     fi
 
-    # ghq
-    fpath=( \
-        ${github}/x-motemen/ghq/misc/zsh(N-/) \
-        $fpath \
-    )
-
     ## sourced after all custom widgets have been created
     # zsh-syntax-highlighting
     if [ -d ${zsh_users}/zsh-syntax-highlighting ]; then
         source ${zsh_users}/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+    elif [ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ]; then
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
     fi
 
     autoload -Uz compinit

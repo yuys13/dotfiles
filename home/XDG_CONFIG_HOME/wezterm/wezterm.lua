@@ -1,19 +1,12 @@
 local wezterm = require 'wezterm'
 
 local function basename(s)
-  return string.gsub(s, '(.*[/\\])(.*)', '%2')
-end
-
-local function convert_home_dir(path)
-  local cwd = path
-  cwd = cwd:gsub('^' .. wezterm.home_dir, '~')
-  return cwd
+  return string.gsub(s, '/$', ''):gsub('(.*[/\\])(.*)', '%2')
 end
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
   local proc = basename(tab.active_pane.foreground_process_name)
-  local cwd = tab.active_pane.current_working_dir:gsub('^file://', '')
-  cwd = basename(convert_home_dir(cwd))
+  local cwd = basename(tab.active_pane.current_working_dir)
   local title = tab.tab_index + 1 .. ':' .. cwd .. ' | ' .. proc
   return {
     { Text = wezterm.truncate_right(title, max_width) },

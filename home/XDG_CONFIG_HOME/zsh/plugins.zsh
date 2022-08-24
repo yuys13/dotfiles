@@ -4,12 +4,16 @@
     local github=${ghq_root}/github.com
     local zsh_users=${github}/zsh-users
     local omz_root=${github}/robbyrussell/oh-my-zsh
+    local brew_prefix=$(type brew >/dev/null && brew --prefix || echo /opt/homebrew)
 
     ## Load plugins
     # powerlevel10k
     if [ -d ${github}/romkatv/powerlevel10k ]; then
         source ${github}/romkatv/powerlevel10k/powerlevel10k.zsh-theme
         # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+        [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
+    elif [ -d ${brew_prefix}/opt/powerlevel10k ]; then
+        source ${brew_prefix}/opt/powerlevel10k/powerlevel10k.zsh-theme
         [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
     elif [ -d /usr/share/zsh-theme-powerlevel10k ]; then
         source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -24,11 +28,16 @@
     # zsh-completions
     if [ -d ${zsh_users}/zsh-completions ]; then
         source ${zsh_users}/zsh-completions/zsh-completions.plugin.zsh
+    elif [ -d ${brew_prefix}/share/zsh-completions ]; then
+        fpath=( ${brew_prefix}/share/zsh-completions $fpath )
     fi
 
     # zsh-autosuggestions
     if [ -d ${zsh_users}/zsh-autosuggestions ]; then
         source ${zsh_users}/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+    elif [ -d ${brew_prefix}/share/zsh-autosuggestions ]; then
+        source ${brew_prefix}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     elif [ -d /usr/share/zsh/plugins/zsh-autosuggestions ]; then
         source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
@@ -38,6 +47,10 @@
     # fzf
     if [ -d ${github}/junegunn/fzf ]; then
         for rc in ${github}/junegunn/fzf/shell/*.zsh; do
+            source $rc
+        done
+    elif [ -d ${brew_prefix}/opt/fzf ]; then
+        for rc in ${brew_prefix}/opt/fzf/shell/*.zsh; do
             source $rc
         done
     elif [ -d /usr/share/fzf ]; then
@@ -104,6 +117,8 @@
     # zsh-syntax-highlighting
     if [ -d ${zsh_users}/zsh-syntax-highlighting ]; then
         source ${zsh_users}/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+    elif [ -d ${brew_prefix}/share/zsh-syntax-highlighting ]; then
+        source ${brew_prefix}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     elif [ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ]; then
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
     fi

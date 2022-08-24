@@ -15,7 +15,7 @@ path=( \
 )
 fpath=( \
     ${XDG_CONFIG_HOME}/zsh/functions(N-/) \
-    /opt/homebrew/share//zsh/site-functions(N-/) \
+    /opt/homebrew/share/zsh/site-functions(N-/) \
     $fpath \
 )
 

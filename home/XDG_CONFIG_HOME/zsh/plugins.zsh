@@ -72,7 +72,15 @@
             export FZF_CTRL_T_COMMAND='fd -t f -L -H -E .git'
         fi
         if type bat > /dev/null 2>&1; then
-            export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
+            export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
+        else
+            export FZF_CTRL_T_OPTS='--preview "cat {}"'
+        fi
+
+        if type exa > /dev/null 2>&1; then
+            export FZF_ALT_C_OPTS='--preview "exa --icons {}"'
+        else
+            export FZF_ALT_C_OPTS='--preview "ls --color {}"'
         fi
 
         export FZF_DEFAULT_OPTS=${FZF_DEFAULT_OPTS:-"--layout=reverse --height 40%"}
@@ -88,7 +96,7 @@
         }
 
         function bd () {
-            local dir=$(bd_list | fzf)
+            local dir=$(bd_list | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
             if [ -n "$dir" ]; then
                 builtin cd $dir
             fi
@@ -96,7 +104,7 @@
 
         if type ghq > /dev/null; then
             ghq_fzf () {
-                local selected_repo=$(ghq list -p | fzf)
+                local selected_repo=$(ghq list -p | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
                 if [[ -z $selected_repo ]]; then
                     zle redisplay
                     return 0

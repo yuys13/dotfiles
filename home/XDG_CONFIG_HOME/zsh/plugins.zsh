@@ -78,7 +78,7 @@
         fi
 
         if type exa > /dev/null 2>&1; then
-            export FZF_ALT_C_OPTS='--preview "exa --icons {}"'
+            export FZF_ALT_C_OPTS='--preview "exa --icons --tree --level=1 {}"'
         else
             export FZF_ALT_C_OPTS='--preview "ls --color {}"'
         fi

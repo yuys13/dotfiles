@@ -31,12 +31,7 @@ M.use_ime = true
 M.font = wezterm.font 'HackGenNerd Console'
 M.font_size = 14.0
 
-local status, dracula = pcall(require, 'dracula')
-if status then
-  M.colors = dracula
-else
-  M.color_scheme = 'Dracula'
-end
+M.color_scheme = 'Dracula (Official)'
 
 M.tab_max_width = 24
 

@@ -101,10 +101,12 @@ local enhance_server_opts = {
 }
 
 local lsp_installer = require 'nvim-lsp-installer'
+lsp_installer.setup {}
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
+local lspconfig = require 'lspconfig'
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
   local opts = {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -115,7 +117,5 @@ lsp_installer.on_server_ready(function(server)
     enhance_server_opts[server.name](opts)
   end
 
-  -- This setup() function is exactly the same as lspconfig's setup function.
-  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  server:setup(opts)
-end)
+  lspconfig[server.name].setup(opts)
+end

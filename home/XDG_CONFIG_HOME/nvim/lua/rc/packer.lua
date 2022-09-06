@@ -46,9 +46,9 @@ local init = function()
     'github/copilot.vim',
     setup = function()
       vim.g.copilot_no_maps = true
-      vim.api.nvim_set_keymap('i', '<C-f>', 'copilot#Accept("")', { silent = true, script = true, expr = true })
-      vim.api.nvim_set_keymap('i', '<M-[>', '<Cmd>call copilot#Next()<CR>', { silent = true, script = true })
-      vim.api.nvim_set_keymap('i', '<M-]>', '<Cmd>call copilot#Previous()<CR>', { silent = true, script = true })
+      vim.keymap.set('i', '<C-f>', 'copilot#Accept("")', { silent = true, script = true, expr = true })
+      vim.keymap.set('i', '<M-[>', '<Cmd>call copilot#Next()<CR>', { silent = true, script = true })
+      vim.keymap.set('i', '<M-]>', '<Cmd>call copilot#Previous()<CR>', { silent = true, script = true })
     end,
   }
 
@@ -155,32 +155,27 @@ local init = function()
       require 'rc.telescope'
     end,
     setup = function()
-      vim.api.nvim_set_keymap('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<Space>fr', '<Cmd>Telescope resume<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<Space>fg', '<Cmd>Telescope git_files<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap(
+      vim.keymap.set('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', { silent = true })
+      vim.keymap.set('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', { silent = true })
+      vim.keymap.set('n', '<Space>fr', '<Cmd>Telescope resume<CR>', { silent = true })
+      vim.keymap.set('n', '<Space>fg', '<Cmd>Telescope git_files<CR>', { silent = true })
+      vim.keymap.set(
         'n',
         '<Space>fig',
         '<Cmd>lua require"telescope.builtin".git_files{git_command={"git","ls-files","--exclude-standard","-coi"}}<CR>',
-        { noremap = true, silent = true }
+        { silent = true }
       )
 
-      vim.api.nvim_set_keymap('n', '<Space>f*', '<Cmd>Telescope grep_string<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Space>f*', '<Cmd>Telescope grep_string<CR>', { silent = true })
 
-      vim.api.nvim_set_keymap('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<Space>fcs', '<Cmd>Telescope colorscheme<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', 'FT', '<Cmd>Telescope filetypes<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', { silent = true })
+      vim.keymap.set('n', '<Space>fcs', '<Cmd>Telescope colorscheme<CR>', { silent = true })
+      vim.keymap.set('n', 'FT', '<Cmd>Telescope filetypes<CR>', { silent = true })
 
-      vim.api.nvim_set_keymap('n', '<Space>f:', '<Cmd>Telescope command_history<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Space>f:', '<Cmd>Telescope command_history<CR>', { silent = true })
 
-      vim.api.nvim_set_keymap(
-        'n',
-        '<Space>/',
-        '<Cmd>Telescope current_buffer_fuzzy_find<CR>',
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap('n', '<Space>f/', '<Cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Space>/', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', { silent = true })
+      vim.keymap.set('n', '<Space>f/', '<Cmd>Telescope live_grep<CR>', { silent = true })
     end,
     requires = {
       { 'nvim-lua/plenary.nvim' },
@@ -194,22 +189,12 @@ local init = function()
     requires = 'kyazdani42/nvim-web-devicons',
     setup = function()
       -- Lua
-      vim.api.nvim_set_keymap('n', '<Space>xx', '<cmd>Trouble<cr>', { silent = true, noremap = true })
-      vim.api.nvim_set_keymap(
-        'n',
-        '<Space>xw',
-        '<cmd>Trouble workspace_diagnostics<cr>',
-        { silent = true, noremap = true }
-      )
-      vim.api.nvim_set_keymap(
-        'n',
-        '<Space>xd',
-        '<cmd>Trouble document_diagnostics<cr>',
-        { silent = true, noremap = true }
-      )
-      -- vim.api.nvim_set_keymap('n', '<Space>xl', '<cmd>Trouble loclist<cr>', { silent = true, noremap = true })
-      -- vim.api.nvim_set_keymap('n', '<Space>xq', '<cmd>Trouble quickfix<cr>', { silent = true, noremap = true })
-      vim.api.nvim_set_keymap('n', 'gR', '<cmd>Trouble lsp_references<cr>', { silent = true, noremap = true })
+      vim.keymap.set('n', '<Space>xx', '<cmd>Trouble<cr>', { silent = true })
+      vim.keymap.set('n', '<Space>xw', '<cmd>Trouble workspace_diagnostics<cr>', { silent = true })
+      vim.keymap.set('n', '<Space>xd', '<cmd>Trouble document_diagnostics<cr>', { silent = true })
+      -- vim.keymap.set('n', '<Space>xl', '<cmd>Trouble loclist<cr>', { silent = true })
+      -- vim.keymap.set('n', '<Space>xq', '<cmd>Trouble quickfix<cr>', { silent = true })
+      vim.keymap.set('n', 'gR', '<cmd>Trouble lsp_references<cr>', { silent = true })
     end,
     config = function()
       require('trouble').setup {
@@ -327,7 +312,7 @@ local init = function()
   use {
     'yuys13/partedit.vim',
     setup = function()
-      vim.api.nvim_set_keymap('n', '<Space>pe', '<Plug>(partedit_start_context)', { silent = true })
+      vim.keymap.set('n', '<Space>pe', '<Plug>(partedit_start_context)', { silent = true })
     end,
     requires = { { 'Shougo/context_filetype.vim' } },
   }
@@ -376,8 +361,8 @@ local init = function()
     keys = '<Plug>(openbrowser-smart-search)',
     setup = function()
       vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
-      vim.api.nvim_set_keymap('n', 'gx', '<Plug>(openbrowser-smart-search)', {})
-      vim.api.nvim_set_keymap('x', 'gx', '<Plug>(openbrowser-smart-search)', {})
+      vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-search)', {})
+      vim.keymap.set('x', 'gx', '<Plug>(openbrowser-smart-search)', {})
     end,
   }
 
@@ -400,8 +385,8 @@ local init = function()
     't9md/vim-quickhl',
     keys = '<Plug>(quickhl-manual-this)',
     setup = function()
-      vim.api.nvim_set_keymap('n', '<Space>hl', '<Plug>(quickhl-manual-this)', {})
-      vim.api.nvim_set_keymap('n', '<Space>nohl', '<Plug>(quickhl-manual-reset)', {})
+      vim.keymap.set('n', '<Space>hl', '<Plug>(quickhl-manual-this)', {})
+      vim.keymap.set('n', '<Space>nohl', '<Plug>(quickhl-manual-reset)', {})
     end,
   }
 
@@ -409,10 +394,10 @@ local init = function()
     'kassio/neoterm',
     cmd = 'Tnew',
     setup = function()
-      vim.api.nvim_set_keymap('n', '<Space>nl', '<Cmd>rightbelow vertical Tnew<CR>', { noremap = true })
-      vim.api.nvim_set_keymap('n', '<Space>nh', '<Cmd>vertical Tnew<CR>', { noremap = true })
-      vim.api.nvim_set_keymap('n', '<Space>nn', '<Plug>(neoterm-repl-send-line)', {})
-      vim.api.nvim_set_keymap('x', '<Space>nn', '<Plug>(neoterm-repl-send)', {})
+      vim.keymap.set('n', '<Space>nl', '<Cmd>rightbelow vertical Tnew<CR>', {})
+      vim.keymap.set('n', '<Space>nh', '<Cmd>vertical Tnew<CR>', {})
+      vim.keymap.set('n', '<Space>nn', '<Plug>(neoterm-repl-send-line)', {})
+      vim.keymap.set('x', '<Space>nn', '<Plug>(neoterm-repl-send)', {})
     end,
   }
 
@@ -475,7 +460,7 @@ local init = function()
     'rbtnn/vim-emphasiscursor',
     cmd = 'EmphasisCursor',
     -- setup = function()
-    --   vim.api.nvim_set_keymap('n', '<Esc><Esc>', '<Cmd>EmphasisCursor<CR>', { noremap = true })
+    --   vim.keymap.set('n', '<Esc><Esc>', '<Cmd>EmphasisCursor<CR>', {})
     -- end,
   }
   use {

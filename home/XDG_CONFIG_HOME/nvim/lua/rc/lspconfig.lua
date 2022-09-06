@@ -100,22 +100,25 @@ local enhance_server_opts = {
   end,
 }
 
-local lsp_installer = require 'nvim-lsp-installer'
-lsp_installer.setup {}
+local mason = require 'mason'
+mason.setup {}
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 local lspconfig = require 'lspconfig'
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+local mason_lspconfig = require 'mason-lspconfig'
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    local opts = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
 
-  if enhance_server_opts[server.name] then
-    -- Enhance the default opts with the server-specific ones
-    enhance_server_opts[server.name](opts)
-  end
+    if enhance_server_opts[server_name] then
+      -- Enhance the default opts with the server-specific ones
+      enhance_server_opts[server_name](opts)
+    end
 
-  lspconfig[server.name].setup(opts)
-end
+    lspconfig[server_name].setup(opts)
+  end,
+}

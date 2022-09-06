@@ -17,7 +17,8 @@ local init = function()
       require 'rc.lspconfig'
     end,
     requires = {
-      { 'williamboman/nvim-lsp-installer' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
       { 'folke/lua-dev.nvim' },
       { 'b0o/SchemaStore.nvim' },
     },

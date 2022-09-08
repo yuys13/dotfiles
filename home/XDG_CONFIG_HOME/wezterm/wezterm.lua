@@ -28,7 +28,7 @@ end)
 local M = {}
 M.use_ime = true
 
-M.font = wezterm.font 'HackGenNerd Console'
+M.font = wezterm.font 'HackGen Console NF'
 M.font_size = 14.0
 
 M.color_scheme = 'Dracula (Official)'

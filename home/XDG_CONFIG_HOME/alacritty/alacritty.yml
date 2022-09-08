@@ -86,10 +86,10 @@ window:
 font:
     size: 14
     normal:
-        family: "HackGenNerd Console"
+        family: "HackGen Console NF"
         style: Regular
     bold:
-        family: "HackGenNerd Console"
+        family: "HackGen Console NF"
         style: Bold
 
 # Dracula

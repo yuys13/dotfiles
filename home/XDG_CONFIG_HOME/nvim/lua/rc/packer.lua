@@ -211,20 +211,25 @@ local init = function()
         -- A list of parser names, or "all"
         ensure_installed = {
           'bash',
+          'css',
           'dockerfile',
           'fish',
           'go',
           'gomod',
+          'graphql',
+          'html',
           'javascript',
           'json',
           'jsonc',
           'lua',
           'make',
           'rust',
+          'scss',
           'toml',
           'tsx',
           'typescript',
           'vim',
+          'vue',
           'yaml',
         },
 
@@ -247,8 +252,15 @@ local init = function()
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
+        context_commentstring = {
+          enable = true,
+          enable_autocmd = false,
+        },
       }
     end,
+    requires = {
+      { 'JoosepAlviste/nvim-ts-context-commentstring' },
+    },
   }
 
   use {
@@ -405,8 +417,15 @@ local init = function()
     'terrortylor/nvim-comment',
     event = 'BufEnter',
     config = function()
-      require('nvim_comment').setup()
+      require('nvim_comment').setup {
+        hook = function()
+          require('ts_context_commentstring.internal').update_commentstring()
+        end,
+      }
     end,
+    requires = {
+      { 'JoosepAlviste/nvim-ts-context-commentstring' },
+    },
   }
 
   use {

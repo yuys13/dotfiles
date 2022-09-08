@@ -275,7 +275,12 @@ local init = function()
     as = 'dracula',
     config = function()
       vim.cmd 'colorscheme dracula'
-      vim.cmd 'autocmd MyAutoCmd User PackerComplete runtime after/plugin/dracula.vim'
+      local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
+      vim.api.nvim_create_autocmd('User', {
+        group = augroup,
+        pattern = 'PackerComplete',
+        command = 'runtime after/plugin/dracula.vim',
+      })
     end,
   }
   use { 'cocopon/iceberg.vim', opt = true }
@@ -297,7 +302,13 @@ local init = function()
         vim.g.solarized_termtrans = 1
         vim.g.solarized_termcolors = 16
         vim.o.background = 'dark'
-        vim.cmd [[autocmd MyAutoCmd VimEnter * nested colorscheme solarized]]
+        local augroup = vim.api.nvim_create_augroup('SolarizedAutoCmd', {})
+        vim.api.nvim_create_autocmd('VimEnter', {
+          group = augroup,
+          pattern = '*',
+          nested = true,
+          command = 'colorscheme solarized',
+        })
       end
     end,
   }
@@ -471,7 +482,14 @@ local init = function()
       vim.g.linediff_modify_statusline = 0
       vim.g.linediff_first_buffer_command = 'topleft new'
       vim.g.linediff_second_buffer_command = 'vertical new'
-      vim.cmd [[autocmd MyAutoCmd User LinediffBufferReady nnoremap <buffer> q :LinediffReset<cr>]]
+      local augroup = vim.api.nvim_create_augroup('LinediffAutoCmd', {})
+      vim.api.nvim_create_autocmd('User', {
+        group = augroup,
+        pattern = 'LinediffBufferReady',
+        callback = function()
+          vim.keymap.set('n', 'q', '<Cmd>LinediffReset<CR>', { buffer = true })
+        end,
+      })
     end,
   }
 

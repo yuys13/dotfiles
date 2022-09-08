@@ -30,11 +30,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>lf', vim.lsp.buf.formatting, opts)
 end
 
-local function on_attach_without_formatting(client, bufnr)
-  on_attach(client, bufnr)
-  client.resolved_capabilities.document_formatting = false
-end
-
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -42,7 +37,6 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Overriding the default LSP server options
 local enhance_server_opts = {
   ['jsonls'] = function(opts)
-    opts.on_attach = on_attach_without_formatting
     opts.settings = {
       json = {
         schemas = require('schemastore').json.schemas(),
@@ -59,7 +53,6 @@ local enhance_server_opts = {
     }
   end,
   ['sumneko_lua'] = function(opts)
-    opts.on_attach = on_attach_without_formatting
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, 'lua/?.lua')
     table.insert(runtime_path, 'lua/?/init.lua')
@@ -86,12 +79,6 @@ local enhance_server_opts = {
         },
       },
     }
-  end,
-  ['stylelint_lsp'] = function(opts)
-    opts.on_attach = on_attach_without_formatting
-  end,
-  ['tsserver'] = function(opts)
-    opts.on_attach = on_attach_without_formatting
   end,
 }
 

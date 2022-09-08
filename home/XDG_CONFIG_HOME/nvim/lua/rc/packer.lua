@@ -77,14 +77,17 @@ local init = function()
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'lukas-reineke/lsp-format.nvim' },
     config = function()
       local null_ls = require 'null-ls'
+      require('lsp-format').setup { sync = true }
       null_ls.setup {
         -- you can reuse a shared lspconfig on_attach callback here
         on_attach = function(client)
-          if client.resolved_capabilities.document_formatting then
-            vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
-          end
+          -- if client.resolved_capabilities.document_formatting then
+          --   vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
+          -- end
+          require('lsp-format').on_attach(client)
         end,
         sources = {
           -- Dockerfile

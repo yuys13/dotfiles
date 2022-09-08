@@ -17,28 +17,22 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    -- ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    -- ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    -- ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
-    -- ['<CR>'] = cmp.mapping(cmp.mapping.confirm { select = true }, { 'i' }),
-    ['<C-n>'] = cmp.mapping(function()
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-n>'] = function()
       if cmp.visible() then
         cmp.select_next_item()
       else
         cmp.complete()
       end
-    end, { 'i' }),
-    ['<C-p>'] = cmp.mapping(function()
+    end,
+    ['<C-p>'] = function()
       if cmp.visible() then
         cmp.select_prev_item()
       else
         cmp.complete()
       end
-    end, { 'i' }),
-
+    end,
     ['<Tab>'] = cmp.mapping(function(fallback)
       if vim.fn['vsnip#available'](1) == 1 then
         feedkey('<Plug>(vsnip-expand-or-jump)', '')
@@ -82,7 +76,10 @@ cmp.setup {
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline {
+    ['<C-n>'] = cmp.config.disable,
+    ['<C-p>'] = cmp.config.disable,
+  },
   sources = {
     { name = 'buffer' },
   },
@@ -90,7 +87,10 @@ cmp.setup.cmdline('/', {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline {
+    ['<C-n>'] = cmp.config.disable,
+    ['<C-p>'] = cmp.config.disable,
+  },
   sources = cmp.config.sources({
     { name = 'path' },
   }, {

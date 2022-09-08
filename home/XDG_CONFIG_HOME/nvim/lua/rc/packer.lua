@@ -59,7 +59,6 @@ local init = function()
     end,
     requires = {
       { 'hrsh7th/vim-vsnip' },
-      { 'hrsh7th/vim-vsnip-integ' },
       { 'hrsh7th/cmp-vsnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },

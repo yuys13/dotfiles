@@ -87,6 +87,8 @@ local init = function()
           -- Git
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.diagnostics.gitlint,
+          -- GitHub Actions
+          null_ls.builtins.diagnostics.actionlint,
           -- Go
           null_ls.builtins.formatting.gofmt,
           null_ls.builtins.formatting.goimports,

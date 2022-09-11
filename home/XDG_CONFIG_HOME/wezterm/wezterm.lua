@@ -42,9 +42,11 @@ M.adjust_window_size_when_changing_font_size = false
 
 M.send_composed_key_when_right_alt_is_pressed = false
 
--- M.keys = {
---   -- CMD-y starts `top` in a new window
---   { key = 'y', mods = 'CMD', action = wezterm.action { SpawnCommandInNewTab = { args = { 'top' } } } },
--- }
-
+M.keys = {
+  -- CMD-y starts `top` in a new window
+  -- { key = 'y', mods = 'CMD', action = wezterm.action { SpawnCommandInNewTab = { args = { 'top' } } } },
+  { key = 'q', mods = 'CTRL', action = wezterm.action { SendString = '\x11' } },
+  { key = 'UpArrow', mods = 'SHIFT', action = wezterm.action.ScrollToPrompt(-1) },
+  { key = 'DownArrow', mods = 'SHIFT', action = wezterm.action.ScrollToPrompt(1) },
+}
 return M

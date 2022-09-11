@@ -150,13 +150,12 @@ local init = function()
       vim.keymap.set('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', { silent = true })
       vim.keymap.set('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', { silent = true })
       vim.keymap.set('n', '<Space>fr', '<Cmd>Telescope resume<CR>', { silent = true })
-      vim.keymap.set('n', '<Space>fg', '<Cmd>Telescope git_files<CR>', { silent = true })
-      vim.keymap.set(
-        'n',
-        '<Space>fig',
-        '<Cmd>lua require"telescope.builtin".git_files{git_command={"git","ls-files","--exclude-standard","-coi"}}<CR>',
-        { silent = true }
-      )
+      vim.keymap.set('n', '<Space>fg', function()
+        require('telescope.builtin').git_files { git_command = { 'git', 'ls-files', '--exclude-standard', '-co' } }
+      end, { silent = true })
+      vim.keymap.set('n', '<Space>fig', function()
+        require('telescope.builtin').git_files { git_command = { 'git', 'ls-files', '--exclude-standard', '-coi' } }
+      end, { silent = true })
 
       vim.keymap.set('n', '<Space>f*', '<Cmd>Telescope grep_string<CR>', { silent = true })
 

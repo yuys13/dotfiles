@@ -43,6 +43,9 @@ zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
 ## HISTORY
+HISTFILE=${XDG_DATA_HOME}/zsh/histfile
+HISTSIZE=10000
+SAVEHIST=${HISTSIZE}
 setopt share_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space

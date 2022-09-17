@@ -120,6 +120,19 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 zstyle ':completion:*:*:cdr:*:*' menu selecttion
 zstyle ':completion:*:*:cdr:*:*' recent-dirs-insert both
 
+
+clean-chpwd-recent-dirs () {
+    emulate -L zsh
+    setopt extendedglob
+    local -aU reply
+    integer history_size
+    autoload -Uz chpwd_recent_filehandler
+    chpwd_recent_filehandler
+    history_size=$#reply
+    reply=(${^reply}(N))
+    (( $history_size == $#reply )) || chpwd_recent_filehandler $reply
+}
+
 ## GLOB
 setopt glob_dots
 setopt extended_glob

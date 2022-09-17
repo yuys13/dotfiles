@@ -102,6 +102,13 @@
             fi
         }
 
+        function cdf () {
+            local dir=$(for i dir in $(cdr -l); do echo ${dir:s/~/$HOME/}; done | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
+            if [ -n "$dir" ]; then
+                builtin cd $dir
+            fi
+        }
+
         if type ghq > /dev/null; then
             ghq_fzf () {
                 local selected_repo=$(ghq list -p | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)

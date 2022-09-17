@@ -1,6 +1,5 @@
 BASEPATH   := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTPATH    := $(BASEPATH)/home
-#DOTPATH   := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILE_CANDIDATES := $(patsubst home/%, %, $(wildcard home/.??*))
 EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml
 DOTFILES := $(filter-out $(EXCLUSIONS), $(DOTFILE_CANDIDATES))
@@ -21,17 +20,6 @@ link: ## Create symbolic links for dotfiles
 	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(val);)
 	@$(foreach val, $(XDG_CONFIGS), chmod 700 $(DOTPATH)/XDG_CONFIG_HOME/$(val);)
 	@$(foreach val, $(XDG_CONFIGS), if [ -z "${XDG_CONFIG_HOME}" ]; then ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) $(HOME)/.config/$(val); else ln -sfnv $(DOTPATH)/XDG_CONFIG_HOME/$(val) ${XDG_CONFIG_HOME}/$(val); fi;)
-
-.PHONY: update
-update: ## (Obsoleted) Update dotfiles
-	git fetch origin main:main
-
-.PHONY: init
-init: ## (Obsoleted) Exec bin/install.sh
-	@bash $(BASEPATH)/bin/install.sh
-
-.PHONY: install
-install: init link ## (Obsoleted) Exec bin/install.sh and create symbolic links
 
 .PHONY: clean
 clean: ## Unlink dotfiles

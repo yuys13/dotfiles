@@ -102,11 +102,16 @@
             fi
         }
 
+        function cdf_list () {
+            local list=$(cdr -l | awk '{ $1=""; print $0 }' | sed -e "s|^ *~|${HOME}|")
+            echo ${(Q)list}
+        }
+
         function cdf () {
             clean-chpwd-recent-dirs
-            local dir=$(for i dir in $(cdr -l); do echo ${dir:s/~/$HOME/}; done | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
+            local dir=$(cdf_list | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
             if [ -n "$dir" ]; then
-                builtin cd $dir
+                builtin cd "${dir}"
             fi
         }
 

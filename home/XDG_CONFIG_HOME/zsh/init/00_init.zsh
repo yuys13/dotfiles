@@ -109,6 +109,17 @@ __list_directory_contents () {
 }
 add-zsh-hook chpwd __list_directory_contents
 
+# cdr
+autoload -Uz chpwd_recent_dirs cdr
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-file ${XDG_DATA_HOME}/zsh/chpwd-recent-dirs
+zstyle ':chpwd:*' recent-dirs-max 500
+# zstyle ':chpwd:*' recent-dirs-prune parent
+zstyle ':chpwd:*' recent-dirs-pushd true
+zstyle ':completion:*:*:cdr:*:*' menu selecttion
+zstyle ':completion:*:*:cdr:*:*' recent-dirs-insert both
+
 ## GLOB
 setopt glob_dots
 setopt extended_glob

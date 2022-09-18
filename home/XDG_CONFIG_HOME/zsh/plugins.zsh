@@ -77,10 +77,13 @@
             export FZF_CTRL_T_OPTS='--preview "cat {}"'
         fi
 
+        export FZF_CDR_PREVIEW_OPTS
         if type exa > /dev/null 2>&1; then
             export FZF_ALT_C_OPTS='--preview "exa --icons --tree --level=1 {}"'
+            FZF_CDR_PREVIEW_OPTS="exa --icons --tree --level=1 "
         else
             export FZF_ALT_C_OPTS='--preview "ls --color {}"'
+            FZF_CDR_PREVIEW_OPTS="ls --color "
         fi
 
         export FZF_DEFAULT_OPTS=${FZF_DEFAULT_OPTS:-"--layout=reverse --height 40%"}
@@ -102,16 +105,11 @@
             fi
         }
 
-        function cdf_list () {
-            local list=$(cdr -l | awk '{ $1=""; print $0 }' | sed -e "s|^ *~|${HOME}|")
-            echo ${(Q)list}
-        }
-
         function cdf () {
             clean-chpwd-recent-dirs
-            local dir=$(cdf_list | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
+            local dir=($(cdr -l | fzf --preview 'f() { sh -c "$FZF_CDR_PREVIEW_OPTS ${@}" }; f {2..}'))
             if [ -n "$dir" ]; then
-                builtin cd "${dir}"
+                cdr "${dir[1]}"
             fi
         }
 

@@ -116,7 +116,7 @@ zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-file ${XDG_DATA_HOME}/zsh/chpwd-recent-dirs
 zstyle ':chpwd:*' recent-dirs-max 500
 # zstyle ':chpwd:*' recent-dirs-prune parent
-zstyle ':chpwd:*' recent-dirs-pushd true
+zstyle ':chpwd:*' recent-dirs-pushd false
 zstyle ':completion:*:*:cdr:*:*' menu selecttion
 zstyle ':completion:*:*:cdr:*:*' recent-dirs-insert both
 

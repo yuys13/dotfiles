@@ -121,7 +121,7 @@
                     return 0
                 fi
 
-                BUFFER=" cd ${selected_repo}"
+                BUFFER="cd ${selected_repo}"
                 zle accept-line
 
                 zle reset-prompt

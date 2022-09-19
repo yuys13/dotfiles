@@ -46,12 +46,18 @@ bindkey '^x^e' edit-command-line
 HISTFILE=${XDG_DATA_HOME}/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=${HISTSIZE}
+HISTORY_IGNORE="(cd|cd *|builtin *|:q)"
 setopt share_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_no_store
 setopt hist_verify
+zshaddhistory() {
+    emulate -L zsh
+    # setopt extendedglob
+    [[ ${1%'\n'} != ${~HISTORY_IGNORE} ]]
+}
 
 ## TERMINAL
 function __update_terminal_message() {

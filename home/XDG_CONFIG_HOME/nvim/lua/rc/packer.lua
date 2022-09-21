@@ -21,6 +21,7 @@ local init = function()
       { 'williamboman/mason-lspconfig.nvim' },
       { 'folke/lua-dev.nvim' },
       { 'b0o/SchemaStore.nvim' },
+      { 'lukas-reineke/lsp-format.nvim' },
     },
   }
 
@@ -66,11 +67,17 @@ local init = function()
   }
 
   use {
+    'lukas-reineke/lsp-format.nvim',
+    config = function()
+      require('lsp-format').setup { sync = true }
+    end,
+  }
+
+  use {
     'jose-elias-alvarez/null-ls.nvim',
     requires = { 'lukas-reineke/lsp-format.nvim' },
     config = function()
       local null_ls = require 'null-ls'
-      require('lsp-format').setup { sync = true }
       null_ls.setup {
         -- you can reuse a shared lspconfig on_attach callback here
         on_attach = function(client)

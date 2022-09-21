@@ -44,6 +44,10 @@ local enhance_server_opts = {
     }
   end,
   ['rust_analyzer'] = function(opts)
+    opts.on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      require('lsp-format').on_attach(client)
+    end
     opts.settings = {
       ['rust-analyzer'] = {
         checkOnSave = {

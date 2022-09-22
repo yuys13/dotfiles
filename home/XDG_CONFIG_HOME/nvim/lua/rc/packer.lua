@@ -11,6 +11,8 @@ local init = function()
     opt = true,
   }
 
+  use { 'lewis6991/impatient.nvim' }
+
   use {
     'neovim/nvim-lspconfig',
     config = function()

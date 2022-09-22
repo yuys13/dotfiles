@@ -1,5 +1,7 @@
 scriptencoding utf-8
 
+lua require 'impatient'
+
 " reset augroup
 augroup MyAutoCmd
   autocmd!

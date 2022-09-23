@@ -1,35 +1,33 @@
 scriptencoding utf-8
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-if &compatible
-  " vint: -ProhibitSetNoCompatible
-  set nocompatible
-  " vint: +ProhibitSetNoCompatible
-endif
 
 " Keymap
 inoremap <silent> jj <ESC>
 
-" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 " Display
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
+set ruler
+set showcmd
 set number
 set nowrap
 set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set colorcolumn=80
+set cursorline
+set breakindent
+set showbreak=↪
 
 " Search
 set ignorecase
 set smartcase
-set incsearch		" do incremental searching
+set incsearch
 
 " tabs
 set expandtab
+set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 
 " Clipboard
 set clipboard&
@@ -45,10 +43,6 @@ endif
 
 " temporary settings
 set noswapfile
-
-" Examples
-
-set history=50		" keep 50 lines of command line history
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -94,7 +88,7 @@ if has('autocmd')
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent
 
 endif " has("autocmd")
 
@@ -113,7 +107,7 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
-" Setting greo tools
+" Setting grep tools
 if executable('rg')
   let &grepprg = 'rg --vimgrep --smart-case --hidden'
   set grepformat=%f:%l:%c:%m,%f:%l:%m

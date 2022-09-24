@@ -82,6 +82,6 @@ command! PackerStatus packadd packer.nvim | lua require('rc.packer').status()
 
 augroup packer_user_config
   autocmd!
-  autocmd BufWritePost packer.lua source <afile> | PackerSync
+  autocmd BufWritePost packer.lua source <afile> | PackerCompile
 augroup end
 

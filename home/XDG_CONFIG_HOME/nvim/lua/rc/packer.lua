@@ -278,7 +278,7 @@ local init = function()
       local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
       vim.api.nvim_create_autocmd('User', {
         group = augroup,
-        pattern = 'PackerComplete',
+        pattern = 'PackerCompileDone',
         command = 'runtime after/plugin/dracula.vim',
       })
     end,

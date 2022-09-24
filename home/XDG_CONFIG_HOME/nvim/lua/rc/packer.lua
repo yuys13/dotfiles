@@ -386,8 +386,7 @@ local init = function()
     keys = '<Plug>(openbrowser-smart-search)',
     setup = function()
       vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
-      vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-search)', {})
-      vim.keymap.set('x', 'gx', '<Plug>(openbrowser-smart-search)', {})
+      vim.keymap.set({ 'n', 'x' }, 'gx', '<Plug>(openbrowser-smart-search)', {})
     end,
   }
 

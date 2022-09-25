@@ -1,0 +1,79 @@
+scriptencoding utf-8
+
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+execute 'source' fnamemodify(expand('<sfile>'), ':h') . '/dein.vim'
+
+" Keymap
+inoremap <silent> jj <ESC>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+autocmd MyAutoCmd TerminalOpen * tnoremap <buffer> jj <C-w>N
+
+set backspace=indent,eol,start
+
+" Display
+set ruler
+set showcmd
+set number
+set nowrap
+set list
+"set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set colorcolumn=80
+set cursorline
+set breakindent
+set showbreak=↪
+
+if $COLORTERM ==? 'truecolor'
+  set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+" Search
+set ignorecase
+set smartcase
+set incsearch
+
+" tabs
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
+" Clipboard
+set clipboard&
+set clipboard^=unnamed
+set clipboard^=unnamedplus
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has('gui_running')
+  syntax on
+  set hlsearch
+endif
+
+" temporary settings
+set noswapfile
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Setting grep tools
+if executable('rg')
+  let &grepprg = 'rg --vimgrep --smart-case --hidden'
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+elseif executable('hw')
+  set grepprg=hw\ --no-group\ --no-color
+elseif executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+

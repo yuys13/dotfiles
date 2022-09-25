@@ -2,6 +2,9 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
   if empty($SOLARIZED)
@@ -69,7 +72,7 @@ repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_add = 'source ~/.config/nvim/rc/lightline.rc.vim'
+hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -80,11 +83,11 @@ repo = 'tyru/caw.vim'
 [[plugins]]
 repo = 'tpope/vim-repeat'
 
-# [[plugins]]
-# repo = 'cohama/lexima.vim'
-# hook_add = '''
-#  let g:lexima_ctrlh_as_backspace = 1
-# '''
+[[plugins]]
+repo = 'cohama/lexima.vim'
+hook_add = '''
+ let g:lexima_ctrlh_as_backspace = 1
+'''
 
 # [[plugins]]
 # repo = 'easymotion/vim-easymotion'
@@ -107,7 +110,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = '~/src/github.com/junegunn/fzf'
+repo = 'junegunn/fzf'
 if = 'executable("fzf")'
 hook_add = '''
   if executable('rg')
@@ -141,21 +144,21 @@ hook_add = '''
         \   <bang>0)
 
   " prefix
-  nnoremap [FZF] <NOP>
-  nmap <Space>f [FZF]
-  nnoremap <expr> [FZF]f (len(system('git rev-parse')) ?
+  nnoremap <Plug>(fzf) <NOP>
+  nmap <Space>f <Plug>(fzf)
+  nnoremap <expr> <Plug>(fzf)f (len(system('git rev-parse')) ?
         \':FzfFiles' :
         \':FzfGFiles -co --exclude-standard')."\<cr>"
-  nnoremap [FZF]af :<C-u>FzfFiles<CR>
-  nnoremap [FZF]if :<C-u>FzfGFiles -co --exclude-standard -i<CR>
-  nnoremap [FZF]b :<C-u>FzfBuffer<CR>
-  nnoremap [FZF]t :<C-u>FzfTags<CR>
-  nnoremap [FZF]: :<C-u>FzfHistory:<CR>
-  nnoremap [FZF]h :<C-u>FzfHelptags<CR>
-  nnoremap [FZF]/ :<C-u>FzfRg<Space>
+  nnoremap <Plug>(fzf)af :<C-u>FzfFiles<CR>
+  nnoremap <Plug>(fzf)if :<C-u>FzfGFiles -co --exclude-standard -i<CR>
+  nnoremap <Plug>(fzf)b :<C-u>FzfBuffer<CR>
+  nnoremap <Plug>(fzf)t :<C-u>FzfTags<CR>
+  nnoremap <Plug>(fzf): :<C-u>FzfHistory:<CR>
+  nnoremap <Plug>(fzf)h :<C-u>FzfHelptags<CR>
+  nnoremap <Plug>(fzf)/ :<C-u>FzfRg<Space>
 
   nnoremap FT :<C-u>FzfFiletypes<CR>
-  nnoremap [FZF]cs :<C-u>FzfColors<CR>
+  nnoremap <Plug>(fzf)cs :<C-u>FzfColors<CR>
 
   nnoremap <Space>/ :<C-u>FzfBLines<CR>
 '''
@@ -291,13 +294,13 @@ hook_add = '''
 repo = 'ozelentok/denite-gtags'
 hook_add = '''
   " prefix
-  nnoremap [gtags] <NOP>
-  nmap <Space>g [gtags]
+  nnoremap <Plug>(gtags) <NOP>
+  nmap <Space>g <Plug>(gtags)
 
   " keymap
-  nnoremap <silent> [gtags]d :<C-u>DeniteCursorWord gtags_def -buffer-name=gtags -mode=normal<CR>
-  nnoremap <silent> [gtags]r :<C-u>DeniteCursorWord gtags_ref -buffer-name=gtags -mode=normal<CR>
-  nnoremap <silent> [gtags]c :<C-u>DeniteCursorWord gtags_context -buffer-name=gtags -mode=normal<CR>
+  nnoremap <silent> <Plug>(gtags)d :<C-u>DeniteCursorWord gtags_def -buffer-name=gtags -mode=normal<CR>
+  nnoremap <silent> <Plug>(gtags)r :<C-u>DeniteCursorWord gtags_ref -buffer-name=gtags -mode=normal<CR>
+  nnoremap <silent> <Plug>(gtags)c :<C-u>DeniteCursorWord gtags_context -buffer-name=gtags -mode=normal<CR>
 '''
 
 [[plugins]]
@@ -401,3 +404,10 @@ let g:tmuxline_preset = {
     \'z'       : '#H',
     \'options' : {'status-justify' : 'left'}}
 '''
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+

@@ -22,3 +22,9 @@ indent_size = 2
 
 [*.vim]
 indent_size = 2
+
+[.vimrc]
+indent_size = 2
+
+[vimrc]
+indent_size = 2

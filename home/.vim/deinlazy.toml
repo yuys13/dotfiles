@@ -5,39 +5,39 @@ frozen = 1
 on_cmd = 'Denite'
 hook_add = '''
   " prefix
-  nnoremap [Denite] <NOP>
-  nmap <Space>d [Denite]
+  nnoremap <Plug>(denite) <NOP>
+  nmap <Space>d <Plug>(denite)
 
   " keymap
-  nnoremap <silent> [Denite]f :<C-u>Denite buffer `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
-  nnoremap <silent> [Denite]if :<C-u>Denite file/rec/gitignore<CR>
-  nnoremap <silent> [Denite]af :<C-u>Denite file/rec/all<CR>
-  nnoremap <silent> [Denite]o :<C-u>Denite outline -auto-highlight -mode=normal<CR>
-  nnoremap <silent> [Denite]/ :<C-u>Denite grep -no-empty -mode=normal<CR>
-  nnoremap <silent> [Denite]* :<C-u>DeniteCursorWord grep -no-empty -mode=normal<CR>
-  nnoremap <silent> [Denite]t :<C-u>Denite tag<CR>
-  nnoremap <silent> [Denite]<C-]> :<C-u>DeniteCursorWord tag -mode=normal<CR>
+  nnoremap <silent> <Plug>(denite)f :<C-u>Denite buffer `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+  nnoremap <silent> <Plug>(denite)if :<C-u>Denite file/rec/gitignore<CR>
+  nnoremap <silent> <Plug>(denite)af :<C-u>Denite file/rec/all<CR>
+  nnoremap <silent> <Plug>(denite)o :<C-u>Denite outline -auto-highlight -mode=normal<CR>
+  nnoremap <silent> <Plug>(denite)/ :<C-u>Denite grep -no-empty -mode=normal<CR>
+  nnoremap <silent> <Plug>(denite)* :<C-u>DeniteCursorWord grep -no-empty -mode=normal<CR>
+  nnoremap <silent> <Plug>(denite)t :<C-u>Denite tag<CR>
+  nnoremap <silent> <Plug>(denite)<C-]> :<C-u>DeniteCursorWord tag -mode=normal<CR>
 
-  nnoremap <silent> [Denite]r :<C-u>Denite -resume<CR>
-  nnoremap <silent> [Denite]n :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
-  nnoremap <silent> [Denite]p :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
+  nnoremap <silent> <Plug>(denite)r :<C-u>Denite -resume<CR>
+  nnoremap <silent> <Plug>(denite)n :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
+  nnoremap <silent> <Plug>(denite)p :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 
-  nnoremap <silent> [Denite]b :<C-u>Denite buffer -buffer-name=buf<CR>
-  nnoremap <silent> [Denite]h :<C-u>Denite help -buffer-name=help<CR>
-  nnoremap <silent> [Denite]: :<C-u>Denite command_history -buffer-name=history<CR>
-  nnoremap <silent> [Denite]ein :<C-u>Denite dein_log -mode=normal<CR>
+  nnoremap <silent> <Plug>(denite)b :<C-u>Denite buffer -buffer-name=buf<CR>
+  nnoremap <silent> <Plug>(denite)h :<C-u>Denite help -buffer-name=help<CR>
+  nnoremap <silent> <Plug>(denite): :<C-u>Denite command_history -buffer-name=history<CR>
+  nnoremap <silent> <Plug>(denite)ein :<C-u>Denite dein_log -mode=normal<CR>
 
-  nnoremap <silent> [Denite]cd :<C-u>DeniteProjectDir directory_rec -buffer-name=cd -default-action=cd<CR>
+  nnoremap <silent> <Plug>(denite)cd :<C-u>DeniteProjectDir directory_rec -buffer-name=cd -default-action=cd<CR>
 
   "nnoremap <silent> <Space>/ :<C-u>Denite line -auto-highlight -auto-resize -buffer-name=line<CR>
   "nnoremap <silent> <Space>* :<C-u>DeniteCursorWord line -auto-highlight -auto-resize -buffer-name=line -mode=normal<CR>
 
   "nnoremap <silent> FT :<C-u>Denite filetype -buffer-name=ft<CR>
-  "nnoremap <silent> [Denite]cs :<C-u>Denite colorscheme -buffer-name=cs<CR>
+  "nnoremap <silent> <Plug>(denite)cs :<C-u>Denite colorscheme -buffer-name=cs<CR>
 
   nnoremap <silent> T :<C-u>Denite menu:toggle -buffer-name=toggle<CR>
 '''
-hook_source = 'source ~/.config/nvim/rc/denite.rc.vim'
+hook_source = 'source ~/.vim/rc/denite.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'

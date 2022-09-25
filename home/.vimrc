@@ -1,3 +1,4 @@
+" If you want to use dark power, delete me
 scriptencoding utf-8
 
 " Keymap

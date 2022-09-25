@@ -1,3 +1,5 @@
+" show statusline
+set laststatus=2
 " hide mode
 set noshowmode
 " showtabline always

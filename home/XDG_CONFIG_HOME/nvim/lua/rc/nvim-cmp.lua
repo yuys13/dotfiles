@@ -76,17 +76,15 @@ cmp.setup {
 }
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-for _, type in ipairs { '/', '?' } do
-  cmp.setup.cmdline(type, {
-    mapping = cmp.mapping.preset.cmdline {
-      ['<C-n>'] = cmp.config.disable,
-      ['<C-p>'] = cmp.config.disable,
-    },
-    sources = {
-      { name = 'buffer' },
-    },
-  })
-end
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline {
+    ['<C-n>'] = cmp.config.disable,
+    ['<C-p>'] = cmp.config.disable,
+  },
+  sources = {
+    { name = 'buffer' },
+  },
+})
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {

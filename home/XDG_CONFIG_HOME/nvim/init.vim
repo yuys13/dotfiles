@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-lua require 'impatient'
+lua pcall(require, 'impatient')
 
 " reset augroup
 augroup MyAutoCmd

@@ -89,14 +89,6 @@ hook_add = '''
  let g:lexima_ctrlh_as_backspace = 1
 '''
 
-# [[plugins]]
-# repo = 'easymotion/vim-easymotion'
-# hook_add = '''
-#   let g:EasyMotion_do_mapping = 0
-#   nmap s <Plug>(easymotion-s2)
-#   let g:EasyMotion_space_jump_first = 1
-# '''
-
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 
@@ -193,9 +185,6 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-zsh'
-
-[[plugins]]
-repo = 'zplug/vim-zplug'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -322,10 +311,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
-
-[[plugins]]
-repo = 'ywatase/mdt.vim'
-if = 'executable("mdt")'
 
 # [[plugins]]
 # repo = 'osyo-manga/vim-precious'

@@ -227,7 +227,7 @@ hook_add = '''
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 hook_add = '''
   " messages
   let g:ale_echo_msg_format = '[%linter%] %code: %%s [%severity%]'

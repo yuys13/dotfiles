@@ -374,6 +374,9 @@ augroup END
 repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
+repo = 'rhysd/vim-lsp-ale'
+
+[[plugins]]
 repo = 'edkolev/tmuxline.vim'
 hook_add = '''
 let g:tmuxline_powerline_separators = 0

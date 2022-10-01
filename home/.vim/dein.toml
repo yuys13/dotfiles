@@ -75,7 +75,8 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'machakann/vim-sandwich'
+hook_add = 'autocmd MyAutoCmd VimEnter * runtime macros/sandwich/keymap/surround.vim'
 
 [[plugins]]
 repo = 'tyru/caw.vim'

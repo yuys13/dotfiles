@@ -101,10 +101,6 @@ repo = 'scrooloose/nerdtree'
 on_cmd = 'NERDTreeToggle'
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-on_source = 'nerdtree'
-
-[[plugins]]
 repo = 'majutsushi/tagbar'
 on_cmd = 'TagbarToggle'
 hook_add = '''

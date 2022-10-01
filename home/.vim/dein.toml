@@ -280,19 +280,6 @@ hook_add = '''
 # '''
 
 [[plugins]]
-repo = 'ozelentok/denite-gtags'
-hook_add = '''
-  " prefix
-  nnoremap <Plug>(gtags) <NOP>
-  nmap <Space>g <Plug>(gtags)
-
-  " keymap
-  nnoremap <silent> <Plug>(gtags)d :<C-u>DeniteCursorWord gtags_def -buffer-name=gtags -mode=normal<CR>
-  nnoremap <silent> <Plug>(gtags)r :<C-u>DeniteCursorWord gtags_ref -buffer-name=gtags -mode=normal<CR>
-  nnoremap <silent> <Plug>(gtags)c :<C-u>DeniteCursorWord gtags_context -buffer-name=gtags -mode=normal<CR>
-'''
-
-[[plugins]]
 repo = 'kassio/neoterm'
 hook_add = '''
  nnoremap <Space>nl :<C-u>rightbelow vertical Tnew<CR>

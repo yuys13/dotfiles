@@ -178,15 +178,6 @@ repo = 'airblade/vim-gitgutter'
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'Shougo/neco-syntax'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-zsh'
-
-[[plugins]]
 repo = 'cespare/vim-toml'
 
 [[plugins]]
@@ -384,8 +375,11 @@ let g:tmuxline_preset = {
 '''
 
 [[plugins]]
-repo = 'roxma/nvim-yarp'
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
+repo = 'prabirshrestha/asyncomplete-buffer.vim'
+
+[[plugins]]
+repo = 'laixintao/asyncomplete-gitcommit'
 

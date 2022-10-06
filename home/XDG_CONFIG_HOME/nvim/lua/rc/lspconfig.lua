@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', '<space>lq', vim.diagnostic.setloclist, opts)
-  vim.keymap.set('n', '<space>lf', vim.lsp.buf.formatting, opts)
+  vim.keymap.set('n', '<space>lf', vim.lsp.buf.format, opts)
 end
 
 -- Add additional capabilities supported by nvim-cmp

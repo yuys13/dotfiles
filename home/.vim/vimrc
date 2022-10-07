@@ -8,7 +8,7 @@ augroup END
 execute 'source' fnamemodify(expand('<sfile>'), ':h') . '/dein.vim'
 
 " Keymap
-inoremap <silent> jj <ESC>
+imap <silent> jj <ESC>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>

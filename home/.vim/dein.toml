@@ -166,6 +166,12 @@ repo = 'tpope/vim-fugitive'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
+repo = 'lambdalisue/gina.vim'
+hook_add = '''
+  call gina#custom#mapping#nmap('status', '<C-l>', '<Cmd>e<CR>', { 'noremap':1, 'silent':1 })
+'''
+
+[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]

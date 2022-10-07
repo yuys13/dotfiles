@@ -25,6 +25,13 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'rbtnn/vim-emphasiscursor'
+on_cmd = 'EmphasisCursor'
+hook_add = '''
+  nnoremap <Esc><Esc> <Cmd>EmphasisCursor<CR>
+'''
+
+[[plugins]]
 repo = 'kannokanno/previm'
 on_cmd = 'PrevimOpen'
 

@@ -32,6 +32,14 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'mattn/vim-sonictemplate'
+on_event = 'CmdlineEnter'
+hook_add = '''
+  let g:loaded_sonictemplate_vim = 1
+  command! -nargs=1 -complete=customlist,sonictemplate#complete Template call sonictemplate#apply(<f-args>, "n")
+'''
+
+[[plugins]]
 repo = 'kannokanno/previm'
 on_cmd = 'PrevimOpen'
 

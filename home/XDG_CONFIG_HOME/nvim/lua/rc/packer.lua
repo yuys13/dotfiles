@@ -329,8 +329,6 @@ local init = function()
 
   use 'editorconfig/editorconfig-vim'
 
-  use 'thinca/vim-localrc'
-
   use {
     'yuys13/partedit.vim',
     setup = function()
@@ -502,14 +500,9 @@ local init = function()
   }
 
   use { 'norcalli/nvim-colorizer.lua', disable = not vim.o.termguicolors, cmd = 'ColorizerToggle' }
+
   use { 'folke/twilight.nvim', cmd = 'Twilight' }
-  use {
-    'rbtnn/vim-emphasiscursor',
-    cmd = 'EmphasisCursor',
-    -- setup = function()
-    --   vim.keymap.set('n', '<Esc><Esc>', '<Cmd>EmphasisCursor<CR>', {})
-    -- end,
-  }
+
   use {
     'mattn/vim-sonictemplate',
     event = 'CmdlineEnter',

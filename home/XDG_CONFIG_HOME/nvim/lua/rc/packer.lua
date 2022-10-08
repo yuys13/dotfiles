@@ -501,6 +501,13 @@ local init = function()
 
   use { 'norcalli/nvim-colorizer.lua', disable = not vim.o.termguicolors, cmd = 'ColorizerToggle' }
 
+  use {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require('scrollbar').setup()
+    end,
+  }
+
   use { 'folke/twilight.nvim', cmd = 'Twilight' }
 
   use {

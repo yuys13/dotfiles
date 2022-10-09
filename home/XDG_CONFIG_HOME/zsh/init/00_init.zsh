@@ -20,7 +20,7 @@ fpath=( \
 )
 
 ## Editor
-if test -n ${EDITOR} -a "${EDITOR[(w)0]}" = 'nvr'; then
+if [[ -n ${EDITOR} && ${EDITOR[(w)0]} = 'nvr' ]]; then
     export EDITOR
 elif type nvim >/dev/null 2>&1; then
     export EDITOR=nvim
@@ -103,7 +103,7 @@ alias l.='ls -d .*'
 alias ll='ls -l'
 alias lla='ls -la'
 alias ll.='ls -l -d .*'
-if test -n ${EDITOR}; then
+if [[ -n ${EDITOR} ]]; then
     alias vi=${EDITOR}
 fi
 

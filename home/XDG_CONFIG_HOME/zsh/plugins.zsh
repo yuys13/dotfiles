@@ -8,7 +8,7 @@
 
     ## Load plugins
     # powerlevel10k
-    if [ -d ${github}/romkatv/powerlevel10k ]; then
+    if [[ -d ${github}/romkatv/powerlevel10k ]]; then
         source ${github}/romkatv/powerlevel10k/powerlevel10k.zsh-theme
         # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
         [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
@@ -26,34 +26,34 @@
     fi
 
     # zsh-completions
-    if [ -d ${zsh_users}/zsh-completions ]; then
+    if [[ -d ${zsh_users}/zsh-completions ]]; then
         source ${zsh_users}/zsh-completions/zsh-completions.plugin.zsh
-    elif [ -d ${brew_prefix}/share/zsh-completions ]; then
+    elif [[ -d ${brew_prefix}/share/zsh-completions ]]; then
         fpath=( ${brew_prefix}/share/zsh-completions $fpath )
     fi
 
     # zsh-autosuggestions
-    if [ -d ${zsh_users}/zsh-autosuggestions ]; then
+    if [[ -d ${zsh_users}/zsh-autosuggestions ]]; then
         source ${zsh_users}/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    elif [ -d ${brew_prefix}/share/zsh-autosuggestions ]; then
+    elif [[ -d ${brew_prefix}/share/zsh-autosuggestions ]]; then
         source ${brew_prefix}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    elif [ -d /usr/share/zsh/plugins/zsh-autosuggestions ]; then
+    elif [[ -d /usr/share/zsh/plugins/zsh-autosuggestions ]]; then
         source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     fi
 
     # fzf
-    if [ -d ${github}/junegunn/fzf ]; then
+    if [[ -d ${github}/junegunn/fzf ]]; then
         for rc in ${github}/junegunn/fzf/shell/*.zsh; do
             source $rc
         done
-    elif [ -d ${brew_prefix}/opt/fzf ]; then
+    elif [[ -d ${brew_prefix}/opt/fzf ]]; then
         for rc in ${brew_prefix}/opt/fzf/shell/*.zsh; do
             source $rc
         done
-    elif [ -d /usr/share/fzf ]; then
+    elif [[ -d /usr/share/fzf ]]; then
         for rc in /usr/share/fzf/*.zsh; do
             source $rc
         done
@@ -61,7 +61,7 @@
 
     gcd () {
         local dir=$(git rev-parse --show-toplevel)
-        if [ -n "$dir" ]; then
+        if [[ -n $dir ]]; then
             builtin cd $dir
         fi
     }
@@ -95,7 +95,7 @@
             for i in {1..20}; do
                 dir=$(dirname "$dir")
                 echo "$dir"
-                if [ "$dir" = "/" ]; then
+                if [[ $dir = "/" ]]; then
                     break
                 fi
             done
@@ -103,7 +103,7 @@
 
         function bd () {
             local dir=$(bd_list | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
-            if [ -n "$dir" ]; then
+            if [[ -n $dir ]]; then
                 builtin cd $dir
             fi
         }
@@ -111,7 +111,7 @@
         function cdf () {
             clean-chpwd-recent-dirs
             local dir=($(cdr -l | fzf --preview 'f() { sh -c "$FZF_CDR_PREVIEW_OPTS ${@}" }; f {2..}'))
-            if [ -n "$dir" ]; then
+            if [[ -n $dir ]]; then
                 cdr "${dir[1]}"
             fi
         }
@@ -137,11 +137,11 @@
 
     ## sourced after all custom widgets have been created
     # zsh-syntax-highlighting
-    if [ -d ${zsh_users}/zsh-syntax-highlighting ]; then
+    if [[ -d ${zsh_users}/zsh-syntax-highlighting ]]; then
         source ${zsh_users}/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-    elif [ -d ${brew_prefix}/share/zsh-syntax-highlighting ]; then
+    elif [[ -d ${brew_prefix}/share/zsh-syntax-highlighting ]]; then
         source ${brew_prefix}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    elif [ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ]; then
+    elif [[ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ]]; then
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
     fi
 

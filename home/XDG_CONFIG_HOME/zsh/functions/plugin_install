@@ -13,7 +13,7 @@ plugin_install () {
 
     local pids=()
     for p in $plugins; do
-        if [ -e  ${repo}/${p} ]; then
+        if [[ -e  ${repo}/${p} ]]; then
             echo already exist: ${repo}/${p}
             continue
         fi

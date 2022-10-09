@@ -16,7 +16,7 @@ zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:"fzf"
 zplug "junegunn/fzf", use:shell
 zplug "b4b4r07/enhancd", use:init.sh
 
-if [ -f ${0:A:h}/${$(uname):l}/${0:A:t} ]; then
+if [[ -f ${0:A:h}/${$(uname):l}/${0:A:t} ]]; then
     source ${0:A:h}/${$(uname):l}/${0:A:t}
 fi
 

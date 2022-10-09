@@ -18,7 +18,7 @@ if [[ -d ${XDG_CONFIG_HOME}/zsh/local/init ]]; then
 fi
 
 ## per OSType
-if [ -f ${XDG_CONFIG_HOME}/zsh/${$(uname):l}/zshrc ]; then
+if [[ -f ${XDG_CONFIG_HOME}/zsh/${$(uname):l}/zshrc ]]; then
     source ${XDG_CONFIG_HOME}/zsh/${$(uname):l}/zshrc
 fi
 
@@ -45,7 +45,7 @@ else
 fi
 
 ## Local setting
-if [ -f ${XDG_CONFIG_HOME}/zsh/local/zshrc ]; then
+if [[ -f ${XDG_CONFIG_HOME}/zsh/local/zshrc ]]; then
     source ${XDG_CONFIG_HOME}/zsh/local/zshrc
 fi
 

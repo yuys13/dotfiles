@@ -66,19 +66,19 @@
         fi
     }
 
-    if type fzf > /dev/null; then
-        if type fd > /dev/null 2>&1; then
+    if type fzf >/dev/null; then
+        if type fd >/dev/null 2>&1; then
             export FZF_ALT_C_COMMAND="fd -t d"
             export FZF_CTRL_T_COMMAND='fd -t f -L -H -E .git'
         fi
-        if type bat > /dev/null 2>&1; then
+        if type bat >/dev/null 2>&1; then
             export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
         else
             export FZF_CTRL_T_OPTS='--preview "cat {}"'
         fi
 
         export FZF_CDR_PREVIEW_OPTS
-        if type exa > /dev/null 2>&1; then
+        if type exa >/dev/null 2>&1; then
             export FZF_ALT_C_OPTS='--preview "exa --icons --tree --level=1 {}"'
             FZF_CDR_PREVIEW_OPTS="exa --icons --tree --level=1 "
         else
@@ -116,7 +116,7 @@
             fi
         }
 
-        if type ghq > /dev/null; then
+        if type ghq >/dev/null; then
             ghq_fzf () {
                 local selected_repo=$(ghq list -p | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
                 if [[ -z $selected_repo ]]; then

@@ -7,7 +7,7 @@ function __init_fisher
             set -U EDITOR nvim
         else if type vim >/dev/null
             set -U EDITOR vim
-        else
+        else if type vi >/dev/null
             set -U EDITOR vi
         end
     end

@@ -21,5 +21,8 @@ function __init_fisher
     set -q GHQ_SELECTOR_OPTS
     or set -U GHQ_SELECTOR_OPTS $FZF_DEFAULT_OPTS
 
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/HEAD/functions/fisher.fish | source && fisher update
+    # curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/HEAD/functions/fisher.fish | source && fisher update
+    if type fisher >/dev/null
+        fisher update
+    end
 end

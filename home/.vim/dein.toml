@@ -150,7 +150,7 @@ hook_add = '''
   nnoremap <Plug>(fzf)h :<C-u>FzfHelptags<CR>
   nnoremap <Plug>(fzf)/ :<C-u>FzfRg<Space>
 
-  nnoremap FT :<C-u>FzfFiletypes<CR>
+  nnoremap <Plug>(fzf)FT :<C-u>FzfFiletypes<CR>
   nnoremap <Plug>(fzf)cs :<C-u>FzfColors<CR>
 
   nnoremap <Space>/ :<C-u>FzfBLines<CR>

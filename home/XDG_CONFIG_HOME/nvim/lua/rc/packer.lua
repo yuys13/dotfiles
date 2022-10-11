@@ -169,7 +169,7 @@ local init = function()
 
       vim.keymap.set('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', { silent = true })
       vim.keymap.set('n', '<Space>fcs', '<Cmd>Telescope colorscheme<CR>', { silent = true })
-      vim.keymap.set('n', 'FT', '<Cmd>Telescope filetypes<CR>', { silent = true })
+      vim.keymap.set('n', '<Space>fFT', '<Cmd>Telescope filetypes<CR>', { silent = true })
 
       vim.keymap.set('n', '<Space>f:', '<Cmd>Telescope command_history<CR>', { silent = true })
 

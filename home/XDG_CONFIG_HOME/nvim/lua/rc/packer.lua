@@ -180,6 +180,7 @@ local init = function()
       { 'nvim-lua/plenary.nvim' },
       { 'folke/trouble.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
+      { 'nvim-telescope/telescope-ui-select.nvim' },
     },
   }
 

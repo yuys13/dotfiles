@@ -21,7 +21,7 @@ local init = function()
     requires = {
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'folke/lua-dev.nvim' },
+      { 'folke/neodev.nvim' },
       { 'b0o/SchemaStore.nvim' },
       { 'lukas-reineke/lsp-format.nvim' },
     },

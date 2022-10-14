@@ -84,7 +84,7 @@ local enhance_server_opts = {
   -- end,
 }
 
-require('lua-dev').setup {}
+require('neodev').setup {}
 local mason = require 'mason'
 mason.setup {}
 

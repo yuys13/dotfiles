@@ -532,7 +532,7 @@ return packer.startup {
   config = {
     display = {
       -- open_fn = require('packer.util').float,
-      open_cmd = 'tabnew \\[packer\\]',
+      open_cmd = [=[tabnew \[packer\]]=],
     },
     autoremove = true,
   },

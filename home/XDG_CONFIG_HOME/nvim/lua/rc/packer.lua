@@ -272,13 +272,13 @@ local init = function()
     'dracula/vim',
     as = 'dracula',
     config = function()
-      vim.cmd 'colorscheme dracula'
       local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
-      vim.api.nvim_create_autocmd('User', {
+      vim.api.nvim_create_autocmd('colorscheme', {
         group = augroup,
-        pattern = 'PackerCompileDone',
+        pattern = 'dracula',
         command = 'runtime after/plugin/dracula.vim',
       })
+      vim.cmd 'colorscheme dracula'
     end,
   }
   use { 'cocopon/iceberg.vim', opt = true }

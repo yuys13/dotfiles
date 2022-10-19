@@ -49,7 +49,7 @@ set clipboard^=unnamedplus
 set mouse=a
 
 " Keymap
-imap <silent> jj <Esc>
+inoremap <silent> jj <Esc>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>

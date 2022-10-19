@@ -467,11 +467,30 @@ local init = function()
     end,
   }
 
+  -- use {
+  --   'cohama/lexima.vim',
+  --   event = 'InsertEnter',
+  --   setup = function()
+  --     vim.g.lexima_ctrlh_as_backspace = 1
+  --   end,
+  --   config = function()
+  --     vim.keymap.set('i', 'jj', '<Esc>', { remap = false })
+  --   end,
+  -- }
+
   use {
-    'cohama/lexima.vim',
-    event = 'InsertEnter',
-    setup = function()
-      vim.g.lexima_ctrlh_as_backspace = 1
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {
+        map_c_h = true,
+      }
+    end,
+  }
+
+  use {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
     end,
   }
 

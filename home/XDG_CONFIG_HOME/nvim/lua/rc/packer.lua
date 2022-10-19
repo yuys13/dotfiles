@@ -511,7 +511,11 @@ local init = function()
       vim.g.loaded_sonictemplate_vim = true
     end,
     config = function()
-      vim.cmd [[command! -nargs=1 -complete=customlist,sonictemplate#complete Template call sonictemplate#apply(<f-args>, "n")]]
+      vim.api.nvim_create_user_command(
+        'Template',
+        [=[call sonictemplate#apply(<f-args>, "n")]=],
+        { nargs = 1, complete = 'customlist,sonictemplate#complete' }
+      )
     end,
   }
 

@@ -60,11 +60,11 @@ repo = 'nanotech/jellybeans.vim'
 # let g:airline#extensions#tabline#enabled = 1
 # let g:airline#extensions#tmuxline#enabled = 0
 #
-# nnoremap [Buffer] <NOP>
-# nmap <Space>b [Buffer]
+# nnoremap <Plug>(Buffer) <NOP>
+# nmap <Space>b <Plug>(Buffer)
 #
-# nnoremap <silent> [Buffer]n :<C-u>bnext<CR>
-# nnoremap <silent> [Buffer]p :<C-u>bprevious<CR>
+# nnoremap <silent> <Plug>(Buffer)n :<C-u>bnext<CR>
+# nnoremap <silent> <Plug>(Buffer)p :<C-u>bprevious<CR>
 # '''
 #
 # [[plugins]]

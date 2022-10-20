@@ -247,6 +247,12 @@ local init = function()
 
           -- list of language that will be disabled
           -- disable = { 'c', 'rust' },
+          disable = function(lang)
+            local ok = pcall(function()
+              vim.treesitter.get_query(lang, 'highlights')
+            end)
+            return not ok
+          end,
 
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
           -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).

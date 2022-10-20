@@ -96,7 +96,9 @@ local init = function()
           -- GitHub Actions
           null_ls.builtins.diagnostics.actionlint,
           -- Go
-          null_ls.builtins.formatting.gofmt,
+          -- null_ls.builtins.formatting.gofmt.with {
+          --   extra_args = { '-s' },
+          -- },
           null_ls.builtins.formatting.goimports,
           -- Javascript
           null_ls.builtins.formatting.prettier.with { prefer_local = 'node_modules/.bin' },

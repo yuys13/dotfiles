@@ -205,7 +205,9 @@ local init = function()
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    run = function()
+      require('nvim-treesitter.install').update {}
+    end,
     config = function()
       require('nvim-treesitter.configs').setup {
         -- A list of parser names, or "all"

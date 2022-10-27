@@ -29,7 +29,7 @@ if $COLORTERM ==? 'truecolor'
   set termguicolors
 endif
 
-" Tab
+" Indent
 set expandtab
 set shiftwidth=4
 set tabstop=4

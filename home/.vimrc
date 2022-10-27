@@ -24,7 +24,7 @@ set ignorecase
 set smartcase
 set incsearch
 
-" tabs
+" Indent
 set expandtab
 set shiftwidth=4
 set tabstop=4

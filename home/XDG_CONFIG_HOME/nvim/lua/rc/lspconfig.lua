@@ -1,3 +1,4 @@
+local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -25,6 +26,21 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', '<space>lq', vim.diagnostic.setloclist, opts)
   vim.keymap.set('n', '<space>lf', vim.lsp.buf.format, opts)
+
+  vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    group = augroup,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.document_highlight()
+    end,
+  })
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    group = augroup,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.clear_references()
+    end,
+  })
 end
 
 -- Add additional capabilities supported by nvim-cmp

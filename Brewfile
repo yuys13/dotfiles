@@ -63,6 +63,8 @@ brew "tmux"
 brew "vint"
 # Linter for YAML files
 brew "yamllint"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Additional completion definitions for zsh

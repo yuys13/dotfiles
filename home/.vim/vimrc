@@ -33,7 +33,7 @@ set showbreak=↪
 set diffopt&
 set diffopt+=vertical
 
-if $COLORTERM ==? 'truecolor'
+if $COLORTERM =~? 'truecolor\|24bit'
   set termguicolors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"

@@ -92,8 +92,8 @@ cmp.setup.filetype('fish', {
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline {
-    ['<C-n>'] = cmp.config.disable,
-    ['<C-p>'] = cmp.config.disable,
+    -- ['<C-n>'] = cmp.config.disable,
+    -- ['<C-p>'] = cmp.config.disable,
   },
   sources = {
     { name = 'buffer' },
@@ -102,9 +102,12 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
+  -- completion = {
+  --   autocomplete = {},
+  -- },
   mapping = cmp.mapping.preset.cmdline {
-    ['<C-n>'] = cmp.config.disable,
-    ['<C-p>'] = cmp.config.disable,
+    -- ['<C-n>'] = cmp.config.disable,
+    -- ['<C-p>'] = cmp.config.disable,
   },
   sources = cmp.config.sources({
     { name = 'path' },

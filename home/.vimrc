@@ -5,6 +5,10 @@ scriptencoding utf-8
 inoremap <silent> jj <ESC>
 
 set backspace=indent,eol,start
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
 
 " Display
 set ruler
@@ -34,6 +38,10 @@ set softtabstop=4
 set clipboard&
 set clipboard^=unnamed
 set clipboard^=unnamedplus
+
+" Cmdline completion
+set wildmenu
+set wildmode=longest,full
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.

@@ -14,6 +14,10 @@ let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:dein_toml = expand('<sfile>:p:h') . '/dein.toml'
 let s:deinlazy_toml = expand('<sfile>:p:h') . '/deinlazy.toml'
 
+"
+let g:dein#install_progress_type = 'floating'
+let g:dein#install_check_diff = 1
+
 " auto install
 if !isdirectory(s:dein_repo) && executable('git')
   execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo

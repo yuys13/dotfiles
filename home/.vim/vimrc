@@ -9,10 +9,6 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h') . '/dein.vim'
 
 " Keymap
 imap <silent> jj <ESC>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
 autocmd MyAutoCmd TerminalOpen * tnoremap <buffer> jj <C-w>N
 
 set backspace=indent,eol,start

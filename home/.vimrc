@@ -5,10 +5,6 @@ scriptencoding utf-8
 inoremap <silent> jj <ESC>
 
 set backspace=indent,eol,start
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
 
 " Display
 set ruler

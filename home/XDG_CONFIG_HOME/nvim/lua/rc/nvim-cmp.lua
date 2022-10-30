@@ -102,9 +102,6 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-  -- completion = {
-  --   autocomplete = {},
-  -- },
   mapping = cmp.mapping.preset.cmdline {
     -- ['<C-n>'] = cmp.config.disable,
     -- ['<C-p>'] = cmp.config.disable,

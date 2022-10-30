@@ -50,10 +50,6 @@ set mouse=a
 
 " Keymap
 inoremap <silent> jj <Esc>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
 autocmd MyAutoCmd TermOpen * tnoremap <buffer> jj <C-\><C-n>
 
 if executable('nvr')

@@ -157,26 +157,34 @@ local init = function()
       require 'rc.telescope'
     end,
     setup = function()
-      vim.keymap.set('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', { silent = true })
-      vim.keymap.set('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', { silent = true })
-      vim.keymap.set('n', '<Space>fr', '<Cmd>Telescope resume<CR>', { silent = true })
-      vim.keymap.set('n', '<Space>fg', function()
+      local function map(mode, lhs, rhs, opts)
+        opts = opts or {}
+        opts.silent = true
+        vim.keymap.set(mode, lhs, rhs, opts)
+      end
+
+      map('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', { desc = 'Telescope find_files' })
+      map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', { desc = 'Telescope buffers' })
+      map('n', '<Space>fr', '<Cmd>Telescope resume<CR>', { desc = 'Telescope resume' })
+      map('n', '<Space>fg', function()
         require('telescope.builtin').git_files { git_command = { 'git', 'ls-files', '--exclude-standard', '-co' } }
-      end, { silent = true })
-      vim.keymap.set('n', '<Space>fig', function()
+      end, { desc = 'Telescope git_files' })
+      map('n', '<Space>fig', function()
         require('telescope.builtin').git_files { git_command = { 'git', 'ls-files', '--exclude-standard', '-coi' } }
-      end, { silent = true })
+      end, { desc = 'Telescope git_files ignore only' })
 
-      vim.keymap.set('n', '<Space>f*', '<Cmd>Telescope grep_string<CR>', { silent = true })
+      map('n', '<Space>f*', '<Cmd>Telescope grep_string<CR>', { desc = 'Telescope grep_string' })
 
-      vim.keymap.set('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', { silent = true })
-      vim.keymap.set('n', '<Space>fcs', '<Cmd>Telescope colorscheme<CR>', { silent = true })
-      vim.keymap.set('n', '<Space>fFT', '<Cmd>Telescope filetypes<CR>', { silent = true })
+      map('n', '<Space>fk', '<Cmd>Telescope keymaps<CR>', { desc = 'Telescope keymaps' })
+      map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', { desc = 'Telescope help_tags' })
+      map('n', '<Space>fcs', '<Cmd>Telescope colorscheme<CR>', { desc = 'Telescope colorscheme' })
+      map('n', '<Space>fFT', '<Cmd>Telescope filetypes<CR>', { desc = 'Telescope filetypes' })
 
-      vim.keymap.set('n', '<Space>f:', '<Cmd>Telescope command_history<CR>', { silent = true })
+      map('n', '<Space>f:', '<Cmd>Telescope command_history<CR>', { desc = 'Telescope command_history' })
 
-      vim.keymap.set('n', '<Space>/', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', { silent = true })
-      vim.keymap.set('n', '<Space>f/', '<Cmd>Telescope live_grep<CR>', { silent = true })
+      map('n', '<Space>/', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', { desc = 'Telescope current_buffer_ff' })
+      map('n', '<Space>f/', '<Cmd>Telescope live_grep<CR>', { desc = 'Telescope live_grep' })
+      map('n', '<Space><Space>', '<Cmd>Telescope builtin<CR>', { desc = 'Telescope builtin' })
     end,
     requires = {
       { 'nvim-lua/plenary.nvim' },
@@ -190,13 +198,18 @@ local init = function()
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     setup = function()
+      local function map(mode, lhs, rhs, opts)
+        opts = opts or {}
+        opts.silent = true
+        vim.keymap.set(mode, lhs, rhs, opts)
+      end
       -- Lua
-      vim.keymap.set('n', '<Space>xx', '<cmd>Trouble<cr>', { silent = true })
-      vim.keymap.set('n', '<Space>xw', '<cmd>Trouble workspace_diagnostics<cr>', { silent = true })
-      vim.keymap.set('n', '<Space>xd', '<cmd>Trouble document_diagnostics<cr>', { silent = true })
-      -- vim.keymap.set('n', '<Space>xl', '<cmd>Trouble loclist<cr>', { silent = true })
-      -- vim.keymap.set('n', '<Space>xq', '<cmd>Trouble quickfix<cr>', { silent = true })
-      vim.keymap.set('n', 'gR', '<cmd>Trouble lsp_references<cr>', { silent = true })
+      map('n', '<Space>xx', '<cmd>Trouble<cr>', { desc = 'Trouble' })
+      map('n', '<Space>xw', '<cmd>Trouble workspace_diagnostics<cr>', { desc = 'Trouble workspace_diagnostics' })
+      map('n', '<Space>xd', '<cmd>Trouble document_diagnostics<cr>', { desc = 'Trouble document_diagnostics' })
+      -- map('n', '<Space>xl', '<cmd>Trouble loclist<cr>', { desc = 'Trouble loclist' })
+      -- map('n', '<Space>xq', '<cmd>Trouble quickfix<cr>', { desc = 'Trouble quickfix' })
+      map('n', 'gR', '<cmd>Trouble lsp_references<cr>', { desc = 'Trouble lsp_references' })
     end,
     config = function()
       require('trouble').setup {

@@ -3,29 +3,34 @@ local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Mappings.
-  local opts = { buffer = true, silent = true }
+  local function map(mode, lhs, rhs, opts)
+    opts = opts or {}
+    opts.buffer = bufnr
+    opts.silent = true
+    vim.keymap.set(mode, lhs, rhs, opts)
+  end
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', '<space>gi', vim.lsp.buf.implementation, opts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-  vim.keymap.set('n', '<space>wl', function()
+  map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP declaration' })
+  map('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP definition' })
+  map('n', 'K', vim.lsp.buf.hover, { desc = 'LSP hover' })
+  map('n', '<space>gi', vim.lsp.buf.implementation, { desc = 'LSP implementation' })
+  map('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'LSP signature_help' })
+  map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP add_workspace_folder' })
+  map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP remove_workspace_folder' })
+  map('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, opts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
-  -- vim.keymap.set('n', '<space>gr', vim.lsp.buf.references, opts)
-  vim.keymap.set('n', '<space>gr', require('telescope.builtin').lsp_references, opts)
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-  vim.keymap.set('n', '<space>lq', vim.diagnostic.setloclist, opts)
-  vim.keymap.set('n', '<space>lf', vim.lsp.buf.format, opts)
+  end, { desc = 'LSP list_workspace_folders' })
+  map('n', '<space>D', vim.lsp.buf.type_definition, { desc = 'LSP type_definition' })
+  map('n', '<space>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
+  map('n', '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code_action' })
+  -- map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
+  map('n', '<space>gr', require('telescope.builtin').lsp_references, { desc = 'LSP references' })
+  map('n', '<space>e', vim.diagnostic.open_float, { desc = 'LSP diagnostic open_float' })
+  map('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP diagnostic goto_prev' })
+  map('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP diagnostic goto_next' })
+  map('n', '<space>lq', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
+  map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
 
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
     group = augroup,

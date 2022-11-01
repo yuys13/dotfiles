@@ -36,6 +36,7 @@ local init = function()
 
   use {
     'j-hui/fidget.nvim',
+    opt = true,
     config = function()
       require('fidget').setup {
         fmt = {
@@ -606,6 +607,25 @@ local init = function()
         { nargs = 1, complete = 'customlist,sonictemplate#complete' }
       )
     end,
+  }
+
+  use {
+    'folke/noice.nvim',
+    -- opt = true,
+    event = 'VimEnter',
+    config = function()
+      require('noice').setup {
+        lsp = {
+          signature = {
+            enabled = false,
+          },
+        },
+      }
+    end,
+    requires = {
+      { 'MunifTanjim/nui.nvim' },
+      -- { 'rcarriga/nvim-notify' },
+    },
   }
 
   use 'DanilaMihailov/beacon.nvim'

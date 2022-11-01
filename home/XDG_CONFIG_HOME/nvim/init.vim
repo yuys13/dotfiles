@@ -83,3 +83,5 @@ if executable('nvr')
   let $EDITOR = 'nvr -cc split -c "set bufhidden=delete" --remote-wait'
 endif
 
+" Abbr
+cnoreabbrev qa confirm qa

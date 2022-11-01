@@ -502,7 +502,7 @@ local init = function()
   --     vim.g.lexima_ctrlh_as_backspace = 1
   --   end,
   --   config = function()
-  --     vim.keymap.set('i', 'jj', '<Esc>', { remap = false })
+  --     vim.keymap.set('i', 'jj', '<Esc>', { remap = true })
   --   end,
   -- }
 

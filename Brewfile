@@ -25,8 +25,6 @@ brew "fzf"
 brew "gh"
 # Remote repository management made easy
 brew "ghq"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Linting for your git commit messages
 brew "gitlint"
 # Open source programming language to build simple/reliable/efficient software
@@ -59,6 +57,8 @@ brew "stylua"
 brew "tig"
 # Terminal multiplexer
 brew "tmux"
+# Vi 'workalike' with many additional features
+brew "vim"
 # Vim script Language Lint
 brew "vint"
 # Linter for YAML files

@@ -372,15 +372,20 @@ let g:tmuxline_preset = {
 '''
 
 [[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+hook_add = '''
+autocmd! MyAutoCmd CompleteDone * if pumvisible() == 0 | pclose | endif
+'''
+
+[[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-buffer.vim'
 hook_add = '''
-au MyAutoCmd BufEnter * ++once call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+au MyAutoCmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name': 'buffer',
     \ 'allowlist': ['*'],
-    \ 'blocklist': ['go'],
     \ 'completor': function('asyncomplete#sources#buffer#completor'),
     \ 'config': {
     \    'max_buffer_size': 5000000,
@@ -389,9 +394,21 @@ au MyAutoCmd BufEnter * ++once call asyncomplete#register_source(asyncomplete#so
 '''
 
 [[plugins]]
+repo = 'prabirshrestha/asyncomplete-file.vim'
+hook_add = '''
+au MyAutoCmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['zsh'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+'''
+
+[[plugins]]
 repo = 'yuys13/asyncomplete-zsh.vim'
 hook_add = '''
-au MyAutoCmd filetype zsh ++once call asyncomplete#register_source({
+au MyAutoCmd User asyncomplete_setup call asyncomplete#register_source({
     \ 'name': 'zsh',
     \ 'allowlist': ['zsh'],
     \ 'completor': function('asyncomplete#sources#zsh#completor')
@@ -400,4 +417,12 @@ au MyAutoCmd filetype zsh ++once call asyncomplete#register_source({
 
 [[plugins]]
 repo = 'laixintao/asyncomplete-gitcommit'
+hook_add = '''
+au MyAutoCmd User asyncomplete_setup call asyncomplete#register_source({
+    \ 'name': 'gitcommit',
+    \ 'whitelist': ['gitcommit'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#gitcommit#completor')
+    \ })
+'''
 

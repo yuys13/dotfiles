@@ -1,8 +1,4 @@
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-on_event = 'InsertEnter'
-
-[[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 on_cmd = 'Linediff'
 hook_add = '''

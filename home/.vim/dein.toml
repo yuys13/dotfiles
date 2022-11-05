@@ -411,6 +411,7 @@ hook_add = '''
 au MyAutoCmd User asyncomplete_setup call asyncomplete#register_source({
     \ 'name': 'zsh',
     \ 'allowlist': ['zsh'],
+    \ 'triggers': {'*': ['-']},
     \ 'completor': function('asyncomplete#sources#zsh#completor')
     \ })
 '''

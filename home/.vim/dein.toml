@@ -389,5 +389,15 @@ au MyAutoCmd BufEnter * ++once call asyncomplete#register_source(asyncomplete#so
 '''
 
 [[plugins]]
+repo = 'yuys13/asyncomplete-zsh.vim'
+hook_add = '''
+au MyAutoCmd filetype zsh ++once call asyncomplete#register_source({
+    \ 'name': 'zsh',
+    \ 'allowlist': ['zsh'],
+    \ 'completor': function('asyncomplete#sources#zsh#completor')
+    \ })
+'''
+
+[[plugins]]
 repo = 'laixintao/asyncomplete-gitcommit'
 

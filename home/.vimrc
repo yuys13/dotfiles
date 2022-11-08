@@ -19,6 +19,9 @@ set cursorline
 set breakindent
 set showbreak=↪
 
+set diffopt&
+set diffopt+=vertical
+
 " Search
 set ignorecase
 set smartcase

@@ -76,7 +76,10 @@ hook_add = 'source ~/.vim/rc/lightline.rc.vim'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
-hook_add = 'autocmd MyAutoCmd VimEnter * runtime macros/sandwich/keymap/surround.vim'
+hook_add = '''
+  autocmd MyAutoCmd VimEnter * runtime macros/sandwich/keymap/surround.vim
+  call operator#sandwich#set('add', 'char', 'skip_space', 1)
+'''
 
 [[plugins]]
 repo = 'tyru/caw.vim'

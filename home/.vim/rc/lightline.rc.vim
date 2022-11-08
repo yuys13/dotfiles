@@ -100,10 +100,10 @@ function! MyLightlineHunks() abort
 endfunction
 
 function! MyLightlineBranch() abort
-  if winwidth(0) <= 75 || !exists('*FugitiveHead')
+  if winwidth(0) <= 75
     return ''
   endif
-  return FugitiveHead()
+  return gitbranch#name()
 endfunction
 
 function! MyLightlineReadonly() abort

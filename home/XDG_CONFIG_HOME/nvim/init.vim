@@ -51,6 +51,8 @@ if $COLORTERM =~? 'truecolor\|24bit'
   set termguicolors
 endif
 
+autocmd MyAutoCmd VimResized * wincmd =
+
 " Indent
 set expandtab
 set shiftwidth=4

@@ -22,6 +22,8 @@ set showbreak=↪
 set diffopt&
 set diffopt+=vertical
 
+autocmd MyAutoCmd VimResized * wincmd =
+
 " Search
 set ignorecase
 set smartcase

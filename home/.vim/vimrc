@@ -35,6 +35,8 @@ if $COLORTERM =~? 'truecolor\|24bit'
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+autocmd MyAutoCmd VimResized * wincmd =
+
 " Search
 set ignorecase
 set smartcase

@@ -35,6 +35,15 @@ if $COLORTERM =~? 'truecolor\|24bit'
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+if &term =~? 'xterm' || &term ==? 'win32'
+  " Use DECSCUSR escape sequences
+  let &t_SI = "\e[5 q"    " blink bar
+  let &t_SR = "\e[3 q"    " blink underline
+  let &t_EI = "\e[1 q"    " blink block
+  let &t_ti ..= "\e[1 q"   " blink block
+  let &t_te ..= "\e[0 q"   " default (depends on terminal, normally blink block)
+endif
+
 autocmd MyAutoCmd VimResized * wincmd =
 
 " Search

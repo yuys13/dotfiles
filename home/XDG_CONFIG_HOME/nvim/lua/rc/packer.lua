@@ -539,23 +539,14 @@ local init = function()
     end,
   }
 
-  -- use {
-  --   'cohama/lexima.vim',
-  --   event = 'InsertEnter',
-  --   setup = function()
-  --     vim.g.lexima_ctrlh_as_backspace = 1
-  --   end,
-  --   config = function()
-  --     vim.keymap.set('i', 'jj', '<Esc>', { remap = true })
-  --   end,
-  -- }
-
   use {
-    'windwp/nvim-autopairs',
+    'cohama/lexima.vim',
+    event = 'InsertEnter',
+    setup = function()
+      vim.g.lexima_ctrlh_as_backspace = 1
+    end,
     config = function()
-      require('nvim-autopairs').setup {
-        map_c_h = true,
-      }
+      vim.keymap.set('i', 'jj', '<Esc>', { remap = true })
     end,
   }
 

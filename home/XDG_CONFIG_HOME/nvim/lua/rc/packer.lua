@@ -438,13 +438,12 @@ local init = function()
   use {
     'kannokanno/previm',
     ft = { 'markdown', 'rst', 'asciidoc' },
-    config = function()
-      vim.cmd [[packadd open-browser.vim]]
-    end,
+    after = 'open-browser.vim',
   }
 
   use {
     'tyru/open-browser.vim',
+    ft = { 'markdown', 'rst', 'asciidoc' },
     keys = '<Plug>(openbrowser-smart-search)',
     setup = function()
       vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.

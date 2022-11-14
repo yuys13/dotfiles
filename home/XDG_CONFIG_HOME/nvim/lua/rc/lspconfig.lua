@@ -51,6 +51,9 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+local node_root_dir = require('lspconfig').util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json')
+local is_node_repo = node_root_dir(vim.fn.getcwd()) ~= nil
+
 -- Overriding the default LSP server options
 local enhance_server_opts = {
   ['jsonls'] = function(opts)
@@ -84,6 +87,9 @@ local enhance_server_opts = {
       },
     }
   end,
+  ['tsserver'] = function(opts)
+    opts.root_dir = node_root_dir
+  end,
 }
 
 require('neodev').setup {}
@@ -100,6 +106,10 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       capabilities = capabilities,
     }
+
+    if server_name == 'denols' and is_node_repo then
+      return
+    end
 
     if enhance_server_opts[server_name] then
       -- Enhance the default opts with the server-specific ones

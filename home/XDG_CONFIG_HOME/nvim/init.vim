@@ -47,7 +47,7 @@ let g:vimsyn_embed = 'lPr'
 autocmd MyAutoCmd TermOpen * setlocal nonumber
 autocmd MyAutoCmd TermOpen * setlocal norelativenumber
 
-if $COLORTERM =~? 'truecolor\|24bit'
+if $COLORTERM ==? 'truecolor'
   set termguicolors
 endif
 

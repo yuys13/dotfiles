@@ -51,7 +51,8 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local node_root_dir = require('lspconfig').util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json')
+local lspconfig = require 'lspconfig'
+local node_root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json')
 local is_node_repo = node_root_dir(vim.fn.getcwd()) ~= nil
 
 -- Overriding the default LSP server options
@@ -98,7 +99,6 @@ mason.setup {}
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-local lspconfig = require 'lspconfig'
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup_handlers {
   function(server_name)
@@ -106,10 +106,6 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       capabilities = capabilities,
     }
-
-    if server_name == 'denols' and is_node_repo then
-      return
-    end
 
     if enhance_server_opts[server_name] then
       -- Enhance the default opts with the server-specific ones
@@ -119,3 +115,10 @@ mason_lspconfig.setup_handlers {
     lspconfig[server_name].setup(opts)
   end,
 }
+
+if vim.fn.executable 'deno' == 1 and not is_node_repo then
+  lspconfig.denols.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end

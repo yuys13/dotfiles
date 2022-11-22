@@ -446,6 +446,7 @@ local init = function()
           end, { expr = true, desc = 'prev hunk' })
         end,
       }
+      require('scrollbar.handlers.gitsigns').setup()
     end,
   }
 
@@ -593,7 +594,11 @@ local init = function()
   use {
     'petertriho/nvim-scrollbar',
     config = function()
-      require('scrollbar').setup()
+      require('scrollbar').setup {
+        handlers = {
+          cursor = false,
+        },
+      }
     end,
   }
 

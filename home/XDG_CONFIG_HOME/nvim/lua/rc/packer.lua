@@ -204,6 +204,7 @@ local init = function()
         opts.silent = true
         vim.keymap.set(mode, lhs, rhs, opts)
       end
+
       -- Lua
       map('n', '<Space>xx', '<cmd>Trouble<cr>', { desc = 'Trouble' })
       map('n', '<Space>xw', '<cmd>Trouble workspace_diagnostics<cr>', { desc = 'Trouble workspace_diagnostics' })

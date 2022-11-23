@@ -52,6 +52,8 @@ if $COLORTERM ==? 'truecolor'
 endif
 
 autocmd MyAutoCmd VimResized * wincmd =
+" syntax=OFF in large files
+autocmd MyAutoCmd BufReadPost * if getfsize(@%) > 100 * 1024 | setlocal syntax=OFF | call interrupt() | endif
 
 " Indent
 set expandtab

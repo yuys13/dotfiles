@@ -52,14 +52,15 @@ local init = function()
       require 'rc.nvim-cmp'
     end,
     requires = {
-      { 'hrsh7th/vim-vsnip' },
-      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/vim-vsnip', event = 'InsertEnter' },
+      { 'hrsh7th/cmp-vsnip', event = 'InsertEnter' },
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-buffer', event = { 'InsertEnter', 'CmdlineEnter' } },
+      { 'hrsh7th/cmp-path', event = { 'InsertEnter', 'CmdlineEnter' } },
+      { 'hrsh7th/cmp-cmdline', event = 'CmdlineEnter' },
       {
         'tamago324/cmp-zsh',
+        ft = 'zsh',
         config = function()
           require('cmp_zsh').setup { zshrc = false, filetypes = { 'zsh' } }
         end,
@@ -389,6 +390,8 @@ local init = function()
 
   use {
     'yuys13/partedit.vim',
+    keys = '<Plug>(partedit_start_context)',
+    cmd = { 'PartEdit', 'PartEditContext' },
     setup = function()
       vim.keymap.set('n', '<Space>pe', '<Plug>(partedit_start_context)', { silent = true })
     end,
@@ -397,6 +400,7 @@ local init = function()
 
   use {
     'lambdalisue/gina.vim',
+    event = 'CmdlineEnter',
     config = function()
       vim.fn['gina#custom#mapping#nmap']('status', '<C-l>', '<Cmd>e<CR>', { noremap = 1, silent = 1 })
     end,
@@ -504,7 +508,6 @@ local init = function()
 
   use {
     'numToStr/Comment.nvim',
-    event = 'BufEnter',
     config = function()
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
@@ -525,13 +528,12 @@ local init = function()
 
   use {
     'monaqa/dial.nvim',
-    config = function()
-      vim.keymap.set('n', '<C-a>', require('dial.map').inc_normal(), {})
-      vim.keymap.set('n', '<C-x>', require('dial.map').dec_normal(), {})
-      vim.keymap.set('v', '<C-a>', require('dial.map').inc_visual(), {})
-      vim.keymap.set('v', '<C-x>', require('dial.map').dec_visual(), {})
-      vim.keymap.set('v', 'g<C-a>', require('dial.map').inc_gvisual(), {})
-      vim.keymap.set('v', 'g<C-x>', require('dial.map').dec_gvisual(), {})
+    keys = { '<Plug>(dial-increment)', '<Plug>(dial-decrement)' },
+    setup = function()
+      vim.keymap.set({ 'n', 'v' }, '<C-a>', '<Plug>(dial-increment)', {})
+      vim.keymap.set({ 'n', 'v' }, '<C-x>', '<Plug>(dial-decrement)', {})
+      vim.keymap.set('v', 'g<C-a>', 'g<Plug>(dial-increment)', {})
+      vim.keymap.set('v', 'g<C-x>', 'g<Plug>(dial-decrement)', {})
     end,
   }
 
@@ -567,6 +569,7 @@ local init = function()
 
   use {
     'windwp/nvim-ts-autotag',
+    event = 'InsertEnter',
     config = function()
       require('nvim-ts-autotag').setup()
     end,

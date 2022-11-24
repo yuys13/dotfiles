@@ -1,33 +1,22 @@
 scriptencoding utf-8
 
-lua << EOF
-pcall(require, 'impatient')
-
--- packer bootstrap
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-  vim.cmd [[packadd packer.nvim]]
-  require('rc.packer').sync()
-end
-EOF
-
-command! PackerInstall packadd packer.nvim | lua require('rc.packer').install()
-command! PackerUpdate packadd packer.nvim | lua require('rc.packer').update()
-command! PackerSync packadd packer.nvim | lua require('rc.packer').sync()
-command! PackerClean packadd packer.nvim | lua require('rc.packer').clean()
-command! PackerCompile packadd packer.nvim | lua require('rc.packer').compile()
-command! PackerStatus packadd packer.nvim | lua require('rc.packer').status()
-
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost packer.lua source <afile> | PackerCompile
-augroup end
+lua pcall(require, 'impatient')
 
 " reset augroup
 augroup MyAutoCmd
   autocmd!
 augroup END
+
+" Keymap
+inoremap <silent> jj <Esc>
+autocmd MyAutoCmd TermOpen * tnoremap <buffer> jj <C-\><C-n>
+
+if executable('tig')
+  nnoremap <silent> <Space>tig <Cmd>tabnew<CR><Cmd>te tig<CR><Cmd>tunmap <buffer> jj<CR>i
+endif
+
+" Abbr
+cnoreabbrev qa confirm qa
 
 " Display
 set number
@@ -55,16 +44,16 @@ autocmd MyAutoCmd VimResized * wincmd =
 " syntax=OFF in large files
 autocmd MyAutoCmd BufReadPost * if getfsize(@%) > 100 * 1024 | setlocal syntax=OFF | call interrupt() | endif
 
+" Search
+set ignorecase
+set smartcase
+set inccommand=split
+
 " Indent
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-
-" Search
-set ignorecase
-set smartcase
-set inccommand=split
 
 " Clipboard
 set clipboard&
@@ -74,22 +63,12 @@ set clipboard^=unnamedplus
 " Mouse
 set mouse=a
 
-" Keymap
-inoremap <silent> jj <Esc>
-autocmd MyAutoCmd TermOpen * tnoremap <buffer> jj <C-\><C-n>
-
-if executable('tig')
-  nnoremap <silent> <Space>tig <Cmd>tabnew<CR><Cmd>te tig<CR><Cmd>tunmap <buffer> jj<CR>i
-endif
-
-" Don't nest vim
+" Don't nest neovim
 if executable('nvr')
   let $EDITOR = 'nvr -cc split -c "set bufhidden=delete" --remote-wait'
 endif
 
-" Abbr
-cnoreabbrev qa confirm qa
-
+" Auto mkdir
 augroup vimrc-auto-mkdir  " {{{
   autocmd!
   autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
@@ -100,3 +79,25 @@ augroup vimrc-auto-mkdir  " {{{
     endif
   endfunction  " }}}
 augroup END  " }}}
+
+" Packer bootstrap
+lua << EOF
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
+  vim.cmd [[packadd packer.nvim]]
+  require('rc.packer').sync()
+end
+EOF
+
+command! PackerInstall packadd packer.nvim | lua require('rc.packer').install()
+command! PackerUpdate packadd packer.nvim | lua require('rc.packer').update()
+command! PackerSync packadd packer.nvim | lua require('rc.packer').sync()
+command! PackerClean packadd packer.nvim | lua require('rc.packer').clean()
+command! PackerCompile packadd packer.nvim | lua require('rc.packer').compile()
+command! PackerStatus packadd packer.nvim | lua require('rc.packer').status()
+
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost packer.lua source <afile> | PackerCompile
+augroup end

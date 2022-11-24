@@ -11,6 +11,9 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h') . '/dein.vim'
 imap <silent> jj <ESC>
 autocmd MyAutoCmd TerminalOpen * tnoremap <buffer> jj <C-w>N
 
+" Abbr
+cnoreabbrev qa confirm qa
+
 set backspace=indent,eol,start
 
 " Display

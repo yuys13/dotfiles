@@ -4,6 +4,9 @@ scriptencoding utf-8
 " Keymap
 inoremap <silent> jj <ESC>
 
+" Abbr
+cnoreabbrev qa confirm qa
+
 set backspace=indent,eol,start
 
 " Display

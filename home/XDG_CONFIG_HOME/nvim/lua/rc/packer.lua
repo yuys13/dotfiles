@@ -593,7 +593,7 @@ local init = function()
     end,
   }
 
-  use { 'norcalli/nvim-colorizer.lua', disable = not vim.o.termguicolors, cmd = 'ColorizerToggle' }
+  use { 'norcalli/nvim-colorizer.lua', cond = vim.o.termguicolors, cmd = 'ColorizerToggle' }
 
   use {
     'petertriho/nvim-scrollbar',

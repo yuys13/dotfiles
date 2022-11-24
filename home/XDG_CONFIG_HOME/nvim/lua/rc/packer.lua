@@ -223,7 +223,7 @@ local init = function()
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
-      require('nvim-treesitter.install').update {}
+      require('nvim-treesitter.install').update {}()
     end,
     config = function()
       require('nvim-treesitter.configs').setup {

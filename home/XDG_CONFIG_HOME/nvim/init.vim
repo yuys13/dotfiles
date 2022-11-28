@@ -16,7 +16,7 @@ if executable('tig')
 endif
 
 " Abbr
-cnoreabbrev qa confirm qa
+cnoreabbrev qa confirm qall
 
 " Display
 set number

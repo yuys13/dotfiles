@@ -5,7 +5,7 @@ scriptencoding utf-8
 inoremap <silent> jj <ESC>
 
 " Abbr
-cnoreabbrev qa confirm qa
+cnoreabbrev qa confirm qall
 
 set backspace=indent,eol,start
 

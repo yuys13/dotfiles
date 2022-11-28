@@ -12,7 +12,7 @@ imap <silent> jj <ESC>
 autocmd MyAutoCmd TerminalOpen * tnoremap <buffer> jj <C-w>N
 
 " Abbr
-cnoreabbrev qa confirm qa
+cnoreabbrev qa confirm qall
 
 set backspace=indent,eol,start
 

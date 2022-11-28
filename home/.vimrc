@@ -26,6 +26,8 @@ set diffopt&
 set diffopt+=vertical
 
 autocmd MyAutoCmd VimResized * wincmd =
+" syntax=OFF in large files
+autocmd MyAutoCmd BufReadPost * if getfsize(@%) > 512 * 1024 | setlocal syntax=OFF | call interrupt() | endif
 
 " Search
 set ignorecase

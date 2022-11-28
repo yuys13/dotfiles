@@ -48,16 +48,20 @@ local init = function()
 
   use {
     'hrsh7th/nvim-cmp',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     config = function()
       require 'rc.nvim-cmp'
+      if vim.g.colors_name == 'dracula' then
+        vim.cmd 'runtime after/plugin/dracula.vim'
+      end
     end,
     requires = {
       { 'hrsh7th/vim-vsnip', event = 'InsertEnter' },
       { 'hrsh7th/cmp-vsnip', event = 'InsertEnter' },
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer', event = { 'InsertEnter', 'CmdlineEnter' } },
-      { 'hrsh7th/cmp-path', event = { 'InsertEnter', 'CmdlineEnter' } },
-      { 'hrsh7th/cmp-cmdline', event = 'CmdlineEnter' },
+      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
       {
         'tamago324/cmp-zsh',
         ft = 'zsh',

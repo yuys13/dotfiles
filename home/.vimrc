@@ -53,6 +53,7 @@ set clipboard^=unnamedplus
 " Cmdline completion
 set wildmenu
 set wildmode=longest,full
+set wildoptions=pum
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.

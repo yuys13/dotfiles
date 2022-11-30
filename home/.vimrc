@@ -1,6 +1,11 @@
 " If you want to use dark power, delete me
 scriptencoding utf-8
 
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
 " Keymap
 inoremap <silent> jj <ESC>
 

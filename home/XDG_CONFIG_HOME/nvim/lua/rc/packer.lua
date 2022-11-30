@@ -293,6 +293,11 @@ local init = function()
             if ok and stats and stats.size > max_filesize then
               return true
             end
+
+            if lang == 'gitcommit' then
+              return true
+            end
+
             if not pcall(function()
               vim.treesitter.get_parser(0, lang):parse()
             end) then

@@ -138,3 +138,5 @@ elseif executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+colorscheme habamax
+

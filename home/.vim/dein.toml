@@ -163,6 +163,36 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+" let g:ctrlp_map = ''
+if has('win32')
+  set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+else
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+endif
+
+let g:ctrlp_user_command =
+      \ ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
+
+" nnoremap <Space>ff <Cmd>CtrlP<CR>
+" nnoremap <Space>fg <Cmd>CtrlP<CR>
+'''
+
+[[plugins]]
+repo = 'zeero/vim-ctrlp-help'
+hook_add = '''
+" nnoremap <Space>fh <Cmd>CtrlPHelp<CR>
+'''
+
+[[plugins]]
 repo = 'thinca/vim-localrc'
 
 [[plugins]]

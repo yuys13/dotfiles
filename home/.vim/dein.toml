@@ -149,6 +149,7 @@ hook_add = '''
         \':FzfFiles' :
         \':FzfGFiles -co --exclude-standard')."\<cr>"
   nnoremap <Plug>(fzf)af :<C-u>FzfFiles<CR>
+  nnoremap <Plug>(fzf)g :<C-u>FzfGFiles -co --exclude-standard<CR>
   nnoremap <Plug>(fzf)if :<C-u>FzfGFiles -co --exclude-standard -i<CR>
   nnoremap <Plug>(fzf)b :<C-u>FzfBuffer<CR>
   nnoremap <Plug>(fzf)t :<C-u>FzfTags<CR>

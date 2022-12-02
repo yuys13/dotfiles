@@ -541,10 +541,12 @@ local init = function()
   }
 
   use {
-    'liuchengxu/vista.vim',
-    cmd = 'Vista',
-    setup = function()
-      vim.g.vista_default_executive = 'nvim_lsp'
+    'stevearc/aerial.nvim',
+    cmd = 'AerialToggle',
+    config = function()
+      require('aerial').setup {
+        lazy_load = true,
+      }
     end,
   }
 

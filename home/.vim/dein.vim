@@ -16,7 +16,8 @@ let s:deinlazy_toml = expand('<sfile>:p:h') . '/deinlazy.toml'
 
 "
 let g:dein#install_progress_type = 'floating'
-let g:dein#install_check_diff = 1
+let g:dein#install_check_diff = v:true
+let g:dein#auto_recache = v:true
 
 " auto install
 if !isdirectory(s:dein_repo) && executable('git')

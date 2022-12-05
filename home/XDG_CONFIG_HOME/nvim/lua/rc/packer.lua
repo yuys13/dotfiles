@@ -40,6 +40,7 @@ local init = function()
 
   use {
     'ray-x/lsp_signature.nvim',
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('lsp_signature').setup()
     end,
@@ -47,6 +48,7 @@ local init = function()
 
   use {
     'j-hui/fidget.nvim',
+    event = 'LspAttach',
     config = function()
       require('fidget').setup {
         fmt = {
@@ -67,11 +69,11 @@ local init = function()
     end,
     requires = {
       { 'hrsh7th/vim-vsnip', event = 'InsertEnter' },
-      { 'hrsh7th/cmp-vsnip', event = 'InsertEnter' },
+      { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
       {
         'tamago324/cmp-zsh',
         ft = 'zsh',
@@ -86,6 +88,7 @@ local init = function()
 
   use {
     'lukas-reineke/lsp-format.nvim',
+    module = 'lsp-format',
     config = function()
       require('lsp-format').setup { sync = true }
     end,
@@ -93,7 +96,6 @@ local init = function()
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'lukas-reineke/lsp-format.nvim' },
     config = function()
       local null_ls = require 'null-ls'
       null_ls.setup {
@@ -169,6 +171,8 @@ local init = function()
 
   use {
     'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    module = { 'telescope', 'telescope.builtin' },
     config = function()
       require 'rc.telescope'
     end,
@@ -204,14 +208,20 @@ local init = function()
     end,
     requires = {
       { 'nvim-lua/plenary.nvim' },
-      { 'folke/trouble.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
-      { 'nvim-telescope/telescope-ui-select.nvim' },
+      {
+        'nvim-telescope/telescope-ui-select.nvim',
+        event = { 'BufRead', 'BufNewFile' },
+        config = function()
+          require('telescope').load_extension 'ui-select'
+        end,
+      },
     },
   }
 
   use {
     'folke/trouble.nvim',
+    cmd = 'Trouble',
     requires = 'kyazdani42/nvim-web-devicons',
     setup = function()
       local function map(mode, lhs, rhs, opts)
@@ -388,8 +398,13 @@ local init = function()
 
   use {
     'nvim-lualine/lualine.nvim',
-    config = function()
+    event = { 'BufRead', 'BufNewFile', 'InsertEnter', 'CursorHold' },
+    setup = function()
+      vim.o.laststatus = 0
       vim.o.showmode = false
+    end,
+    config = function()
+      vim.o.laststatus = 2
       require('lualine').setup {
         options = {
           icons_enabled = false,
@@ -422,6 +437,7 @@ local init = function()
 
   use {
     'lewis6991/gitsigns.nvim',
+    event = { 'BufRead', 'BufNewFile' },
     requires = {
       'nvim-lua/plenary.nvim',
     },
@@ -465,7 +481,6 @@ local init = function()
           end, { expr = true, desc = 'prev hunk' })
         end,
       }
-      require('scrollbar.handlers.gitsigns').setup()
     end,
   }
 
@@ -487,6 +502,7 @@ local init = function()
 
   use {
     'lukas-reineke/indent-blankline.nvim',
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('indent_blankline').setup {
         -- space_char_blankline = ' ',
@@ -522,6 +538,7 @@ local init = function()
 
   use {
     'numToStr/Comment.nvim',
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
@@ -534,6 +551,7 @@ local init = function()
 
   use {
     'machakann/vim-sandwich',
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       vim.cmd [[runtime macros/sandwich/keymap/surround.vim]]
       vim.fn['operator#sandwich#set']('add', 'char', 'skip_space', 1)
@@ -613,12 +631,15 @@ local init = function()
 
   use {
     'petertriho/nvim-scrollbar',
+    -- event = { 'BufRead', 'BufNewFile' },
+    after = 'gitsigns.nvim',
     config = function()
       require('scrollbar').setup {
         handlers = {
           cursor = false,
         },
       }
+      require('scrollbar.handlers.gitsigns').setup()
     end,
   }
 

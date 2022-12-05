@@ -1,5 +1,3 @@
-local trouble = require 'trouble.providers.telescope'
-
 require('telescope').setup {
   defaults = {
     layout_strategies = 'horizontal',
@@ -22,7 +20,6 @@ require('telescope').setup {
       },
       n = {
         t = 'select_tab',
-        ['<c-t>'] = trouble.open_with_trouble,
       },
     },
   },
@@ -62,5 +59,3 @@ require('telescope').setup {
     },
   },
 }
-
-require('telescope').load_extension 'ui-select'

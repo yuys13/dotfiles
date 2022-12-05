@@ -429,7 +429,7 @@ local init = function()
 
   use {
     'lambdalisue/gina.vim',
-    event = 'CmdlineEnter',
+    cmd = 'Gina',
     config = function()
       vim.fn['gina#custom#mapping#nmap']('status', '<C-l>', '<Cmd>e<CR>', { noremap = 1, silent = 1 })
     end,
@@ -649,7 +649,7 @@ local init = function()
 
   use {
     'mattn/vim-sonictemplate',
-    event = 'CmdlineEnter',
+    cmd = 'Template',
     setup = function()
       vim.g.loaded_sonictemplate_vim = true
     end,
@@ -662,7 +662,8 @@ local init = function()
     end,
   }
 
-  use 'DanilaMihailov/beacon.nvim'
+  use { 'DanilaMihailov/beacon.nvim', event = { 'BufRead', 'BufNewFile' } }
+
 end
 
 return packer.startup {

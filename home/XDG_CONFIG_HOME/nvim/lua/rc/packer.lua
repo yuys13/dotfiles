@@ -26,6 +26,7 @@ local init = function()
 
   use {
     'neovim/nvim-lspconfig',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require 'rc.lspconfig'
     end,
@@ -70,7 +71,7 @@ local init = function()
     requires = {
       { 'hrsh7th/vim-vsnip', event = 'InsertEnter' },
       { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lsp', module = 'cmp_nvim_lsp' },
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },

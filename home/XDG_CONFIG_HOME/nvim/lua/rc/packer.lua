@@ -575,8 +575,13 @@ local init = function()
     cmd = 'AerialToggle',
     config = function()
       require('aerial').setup {
+        backends = { 'lsp', 'treesitter', 'markdown', 'man' },
         lazy_load = true,
       }
+      local ok, telescope = pcall(require, 'telescope')
+      if ok then
+        telescope.load_extension 'aerial'
+      end
     end,
   }
 

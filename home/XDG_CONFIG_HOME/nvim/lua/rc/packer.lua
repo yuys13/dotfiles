@@ -248,6 +248,7 @@ local init = function()
 
   use {
     'nvim-treesitter/nvim-treesitter',
+    event = { 'BufRead', 'BufNewFile' },
     run = function()
       require('nvim-treesitter.install').update {}()
     end,
@@ -341,9 +342,6 @@ local init = function()
         },
       }
     end,
-    requires = {
-      { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    },
   }
 
   use {
@@ -539,14 +537,15 @@ local init = function()
 
   use {
     'numToStr/Comment.nvim',
-    event = { 'BufRead', 'BufNewFile' },
+    -- event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       }
     end,
+    after = 'nvim-treesitter',
     requires = {
-      { 'JoosepAlviste/nvim-ts-context-commentstring' },
+      { 'JoosepAlviste/nvim-ts-context-commentstring', module = 'ts_context_commentstring.integrations.comment_nvim' },
     },
   }
 
@@ -604,10 +603,11 @@ local init = function()
 
   use {
     'windwp/nvim-ts-autotag',
-    event = 'InsertEnter',
+    -- event = 'InsertEnter',
     config = function()
       require('nvim-ts-autotag').setup()
     end,
+    after = 'nvim-treesitter',
   }
 
   use {

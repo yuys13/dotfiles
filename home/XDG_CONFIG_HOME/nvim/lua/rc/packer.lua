@@ -31,12 +31,23 @@ local init = function()
       require 'rc.lspconfig'
     end,
     requires = {
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-      { 'folke/neodev.nvim' },
+      { 'folke/neodev.nvim', module = 'neodev' },
       { 'b0o/SchemaStore.nvim' },
-      { 'lukas-reineke/lsp-format.nvim' },
     },
+  }
+
+  use {
+    'williamboman/mason.nvim',
+    cmd = 'Mason',
+    module = 'mason',
+    config = function()
+      require('mason').setup()
+    end,
+  }
+
+  use {
+    'williamboman/mason-lspconfig.nvim',
+    module = 'mason-lspconfig',
   }
 
   use {

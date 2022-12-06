@@ -94,8 +94,6 @@ local enhance_server_opts = {
 }
 
 require('neodev').setup {}
-local mason = require 'mason'
-mason.setup {}
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).

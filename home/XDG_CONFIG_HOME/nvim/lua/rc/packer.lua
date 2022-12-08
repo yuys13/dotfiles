@@ -224,7 +224,7 @@ local init = function()
       { 'kyazdani42/nvim-web-devicons' },
       {
         'nvim-telescope/telescope-ui-select.nvim',
-        event = { 'BufRead', 'BufNewFile' },
+        event = { 'BufRead', 'BufNewFile', 'CmdlineEnter' },
         config = function()
           require('telescope').load_extension 'ui-select'
         end,

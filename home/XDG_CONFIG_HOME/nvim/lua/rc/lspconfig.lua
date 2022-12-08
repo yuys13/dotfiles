@@ -24,8 +24,11 @@ local on_attach = function(client, bufnr)
   map('n', '<space>D', vim.lsp.buf.type_definition, { desc = 'LSP type_definition' })
   map('n', '<space>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
   map('n', '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code_action' })
-  -- map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
-  map('n', '<space>gr', require('telescope.builtin').lsp_references, { desc = 'LSP references' })
+  if pcall(require, 'telescope.builtin') then
+    map('n', '<space>gr', require('telescope.builtin').lsp_references, { desc = 'LSP references' })
+  else
+    map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
+  end
   map('n', '<space>e', vim.diagnostic.open_float, { desc = 'LSP diagnostic open_float' })
   map('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP diagnostic goto_prev' })
   map('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP diagnostic goto_next' })

@@ -32,20 +32,22 @@ local on_attach = function(client, bufnr)
   map('n', '<space>lq', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
   map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
 
-  vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-    group = augroup,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.document_highlight()
-    end,
-  })
-  vim.api.nvim_create_autocmd('CursorMoved', {
-    group = augroup,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.clear_references()
-    end,
-  })
+  if client.server_capabilities.documentHighlightProvider == true then
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.document_highlight()
+      end,
+    })
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.clear_references()
+      end,
+    })
+  end
 end
 
 -- Add additional capabilities supported by nvim-cmp

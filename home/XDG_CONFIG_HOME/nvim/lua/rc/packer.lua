@@ -666,8 +666,6 @@ local init = function()
     end,
   }
 
-  use { 'folke/twilight.nvim', cmd = 'Twilight' }
-
   use {
     'mattn/vim-sonictemplate',
     cmd = 'Template',

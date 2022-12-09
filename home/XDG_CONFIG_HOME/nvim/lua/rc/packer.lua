@@ -88,12 +88,17 @@ local init = function()
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
       {
         'tamago324/cmp-zsh',
+        disable = vim.fn.executable 'zsh' == 0,
         after = 'nvim-cmp',
         config = function()
           require('cmp_zsh').setup { zshrc = false, filetypes = { 'zsh' } }
         end,
       },
-      { 'mtoohey31/cmp-fish', after = 'nvim-cmp' },
+      {
+        'mtoohey31/cmp-fish',
+        disable = vim.fn.executable 'fish' == 0,
+        after = 'nvim-cmp',
+      },
       { 'onsails/lspkind-nvim' },
     },
   }

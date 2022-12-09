@@ -685,6 +685,7 @@ local init = function()
 
   use { 'DanilaMihailov/beacon.nvim', event = { 'BufRead', 'BufNewFile' } }
 
+  use { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' }
 end
 
 return packer.startup {

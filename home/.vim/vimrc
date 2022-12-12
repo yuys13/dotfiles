@@ -85,6 +85,9 @@ if has('mouse')
   set mouse=a
 endif
 
+" Misc
+set updatetime=500
+
 " Setting grep tools
 if executable('rg')
   let &grepprg = 'rg --vimgrep --smart-case --hidden'

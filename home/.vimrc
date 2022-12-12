@@ -70,6 +70,9 @@ if has('mouse')
   set mouse=a
 endif
 
+" Misc
+set updatetime=500
+
 " Only do this part when compiled with support for autocommands.
 if has('autocmd')
 

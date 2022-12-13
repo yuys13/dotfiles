@@ -640,6 +640,8 @@ local init = function()
     end,
   }
 
+  use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+
   use {
     'stevearc/aerial.nvim',
     cmd = 'AerialToggle',

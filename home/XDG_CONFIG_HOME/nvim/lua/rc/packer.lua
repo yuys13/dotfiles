@@ -370,7 +370,37 @@ local init = function()
           enable = true,
           enable_autocmd = false,
         },
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ['af'] = '@function.outer',
+              ['if'] = '@function.inner',
+              ['ac'] = '@class.outer',
+              ['ic'] = '@class.inner',
+            },
+            selection_modes = {
+              ['@function.outer'] = 'V',
+              ['@class.outer'] = 'V',
+              ['@class.inner'] = 'V',
+            },
+          },
+        },
       }
+    end,
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter-context',
+    after = 'nvim-treesitter',
+    config = function()
+      require('treesitter-context').setup {}
     end,
   }
 

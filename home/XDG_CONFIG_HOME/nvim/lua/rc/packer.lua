@@ -118,8 +118,21 @@ local init = function()
       local null_ls = require 'null-ls'
       null_ls.setup {
         -- you can reuse a shared lspconfig on_attach callback here
-        on_attach = function(client)
+        on_attach = function(client, bufnr)
           require('lsp-format').on_attach(client)
+          vim.keymap.set(
+            'n',
+            '<Space>ca',
+            vim.lsp.buf.code_action,
+            { buffer = bufnr, silent = true, desc = 'LSP code_action' }
+          )
+          vim.keymap.set(
+            'n',
+            '<Space>lq',
+            vim.diagnostic.setloclist,
+            { buffer = bufnr, silent = true, desc = 'LSP diagnostic setloclist' }
+          )
+          vim.keymap.set('n', '<space>lf', vim.lsp.buf.format, { buffer = bufnr, silent = true, desc = 'LSP format' })
         end,
         sources = {
           -- Dockerfile

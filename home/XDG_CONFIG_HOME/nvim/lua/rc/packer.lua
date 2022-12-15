@@ -27,6 +27,19 @@ local init = function()
   use {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
+    setup = function()
+      local function map(mode, lhs, rhs, opts)
+        opts = opts or {}
+        opts.silent = true
+        vim.keymap.set(mode, lhs, rhs, opts)
+      end
+
+      map('n', '<space>e', vim.diagnostic.open_float, { desc = 'LSP diagnostic open_float' })
+      map('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP diagnostic goto_prev' })
+      map('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP diagnostic goto_next' })
+      map('n', '<space>ql', vim.diagnostic.setqflist, { desc = 'LSP diagnostic setqflist' })
+      map('n', '<space>ll', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
+    end,
     config = function()
       require 'rc.lspconfig'
     end,
@@ -125,12 +138,6 @@ local init = function()
             '<Space>ca',
             vim.lsp.buf.code_action,
             { buffer = bufnr, silent = true, desc = 'LSP code_action' }
-          )
-          vim.keymap.set(
-            'n',
-            '<Space>lq',
-            vim.diagnostic.setloclist,
-            { buffer = bufnr, silent = true, desc = 'LSP diagnostic setloclist' }
           )
           vim.keymap.set('n', '<space>lf', vim.lsp.buf.format, { buffer = bufnr, silent = true, desc = 'LSP format' })
         end,

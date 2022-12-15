@@ -1,7 +1,5 @@
 scriptencoding utf-8
 
-" lua pcall(require, 'impatient')
-
 " reset augroup
 augroup MyAutoCmd
   autocmd!

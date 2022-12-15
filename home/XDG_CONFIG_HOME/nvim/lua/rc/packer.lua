@@ -12,19 +12,6 @@ local init = function()
   }
 
   use {
-    'lewis6991/impatient.nvim',
-    disable = true,
-    config = function()
-      local augroup = vim.api.nvim_create_augroup('impatient-cache-clean', {})
-      vim.api.nvim_create_autocmd('User', {
-        group = augroup,
-        pattern = 'PackerCompileDone',
-        command = 'LuaCacheClear',
-      })
-    end,
-  }
-
-  use {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     setup = function()

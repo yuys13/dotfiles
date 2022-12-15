@@ -706,6 +706,19 @@ local init = function()
       require('aerial').setup {
         backends = { 'lsp', 'treesitter', 'markdown', 'man' },
         lazy_load = true,
+        layout = {
+          win_opts = { winblend = 30 },
+        },
+        -- show_guides = true,
+        float = {
+          relative = 'win',
+          override = function(conf, source_winid)
+            conf.col = vim.fn.winwidth(source_winid)
+            conf.row = 0
+            vim.pretty_print(conf)
+            return conf
+          end,
+        },
       }
       local ok, telescope = pcall(require, 'telescope')
       if ok then

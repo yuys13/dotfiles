@@ -58,7 +58,7 @@ local init = function()
 
   use {
     'williamboman/mason.nvim',
-    cmd = 'Mason',
+    event = 'CmdlineEnter',
     module = 'mason',
     config = function()
       require('mason').setup()

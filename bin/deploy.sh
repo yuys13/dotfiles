@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+
+set -ue -o pipefail
 
 if ! command -v git >/dev/null 2>&1; then
     echo git not installed.

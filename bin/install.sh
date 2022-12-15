@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+
+set -ue -o pipefail
 
 BASEDIR=$(dirname "$0")
 cd "${BASEDIR}"

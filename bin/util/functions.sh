@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -ue -o pipefail
 
 to_lower() {
     cat - | tr "[:upper:]" "[:lower:]"

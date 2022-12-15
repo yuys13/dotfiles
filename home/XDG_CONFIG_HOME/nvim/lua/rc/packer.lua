@@ -34,11 +34,18 @@ local init = function()
         vim.keymap.set(mode, lhs, rhs, opts)
       end
 
-      map('n', '<space>e', vim.diagnostic.open_float, { desc = 'LSP diagnostic open_float' })
-      map('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP diagnostic goto_prev' })
-      map('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP diagnostic goto_next' })
-      map('n', '<space>ql', vim.diagnostic.setqflist, { desc = 'LSP diagnostic setqflist' })
-      map('n', '<space>ll', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
+      local augroup = vim.api.nvim_create_augroup('LazyDiagMap', {})
+      vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+        group = augroup,
+        once = true,
+        callback = function()
+          map('n', '<space>e', vim.diagnostic.open_float, { desc = 'LSP diagnostic open_float' })
+          map('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP diagnostic goto_prev' })
+          map('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP diagnostic goto_next' })
+          map('n', '<space>ql', vim.diagnostic.setqflist, { desc = 'LSP diagnostic setqflist' })
+          map('n', '<space>ll', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
+        end,
+      })
     end,
     config = function()
       require 'rc.lspconfig'

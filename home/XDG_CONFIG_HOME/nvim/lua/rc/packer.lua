@@ -512,7 +512,7 @@ local init = function()
 
   use {
     'nvim-lualine/lualine.nvim',
-    event = { 'BufRead', 'BufNewFile', 'InsertEnter', 'CursorHold' },
+    event = { 'BufRead', 'BufNewFile', 'CursorHold' },
     setup = function()
       vim.o.laststatus = 0
       vim.o.showmode = false

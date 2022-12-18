@@ -24,6 +24,7 @@ if [[ -n ${EDITOR} && ${EDITOR[(w)0]} = 'nvr' ]]; then
     export EDITOR
 elif type nvim >/dev/null 2>&1; then
     export EDITOR=nvim
+    export MANPAGER='nvim +Man!'
 elif type vim >/dev/null 2>&1; then
     export EDITOR=vim
 elif type vi >/dev/null 2>&1; then

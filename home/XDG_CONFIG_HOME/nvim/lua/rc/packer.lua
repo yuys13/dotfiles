@@ -804,6 +804,11 @@ local init = function()
     end,
   }
 
+  use {
+    'tyru/capture.vim',
+    cmd = 'Capture',
+  }
+
   use { 'DanilaMihailov/beacon.nvim', event = { 'BufRead', 'BufNewFile' } }
 
   use { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' }

@@ -675,12 +675,22 @@ local init = function()
 
   use {
     'monaqa/dial.nvim',
-    keys = { '<Plug>(dial-increment)', '<Plug>(dial-decrement)' },
+    keys = {
+      '<Plug>(dial-increment)',
+      '<Plug>(dial-decrement)',
+      '<Plug>(vimrc-dial-increment)',
+      '<Plug>(vimrc-dial-decrement)',
+    },
+    module = 'dial.map',
     setup = function()
       vim.keymap.set({ 'n', 'v' }, '<C-a>', '<Plug>(dial-increment)', {})
       vim.keymap.set({ 'n', 'v' }, '<C-x>', '<Plug>(dial-decrement)', {})
-      vim.keymap.set('v', 'g<C-a>', 'g<Plug>(dial-increment)', {})
-      vim.keymap.set('v', 'g<C-x>', 'g<Plug>(dial-decrement)', {})
+      vim.keymap.set('v', 'g<C-a>', '<Plug>(vimrc-dial-increment)', {})
+      vim.keymap.set('v', 'g<C-x>', '<Plug>(vimrc-dial-decrement)', {})
+    end,
+    config = function()
+      vim.keymap.set('v', '<Plug>(vimrc-dial-increment)', require('dial.map').inc_gvisual(), {})
+      vim.keymap.set('v', '<Plug>(vimrc-dial-decrement)', require('dial.map').dec_gvisual(), {})
     end,
   }
 

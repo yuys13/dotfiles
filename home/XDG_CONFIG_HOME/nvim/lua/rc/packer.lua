@@ -205,9 +205,6 @@ local init = function()
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
     module = { 'telescope', 'telescope.builtin' },
-    config = function()
-      require 'rc.telescope'
-    end,
     setup = function()
       local function map(mode, lhs, rhs, opts)
         opts = opts or {}
@@ -237,6 +234,31 @@ local init = function()
       map('n', '<Space>/', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', { desc = 'Telescope current_buffer_ff' })
       map('n', '<Space>f/', '<Cmd>Telescope live_grep<CR>', { desc = 'Telescope live_grep' })
       map('n', '<Space><Space>', '<Cmd>Telescope builtin<CR>', { desc = 'Telescope builtin' })
+    end,
+    config = function()
+      require('telescope').setup {
+        defaults = {
+          layout_strategies = 'horizontal',
+          layout_config = {
+            horizontal = {
+              prompt_position = 'top',
+            },
+          },
+          sorting_strategy = 'ascending',
+          mappings = {
+            i = {
+              ['?'] = 'which_key',
+              ['<C-j>'] = 'move_selection_next',
+              ['<C-k>'] = 'move_selection_previous',
+            },
+            n = {
+              t = 'select_tab',
+            },
+          },
+        },
+        pickers = {},
+        extensions = {},
+      }
     end,
     requires = {
       { 'nvim-lua/plenary.nvim' },

@@ -241,14 +241,15 @@ local init = function()
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
-      {
-        'nvim-telescope/telescope-ui-select.nvim',
-        event = { 'BufRead', 'BufNewFile', 'CmdlineEnter' },
-        config = function()
-          require('telescope').load_extension 'ui-select'
-        end,
-      },
     },
+  }
+
+  use {
+    'stevearc/dressing.nvim',
+    event = { 'BufRead', 'BufNewFile', 'CmdlineEnter' },
+    config = function()
+      require('dressing').setup {}
+    end,
   }
 
   use {

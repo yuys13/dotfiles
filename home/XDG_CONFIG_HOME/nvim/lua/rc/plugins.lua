@@ -1,20 +1,8 @@
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-local packer = require 'packer'
-
-local init = function()
-  local use = packer.use
-  -- Packer can manage itself
-  use {
-    'wbthomason/packer.nvim',
-    opt = true,
-  }
-
-  use {
+return {
+  {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
-    setup = function()
+    init = function()
       local function map(mode, lhs, rhs, opts)
         opts = opts or {}
         opts.silent = true
@@ -37,35 +25,31 @@ local init = function()
     config = function()
       require 'rc.lspconfig'
     end,
-    requires = {
-      { 'folke/neodev.nvim', module = 'neodev' },
+    dependencies = {
+      { 'folke/neodev.nvim' },
       { 'b0o/SchemaStore.nvim' },
     },
-  }
+  },
 
-  use {
+  {
     'williamboman/mason.nvim',
-    event = 'CmdlineEnter',
-    module = 'mason',
+    cmd = 'Mason',
     config = function()
       require('mason').setup()
     end,
-  }
+  },
 
-  use {
-    'williamboman/mason-lspconfig.nvim',
-    module = 'mason-lspconfig',
-  }
+  { 'williamboman/mason-lspconfig.nvim' },
 
-  use {
+  {
     'ray-x/lsp_signature.nvim',
     event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('lsp_signature').setup()
     end,
-  }
+  },
 
-  use {
+  {
     'j-hui/fidget.nvim',
     event = 'LspAttach',
     config = function()
@@ -75,9 +59,9 @@ local init = function()
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     'hrsh7th/nvim-cmp',
     event = { 'InsertEnter', 'CmdlineEnter' },
     config = function()
@@ -86,17 +70,16 @@ local init = function()
         vim.cmd 'runtime after/plugin/dracula.vim'
       end
     end,
-    requires = {
-      { 'hrsh7th/vim-vsnip', event = 'InsertEnter' },
-      { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp', module = 'cmp_nvim_lsp' },
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+    dependencies = {
+      { 'hrsh7th/vim-vsnip' },
+      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
       {
         'tamago324/cmp-zsh',
         disable = vim.fn.executable 'zsh' == 0,
-        after = 'nvim-cmp',
         config = function()
           require('cmp_zsh').setup { zshrc = false, filetypes = { 'zsh' } }
         end,
@@ -104,21 +87,19 @@ local init = function()
       {
         'mtoohey31/cmp-fish',
         disable = vim.fn.executable 'fish' == 0,
-        after = 'nvim-cmp',
       },
       { 'onsails/lspkind-nvim' },
     },
-  }
+  },
 
-  use {
+  {
     'lukas-reineke/lsp-format.nvim',
-    module = 'lsp-format',
     config = function()
       require('lsp-format').setup { sync = true }
     end,
-  }
+  },
 
-  use {
+  {
     'jose-elias-alvarez/null-ls.nvim',
     event = { 'BufRead', 'BufNewFile' },
     config = function()
@@ -199,13 +180,12 @@ local init = function()
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
-    module = { 'telescope', 'telescope.builtin' },
-    setup = function()
+    init = function()
       local function map(mode, lhs, rhs, opts)
         opts = opts or {}
         opts.silent = true
@@ -260,25 +240,25 @@ local init = function()
         extensions = {},
       }
     end,
-    requires = {
+    dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
     },
-  }
+  },
 
-  use {
+  {
     'stevearc/dressing.nvim',
     event = { 'BufRead', 'BufNewFile', 'CmdlineEnter' },
     config = function()
       require('dressing').setup {}
     end,
-  }
+  },
 
-  use {
+  {
     'folke/trouble.nvim',
     cmd = 'Trouble',
-    requires = 'kyazdani42/nvim-web-devicons',
-    setup = function()
+    dependencies = 'kyazdani42/nvim-web-devicons',
+    init = function()
       local function map(mode, lhs, rhs, opts)
         opts = opts or {}
         opts.silent = true
@@ -298,12 +278,12 @@ local init = function()
         use_diagnostic_signs = true,
       }
     end,
-  }
+  },
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
     event = { 'BufRead', 'BufNewFile' },
-    run = function()
+    build = function()
       require('nvim-treesitter.install').update {}()
     end,
     config = function()
@@ -413,35 +393,31 @@ local init = function()
         },
       }
     end,
-  }
+    dependencies = {
+      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+          require('treesitter-context').setup {}
+        end,
+      },
+    },
+  },
 
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
-  }
-
-  use {
-    'nvim-treesitter/nvim-treesitter-context',
-    after = 'nvim-treesitter',
-    config = function()
-      require('treesitter-context').setup {}
-    end,
-  }
-
-  use {
+  {
     'nvim-treesitter/playground',
     cmd = { 'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor' },
-  }
+  },
 
-  use {
+  {
     'mfussenegger/nvim-dap',
     keys = '<Plug>(dap)',
-    setup = function()
-      vim.keymap.set('n', '<Plug>(dap)', '<Nop>', { silent = true })
+    init = function()
       vim.keymap.set('n', '<Space>d', '<Plug>(dap)', { silent = true })
     end,
     config = function()
       local dap = require 'dap'
+      vim.keymap.set('n', '<Plug>(dap)', '<Nop>', { silent = true })
       vim.keymap.set('n', '<Plug>(dap)b', require('dap').toggle_breakpoint)
       vim.keymap.set('n', '<Plug>(dap)c', require('dap').continue)
       vim.keymap.set('n', '<Plug>(dap)j', require('dap').step_over)
@@ -475,21 +451,22 @@ local init = function()
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     'rcarriga/nvim-dap-ui',
-    after = 'nvim-dap',
-    requires = { 'mfussenegger/nvim-dap' },
+    keys = '<Plug>(dap)',
+    dependencies = { 'mfussenegger/nvim-dap' },
     config = function()
       vim.keymap.set('n', '<Plug>(dap)d', require('dapui').toggle)
       require('dapui').setup {}
     end,
-  }
+  },
 
-  use {
+  {
     'dracula/vim',
-    as = 'dracula',
+    event = { 'VimEnter', 'BufReadPre', 'BufNewFile' },
+    name = 'dracula',
     config = function()
       local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
       vim.api.nvim_create_autocmd('colorscheme', {
@@ -499,19 +476,18 @@ local init = function()
       })
       vim.cmd 'colorscheme dracula'
     end,
-  }
-  use { 'cocopon/iceberg.vim', opt = true }
-  use { 'romainl/vim-dichromatic', opt = true }
-  use { 'PierreCapo/voir.vim', opt = true }
-  use { 'machakann/vim-colorscheme-tatami', opt = true }
-  use { 'jonathanfilip/vim-lucius', opt = true }
-  use { 'junegunn/seoul256.vim', opt = true }
-  use { 'joshdick/onedark.vim', opt = true }
-  use { 'tomasr/molokai', opt = true }
-  use {
+  },
+  { 'cocopon/iceberg.vim', lazy = false },
+  { 'romainl/vim-dichromatic', lazy = false },
+  { 'PierreCapo/voir.vim', lazy = false },
+  { 'machakann/vim-colorscheme-tatami', lazy = false },
+  { 'jonathanfilip/vim-lucius', lazy = false },
+  { 'junegunn/seoul256.vim', lazy = false },
+  { 'joshdick/onedark.vim', lazy = false },
+  { 'tomasr/molokai', lazy = false },
+  {
     'altercation/vim-colors-solarized',
-    opt = true,
-    setup = function()
+    init = function()
       if vim.env.SOLARIZED == nil then
         vim.g.solarized_termtrans = 0
         vim.g.solarized_termcolors = 256
@@ -528,15 +504,15 @@ local init = function()
         })
       end
     end,
-  }
-  use { 'sainnhe/edge' }
-  use { 'folke/tokyonight.nvim' }
-  use { 'rebelot/kanagawa.nvim' }
+  },
+  { 'sainnhe/edge', lazy = false },
+  { 'folke/tokyonight.nvim', lazy = false },
+  { 'rebelot/kanagawa.nvim', lazy = false },
 
-  use {
+  {
     'nvim-lualine/lualine.nvim',
     event = { 'BufRead', 'BufNewFile', 'CursorHold' },
-    setup = function()
+    init = function()
       vim.o.laststatus = 0
       vim.o.showmode = false
     end,
@@ -550,34 +526,32 @@ local init = function()
         },
       }
     end,
-  }
+  },
 
-  use 'editorconfig/editorconfig-vim'
+  { 'editorconfig/editorconfig-vim', lazy = false },
 
-  use {
+  {
     'yuys13/partedit.vim',
     keys = '<Plug>(partedit_start_context)',
     cmd = { 'PartEdit', 'PartEditContext' },
-    setup = function()
+    init = function()
       vim.keymap.set('n', '<Space>pe', '<Plug>(partedit_start_context)', { silent = true })
     end,
-    requires = { { 'Shougo/context_filetype.vim' } },
-  }
+    dependencies = { { 'Shougo/context_filetype.vim' } },
+  },
 
-  use {
+  {
     'lambdalisue/gina.vim',
     cmd = 'Gina',
     config = function()
       vim.fn['gina#custom#mapping#nmap']('status', '<C-l>', '<Cmd>e<CR>', { noremap = 1, silent = 1 })
     end,
-  }
+  },
 
-  use {
+  {
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead', 'BufNewFile' },
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('gitsigns').setup {
         signs = {
@@ -619,25 +593,25 @@ local init = function()
         end,
       }
     end,
-  }
+  },
 
-  use {
+  {
     'kannokanno/previm',
-    ft = { 'markdown', 'rst', 'asciidoc' },
-    after = 'open-browser.vim',
-  }
+    event = { 'BufReadPre', 'BufNewFile' },
+    -- ft = { 'markdown', 'rst', 'asciidoc' },
+  },
 
-  use {
+  {
     'tyru/open-browser.vim',
     ft = { 'markdown', 'rst', 'asciidoc' },
     keys = '<Plug>(openbrowser-smart-search)',
-    setup = function()
+    init = function()
       vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
       vim.keymap.set({ 'n', 'x' }, 'gx', '<Plug>(openbrowser-smart-search)', {})
     end,
-  }
+  },
 
-  use {
+  {
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufRead', 'BufNewFile' },
     config = function()
@@ -651,75 +625,79 @@ local init = function()
         -- show_current_context_start = true,
       }
     end,
-  }
+  },
 
-  use {
+  {
     't9md/vim-quickhl',
     keys = '<Plug>(quickhl-manual-this)',
-    setup = function()
+    init = function()
       vim.keymap.set('n', '<Space>hl', '<Plug>(quickhl-manual-this)', {})
       vim.keymap.set('n', '<Space>nohl', '<Plug>(quickhl-manual-reset)', {})
     end,
-  }
+  },
 
-  use {
+  {
     'kassio/neoterm',
     cmd = 'Tnew',
-    setup = function()
+    init = function()
       vim.keymap.set('n', '<Space>nl', '<Cmd>rightbelow vertical Tnew<CR>', {})
       vim.keymap.set('n', '<Space>nh', '<Cmd>vertical Tnew<CR>', {})
       vim.keymap.set('n', '<Space>nn', '<Plug>(neoterm-repl-send-line)', {})
       vim.keymap.set('x', '<Space>nn', '<Plug>(neoterm-repl-send)', {})
     end,
-  }
+  },
 
-  use {
+  {
     'numToStr/Comment.nvim',
-    -- event = { 'BufRead', 'BufNewFile' },
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       }
     end,
-    after = 'nvim-treesitter',
-    requires = {
-      { 'JoosepAlviste/nvim-ts-context-commentstring', module = 'ts_context_commentstring.integrations.comment_nvim' },
+    dependencies = {
+      { 'JoosepAlviste/nvim-ts-context-commentstring' },
     },
-  }
+  },
 
-  use {
+  {
     'machakann/vim-sandwich',
     event = { 'BufRead', 'BufNewFile' },
     config = function()
       vim.cmd [[runtime macros/sandwich/keymap/surround.vim]]
       vim.fn['operator#sandwich#set']('add', 'char', 'skip_space', 1)
     end,
-  }
+  },
 
-  use {
+  {
     'monaqa/dial.nvim',
     keys = {
-      '<Plug>(dial-increment)',
-      '<Plug>(dial-decrement)',
+      '<C-a>',
+      '<C-x>',
       '<Plug>(vimrc-dial-increment)',
       '<Plug>(vimrc-dial-decrement)',
     },
-    module = 'dial.map',
-    setup = function()
-      vim.keymap.set({ 'n', 'v' }, '<C-a>', '<Plug>(dial-increment)', {})
-      vim.keymap.set({ 'n', 'v' }, '<C-x>', '<Plug>(dial-decrement)', {})
+    init = function()
       vim.keymap.set('v', 'g<C-a>', '<Plug>(vimrc-dial-increment)', {})
       vim.keymap.set('v', 'g<C-x>', '<Plug>(vimrc-dial-decrement)', {})
     end,
     config = function()
+      vim.keymap.set({ 'n', 'v' }, '<C-a>', '<Plug>(dial-increment)', {})
+      vim.keymap.set({ 'n', 'v' }, '<C-x>', '<Plug>(dial-decrement)', {})
       vim.keymap.set('v', '<Plug>(vimrc-dial-increment)', require('dial.map').inc_gvisual(), {})
       vim.keymap.set('v', '<Plug>(vimrc-dial-decrement)', require('dial.map').dec_gvisual(), {})
     end,
-  }
+  },
 
-  use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+  {
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+    config = function()
+      require('bqf').enable()
+    end,
+  },
 
-  use {
+  {
     'stevearc/aerial.nvim',
     cmd = 'AerialToggle',
     config = function()
@@ -745,43 +723,42 @@ local init = function()
         telescope.load_extension 'aerial'
       end
     end,
-  }
+  },
 
-  use {
+  {
     'kyazdani42/nvim-tree.lua',
     cmd = 'NvimTreeToggle',
-    requires = {
+    dependencies = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function()
       require('nvim-tree').setup {}
     end,
-  }
+  },
 
-  use {
+  {
     'cohama/lexima.vim',
     event = 'InsertEnter',
-    setup = function()
+    init = function()
       vim.g.lexima_ctrlh_as_backspace = 1
     end,
     config = function()
       vim.keymap.set('i', 'jj', '<Esc>', { remap = true })
     end,
-  }
+  },
 
-  use {
+  {
     'windwp/nvim-ts-autotag',
-    -- event = 'InsertEnter',
+    event = 'InsertEnter',
     config = function()
       require('nvim-ts-autotag').setup()
     end,
-    after = 'nvim-treesitter',
-  }
+  },
 
-  use {
+  {
     'AndrewRadev/linediff.vim',
     cmd = 'Linediff',
-    setup = function()
+    init = function()
       vim.g.linediff_modify_statusline = 0
       vim.g.linediff_first_buffer_command = 'topleft new'
       vim.g.linediff_second_buffer_command = 'vertical new'
@@ -794,14 +771,13 @@ local init = function()
         end,
       })
     end,
-  }
+  },
 
-  use { 'norcalli/nvim-colorizer.lua', cond = vim.o.termguicolors, cmd = 'ColorizerToggle' }
+  { 'norcalli/nvim-colorizer.lua', cond = vim.o.termguicolors, cmd = 'ColorizerToggle' },
 
-  use {
+  {
     'petertriho/nvim-scrollbar',
-    -- event = { 'BufRead', 'BufNewFile' },
-    after = 'gitsigns.nvim',
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('scrollbar').setup {
         handlers = {
@@ -810,12 +786,12 @@ local init = function()
       }
       require('scrollbar.handlers.gitsigns').setup()
     end,
-  }
+  },
 
-  use {
+  {
     'mattn/vim-sonictemplate',
     cmd = 'Template',
-    setup = function()
+    init = function()
       vim.g.loaded_sonictemplate_vim = true
     end,
     config = function()
@@ -825,27 +801,11 @@ local init = function()
         { nargs = 1, complete = 'customlist,sonictemplate#complete' }
       )
     end,
-  }
-
-  use {
-    'tyru/capture.vim',
-    cmd = 'Capture',
-  }
-
-  use { 'DanilaMihailov/beacon.nvim', event = { 'BufRead', 'BufNewFile' } }
-
-  use { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' }
-end
-
-return packer.startup {
-  function()
-    init()
-  end,
-  config = {
-    display = {
-      -- open_fn = require('packer.util').float,
-      open_cmd = [=[tabnew \[packer\]]=],
-    },
-    autoremove = true,
   },
+
+  { 'tyru/capture.vim', cmd = 'Capture' },
+
+  { 'DanilaMihailov/beacon.nvim', event = { 'BufRead', 'BufNewFile' } },
+
+  { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' },
 }

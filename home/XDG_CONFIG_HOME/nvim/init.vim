@@ -5,6 +5,8 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+lua pcall(require, 'rc.lazy')
+
 " Keymap
 inoremap <silent> jj <Esc>
 autocmd MyAutoCmd TermOpen * tnoremap <buffer> jj <C-\><C-n>
@@ -78,25 +80,3 @@ augroup vimrc-auto-mkdir  " {{{
     endif
   endfunction  " }}}
 augroup END  " }}}
-
-" Packer bootstrap
-lua << EOF
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-  vim.cmd [[packadd packer.nvim]]
-  require('rc.packer').sync()
-end
-EOF
-
-command! PackerInstall packadd packer.nvim | lua require('rc.packer').install()
-command! PackerUpdate packadd packer.nvim | lua require('rc.packer').update()
-command! PackerSync packadd packer.nvim | lua require('rc.packer').sync()
-command! PackerClean packadd packer.nvim | lua require('rc.packer').clean()
-command! PackerCompile packadd packer.nvim | lua require('rc.packer').compile()
-command! PackerStatus packadd packer.nvim | lua require('rc.packer').status()
-
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost packer.lua source <afile> | PackerCompile
-augroup end

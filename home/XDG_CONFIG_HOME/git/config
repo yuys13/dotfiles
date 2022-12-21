@@ -18,5 +18,5 @@
 	path = nvim
 [ghq]
 	; root = ~/.cache/dein/repos
-	; root = ~/.local/share/nvim/site/pack/packer
+	; root = ~/.local/share/nvim/lazy
 	root = ~/src

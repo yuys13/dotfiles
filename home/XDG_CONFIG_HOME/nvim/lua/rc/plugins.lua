@@ -79,14 +79,14 @@ return {
       { 'hrsh7th/cmp-cmdline' },
       {
         'tamago324/cmp-zsh',
-        disable = vim.fn.executable 'zsh' == 0,
+        enabled = vim.fn.executable 'zsh' == 1,
         config = function()
           require('cmp_zsh').setup { zshrc = false, filetypes = { 'zsh' } }
         end,
       },
       {
         'mtoohey31/cmp-fish',
-        disable = vim.fn.executable 'fish' == 0,
+        enabled = vim.fn.executable 'fish' == 1,
       },
       { 'onsails/lspkind-nvim' },
     },

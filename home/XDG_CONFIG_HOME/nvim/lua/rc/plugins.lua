@@ -471,22 +471,24 @@ return {
       local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
       vim.api.nvim_create_autocmd('colorscheme', {
         group = augroup,
+        nested = true,
         pattern = 'dracula',
         command = 'runtime after/plugin/dracula.vim',
       })
       vim.cmd 'colorscheme dracula'
     end,
   },
-  { 'cocopon/iceberg.vim', lazy = false },
-  { 'romainl/vim-dichromatic', lazy = false },
-  { 'PierreCapo/voir.vim', lazy = false },
-  { 'machakann/vim-colorscheme-tatami', lazy = false },
-  { 'jonathanfilip/vim-lucius', lazy = false },
-  { 'junegunn/seoul256.vim', lazy = false },
-  { 'joshdick/onedark.vim', lazy = false },
-  { 'tomasr/molokai', lazy = false },
+  { 'cocopon/iceberg.vim', event = 'CursorHold' },
+  { 'romainl/vim-dichromatic', event = 'CursorHold' },
+  { 'PierreCapo/voir.vim', event = 'CursorHold' },
+  { 'machakann/vim-colorscheme-tatami', event = 'CursorHold' },
+  { 'jonathanfilip/vim-lucius', event = 'CursorHold' },
+  { 'junegunn/seoul256.vim', event = 'CursorHold' },
+  { 'joshdick/onedark.vim', event = 'CursorHold' },
+  { 'tomasr/molokai', event = 'CursorHold' },
   {
     'altercation/vim-colors-solarized',
+    event = 'CursorHold',
     init = function()
       if vim.env.SOLARIZED == nil then
         vim.g.solarized_termtrans = 0
@@ -505,9 +507,9 @@ return {
       end
     end,
   },
-  { 'sainnhe/edge', lazy = false },
-  { 'folke/tokyonight.nvim', lazy = false },
-  { 'rebelot/kanagawa.nvim', lazy = false },
+  { 'sainnhe/edge', event = 'CursorHold' },
+  { 'folke/tokyonight.nvim', event = 'CursorHold' },
+  { 'rebelot/kanagawa.nvim', event = 'CursorHold' },
 
   {
     'nvim-lualine/lualine.nvim',

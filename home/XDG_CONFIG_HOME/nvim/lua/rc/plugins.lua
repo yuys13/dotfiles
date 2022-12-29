@@ -599,8 +599,7 @@ return {
 
   {
     'kannokanno/previm',
-    event = { 'BufReadPre', 'BufNewFile' },
-    -- ft = { 'markdown', 'rst', 'asciidoc' },
+    ft = { 'markdown', 'rst', 'asciidoc' },
   },
 
   {

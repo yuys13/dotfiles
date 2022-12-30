@@ -774,7 +774,13 @@ return {
     end,
   },
 
-  { 'norcalli/nvim-colorizer.lua', cond = vim.o.termguicolors, cmd = 'ColorizerToggle' },
+  {
+    'norcalli/nvim-colorizer.lua',
+    cond = function()
+      return vim.o.termguicolors
+    end,
+    cmd = 'ColorizerToggle',
+  },
 
   {
     'petertriho/nvim-scrollbar',

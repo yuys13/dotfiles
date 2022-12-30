@@ -282,6 +282,7 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    cmd = { 'TSInstall', 'TSUpdate' },
     event = { 'BufRead', 'BufNewFile' },
     build = function()
       require('nvim-treesitter.install').update {}()

@@ -674,20 +674,14 @@ return {
   {
     'monaqa/dial.nvim',
     keys = {
-      '<C-a>',
-      '<C-x>',
-      '<Plug>(vimrc-dial-increment)',
-      '<Plug>(vimrc-dial-decrement)',
+      { '<C-a>', '<Plug>(dial-increment)', mode = { 'n', 'v' } },
+      { '<C-x>', '<Plug>(dial-decrement)', mode = { 'n', 'v' } },
+      { 'g<C-a>', mode = 'v' },
+      { 'g<C-x>', mode = 'v' },
     },
-    init = function()
-      vim.keymap.set('v', 'g<C-a>', '<Plug>(vimrc-dial-increment)', {})
-      vim.keymap.set('v', 'g<C-x>', '<Plug>(vimrc-dial-decrement)', {})
-    end,
     config = function()
-      vim.keymap.set({ 'n', 'v' }, '<C-a>', '<Plug>(dial-increment)', {})
-      vim.keymap.set({ 'n', 'v' }, '<C-x>', '<Plug>(dial-decrement)', {})
-      vim.keymap.set('v', '<Plug>(vimrc-dial-increment)', require('dial.map').inc_gvisual(), {})
-      vim.keymap.set('v', '<Plug>(vimrc-dial-decrement)', require('dial.map').dec_gvisual(), {})
+      vim.keymap.set('v', 'g<C-a>', require('dial.map').inc_gvisual(), {})
+      vim.keymap.set('v', 'g<C-x>', require('dial.map').dec_gvisual(), {})
     end,
   },
 

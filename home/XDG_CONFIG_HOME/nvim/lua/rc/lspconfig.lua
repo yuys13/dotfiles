@@ -52,62 +52,66 @@ local lspconfig = require 'lspconfig'
 local node_root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json')
 local is_node_repo = node_root_dir(vim.fn.getcwd()) ~= nil
 
--- Overriding the default LSP server options
-local enhance_server_opts = {
-  ['jsonls'] = function(opts)
-    opts.settings = {
-      json = {
-        schemas = require('schemastore').json.schemas(),
-      },
-    }
-  end,
-  ['rust_analyzer'] = function(opts)
-    opts.on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-      require('lsp-format').on_attach(client)
-    end
-    opts.settings = {
-      ['rust-analyzer'] = {
-        checkOnSave = {
-          command = 'clippy',
-        },
-      },
-    }
-  end,
-  ['sumneko_lua'] = function(opts)
-    opts.settings = {
-      Lua = {
-        workspace = {
-          checkThirdParty = false,
-          -- Make the server aware of Neovim runtime files
-          -- library = vim.api.nvim_get_runtime_file('', true),
-        },
-      },
-    }
-  end,
-  ['tsserver'] = function(opts)
-    opts.root_dir = node_root_dir
-  end,
-}
-
 require('neodev').setup {}
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
+require 'mason'
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup_handlers {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
   function(server_name)
-    local opts = {
+    lspconfig[server_name].setup { on_attach = on_attach, capabilities = capabilities }
+  end,
+  -- Next, you can provide targeted overrides for specific servers.
+  ['jsonls'] = function()
+    lspconfig.jsonls.setup {
       on_attach = on_attach,
       capabilities = capabilities,
+      settings = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+        },
+      },
     }
-
-    if enhance_server_opts[server_name] then
-      -- Enhance the default opts with the server-specific ones
-      enhance_server_opts[server_name](opts)
-    end
-
-    lspconfig[server_name].setup(opts)
+  end,
+  ['rust_analyzer'] = function()
+    lspconfig.rust_analyzer.setup {
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        require('lsp-format').on_attach(client)
+      end,
+      capabilities = capabilities,
+      settings = {
+        ['rust-analyzer'] = {
+          checkOnSave = {
+            command = 'clippy',
+          },
+        },
+      },
+    }
+  end,
+  ['sumneko_lua'] = function()
+    lspconfig.sumneko_lua.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          workspace = {
+            checkThirdParty = false,
+            -- Make the server aware of Neovim runtime files
+            -- library = vim.api.nvim_get_runtime_file('', true),
+          },
+        },
+      },
+    }
+  end,
+  ['tsserver'] = function()
+    lspconfig.tsserver.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      root_dir = node_root_dir,
+    }
   end,
 }
 

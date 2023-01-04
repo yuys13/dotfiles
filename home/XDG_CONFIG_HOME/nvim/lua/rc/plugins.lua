@@ -39,7 +39,12 @@ return {
     end,
   },
 
-  { 'williamboman/mason-lspconfig.nvim' },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require('mason-lspconfig').setup()
+    end,
+  },
 
   {
     'ray-x/lsp_signature.nvim',

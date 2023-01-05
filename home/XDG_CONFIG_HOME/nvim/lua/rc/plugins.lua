@@ -71,9 +71,6 @@ return {
     event = { 'InsertEnter', 'CmdlineEnter' },
     config = function()
       require 'rc.nvim-cmp'
-      if vim.g.colors_name == 'dracula' then
-        vim.cmd 'runtime after/plugin/dracula.vim'
-      end
     end,
     dependencies = {
       { 'hrsh7th/vim-vsnip' },
@@ -494,8 +491,15 @@ return {
   },
 
   {
+    'yuys13/hackshark.nvim',
+    lazy = false,
+    config = function()
+      vim.cmd.colorscheme 'hackshark'
+    end,
+  },
+  {
     'dracula/vim',
-    event = { 'VimEnter', 'BufReadPre', 'BufNewFile' },
+    event = 'CursorHold',
     name = 'dracula',
     config = function()
       local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
@@ -505,7 +509,6 @@ return {
         pattern = 'dracula',
         command = 'runtime after/plugin/dracula.vim',
       })
-      vim.cmd 'colorscheme dracula'
     end,
   },
   { 'cocopon/iceberg.vim', event = 'CursorHold' },

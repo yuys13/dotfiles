@@ -67,34 +67,6 @@ return {
   },
 
   {
-    'hrsh7th/nvim-cmp',
-    event = { 'InsertEnter', 'CmdlineEnter' },
-    config = function()
-      require 'rc.nvim-cmp'
-    end,
-    dependencies = {
-      { 'hrsh7th/vim-vsnip' },
-      { 'hrsh7th/cmp-vsnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
-      {
-        'tamago324/cmp-zsh',
-        enabled = vim.fn.executable 'zsh' == 1,
-        config = function()
-          require('cmp_zsh').setup { zshrc = false, filetypes = { 'zsh' } }
-        end,
-      },
-      {
-        'mtoohey31/cmp-fish',
-        enabled = vim.fn.executable 'fish' == 1,
-      },
-      { 'onsails/lspkind-nvim' },
-    },
-  },
-
-  {
     'lukas-reineke/lsp-format.nvim',
     config = function()
       require('lsp-format').setup { sync = true }

@@ -1,69 +1,5 @@
 return {
   {
-    'nvim-telescope/telescope.nvim',
-    cmd = 'Telescope',
-    init = function()
-      local function map(mode, lhs, rhs, opts)
-        opts = opts or {}
-        opts.silent = true
-        vim.keymap.set(mode, lhs, rhs, opts)
-      end
-
-      map('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', { desc = 'Telescope find_files' })
-      map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', { desc = 'Telescope buffers' })
-      map('n', '<Space>fr', '<Cmd>Telescope resume<CR>', { desc = 'Telescope resume' })
-      map('n', '<Space>fg', function()
-        require('telescope.builtin').git_files { git_command = { 'git', 'ls-files', '--exclude-standard', '-co' } }
-      end, { desc = 'Telescope git_files' })
-      map('n', '<Space>fig', function()
-        require('telescope.builtin').git_files { git_command = { 'git', 'ls-files', '--exclude-standard', '-coi' } }
-      end, { desc = 'Telescope git_files ignore only' })
-
-      map('n', '<Space>f*', '<Cmd>Telescope grep_string<CR>', { desc = 'Telescope grep_string' })
-
-      map('n', '<Space>fk', '<Cmd>Telescope keymaps<CR>', { desc = 'Telescope keymaps' })
-      map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', { desc = 'Telescope help_tags' })
-      map('n', '<Space>fcs', '<Cmd>Telescope colorscheme<CR>', { desc = 'Telescope colorscheme' })
-      map('n', '<Space>fFT', '<Cmd>Telescope filetypes<CR>', { desc = 'Telescope filetypes' })
-
-      map('n', '<Space>f:', '<Cmd>Telescope command_history<CR>', { desc = 'Telescope command_history' })
-
-      map('n', '<Space>/', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', { desc = 'Telescope current_buffer_ff' })
-      map('n', '<Space>f/', '<Cmd>Telescope live_grep<CR>', { desc = 'Telescope live_grep' })
-      map('n', '<Space><Space>', '<Cmd>Telescope builtin<CR>', { desc = 'Telescope builtin' })
-    end,
-    config = function()
-      require('telescope').setup {
-        defaults = {
-          layout_strategies = 'horizontal',
-          layout_config = {
-            horizontal = {
-              prompt_position = 'top',
-            },
-          },
-          sorting_strategy = 'ascending',
-          mappings = {
-            i = {
-              ['?'] = 'which_key',
-              ['<C-j>'] = 'move_selection_next',
-              ['<C-k>'] = 'move_selection_previous',
-            },
-            n = {
-              t = 'select_tab',
-            },
-          },
-        },
-        pickers = {},
-        extensions = {},
-      }
-    end,
-    dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'kyazdani42/nvim-web-devicons' },
-    },
-  },
-
-  {
     'stevearc/dressing.nvim',
     event = { 'BufRead', 'BufNewFile', 'CmdlineEnter' },
     config = function()
@@ -95,136 +31,6 @@ return {
         use_diagnostic_signs = true,
       }
     end,
-  },
-
-  {
-    'nvim-treesitter/nvim-treesitter',
-    cmd = { 'TSInstall', 'TSUpdate' },
-    event = { 'BufRead', 'BufNewFile' },
-    build = function()
-      require('nvim-treesitter.install').update {}()
-    end,
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        -- A list of parser names, or "all"
-        ensure_installed = {
-          'bash',
-          'css',
-          'dockerfile',
-          'fish',
-          'go',
-          'gomod',
-          'graphql',
-          'html',
-          'javascript',
-          'json',
-          'jsonc',
-          'lua',
-          'make',
-          'rust',
-          'scss',
-          'toml',
-          'tsx',
-          'typescript',
-          'vim',
-          'vue',
-          'yaml',
-        },
-
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- Automatically install missing parsers when entering buffer
-        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-        auto_install = vim.fn.executable 'tree-sitter' == 1,
-
-        -- List of parsers to ignore installing (for "all")
-        -- ignore_install = { 'javascript' },
-
-        ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-        -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
-        highlight = {
-          -- `false` will disable the whole extension
-          enable = true,
-
-          -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-          -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-          -- the name of the parser)
-          -- list of language that will be disabled
-          -- disable = { 'c', 'rust' },
-          -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-          -- disable = function(lang, buf)
-          --   local max_filesize = 100 * 1024 -- 100 KB
-          --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-          --   if ok and stats and stats.size > max_filesize then
-          --     return true
-          --   end
-          -- end,
-          disable = function(lang, buf)
-            local max_filesize = 512 * 1024 -- 512 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-              return true
-            end
-            if not pcall(function()
-              vim.treesitter.get_parser(0, lang):parse()
-            end) then
-              return true
-            end
-
-            if not pcall(function()
-              vim.treesitter.get_query(lang, 'highlights')
-            end) then
-              return true
-            end
-
-            return false
-          end,
-
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
-        },
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-              ['ac'] = '@class.outer',
-              ['ic'] = '@class.inner',
-            },
-            selection_modes = {
-              ['@function.outer'] = 'V',
-              ['@class.outer'] = 'V',
-              ['@class.inner'] = 'V',
-            },
-          },
-        },
-      }
-    end,
-    dependencies = {
-      { 'nvim-treesitter/nvim-treesitter-textobjects' },
-      {
-        'nvim-treesitter/nvim-treesitter-context',
-        config = function()
-          require('treesitter-context').setup {}
-        end,
-      },
-    },
-  },
-
-  {
-    'nvim-treesitter/playground',
-    cmd = { 'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor' },
   },
 
   {
@@ -280,60 +86,6 @@ return {
       require('dapui').setup {}
     end,
   },
-
-  {
-    'yuys13/hackshark.nvim',
-    lazy = false,
-    config = function()
-      vim.cmd.colorscheme 'hackshark'
-    end,
-  },
-  {
-    'dracula/vim',
-    event = 'CursorHold',
-    name = 'dracula',
-    config = function()
-      local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
-      vim.api.nvim_create_autocmd('colorscheme', {
-        group = augroup,
-        nested = true,
-        pattern = 'dracula',
-        command = 'runtime after/plugin/dracula.vim',
-      })
-    end,
-  },
-  { 'cocopon/iceberg.vim', event = 'CursorHold' },
-  { 'romainl/vim-dichromatic', event = 'CursorHold' },
-  { 'PierreCapo/voir.vim', event = 'CursorHold' },
-  { 'machakann/vim-colorscheme-tatami', event = 'CursorHold' },
-  { 'jonathanfilip/vim-lucius', event = 'CursorHold' },
-  { 'junegunn/seoul256.vim', event = 'CursorHold' },
-  { 'joshdick/onedark.vim', event = 'CursorHold' },
-  { 'tomasr/molokai', event = 'CursorHold' },
-  {
-    'altercation/vim-colors-solarized',
-    event = 'CursorHold',
-    init = function()
-      if vim.env.SOLARIZED == nil then
-        vim.g.solarized_termtrans = 0
-        vim.g.solarized_termcolors = 256
-      else
-        vim.g.solarized_termtrans = 1
-        vim.g.solarized_termcolors = 16
-        vim.o.background = 'dark'
-        local augroup = vim.api.nvim_create_augroup('SolarizedAutoCmd', {})
-        vim.api.nvim_create_autocmd('VimEnter', {
-          group = augroup,
-          pattern = '*',
-          nested = true,
-          command = 'colorscheme solarized',
-        })
-      end
-    end,
-  },
-  { 'sainnhe/edge', event = 'CursorHold' },
-  { 'folke/tokyonight.nvim', event = 'CursorHold' },
-  { 'rebelot/kanagawa.nvim', event = 'CursorHold' },
 
   {
     'nvim-lualine/lualine.nvim',
@@ -473,19 +225,6 @@ return {
   },
 
   {
-    'numToStr/Comment.nvim',
-    event = { 'BufRead', 'BufNewFile' },
-    config = function()
-      require('Comment').setup {
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      }
-    end,
-    dependencies = {
-      { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    },
-  },
-
-  {
     'machakann/vim-sandwich',
     event = { 'BufRead', 'BufNewFile' },
     config = function()
@@ -563,14 +302,6 @@ return {
     end,
     config = function()
       vim.keymap.set('i', 'jj', '<Esc>', { remap = true })
-    end,
-  },
-
-  {
-    'windwp/nvim-ts-autotag',
-    event = 'InsertEnter',
-    config = function()
-      require('nvim-ts-autotag').setup()
     end,
   },
 

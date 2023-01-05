@@ -122,6 +122,30 @@ return {
           vim.keymap.set('n', '<space>lf', vim.lsp.buf.format, { buffer = bufnr, silent = true, desc = 'LSP format' })
         end,
         sources = {
+          -- All
+          null_ls.builtins.diagnostics.cspell.with {
+            condition = function(utils)
+              return utils.root_has_file {
+                'cspell.json',
+                '.cspell.json',
+                'cSpell.json',
+                '.cspell.config.json',
+              }
+            end,
+            diagnostics_postprocess = function(diag)
+              diag.severity = vim.diagnostic.severity['INFO']
+            end,
+          },
+          null_ls.builtins.code_actions.cspell.with {
+            condition = function(utils)
+              return utils.root_has_file {
+                'cspell.json',
+                '.cspell.json',
+                'cSpell.json',
+                '.cspell.config.json',
+              }
+            end,
+          },
           -- Dockerfile
           null_ls.builtins.diagnostics.hadolint,
           -- Fish shell

@@ -1,14 +1,15 @@
 return {
   {
     'hrsh7th/nvim-cmp',
-    event = { 'InsertEnter', 'CmdlineEnter' },
+    -- event = { 'InsertEnter', 'CmdlineEnter' },
+    event = 'InsertEnter',
     dependencies = {
       { 'hrsh7th/vim-vsnip' },
       { 'hrsh7th/cmp-vsnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
+      -- { 'hrsh7th/cmp-cmdline' },
       {
         'tamago324/cmp-zsh',
         enabled = vim.fn.executable 'zsh' == 1,
@@ -114,29 +115,29 @@ return {
         },
       })
 
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline {
-          -- ['<C-n>'] = cmp.config.disable,
-          -- ['<C-p>'] = cmp.config.disable,
-        },
-        sources = {
-          { name = 'buffer' },
-        },
-      })
-
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline {
-          -- ['<C-n>'] = cmp.config.disable,
-          -- ['<C-p>'] = cmp.config.disable,
-        },
-        sources = cmp.config.sources({
-          { name = 'path' },
-        }, {
-          { name = 'cmdline' },
-        }),
-      })
+      -- -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+      -- cmp.setup.cmdline({ '/', '?' }, {
+      --   mapping = cmp.mapping.preset.cmdline {
+      --     -- ['<C-n>'] = cmp.config.disable,
+      --     -- ['<C-p>'] = cmp.config.disable,
+      --   },
+      --   sources = {
+      --     { name = 'buffer' },
+      --   },
+      -- })
+      --
+      -- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      -- cmp.setup.cmdline(':', {
+      --   mapping = cmp.mapping.preset.cmdline {
+      --     -- ['<C-n>'] = cmp.config.disable,
+      --     -- ['<C-p>'] = cmp.config.disable,
+      --   },
+      --   sources = cmp.config.sources({
+      --     { name = 'path' },
+      --   }, {
+      --     { name = 'cmdline' },
+      --   }),
+      -- })
     end,
   },
 }

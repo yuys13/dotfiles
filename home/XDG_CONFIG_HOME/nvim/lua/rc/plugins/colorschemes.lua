@@ -9,7 +9,6 @@ return {
 
   {
     'dracula/vim',
-    event = 'CursorHold',
     name = 'dracula',
     config = function()
       local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
@@ -22,47 +21,25 @@ return {
     end,
   },
 
-  { 'cocopon/iceberg.vim', event = 'CursorHold' },
+  { 'cocopon/iceberg.vim' },
 
-  { 'romainl/vim-dichromatic', event = 'CursorHold' },
+  { 'romainl/vim-dichromatic' },
 
-  { 'PierreCapo/voir.vim', event = 'CursorHold' },
+  { 'PierreCapo/voir.vim' },
 
-  { 'machakann/vim-colorscheme-tatami', event = 'CursorHold' },
+  { 'machakann/vim-colorscheme-tatami' },
 
-  { 'jonathanfilip/vim-lucius', event = 'CursorHold' },
+  { 'jonathanfilip/vim-lucius' },
 
-  { 'junegunn/seoul256.vim', event = 'CursorHold' },
+  { 'junegunn/seoul256.vim' },
 
-  { 'joshdick/onedark.vim', event = 'CursorHold' },
+  { 'joshdick/onedark.vim' },
 
-  { 'tomasr/molokai', event = 'CursorHold' },
+  { 'tomasr/molokai' },
 
-  {
-    'altercation/vim-colors-solarized',
-    event = 'CursorHold',
-    init = function()
-      if vim.env.SOLARIZED == nil then
-        vim.g.solarized_termtrans = 0
-        vim.g.solarized_termcolors = 256
-      else
-        vim.g.solarized_termtrans = 1
-        vim.g.solarized_termcolors = 16
-        vim.o.background = 'dark'
-        local augroup = vim.api.nvim_create_augroup('SolarizedAutoCmd', {})
-        vim.api.nvim_create_autocmd('VimEnter', {
-          group = augroup,
-          pattern = '*',
-          nested = true,
-          command = 'colorscheme solarized',
-        })
-      end
-    end,
-  },
+  { 'sainnhe/edge' },
 
-  { 'sainnhe/edge', event = 'CursorHold' },
+  { 'folke/tokyonight.nvim' },
 
-  { 'folke/tokyonight.nvim', event = 'CursorHold' },
-
-  { 'rebelot/kanagawa.nvim', event = 'CursorHold' },
+  { 'rebelot/kanagawa.nvim' },
 }

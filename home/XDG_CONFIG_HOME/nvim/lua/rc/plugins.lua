@@ -176,16 +176,16 @@ return {
   {
     'kannokanno/previm',
     ft = { 'markdown', 'rst', 'asciidoc' },
-  },
-
-  {
-    'tyru/open-browser.vim',
-    ft = { 'markdown', 'rst', 'asciidoc' },
-    keys = '<Plug>(openbrowser-smart-search)',
-    init = function()
-      vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
-      vim.keymap.set({ 'n', 'x' }, 'gx', '<Plug>(openbrowser-smart-search)', {})
-    end,
+    dependencies = {
+      {
+        'tyru/open-browser.vim',
+        keys = '<Plug>(openbrowser-smart-search)',
+        init = function()
+          vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
+          vim.keymap.set({ 'n', 'x' }, 'gx', '<Plug>(openbrowser-smart-search)', {})
+        end,
+      },
+    },
   },
 
   {

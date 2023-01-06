@@ -89,7 +89,7 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
-    event = { 'BufRead', 'BufNewFile', 'CursorHold' },
+    event = { 'BufRead', 'BufNewFile', 'WinNew', 'CursorHold' },
     init = function()
       vim.o.laststatus = 0
       vim.o.showmode = false

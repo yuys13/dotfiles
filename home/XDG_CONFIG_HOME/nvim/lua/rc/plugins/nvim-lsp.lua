@@ -39,7 +39,7 @@ return {
         map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
         map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
 
-        if client.server_capabilities.documentHighlightProvider == true then
+        if client.server_capabilities.documentHighlightProvider then
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             group = augroup,
             buffer = bufnr,
@@ -47,7 +47,7 @@ return {
               vim.lsp.buf.document_highlight()
             end,
           })
-          vim.api.nvim_create_autocmd('CursorMoved', {
+          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
             group = augroup,
             buffer = bufnr,
             callback = function()

@@ -6,6 +6,7 @@
 	verbose = true
 [push]
 	default = current
+	useForceIfIncludes = true
 [pull]
 	ff = only
 [diff]

@@ -1,7 +1,7 @@
 return {
   {
     'stevearc/dressing.nvim',
-    event = { 'BufRead', 'BufNewFile', 'CmdlineEnter' },
+    event = 'VeryLazy',
     config = function()
       require('dressing').setup {}
     end,
@@ -89,7 +89,7 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
-    event = { 'BufRead', 'BufNewFile', 'WinNew', 'CursorHold' },
+    event = { 'BufRead', 'BufNewFile', 'WinNew', 'InsertEnter' },
     init = function()
       vim.o.laststatus = 0
       vim.o.showmode = false
@@ -361,7 +361,7 @@ return {
 
   { 'tyru/capture.vim', cmd = 'Capture' },
 
-  { 'DanilaMihailov/beacon.nvim', event = { 'BufRead', 'BufNewFile' } },
+  { 'DanilaMihailov/beacon.nvim', event = { 'CursorMoved' } },
 
   { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' },
 }

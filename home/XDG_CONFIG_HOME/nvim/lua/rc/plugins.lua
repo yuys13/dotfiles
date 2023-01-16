@@ -237,7 +237,13 @@ return {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function()
-      require('nvim-tree').setup {}
+      require('nvim-tree').setup {
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
+        },
+      }
     end,
   },
 

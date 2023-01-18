@@ -15,17 +15,21 @@ vim.opt.runtimepath:prepend(lazypath)
 -- load lazy
 require('lazy').setup('rc.plugins', {
   defaults = { lazy = true },
+  concurrency = 16,
+  dev = {
+    path = '~/src/github.com/yuys13',
+  },
   performance = {
     rtp = {
       disabled_plugins = {
-        -- 'gzip',
-        -- 'matchit',
+        'gzip',
+        'matchit',
         -- 'matchparen',
         -- 'netrwPlugin',
-        -- 'tarPlugin',
-        -- 'tohtml',
-        -- 'tutor',
-        -- 'zipPlugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
       },
     },
   },

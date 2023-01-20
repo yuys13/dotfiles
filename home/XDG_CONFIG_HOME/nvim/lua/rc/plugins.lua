@@ -1,13 +1,5 @@
 return {
   {
-    'stevearc/dressing.nvim',
-    event = 'VeryLazy',
-    config = function()
-      require('dressing').setup {}
-    end,
-  },
-
-  {
     'folke/trouble.nvim',
     cmd = 'Trouble',
     dependencies = 'kyazdani42/nvim-web-devicons',
@@ -33,25 +25,6 @@ return {
     end,
   },
 
-  {
-    'nvim-lualine/lualine.nvim',
-    event = { 'BufRead', 'BufNewFile', 'WinNew', 'InsertEnter' },
-    init = function()
-      vim.o.laststatus = 0
-      vim.o.showmode = false
-    end,
-    config = function()
-      vim.o.laststatus = 2
-      require('lualine').setup {
-        options = {
-          icons_enabled = false,
-          section_separators = '',
-          component_separators = '',
-        },
-      }
-    end,
-  },
-
   { 'editorconfig/editorconfig-vim', lazy = false },
 
   {
@@ -73,54 +46,6 @@ return {
   },
 
   {
-    'lewis6991/gitsigns.nvim',
-    event = { 'BufRead', 'BufNewFile' },
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('gitsigns').setup {
-        signs = {
-          add = { text = '+' },
-          change = { text = '│' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
-          changedelete = { text = '~' },
-          untracked = { text = '┆' },
-        },
-        keymaps = {},
-        on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
-          local function map(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
-          end
-
-          -- Navigation
-          map('n', ']c', function()
-            if vim.wo.diff then
-              return ']c'
-            end
-            vim.schedule(function()
-              gs.next_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'next hunk' })
-
-          map('n', '[c', function()
-            if vim.wo.diff then
-              return '[c'
-            end
-            vim.schedule(function()
-              gs.prev_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'prev hunk' })
-        end,
-      }
-    end,
-  },
-
-  {
     'kannokanno/previm',
     ft = { 'markdown', 'rst', 'asciidoc' },
     dependencies = {
@@ -133,22 +58,6 @@ return {
         end,
       },
     },
-  },
-
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufRead', 'BufNewFile' },
-    config = function()
-      require('indent_blankline').setup {
-        -- space_char_blankline = ' ',
-        show_first_indent_level = true,
-        buftype_exclude = { 'nofile', 'help', 'terminal' },
-        filetype_exclude = { '' },
-        show_trailing_blankline_indent = false,
-        -- show_current_context = true,
-        -- show_current_context_start = true,
-      }
-    end,
   },
 
   {
@@ -191,14 +100,6 @@ return {
     config = function()
       vim.keymap.set('v', 'g<C-a>', require('dial.map').inc_gvisual(), {})
       vim.keymap.set('v', 'g<C-x>', require('dial.map').dec_gvisual(), {})
-    end,
-  },
-
-  {
-    'kevinhwang91/nvim-bqf',
-    ft = 'qf',
-    config = function()
-      require('bqf').enable()
     end,
   },
 
@@ -277,27 +178,6 @@ return {
   },
 
   {
-    'norcalli/nvim-colorizer.lua',
-    cond = function()
-      return vim.o.termguicolors
-    end,
-    cmd = 'ColorizerToggle',
-  },
-
-  {
-    'petertriho/nvim-scrollbar',
-    event = { 'BufRead', 'BufNewFile' },
-    config = function()
-      require('scrollbar').setup {
-        handlers = {
-          cursor = false,
-        },
-      }
-      require('scrollbar.handlers.gitsigns').setup()
-    end,
-  },
-
-  {
     'mattn/vim-sonictemplate',
     cmd = 'Template',
     init = function()
@@ -313,8 +193,6 @@ return {
   },
 
   { 'tyru/capture.vim', cmd = 'Capture' },
-
-  { 'DanilaMihailov/beacon.nvim', event = { 'CursorMoved' } },
 
   { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' },
 }

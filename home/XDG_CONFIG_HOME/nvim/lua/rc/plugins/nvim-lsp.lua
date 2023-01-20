@@ -64,8 +64,6 @@ return {
       local node_root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json')
       local is_node_repo = node_root_dir(vim.fn.getcwd()) ~= nil
 
-      require('neodev').setup {}
-
       require 'mason'
       local mason_lspconfig = require 'mason-lspconfig'
       mason_lspconfig.setup_handlers {
@@ -104,6 +102,7 @@ return {
           }
         end,
         ['sumneko_lua'] = function()
+          require('neodev').setup {}
           lspconfig.sumneko_lua.setup {
             on_attach = on_attach,
             capabilities = capabilities,

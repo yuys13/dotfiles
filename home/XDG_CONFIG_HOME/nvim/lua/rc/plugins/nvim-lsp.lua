@@ -118,11 +118,13 @@ return {
           }
         end,
         ['tsserver'] = function()
-          lspconfig.tsserver.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            root_dir = node_root_dir,
-            single_file_support = false, -- for denols
+          require('typescript').setup {
+            server = {
+              on_attach = on_attach,
+              capabilities = capabilities,
+              root_dir = node_root_dir,
+              single_file_support = false, -- for denols
+            },
           }
         end,
       }
@@ -138,6 +140,7 @@ return {
       { 'williamboman/mason.nvim', cmd = 'Mason', config = true },
       { 'williamboman/mason-lspconfig.nvim', config = true },
       { 'folke/neodev.nvim' },
+      { 'jose-elias-alvarez/typescript.nvim' },
       { 'b0o/SchemaStore.nvim' },
     },
   },

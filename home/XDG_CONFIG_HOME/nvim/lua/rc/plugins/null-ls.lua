@@ -95,6 +95,8 @@ return {
               return utils.root_has_file { '.textlintrc' }
             end,
           },
+          -- TypeScript
+          require 'typescript.extensions.null-ls.code-actions',
           -- Vim script
           null_ls.builtins.diagnostics.vint,
           -- YAML

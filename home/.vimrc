@@ -8,6 +8,7 @@ augroup END
 
 " Keymap
 inoremap <silent> jj <ESC>
+inoremap <C-v>u <C-r>=nr2char(0x)<Left>
 
 " Abbr
 cnoreabbrev qa confirm qall

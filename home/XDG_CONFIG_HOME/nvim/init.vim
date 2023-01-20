@@ -10,6 +10,7 @@ lua pcall(require, 'rc.lazy')
 " Keymap
 inoremap <silent> jj <Esc>
 autocmd MyAutoCmd TermOpen * tnoremap <buffer> jj <C-\><C-n>
+inoremap <C-v>u <C-r>=nr2char(0x)<Left>
 
 if executable('tig')
   nnoremap <silent> <Space>tig <Cmd>tabnew<CR><Cmd>te tig<CR><Cmd>tunmap <buffer> jj<CR>i

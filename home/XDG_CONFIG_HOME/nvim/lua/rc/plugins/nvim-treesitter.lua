@@ -111,10 +111,19 @@ return {
             },
           },
         },
+        matchup = {
+          enable = true,
+        },
       }
     end,
     dependencies = {
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      {
+        'andymass/vim-matchup',
+        init = function()
+          vim.g.matchup_matchparen_offscreen = { method = 'popup' }
+        end,
+      },
     },
   },
 

@@ -35,7 +35,6 @@ return {
     config = function()
       require('telescope').setup {
         defaults = {
-          layout_strategies = 'horizontal',
           layout_config = {
             horizontal = {
               prompt_position = 'top',
@@ -54,12 +53,28 @@ return {
           },
         },
         pickers = {},
-        extensions = {},
+        extensions = {
+          file_browser = {
+            theme = 'ivy',
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+              ['i'] = {
+                -- your custom insert mode mappings
+              },
+              ['n'] = {
+                -- your custom normal mode mappings
+              },
+            },
+          },
+        },
       }
+      require('telescope').load_extension 'file_browser'
     end,
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { 'kyazdani42/nvim-web-devicons' },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
     },
   },
 }

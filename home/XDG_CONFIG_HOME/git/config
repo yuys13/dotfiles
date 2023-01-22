@@ -18,6 +18,6 @@
 [mergetool "vimdiff"]
 	path = nvim
 [ghq]
-	; root = ~/.cache/dein/repos
+	; root = ~/.cache/vim/dein/repos
 	; root = ~/.local/share/nvim/lazy
 	root = ~/src

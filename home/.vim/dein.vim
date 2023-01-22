@@ -1,14 +1,19 @@
 "dein Scripts-----------------------------
-" XDG Base Directory
-let s:data_home =
-      \ empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
-let s:cache_home =
-      \ empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:config_home =
-      \ empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
+if has('nvim')
+  let s:dein_dir = stdpath('cache') . '/dein'
+else
+  " XDG Base Directory
+  let s:data_home =
+        \ empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
+  let s:cache_home =
+        \ empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+  let s:config_home =
+        \ empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
 
-" dein Dirs
-let s:dein_dir = s:cache_home . '/dein'
+  " dein Dirs
+  let s:dein_dir = s:cache_home . '/vim/dein'
+endif
+
 let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 let s:dein_toml = expand('<sfile>:p:h') . '/dein.toml'

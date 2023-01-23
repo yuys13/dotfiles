@@ -2,6 +2,7 @@ return {
   {
     'yuys13/hackshark.nvim',
     lazy = false,
+    priority = 1000,
     config = function()
       vim.cmd.colorscheme 'hackshark'
     end,

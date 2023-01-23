@@ -22,11 +22,11 @@ return {
         enabled = vim.fn.executable 'fish' == 1,
       },
       { 'onsails/lspkind-nvim' },
+      { 'kyazdani42/nvim-web-devicons' },
     },
     config = function()
       -- nvim-cmp setup
       local cmp = require 'cmp'
-      local lspkind = require 'lspkind'
 
       local feedkey = function(key, mode)
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -84,18 +84,29 @@ return {
           { name = 'buffer' },
         }),
         formatting = {
-          format = lspkind.cmp_format {
-            mode = 'symbol_text',
-            menu = {
-              buffer = '[Buffer]',
-              -- cmdline = '[CmdLine]',
-              fish = '[fish]',
-              nvim_lsp = '[LSP]',
-              path = '[Path]',
-              vsnip = '[Vsnip]',
-              zsh = '[ZSH]',
-            },
-          },
+          format = function(entry, vim_item)
+            if vim.tbl_contains({ 'path' }, entry.source.name) then
+              local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+              if icon then
+                vim_item.kind = icon .. ' ' .. vim_item.kind
+                vim_item.kind_hl_group = hl_group
+                vim_item.menu = '[Path]'
+                return vim_item
+              end
+            end
+            return require('lspkind').cmp_format {
+              mode = 'symbol_text',
+              menu = {
+                buffer = '[Buffer]',
+                -- cmdline = '[CmdLine]',
+                fish = '[fish]',
+                nvim_lsp = '[LSP]',
+                path = '[Path]',
+                vsnip = '[Vsnip]',
+                zsh = '[ZSH]',
+              },
+            }(entry, vim_item)
+          end,
         },
       }
 

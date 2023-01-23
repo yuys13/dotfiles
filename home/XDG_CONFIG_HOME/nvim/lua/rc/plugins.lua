@@ -153,6 +153,7 @@ return {
     event = 'InsertEnter',
     init = function()
       vim.g.lexima_ctrlh_as_backspace = 1
+      vim.g.lexima_enable_space_rules = 0
     end,
     config = function()
       vim.keymap.set('i', 'jj', '<Esc>', { remap = true })

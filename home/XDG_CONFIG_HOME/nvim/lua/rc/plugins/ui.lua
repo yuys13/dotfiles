@@ -117,4 +117,5 @@ return {
   },
 
   { 'DanilaMihailov/beacon.nvim', event = { 'CursorMoved' } },
+  { 'delphinus/auto-cursorline.nvim', event = 'VeryLazy', config = true },
 }

@@ -182,14 +182,9 @@ return {
     'mattn/vim-sonictemplate',
     cmd = 'Template',
     init = function()
-      vim.g.loaded_sonictemplate_vim = true
-    end,
-    config = function()
-      vim.api.nvim_create_user_command(
-        'Template',
-        [=[call sonictemplate#apply(<f-args>, "n")]=],
-        { nargs = 1, complete = 'customlist,sonictemplate#complete' }
-      )
+      vim.g.sonictemplate_key = ''
+      vim.g.sonictemplate_intelligent_key = ''
+      vim.g.sonictemplate_postfix_key = ''
     end,
   },
 

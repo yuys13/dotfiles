@@ -18,6 +18,9 @@ trim_trailing_whitespace = false
 [Makefile]
 indent_style = tab
 
+[*.sh]
+indent_style = tab
+
 [*.lua]
 indent_size = 2
 

@@ -3,6 +3,22 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
+      -- diagnostic settings
+      vim.diagnostic.config {
+        virtual_text = {
+          -- source = 'always',
+        },
+        float = {
+          -- source = 'always',
+          format = function(diag)
+            if diag.code then
+              return string.format('[%s](%s): %s', diag.source, diag.code, diag.message)
+            else
+              return string.format('[%s]: %s', diag.source, diag.message)
+            end
+          end,
+        },
+      }
       -- diagnostic mapping
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { silent = true, desc = 'LSP diagnostic open_float' })
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { silent = true, desc = 'LSP diagnostic goto_prev' })

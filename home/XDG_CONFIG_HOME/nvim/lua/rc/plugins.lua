@@ -84,7 +84,7 @@ return {
 
   {
     'machakann/vim-sandwich',
-    keys = { 'y', 's', 'd', 'c', { 'S', mode = 'x' } },
+    keys = { 'y', 'd', 'c', { 'S', mode = 'x' } },
     config = function()
       vim.cmd [[runtime macros/sandwich/keymap/surround.vim]]
       vim.fn['operator#sandwich#set']('add', 'char', 'skip_space', 1)

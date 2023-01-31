@@ -51,10 +51,11 @@ return {
     dependencies = {
       {
         'tyru/open-browser.vim',
-        keys = '<Plug>(openbrowser-smart-search)',
+        keys = {
+          { 'gx', '<Plug>(openbrowser-smart-search)', mode = { 'n', 'x' } },
+        },
         init = function()
           vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
-          vim.keymap.set({ 'n', 'x' }, 'gx', '<Plug>(openbrowser-smart-search)', {})
         end,
       },
     },

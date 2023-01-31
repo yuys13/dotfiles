@@ -73,7 +73,7 @@ return {
     end,
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
-      { 'kyazdani42/nvim-web-devicons' },
+      { 'nvim-tree/nvim-web-devicons' },
       { 'nvim-telescope/telescope-file-browser.nvim' },
     },
   },

@@ -2,7 +2,7 @@ return {
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',
-    dependencies = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     init = function()
       local function map(mode, lhs, rhs, opts)
         opts = opts or {}
@@ -133,10 +133,10 @@ return {
   },
 
   {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     cmd = 'NvimTreeToggle',
     dependencies = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      'nvim-tree/nvim-web-devicons', -- optional, for file icon
     },
     config = function()
       require('nvim-tree').setup {

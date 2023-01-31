@@ -22,7 +22,7 @@ return {
         enabled = vim.fn.executable 'fish' == 1,
       },
       { 'onsails/lspkind-nvim' },
-      { 'kyazdani42/nvim-web-devicons' },
+      { 'nvim-tree/nvim-web-devicons' },
     },
     config = function()
       -- nvim-cmp setup

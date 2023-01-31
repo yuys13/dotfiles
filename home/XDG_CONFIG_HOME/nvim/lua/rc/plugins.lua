@@ -29,11 +29,10 @@ return {
 
   {
     'yuys13/partedit.vim',
-    keys = '<Plug>(partedit_start_context)',
+    keys = {
+      { '<Space>pe', '<Plug>(partedit_start_context)' },
+    },
     cmd = { 'PartEdit', 'PartEditContext' },
-    init = function()
-      vim.keymap.set('n', '<Space>pe', '<Plug>(partedit_start_context)', { silent = true })
-    end,
     dependencies = { { 'Shougo/context_filetype.vim' } },
   },
 
@@ -63,9 +62,11 @@ return {
 
   {
     't9md/vim-quickhl',
-    keys = '<Plug>(quickhl-manual-this)',
-    init = function()
-      vim.keymap.set('n', '<Space>hl', '<Plug>(quickhl-manual-this)', {})
+    keys = {
+      { '<Space>hl', '<Plug>(quickhl-manual-this)' },
+    },
+    config = function()
+      -- vim.keymap.set('n', '<Space>hl', '<Plug>(quickhl-manual-this)', {})
       vim.keymap.set('n', '<Space>nohl', '<Plug>(quickhl-manual-reset)', {})
     end,
   },

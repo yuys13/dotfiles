@@ -1,10 +1,9 @@
 return {
   {
     'mfussenegger/nvim-dap',
-    keys = '<Plug>(dap)',
-    init = function()
-      vim.keymap.set('n', '<Space>d', '<Plug>(dap)', { silent = true })
-    end,
+    keys = {
+      { '<Space>d', '<Plug>(dap)' },
+    },
     config = function()
       local dap = require 'dap'
       vim.keymap.set('n', '<Plug>(dap)', '<Nop>', { silent = true })
@@ -45,7 +44,7 @@ return {
 
   {
     'rcarriga/nvim-dap-ui',
-    keys = '<Plug>(dap)',
+    keys = '<Plug>(dap)d',
     dependencies = { 'mfussenegger/nvim-dap' },
     config = function()
       vim.keymap.set('n', '<Plug>(dap)d', require('dapui').toggle)

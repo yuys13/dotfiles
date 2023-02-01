@@ -74,7 +74,6 @@ return {
           -- null_ls.builtins.formatting.reorder_python_imports,
           -- Shell script
           null_ls.builtins.code_actions.shellcheck,
-          null_ls.builtins.diagnostics.shellcheck,
           null_ls.builtins.formatting.shfmt.with {
             condition = function(utils)
               return utils.root_has_file { '.editorconfig' }

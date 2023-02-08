@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd('User', {
       local names = {}
       for _, spec in pairs(specs) do
         -- vim.pretty_print(value)
-        if spec.lazy and not spec['_'].loaded and not spec['_'].dep then
+        if spec.lazy and not spec['_'].loaded and not spec['_'].dep and not spec['_'].cond then
           table.insert(names, spec.name)
         end
       end

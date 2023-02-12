@@ -119,9 +119,9 @@ return {
             },
           }
         end,
-        ['sumneko_lua'] = function()
+        ['lua_ls'] = function()
           require('neodev').setup {}
-          lspconfig.sumneko_lua.setup {
+          lspconfig.lua_ls.setup {
             on_attach = on_attach,
             capabilities = capabilities,
             settings = {

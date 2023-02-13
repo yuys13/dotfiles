@@ -82,16 +82,20 @@ return {
           -- Text
           null_ls.builtins.diagnostics.textlint.with {
             prefer_local = 'node_modules/.bin',
-            filetypes = {
+            extra_filetypes = {
               'asciidoc',
               'html',
-              'markdown',
               'rst',
-              'text',
               'help',
             },
             condition = function(utils)
-              return utils.root_has_file { '.textlintrc' }
+              return utils.root_has_file {
+                '.textlintrc',
+                '.textlintrc.js',
+                '.textlintrc.json',
+                '.textlintrc.yml',
+                '.textlintrc.yaml',
+              }
             end,
           },
           -- TypeScript

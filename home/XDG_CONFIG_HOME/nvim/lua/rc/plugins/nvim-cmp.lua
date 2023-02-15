@@ -46,20 +46,6 @@ return {
         mapping = cmp.mapping.preset.insert {
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-n>'] = function()
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              cmp.complete()
-            end
-          end,
-          ['<C-p>'] = function()
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              cmp.complete()
-            end
-          end,
           ['<Tab>'] = cmp.mapping(function(fallback)
             if vim.fn['vsnip#available'](1) == 1 then
               feedkey('<Plug>(vsnip-expand-or-jump)', '')

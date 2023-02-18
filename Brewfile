@@ -1,7 +1,5 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
 tap "romkatv/powerlevel10k"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"

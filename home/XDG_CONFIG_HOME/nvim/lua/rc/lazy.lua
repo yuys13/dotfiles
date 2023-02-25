@@ -19,6 +19,9 @@ require('lazy').setup('rc.plugins', {
   dev = {
     path = '~/src/github.com/yuys13',
   },
+  ui = {
+    border = 'single',
+  },
   performance = {
     rtp = {
       disabled_plugins = {

@@ -3,6 +3,11 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
+      -- hover settings
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+        -- Use a sharp border with `FloatBorder` highlights
+        border = 'single',
+      })
       -- diagnostic settings
       vim.diagnostic.config {
         virtual_text = {
@@ -10,6 +15,9 @@ return {
         },
         float = {
           -- source = 'always',
+          border = 'single',
+          -- title = 'Diagnostics',
+          -- header = {},
           format = function(diag)
             if diag.code then
               return string.format('[%s](%s): %s', diag.source, diag.code, diag.message)
@@ -155,7 +163,17 @@ return {
       end
     end,
     dependencies = {
-      { 'williamboman/mason.nvim', cmd = 'Mason', config = true },
+      {
+        'williamboman/mason.nvim',
+        cmd = 'Mason',
+        config = function()
+          require('mason').setup {
+            ui = {
+              border = 'single',
+            },
+          }
+        end,
+      },
       { 'williamboman/mason-lspconfig.nvim', config = true },
       { 'folke/neodev.nvim' },
       { 'jose-elias-alvarez/typescript.nvim' },

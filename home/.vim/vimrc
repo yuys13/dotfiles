@@ -11,6 +11,7 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h') . '/dein.vim'
 imap <silent> jj <ESC>
 autocmd MyAutoCmd TerminalOpen * tnoremap <buffer> jj <C-w>N
 inoremap <C-v>u <C-r>=nr2char(0x)<Left>
+nnoremap Y y$
 
 " Abbr
 cnoreabbrev qa confirm qall

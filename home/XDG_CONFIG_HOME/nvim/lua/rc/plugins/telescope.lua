@@ -1,4 +1,5 @@
-return {
+---@type LazySpec[]
+local spec = {
   {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
@@ -79,3 +80,5 @@ return {
     },
   },
 }
+
+return spec

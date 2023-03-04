@@ -1,4 +1,5 @@
-return {
+---@type LazySpec[]
+local spec = {
   {
     'nvim-treesitter/nvim-treesitter',
     cmd = { 'TSInstall', 'TSUpdate' },
@@ -157,3 +158,5 @@ return {
     end,
   },
 }
+
+return spec

@@ -1,4 +1,5 @@
-return {
+---@type LazySpec[]
+local spec = {
   {
     'jose-elias-alvarez/null-ls.nvim',
     event = { 'BufRead', 'BufNewFile' },
@@ -111,3 +112,5 @@ return {
     end,
   },
 }
+
+return spec

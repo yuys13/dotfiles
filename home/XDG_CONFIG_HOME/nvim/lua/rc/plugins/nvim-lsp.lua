@@ -1,4 +1,5 @@
-return {
+---@type LazySpec[]
+local spec = {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -209,3 +210,5 @@ return {
     end,
   },
 }
+
+return spec

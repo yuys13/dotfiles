@@ -16,7 +16,8 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
-return {
+---@type LazySpec[]
+local spec = {
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',
@@ -212,3 +213,5 @@ return {
 
   { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' },
 }
+
+return spec

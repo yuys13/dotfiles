@@ -1,4 +1,5 @@
-return {
+---@type LazySpec[]
+local spec = {
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
@@ -119,3 +120,5 @@ return {
   { 'DanilaMihailov/beacon.nvim', event = { 'CursorMoved' } },
   { 'delphinus/auto-cursorline.nvim', event = 'VeryLazy', config = true, cond = false },
 }
+
+return spec

@@ -1,4 +1,5 @@
-return {
+---@type LazySpec[]
+local spec = {
   {
     'mfussenegger/nvim-dap',
     keys = {
@@ -52,3 +53,5 @@ return {
     end,
   },
 }
+
+return spec

@@ -6,7 +6,7 @@ solarize () {
     local dircolors_file=dircolors.ansi-dark
 
     if ! [[ -d ${github_dir%/}/${dircolors_repo} ]]; then
-        git clone --depth 1 ${github_url}/${dircolors_repo} ${github_dir%/}/${dircolors_repo}
+        git clone --filter=blob:none ${github_url}/${dircolors_repo} ${github_dir%/}/${dircolors_repo}
     fi
 
     local dircolors_filepath=${github_dir%/}/${dircolors_repo%/}/${dircolors_file}

@@ -29,58 +29,59 @@ local spec = {
         },
       }
       -- diagnostic mapping
-      vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { silent = true, desc = 'LSP diagnostic open_float' })
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { silent = true, desc = 'LSP diagnostic goto_prev' })
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { silent = true, desc = 'LSP diagnostic goto_next' })
-      vim.keymap.set('n', '<space>ql', vim.diagnostic.setqflist, { silent = true, desc = 'LSP diagnostic setqflist' })
-      vim.keymap.set('n', '<space>ll', vim.diagnostic.setloclist, { silent = true, desc = 'LSP diagnostic setloclist' })
+      vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = 'LSP diagnostic open_float' })
+      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP diagnostic goto_prev' })
+      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP diagnostic goto_next' })
+      vim.keymap.set('n', '<space>ql', vim.diagnostic.setqflist, { desc = 'LSP diagnostic setqflist' })
+      vim.keymap.set('n', '<space>ll', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
 
-      local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
-      -- Use an on_attach function to only map the following keys
-      -- after the language server attaches to the current buffer
-      local on_attach = function(client, bufnr)
-        -- Mappings.
-        local function map(mode, lhs, rhs, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          opts.silent = true
-          vim.keymap.set(mode, lhs, rhs, opts)
-        end
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('UserLspConfigBuffer', {}),
+        callback = function(event)
+          -- Mappings.
+          local function map(mode, lhs, rhs, opts)
+            opts = opts or {}
+            opts.buffer = event.buf
+            vim.keymap.set(mode, lhs, rhs, opts)
+          end
 
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP declaration' })
-        map('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP definition' })
-        map('n', 'K', vim.lsp.buf.hover, { desc = 'LSP hover' })
-        map('n', '<space>gi', vim.lsp.buf.implementation, { desc = 'LSP implementation' })
-        map('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'LSP signature_help' })
-        map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP add_workspace_folder' })
-        map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP remove_workspace_folder' })
-        map('n', '<space>wl', function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, { desc = 'LSP list_workspace_folders' })
-        map('n', '<space>D', vim.lsp.buf.type_definition, { desc = 'LSP type_definition' })
-        map('n', '<space>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
-        map('n', '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code_action' })
-        map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
-        map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
+          -- See `:help vim.lsp.*` for documentation on any of the below functions
+          map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP declaration' })
+          map('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP definition' })
+          map('n', 'K', vim.lsp.buf.hover, { desc = 'LSP hover' })
+          map('n', '<space>gi', vim.lsp.buf.implementation, { desc = 'LSP implementation' })
+          map('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'LSP signature_help' })
+          map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP add_workspace_folder' })
+          map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP remove_workspace_folder' })
+          map('n', '<space>wl', function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          end, { desc = 'LSP list_workspace_folders' })
+          map('n', '<space>D', vim.lsp.buf.type_definition, { desc = 'LSP type_definition' })
+          map('n', '<space>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
+          map('n', '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code_action' })
+          map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
+          map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
 
-        if client.server_capabilities.documentHighlightProvider then
-          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.document_highlight()
-            end,
-          })
-          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.clear_references()
-            end,
-          })
-        end
-      end
+          local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client.server_capabilities.documentHighlightProvider then
+            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+              group = augroup,
+              buffer = event.buf,
+              callback = function()
+                vim.lsp.buf.document_highlight()
+              end,
+            })
+            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+              group = augroup,
+              buffer = event.buf,
+              callback = function()
+                vim.lsp.buf.clear_references()
+              end,
+            })
+          end
+        end,
+      })
 
       -- Add additional capabilities supported by nvim-cmp
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -96,12 +97,11 @@ local spec = {
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.
         function(server_name)
-          lspconfig[server_name].setup { on_attach = on_attach, capabilities = capabilities }
+          lspconfig[server_name].setup { capabilities = capabilities }
         end,
         -- Next, you can provide targeted overrides for specific servers.
         ['jsonls'] = function()
           lspconfig.jsonls.setup {
-            on_attach = on_attach,
             capabilities = capabilities,
             settings = {
               json = {
@@ -114,7 +114,6 @@ local spec = {
           require('rust-tools').setup {
             server = {
               on_attach = function(client, bufnr)
-                on_attach(client, bufnr)
                 require('lsp-format').on_attach(client)
               end,
               capabilities = capabilities,
@@ -131,7 +130,6 @@ local spec = {
         ['lua_ls'] = function()
           require('neodev').setup {}
           lspconfig.lua_ls.setup {
-            on_attach = on_attach,
             capabilities = capabilities,
             settings = {
               Lua = {
@@ -147,7 +145,6 @@ local spec = {
         ['tsserver'] = function()
           require('typescript').setup {
             server = {
-              on_attach = on_attach,
               capabilities = capabilities,
               root_dir = node_root_dir,
               single_file_support = false, -- for denols
@@ -158,7 +155,6 @@ local spec = {
 
       if vim.fn.executable 'deno' == 1 and not is_node_repo then
         lspconfig.denols.setup {
-          on_attach = on_attach,
           capabilities = capabilities,
         }
       end

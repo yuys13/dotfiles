@@ -68,6 +68,7 @@ set updatetime=500
 " Don't nest neovim
 if executable('nvr')
   let $EDITOR = 'nvr -cc split -c "set bufhidden=delete" --remote-wait'
+  unlet $MANPAGER
 endif
 
 " Auto mkdir

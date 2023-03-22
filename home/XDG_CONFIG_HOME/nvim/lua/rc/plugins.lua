@@ -181,6 +181,10 @@ local spec = {
     end,
   },
 
+  { 'itchyny/vim-qfedit', ft = 'qf' },
+
+  { 'thinca/vim-qfreplace', ft = 'qf' },
+
   {
     'AndrewRadev/linediff.vim',
     cmd = 'Linediff',

@@ -32,7 +32,8 @@ local spec = {
       map('n', '<Space>/', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', { desc = 'Telescope current_buffer_ff' })
       map('n', '<Space>f/', '<Cmd>Telescope live_grep<CR>', { desc = 'Telescope live_grep' })
       map('n', '<M-x>', '<Cmd>Telescope builtin<CR>', { desc = 'Telescope builtin' })
-      map('n', '<C-x><C-f>', '<Cmd>Telescope file_browser<CR>', { desc = 'Telescope file_browser' })
+      map('n', '<Space><Space>', '<Cmd>Telescope builtin<CR>', { desc = 'Telescope builtin' })
+      map('n', '<Space>ft', '<Cmd>Telescope file_browser<CR>', { desc = 'Telescope file_browser' })
     end,
     config = function()
       require('telescope').setup {

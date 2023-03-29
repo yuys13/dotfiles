@@ -119,8 +119,12 @@ local spec = {
       { 'g<C-x>', mode = 'v' },
     },
     config = function()
-      vim.keymap.set('v', 'g<C-a>', require('dial.map').inc_gvisual(), {})
-      vim.keymap.set('v', 'g<C-x>', require('dial.map').dec_gvisual(), {})
+      vim.keymap.set('v', 'g<C-a>', function()
+        require('dial.map').manipulate('increment', 'gvisual')
+      end, { desc = 'dial increment gvisual' })
+      vim.keymap.set('v', 'g<C-x>', function()
+        require('dial.map').manipulate('decrement', 'gvisual')
+      end, { desc = 'dial decrement gvisual' })
     end,
   },
 

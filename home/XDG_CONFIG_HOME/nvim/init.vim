@@ -71,6 +71,12 @@ if executable('nvr')
   unlet $MANPAGER
 endif
 
+" Setting grep tools
+if executable('rg')
+  let &grepprg = 'rg --vimgrep --smart-case --hidden'
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
 " Auto mkdir
 augroup vimrc-auto-mkdir  " {{{
   autocmd!

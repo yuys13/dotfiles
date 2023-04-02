@@ -6,11 +6,32 @@ local spec = {
     config = function()
       vim.o.laststatus = 2
       vim.o.showmode = false
+
+      -- for eskk
+      local function eskk_mode()
+        if vim.g.loaded_eskk ~= 1 then
+          return ''
+        end
+
+        if vim.fn.mode() ~= 'i' then
+          return ''
+        end
+        if vim.fn['eskk#is_enabled']() == 0 then
+          return vim.g['eskk#statusline_mode_strings']['ascii']
+        end
+
+        -- return vim.fn['eskk#statusline']()
+        return vim.g['eskk#statusline_mode_strings'][vim.fn['eskk#get_mode']()]
+      end
+
       require('lualine').setup {
         options = {
           icons_enabled = false,
           section_separators = '',
           component_separators = '',
+        },
+        sections = {
+          lualine_a = { eskk_mode, 'mode' },
         },
       }
     end,

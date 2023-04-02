@@ -51,6 +51,9 @@ local spec = {
         local ok = require('skk-develop').skk_get()
 
         if ok then
+          if vim.fn.isdirectory(eskk_base_dir) == 0 then
+            vim.fn.mkdir(eskk_base_dir, 'p')
+          end
           if vim.fn.executable 'skkdic-expr2' == 1 then
             -- merge jisyo
             local use_jisyo = {

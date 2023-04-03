@@ -38,6 +38,12 @@ local spec = {
   },
 
   {
+    'nvim-zh/colorful-winsep.nvim',
+    config = true,
+    event = { 'WinNew' },
+  },
+
+  {
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
     config = function()

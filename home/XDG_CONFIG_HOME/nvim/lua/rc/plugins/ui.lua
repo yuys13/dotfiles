@@ -39,6 +39,7 @@ local spec = {
 
   {
     'nvim-zh/colorful-winsep.nvim',
+    cond = false,
     config = true,
     event = { 'WinNew' },
   },

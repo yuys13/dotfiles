@@ -35,7 +35,7 @@ local spec = {
       map('n', '<Space>xd', '<cmd>Trouble document_diagnostics<cr>', { desc = 'Trouble document_diagnostics' })
       -- map('n', '<Space>xl', '<cmd>Trouble loclist<cr>', { desc = 'Trouble loclist' })
       -- map('n', '<Space>xq', '<cmd>Trouble quickfix<cr>', { desc = 'Trouble quickfix' })
-      map('n', 'gR', '<cmd>Trouble lsp_references<cr>', { desc = 'Trouble lsp_references' })
+      map('n', '<Space>gR', '<cmd>Trouble lsp_references<cr>', { desc = 'Trouble lsp_references' })
     end,
     config = function()
       require('trouble').setup {

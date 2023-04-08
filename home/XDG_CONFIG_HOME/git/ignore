@@ -63,3 +63,7 @@ $RECYCLE.BIN/
 .local.vimrc
 .local.*.vimrc
 
+# nvim 'exrc'
+.nvim.lua
+.nvimrc
+.exrc

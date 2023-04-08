@@ -44,8 +44,6 @@ local spec = {
     end,
   },
 
-  { 'editorconfig/editorconfig-vim', lazy = false },
-
   {
     'yuys13/partedit.vim',
     keys = {

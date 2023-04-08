@@ -77,9 +77,9 @@ local spec = {
               return true
             end
 
-            if not pcall(function()
-              vim.treesitter.get_query(lang, 'highlights')
-            end) then
+            local query
+            ok, query = pcall(vim.treesitter.query.get, lang, 'highlights')
+            if not ok or query == nil then
               return true
             end
 

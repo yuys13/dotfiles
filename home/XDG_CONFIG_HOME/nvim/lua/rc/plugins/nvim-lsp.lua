@@ -17,8 +17,8 @@ local spec = {
         float = {
           -- source = 'always',
           border = 'single',
-          -- title = 'Diagnostics',
-          -- header = {},
+          title = 'Diagnostics',
+          header = {},
           format = function(diag)
             if diag.code then
               return string.format('[%s](%s): %s', diag.source, diag.code, diag.message)

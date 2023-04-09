@@ -44,6 +44,8 @@ M.adjust_window_size_when_changing_font_size = false
 
 M.send_composed_key_when_right_alt_is_pressed = false
 
+M.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
+
 M.keys = {
   -- CMD-y starts `top` in a new window
   -- { key = 'y', mods = 'CMD', action = wezterm.action { SpawnCommandInNewTab = { args = { 'top' } } } },

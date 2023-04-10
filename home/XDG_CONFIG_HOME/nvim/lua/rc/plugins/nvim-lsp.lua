@@ -59,7 +59,7 @@ local spec = {
           end, { desc = 'LSP list_workspace_folders' })
           map('n', '<space>D', vim.lsp.buf.type_definition, { desc = 'LSP type_definition' })
           map('n', '<space>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
-          map('n', '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code_action' })
+          map({ 'n', 'x' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code_action' })
           map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
           map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
 

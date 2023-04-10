@@ -19,6 +19,7 @@ local spec = {
           border = 'single',
           title = 'Diagnostics',
           header = {},
+          suffix = {},
           format = function(diag)
             if diag.code then
               return string.format('[%s](%s): %s', diag.source, diag.code, diag.message)

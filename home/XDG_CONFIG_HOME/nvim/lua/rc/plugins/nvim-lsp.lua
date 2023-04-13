@@ -174,6 +174,7 @@ local spec = {
               border = 'single',
             },
           }
+          require('mason-lspconfig')
         end,
       },
       { 'williamboman/mason-lspconfig.nvim', config = true },

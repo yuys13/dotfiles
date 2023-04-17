@@ -31,7 +31,7 @@ local spec = {
         kata = '--カナ:',
         ascii = '--SKK::',
         zenei = '--全英:',
-        hankata = '--半カ:', -- ddskk has not hankata mode
+        hankata = '--ｶﾀｶﾅ:',
         abbrev = '--aあ::',
       }
 

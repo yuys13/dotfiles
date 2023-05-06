@@ -5,6 +5,7 @@ local spec = {
     event = { 'BufRead', 'BufNewFile' },
     config = function()
       local null_ls = require 'null-ls'
+      local cspell = require 'cspell'
       null_ls.setup {
         -- you can reuse a shared lspconfig on_attach callback here
         on_attach = function(client, bufnr)
@@ -12,7 +13,7 @@ local spec = {
         end,
         sources = {
           -- All
-          null_ls.builtins.diagnostics.cspell.with {
+          cspell.diagnostics.with {
             condition = function(utils)
               return utils.root_has_file {
                 'cspell.json',
@@ -25,7 +26,7 @@ local spec = {
               diag.severity = vim.diagnostic.severity['INFO']
             end,
           },
-          null_ls.builtins.code_actions.cspell.with {
+          cspell.code_actions.with {
             condition = function(utils)
               return utils.root_has_file {
                 'cspell.json',
@@ -103,6 +104,9 @@ local spec = {
         },
       }
     end,
+    dependencies = {
+      'davidmh/cspell.nvim',
+    },
   },
 }
 

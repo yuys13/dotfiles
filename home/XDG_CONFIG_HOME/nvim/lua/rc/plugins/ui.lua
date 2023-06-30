@@ -141,7 +141,25 @@ local spec = {
   },
 
   {
+    'utilyre/barbecue.nvim',
+    event = 'VeryLazy',
+    name = 'barbecue',
+    version = '*',
+    dependencies = {
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons', -- optional dependency
+    },
+    opts = {
+      -- configurations go here
+      show_dirname = false,
+      show_basename = false,
+      show_navic = true,
+    },
+  },
+
+  {
     'b0o/incline.nvim',
+    cond = false,
     event = 'LspAttach',
     config = function()
       require('incline').setup {

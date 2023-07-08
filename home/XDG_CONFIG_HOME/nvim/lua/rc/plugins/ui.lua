@@ -17,7 +17,8 @@ local spec = {
           return ''
         end
         if vim.fn['eskk#is_enabled']() == 0 then
-          return vim.g['eskk#statusline_mode_strings']['ascii']
+          -- return vim.g['eskk#statusline_mode_strings']['ascii']
+          return ''
         end
 
         -- return vim.fn['eskk#statusline']()

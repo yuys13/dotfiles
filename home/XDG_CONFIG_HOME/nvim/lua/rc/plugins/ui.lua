@@ -188,9 +188,6 @@ local spec = {
 
   {
     'norcalli/nvim-colorizer.lua',
-    cond = function()
-      return vim.o.termguicolors
-    end,
     cmd = 'ColorizerToggle',
   },
 

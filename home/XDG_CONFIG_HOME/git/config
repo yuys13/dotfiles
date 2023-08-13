@@ -12,13 +12,15 @@
 [pull]
 	ff = only
 [diff]
-	tool = vimdiff
-[difftool "vimdiff"]
-	path = nvim
+	tool = nvimdiff
+[difftool]
+	trustExitCode = true
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 [mergetool "vimdiff"]
-	path = nvim
+	trustExitCode = true
+[mergetool "nvimdiff"]
+	trustExitCode = true
 [blame]
 	ignoreRevsFile = .git-blame-ignore-revs
 	markIgnoredLines = true

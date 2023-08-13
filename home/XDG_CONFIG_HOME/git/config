@@ -19,6 +19,9 @@
 	tool = vimdiff
 [mergetool "vimdiff"]
 	path = nvim
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
+	markIgnoredLines = true
 [ghq]
 	; root = ~/.cache/vim/dein/repos
 	; root = ~/.local/share/nvim/lazy

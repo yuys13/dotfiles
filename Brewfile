@@ -3,12 +3,16 @@ tap "homebrew/cask-fonts"
 tap "romkatv/powerlevel10k"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Platform built on V8 to build network applications
 brew "node"
 # Package acting as bridge between Node projects and their package managers
 brew "corepack"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -41,6 +45,8 @@ brew "markdownlint-cli"
 brew "neovim"
 # Control nvim processes using `nvr` command-line tool
 brew "neovim-remote"
+# Theme for zsh
+brew "powerlevel10k"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Rust toolchain installer
@@ -49,12 +55,18 @@ brew "rustup-init"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# SKK dictionary maintenance tools
+brew "skktools"
 # Opinionated Lua code formatter
 brew "stylua"
 # Text interface for Git repositories
 brew "tig"
 # Terminal multiplexer
 brew "tmux"
+# Program that allows you to count code, quickly
+brew "tokei"
+# Command-line interface to the freedesktop.org trashcan
+brew "trash-cli"
 # Vi 'workalike' with many additional features
 brew "vim"
 # Vim script Language Lint
@@ -67,8 +79,6 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# A Zsh Theme
-brew "romkatv/powerlevel10k/powerlevel10k"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Web browser focusing on privacy

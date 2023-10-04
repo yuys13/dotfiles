@@ -26,6 +26,10 @@ clean: ## Unlink dotfiles
 	@$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
 	@$(foreach val, $(XDG_CONFIGS), if [ -z "${XDG_CONFIG_HOME}" ]; then unlink $(HOME)/.config/$(val); else unlink ${XDG_CONFIG_HOME}/$(val); fi;)
 
+.PHONY: brewdump
+brewdump: ## dump to Brewfile
+	@brew bundle dump --describe --tap --formula --cask -f
+
 .PHONY: help
 help: ## Show this help messages
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-$(PHONY_LENGTH)s\033[0m %s\n", $$1, $$2}'

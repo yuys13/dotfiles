@@ -130,11 +130,6 @@ local spec = {
   },
 
   {
-    'nvim-treesitter/playground',
-    cmd = { 'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor', 'TSNodeUnderCursor' },
-  },
-
-  {
     'numToStr/Comment.nvim',
     keys = {
       { 'gc', mode = { 'n', 'x' } },

@@ -78,7 +78,10 @@
         fi
 
         export FZF_CDR_PREVIEW_OPTS
-        if type exa >/dev/null 2>&1; then
+        if type eza >/dev/null 2>&1; then
+            export FZF_ALT_C_OPTS='--preview "eza --icons --tree --level=1 --color=always {}"'
+            FZF_CDR_PREVIEW_OPTS="eza --icons --tree --level=1 --color=always "
+        elif type exa >/dev/null 2>&1; then
             export FZF_ALT_C_OPTS='--preview "exa --icons --tree --level=1 {}"'
             FZF_CDR_PREVIEW_OPTS="exa --icons --tree --level=1 "
         else

@@ -9,8 +9,8 @@ brew "bat"
 brew "node"
 # Package acting as bridge between Node projects and their package managers
 brew "corepack"
-# Modern replacement for 'ls'
-brew "exa"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems

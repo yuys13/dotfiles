@@ -22,12 +22,12 @@ fpath=( \
 ## Editor
 if [[ -n ${EDITOR} && ${EDITOR[(w)0]} = 'nvr' ]]; then
     export EDITOR
-elif type nvim >/dev/null 2>&1; then
+elif (( $+commands[nvim] )); then
     export EDITOR=nvim
     export MANPAGER='nvim +Man!'
-elif type vim >/dev/null 2>&1; then
+elif (( $+commands[vim] )); then
     export EDITOR=vim
-elif type vi >/dev/null 2>&1; then
+elif (( $+commands[vi] )); then
     export EDITOR=vi
 fi
 
@@ -87,7 +87,7 @@ if [[ -f ${XDG_DATA_HOME%/}/zsh/solarized ]]; then
 fi
 case ${OSTYPE} in
     darwin*)
-        if type gls >/dev/null 2>&1; then
+        if (( $+commands[gls] )); then
             alias ls='gls -F --color=auto'
         else
             export CLICOLOR=1

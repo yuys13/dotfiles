@@ -12,9 +12,9 @@ solarize () {
     local dircolors_filepath=${github_dir%/}/${dircolors_repo%/}/${dircolors_file}
 
     # set LS_COLORS
-    if type dircolors >/dev/null; then
+    if (( $+commands[dircolors] )); then
         eval $(dircolors -b ${dircolors_filepath}(N-.))
-    elif type gdircolors >/dev/null; then
+    elif (( $+commands[gdircolors] )); then
         eval $(gdircolors -b ${dircolors_filepath}(N-.))
     fi
 

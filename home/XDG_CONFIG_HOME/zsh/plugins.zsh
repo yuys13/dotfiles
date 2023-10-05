@@ -4,7 +4,7 @@
     local github=${ghq_root}/github.com
     local zsh_users=${github}/zsh-users
     local omz_root=${github}/robbyrussell/oh-my-zsh
-    local brew_prefix=$(type brew >/dev/null && brew --prefix || echo /opt/homebrew)
+    local brew_prefix=$( (( $+commands[brew] )) && brew --prefix || echo /opt/homebrew)
 
     ## Load plugins
     # powerlevel10k
@@ -66,22 +66,22 @@
         fi
     }
 
-    if type fzf >/dev/null; then
-        if type fd >/dev/null 2>&1; then
+    if (( $+commands[fzf] )); then
+        if (( $+commands[fd] )); then
             export FZF_ALT_C_COMMAND="fd -t d"
             export FZF_CTRL_T_COMMAND='fd -t f -L -H -E .git'
         fi
-        if type bat >/dev/null 2>&1; then
+        if (( $+commands[bat] )); then
             export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
         else
             export FZF_CTRL_T_OPTS='--preview "cat {}"'
         fi
 
         export FZF_CDR_PREVIEW_OPTS
-        if type eza >/dev/null 2>&1; then
+        if (( $+commands[eza] )); then
             export FZF_ALT_C_OPTS='--preview "eza --icons --tree --level=1 --color=always {}"'
             FZF_CDR_PREVIEW_OPTS="eza --icons --tree --level=1 --color=always "
-        elif type exa >/dev/null 2>&1; then
+        elif (( $+commands[exa] )); then
             export FZF_ALT_C_OPTS='--preview "exa --icons --tree --level=1 {}"'
             FZF_CDR_PREVIEW_OPTS="exa --icons --tree --level=1 "
         else
@@ -120,7 +120,7 @@
             fi
         }
 
-        if type ghq >/dev/null; then
+        if (( $+commands[ghq] )); then
             ghq_fzf () {
                 local selected_repo=$(ghq list -p | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" fzf)
                 if [[ -z $selected_repo ]]; then

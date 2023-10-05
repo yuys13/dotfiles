@@ -16,9 +16,9 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 
 zstyle ':completion:*:default' menu select=2
 if [[ -z $LS_COLORS ]]; then
-    if type dircolors >/dev/null 2>&1; then
+    if (( $+commands[dircolors] )); then
         eval $(dircolors)
-    elif type gdircolors >/dev/null 2>&1; then
+    elif (( $+commands[gdircolors] )); then
         eval $(gdircolors)
     fi
 fi

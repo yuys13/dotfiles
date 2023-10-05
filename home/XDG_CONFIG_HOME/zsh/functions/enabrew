@@ -1,5 +1,5 @@
 enabrew () {
-    if ! type brew >/dev/null; then
+    if ! (( $+commands[brew] )); then
         local brew_prefix=""
         if [[ -d ${HOME}/.linuxbrew ]]; then
             brew_prefix=${HOME}/.linuxbrew
@@ -14,7 +14,7 @@ enabrew () {
             )
     fi
 
-    if ! type brew >/dev/null; then
+    if ! (( $+commands[brew] )); then
         echo brew not found
         return 1
     fi

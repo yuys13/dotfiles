@@ -147,7 +147,7 @@ local spec = {
           }
         end,
         ['tsserver'] = function()
-          require('typescript').setup {
+          lspconfig.tsserver.setup {
             server = {
               capabilities = capabilities,
               root_dir = node_root_dir,
@@ -179,7 +179,6 @@ local spec = {
       },
       { 'williamboman/mason-lspconfig.nvim', config = true },
       { 'folke/neodev.nvim' },
-      { 'jose-elias-alvarez/typescript.nvim' },
       { 'simrat39/rust-tools.nvim' },
       { 'b0o/SchemaStore.nvim' },
     },

@@ -108,14 +108,13 @@ local spec = {
     'lukas-reineke/indent-blankline.nvim',
     event = 'VeryLazy',
     config = function()
-      require('indent_blankline').setup {
-        -- space_char_blankline = ' ',
-        show_first_indent_level = true,
-        buftype_exclude = { 'nofile', 'help', 'terminal' },
-        filetype_exclude = { '' },
-        show_trailing_blankline_indent = false,
-        -- show_current_context = true,
-        -- show_current_context_start = true,
+      require('ibl').setup {
+        -- indent = {
+        --   char = '│', -- default value of v2
+        -- },
+        scope = {
+          enabled = false,
+        },
       }
     end,
   },

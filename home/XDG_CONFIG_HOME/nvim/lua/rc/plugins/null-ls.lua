@@ -1,7 +1,7 @@
 ---@type LazySpec[]
 local spec = {
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     event = { 'BufRead', 'BufNewFile' },
     config = function()
       local null_ls = require 'null-ls'

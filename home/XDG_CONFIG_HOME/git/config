@@ -22,7 +22,7 @@
 [mergetool "nvimdiff"]
 	trustExitCode = true
 [blame]
-	ignoreRevsFile = .git-blame-ignore-revs
+	; ignoreRevsFile = .git-blame-ignore-revs
 	markIgnoredLines = true
 [ghq]
 	; root = ~/.cache/vim/dein/repos

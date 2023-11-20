@@ -92,10 +92,6 @@ local spec = {
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        },
         textobjects = {
           select = {
             enable = true,
@@ -141,7 +137,14 @@ local spec = {
       }
     end,
     dependencies = {
-      { 'JoosepAlviste/nvim-ts-context-commentstring' },
+      {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function()
+          require('ts_context_commentstring').setup {
+            enable_autocmd = false,
+          }
+        end,
+      },
     },
   },
 

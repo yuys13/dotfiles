@@ -197,8 +197,10 @@ local spec = {
     event = 'LspAttach',
     config = function()
       require('fidget').setup {
-        fmt = {
-          stack_upwards = false,
+        notification = {
+          view = {
+            stack_upwards = false,
+          },
         },
       }
     end,

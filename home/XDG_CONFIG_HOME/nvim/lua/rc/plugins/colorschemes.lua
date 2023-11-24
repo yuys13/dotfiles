@@ -1,13 +1,6 @@
 ---@type LazySpec[]
 local spec = {
-  {
-    'yuys13/hackshark.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'hackshark'
-    end,
-  },
+  { 'yuys13/hackshark.nvim' },
 
   {
     'dracula/vim',
@@ -41,7 +34,14 @@ local spec = {
 
   { 'sainnhe/edge' },
 
-  { 'folke/tokyonight.nvim' },
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'tokyonight-moon'
+    end,
+  },
 
   { 'rebelot/kanagawa.nvim' },
 }

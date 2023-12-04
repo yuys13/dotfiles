@@ -25,32 +25,32 @@ wezterm.on('update-right-status', function(window, pane)
   window:set_right_status(date)
 end)
 
-local M = {}
-M.use_ime = true
+local config = {}
+config.use_ime = true
 
-M.front_end = 'WebGpu'
+config.front_end = 'WebGpu'
 
-M.font = wezterm.font 'HackGen Console NF'
-M.font_size = 14.0
+config.font = wezterm.font 'HackGen Console NF'
+config.font_size = 14.0
 
-M.color_scheme = 'Modus-Vivendi-Deuteranopia'
+config.color_scheme = 'Modus-Vivendi-Deuteranopia'
 
-M.tab_max_width = 24
+config.tab_max_width = 24
 
-M.adjust_window_size_when_changing_font_size = false
+config.adjust_window_size_when_changing_font_size = false
 -- M.hide_tab_bar_if_only_one_tab = true
 -- M.tab_bar_at_bottom = true
 -- M.use_fancy_tab_bar = false
 
-M.send_composed_key_when_right_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
 
-M.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
+config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
 
-M.keys = {
+config.keys = {
   -- CMD-y starts `top` in a new window
   -- { key = 'y', mods = 'CMD', action = wezterm.action { SpawnCommandInNewTab = { args = { 'top' } } } },
   { key = 'q', mods = 'CTRL', action = wezterm.action { SendString = '\x11' } },
   { key = 'UpArrow', mods = 'SHIFT', action = wezterm.action.ScrollToPrompt(-1) },
   { key = 'DownArrow', mods = 'SHIFT', action = wezterm.action.ScrollToPrompt(1) },
 }
-return M
+return config

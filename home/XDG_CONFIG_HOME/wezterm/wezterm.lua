@@ -33,7 +33,7 @@ M.front_end = 'WebGpu'
 M.font = wezterm.font 'HackGen Console NF'
 M.font_size = 14.0
 
-M.color_scheme = 'Dracula (Official)'
+M.color_scheme = 'Modus-Vivendi-Deuteranopia'
 
 M.tab_max_width = 24
 

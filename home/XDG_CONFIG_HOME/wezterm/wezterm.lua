@@ -26,6 +26,11 @@ wezterm.on('update-right-status', function(window, pane)
 end)
 
 local config = {}
+
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
+
 config.use_ime = true
 
 config.front_end = 'WebGpu'

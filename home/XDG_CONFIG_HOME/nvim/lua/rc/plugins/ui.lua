@@ -149,12 +149,13 @@ local spec = {
       'SmiteshP/nvim-navic',
       'nvim-tree/nvim-web-devicons', -- optional dependency
     },
-    opts = {
-      -- configurations go here
-      show_dirname = false,
-      show_basename = false,
-      show_navic = true,
-    },
+    config = function()
+      require('barbecue').setup {
+        show_dirname = false,
+        show_basename = false,
+        show_navic = true,
+      }
+    end,
   },
 
   {
@@ -179,11 +180,13 @@ local spec = {
   {
     'SmiteshP/nvim-navic',
     event = 'LspAttach',
-    opts = {
-      lsp = {
-        auto_attach = true,
-      },
-    },
+    config = function()
+      require('nvim-navic').setup {
+        lsp = {
+          auto_attach = true,
+        },
+      }
+    end,
   },
 
   {

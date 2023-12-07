@@ -43,9 +43,9 @@ config.color_scheme = 'Modus-Vivendi-Deuteranopia'
 config.tab_max_width = 24
 
 config.adjust_window_size_when_changing_font_size = false
--- M.hide_tab_bar_if_only_one_tab = true
--- M.tab_bar_at_bottom = true
--- M.use_fancy_tab_bar = false
+-- config.hide_tab_bar_if_only_one_tab = true
+-- config.tab_bar_at_bottom = true
+-- config.use_fancy_tab_bar = false
 
 config.send_composed_key_when_right_alt_is_pressed = false
 

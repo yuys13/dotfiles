@@ -224,7 +224,6 @@ themes {
 // Default: default
 //
 // theme "default"
-theme "dracula"
 
 // The name of the default layout to load on startup
 // Default: "default"

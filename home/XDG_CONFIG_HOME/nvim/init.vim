@@ -5,8 +5,6 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-lua pcall(require, 'rc.lazy')
-
 " Keymap
 inoremap <silent> jj <Esc>
 autocmd MyAutoCmd TermOpen * tnoremap <buffer> jj <C-\><C-n>
@@ -88,3 +86,5 @@ augroup vimrc-auto-mkdir  " {{{
     endif
   endfunction  " }}}
 augroup END  " }}}
+
+lua pcall(require, 'rc.lazy')

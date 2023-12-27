@@ -147,10 +147,12 @@ local spec = {
           }
         end,
         ['tsserver'] = function()
+          if not is_node_repo then
+            return
+          end
           lspconfig.tsserver.setup {
             server = {
               capabilities = capabilities,
-              root_dir = node_root_dir,
               single_file_support = false, -- for denols
             },
           }

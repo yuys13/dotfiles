@@ -142,7 +142,7 @@ local spec = {
 
   {
     'utilyre/barbecue.nvim',
-    event = 'VeryLazy',
+    event = 'BufReadPre',
     name = 'barbecue',
     version = '*',
     dependencies = {

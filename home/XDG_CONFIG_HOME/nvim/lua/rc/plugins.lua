@@ -1,6 +1,6 @@
 local context = nil
 -- Stream
-local function requestOllama(prompt)
+local function requestOllama(prompt, cb)
   local mes = ''
   require('plenary.curl').post('http://localhost:11434/api/generate', {
     body = vim.json.encode {
@@ -11,21 +11,23 @@ local function requestOllama(prompt)
     },
     stream = vim.schedule_wrap(function(_, chunk, job)
       local res = vim.json.decode(chunk)
-      if res.done then
-        vim.print(mes)
-        context = res.context
-      else
-        -- vim.notify(res.response, vim.log.levels.INFO)
-        mes = mes .. res.response
-      end
+      cb(res)
     end),
   })
   vim.notify('requested...', vim.log.levels.INFO)
 end
 
 vim.api.nvim_create_user_command('ChotGPT', function()
+  local message = ''
   vim.ui.input({ prompt = 'ChotGPT' }, function(input)
-    requestOllama(input)
+    requestOllama(input, function(res)
+      if res.done then
+        context = res.context
+        vim.notify(message, vim.log.levels.INFO)
+      else
+        message = message .. res.response
+      end
+    end)
   end)
 end, {})
 
@@ -81,17 +83,58 @@ vim.api.nvim_create_user_command('ChotGPTSync', function()
   end)
 end, {})
 
+vim.api.nvim_create_user_command('ChatOllama', function()
+  -- local bufnr = vim.api.nvim_create_buf(true, false)
+  vim.cmd.new()
+  local bufnr = vim.fn.bufnr()
+  vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { '## YOU' })
+  vim.bo[bufnr].modified = false
+  vim.bo[bufnr].buftype = 'prompt'
+  vim.bo[bufnr].filetype = 'markdown'
+
+  vim.fn.prompt_setprompt(bufnr, ' ')
+  vim.fn.prompt_setcallback(bufnr, function(text)
+    vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, { '## Ollama' })
+    local buffer = ''
+    requestOllama(text, function(res)
+      if res.done then
+        if buffer ~= '' then
+          vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { buffer })
+        end
+        context = res.context
+        vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { '', '## You' })
+        vim.bo[bufnr].modified = false
+      else
+        if res.response then
+          buffer = buffer .. res.response
+          local lines = vim.split(buffer, '\n')
+          if 1 < #lines then
+            buffer = table.remove(lines)
+            vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, lines)
+          end
+        else
+          vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { 'Error...' })
+        end
+      end
+    end)
+  end)
+end, {})
+
 vim.api.nvim_create_user_command('ChatOllamaAsync', function()
   -- local bufnr = vim.api.nvim_create_buf(true, false)
   vim.cmd.new()
   local bufnr = vim.fn.bufnr()
   vim.bo[bufnr].buftype = 'prompt'
   vim.bo[bufnr].filetype = 'markdown'
+  vim.fn.appendbufline(bufnr, 0, '## YOU')
+  vim.bo[bufnr].modified = false
+
+  vim.fn.prompt_setprompt(bufnr, ' ')
   vim.fn.prompt_setcallback(bufnr, function(text)
     vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '')
-    vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '## Echo')
-    vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, text)
-    vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '')
+    -- vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '## Echo')
+    -- vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, text)
+    -- vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '')
     vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '## Ollama')
     requestOllamaAsync(text, function(res)
       if res and res.response then
@@ -102,10 +145,9 @@ vim.api.nvim_create_user_command('ChatOllamaAsync', function()
         vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, 'Error...')
       end
       vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '## You')
+      vim.bo[bufnr].modified = false
     end)
   end)
-  vim.fn.prompt_setprompt(bufnr, ' ')
-  vim.fn.appendbufline(bufnr, 0, '## YOU')
 end, {})
 
 vim.api.nvim_create_user_command('ChatOllamaSync', function()
@@ -114,6 +156,10 @@ vim.api.nvim_create_user_command('ChatOllamaSync', function()
   local bufnr = vim.fn.bufnr()
   vim.bo[bufnr].buftype = 'prompt'
   vim.bo[bufnr].filetype = 'markdown'
+  vim.fn.appendbufline(bufnr, 0, '## YOU')
+  vim.bo[bufnr].modified = false
+
+  vim.fn.prompt_setprompt(bufnr, ' ')
   vim.fn.prompt_setcallback(bufnr, function(text)
     vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '')
     vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '## Echo')
@@ -129,9 +175,8 @@ vim.api.nvim_create_user_command('ChatOllamaSync', function()
       vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, 'Error...')
     end
     vim.fn.appendbufline(bufnr, vim.api.nvim_buf_line_count(bufnr) - 1, '## You')
+    vim.bo[bufnr].modified = false
   end)
-  vim.fn.prompt_setprompt(bufnr, '')
-  vim.fn.appendbufline(bufnr, 0, '## YOU')
 end, {})
 
 vim.api.nvim_create_autocmd('User', {

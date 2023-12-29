@@ -1,3 +1,76 @@
+-- Stream
+local function requestOllama(prompt)
+  require('plenary.curl').post('http://localhost:11434/api/generate', {
+    body = vim.json.encode {
+      model = 'mistral',
+      prompt = prompt,
+      stream = true,
+    },
+    stream = vim.schedule_wrap(function(_, chunk, job)
+      local res = vim.json.decode(chunk)
+      if res.done then
+        vim.print(res.context)
+      else
+        vim.print(res.response)
+      end
+    end),
+  })
+  vim.notify('requested...', vim.log.levels.INFO)
+end
+
+vim.api.nvim_create_user_command('ChotGPT', function()
+  vim.ui.input({ prompt = 'ChotGPT' }, function(input)
+    requestOllama(input)
+  end)
+end, {})
+
+-- Async
+local function requestOllamaAsync(prompt)
+  vim.print(body)
+  require('plenary.curl').post('http://localhost:11434/api/generate', {
+    body = vim.json.encode {
+      model = 'mistral',
+      prompt = prompt,
+      stream = false,
+    },
+    callback = vim.schedule_wrap(function(output)
+      local body = vim.json.decode(output.body)
+      vim.print(body.response)
+    end),
+  })
+  vim.notify('requested...', vim.log.levels.INFO)
+end
+
+vim.api.nvim_create_user_command('ChotGPTAsync', function()
+  vim.ui.input({ prompt = 'ChotGPTAsync' }, function(input)
+    requestOllamaAsync(input)
+  end)
+end, {})
+
+-- Sync
+local function requestOllamaSync(prompt)
+  local body = vim.json.encode {
+    model = 'mistral',
+    prompt = prompt,
+    stream = false,
+  }
+  -- vim.print(body)
+  ---@type Job
+  local job = require('plenary.curl').post('http://localhost:11434/api/generate', {
+    body = body,
+    timeout = 1000 * 60 * 1,
+  })
+  -- vim.print(job)
+  local response = vim.fn.json_decode(job.body).response
+  vim.print(response)
+end
+
+vim.api.nvim_create_user_command('ChotGPTSync', function()
+  vim.ui.input({ prompt = 'ChotGPTSync' }, function(input)
+    requestOllamaSync(input)
+  end)
+end, {})
+
 vim.api.nvim_create_autocmd('User', {
   once = true,
   pattern = 'VeryLazy',

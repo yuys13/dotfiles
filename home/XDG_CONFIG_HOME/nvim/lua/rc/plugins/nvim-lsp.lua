@@ -112,17 +112,15 @@ local spec = {
           }
         end,
         ['rust_analyzer'] = function()
-          require('rust-tools').setup {
-            server = {
-              on_attach = function(client, bufnr)
-                require('lsp-format').on_attach(client)
-              end,
-              capabilities = capabilities,
-              settings = {
-                ['rust-analyzer'] = {
-                  check = {
-                    command = 'clippy',
-                  },
+          lspconfig.rust_analyzer.setup {
+            on_attach = function(client, bufnr)
+              require('lsp-format').on_attach(client)
+            end,
+            capabilities = capabilities,
+            settings = {
+              ['rust-analyzer'] = {
+                check = {
+                  command = 'clippy',
                 },
               },
             },
@@ -186,7 +184,6 @@ local spec = {
       },
       { 'williamboman/mason-lspconfig.nvim', config = true },
       { 'folke/neodev.nvim' },
-      { 'simrat39/rust-tools.nvim' },
       { 'b0o/SchemaStore.nvim' },
     },
   },

@@ -88,8 +88,8 @@ local spec = {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local lspconfig = require 'lspconfig'
-      local node_root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json')
-      local is_node_repo = node_root_dir(vim.fn.getcwd()) ~= nil
+      local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc')
+      local is_deno_repo = deno_root_dir(vim.fn.getcwd()) ~= nil
 
       require 'mason'
       local mason_lspconfig = require 'mason-lspconfig'
@@ -150,7 +150,7 @@ local spec = {
           }
         end,
         ['tsserver'] = function()
-          if not is_node_repo then
+          if is_deno_repo then
             return
           end
           lspconfig.tsserver.setup {
@@ -162,7 +162,7 @@ local spec = {
         end,
       }
 
-      if vim.fn.executable 'deno' == 1 and not is_node_repo then
+      if vim.fn.executable 'deno' == 1 and is_deno_repo then
         lspconfig.denols.setup {
           capabilities = capabilities,
         }

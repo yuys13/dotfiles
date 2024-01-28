@@ -12,8 +12,8 @@
         source ${github}/romkatv/powerlevel10k/powerlevel10k.zsh-theme
         # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
         [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
-    elif [ -d ${brew_prefix}/opt/powerlevel10k ]; then
-        source ${brew_prefix}/opt/powerlevel10k/powerlevel10k.zsh-theme
+    elif [ -d ${brew_prefix}/share/powerlevel10k ]; then
+        source ${brew_prefix}/share/powerlevel10k/powerlevel10k.zsh-theme
         [[ ! -f  ${XDG_CONFIG_HOME}/zsh/p10k.zsh ]] || source ${XDG_CONFIG_HOME}/zsh/p10k.zsh
     elif [ -d /usr/share/zsh-theme-powerlevel10k ]; then
         source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

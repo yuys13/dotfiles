@@ -1,7 +1,6 @@
 local context = nil
 -- Stream
 local function requestOllama(prompt, cb)
-  local mes = ''
   require('plenary.curl').post('http://localhost:11434/api/generate', {
     body = vim.json.encode {
       model = 'mistral',
@@ -13,6 +12,7 @@ local function requestOllama(prompt, cb)
       local res = vim.json.decode(chunk)
       cb(res)
     end),
+    raw = { '-N' },
   })
   vim.notify('requested...', vim.log.levels.INFO)
 end
@@ -87,31 +87,31 @@ vim.api.nvim_create_user_command('ChatOllama', function()
   -- local bufnr = vim.api.nvim_create_buf(true, false)
   vim.cmd.new()
   local bufnr = vim.fn.bufnr()
-  vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { '## YOU' })
+  vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { '## YOU', '' })
   vim.bo[bufnr].modified = false
   vim.bo[bufnr].buftype = 'prompt'
   vim.bo[bufnr].filetype = 'markdown'
+  vim.opt_local.wrap = true
 
   vim.fn.prompt_setprompt(bufnr, ' ')
   vim.fn.prompt_setcallback(bufnr, function(text)
-    vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, { '## Ollama' })
-    local buffer = ''
+    vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { '', '## Ollama', '', '' })
     requestOllama(text, function(res)
       if res.done then
-        if buffer ~= '' then
-          vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { buffer })
-        end
         context = res.context
-        vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { '', '## You' })
+        vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { '', '## You', '' })
         vim.bo[bufnr].modified = false
       else
         if res.response then
-          buffer = buffer .. res.response
-          local lines = vim.split(buffer, '\n')
-          if 1 < #lines then
-            buffer = table.remove(lines)
-            vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, lines)
+          local lastline = vim.api.nvim_buf_get_lines(bufnr, -3, -2, false)
+          local mes
+          if lastline[1] then
+            mes = lastline[1] .. res.response
+          else
+            mes = res.response
           end
+          local lines = vim.split(mes, '\n')
+          vim.api.nvim_buf_set_lines(bufnr, -3, -2, false, lines)
         else
           vim.api.nvim_buf_set_lines(bufnr, -2, -2, false, { 'Error...' })
         end

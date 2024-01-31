@@ -1,4 +1,31 @@
 local context = nil
+vim.api.nvim_create_user_command('Opilot', function()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  local lines
+
+  lines = vim.api.nvim_buf_get_text(0, 0, 0, pos[1] - 1, pos[2], {})
+  local prefix = table.concat(lines, '\n')
+  lines = vim.api.nvim_buf_get_text(0, pos[1] - 1, pos[2], -1, -1, {})
+  local suffix = table.concat(lines, '\n')
+
+  local prompt = '<PRE> ' .. prefix .. ' <SUF>' .. suffix .. ' <MID>'
+  local body = vim.json.encode {
+    model = 'codellama:7b-code',
+    prompt = prompt,
+    stream = false,
+  }
+  -- vim.print(body)
+  ---@type Job
+  local job = require('plenary.curl').post('http://localhost:11434/api/generate', {
+    body = body,
+    timeout = 1000 * 60 * 1,
+  })
+  local result = vim.fn.json_decode(job.body)
+  -- vim.print(result.response)
+  local hoge = string.gsub(result.response, ' <EOT>$', '')
+  vim.api.nvim_buf_set_text(0, pos[1] - 1, pos[2], pos[1] - 1, pos[2], vim.split(hoge, '\n'))
+end, {})
+
 -- Stream
 local function requestOllama(prompt, cb)
   require('plenary.curl').post('http://localhost:11434/api/generate', {

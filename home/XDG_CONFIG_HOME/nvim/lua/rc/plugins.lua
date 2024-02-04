@@ -60,9 +60,10 @@ end, {})
 
 -- Async
 local function requestOllamaAsync(prompt, cb)
-  require('plenary.curl').post('http://localhost:11434/api/generate', {
+  ---@type Job
+  local job = require('plenary.curl').post('http://localhost:11434/api/generate', {
     body = vim.json.encode {
-      model = 'mistral',
+      model = 'codellama:7b-code',
       prompt = prompt,
       context = context,
       stream = false,
@@ -73,6 +74,7 @@ local function requestOllamaAsync(prompt, cb)
     end),
   })
   vim.notify('requested...', vim.log.levels.INFO)
+  return job
 end
 
 vim.api.nvim_create_user_command('ChotGPTAsync', function()
@@ -205,6 +207,64 @@ vim.api.nvim_create_user_command('ChatOllamaSync', function()
     vim.bo[bufnr].modified = false
   end)
 end, {})
+
+local ns_id = vim.api.nvim_create_namespace 'Opilot'
+
+local function requestOpilot()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  local lines
+
+  lines = vim.api.nvim_buf_get_text(0, 0, 0, pos[1] - 1, pos[2], {})
+  local prefix = table.concat(lines, '\n')
+  lines = vim.api.nvim_buf_get_text(0, pos[1] - 1, pos[2], -1, -1, {})
+  local suffix = table.concat(lines, '\n')
+
+  local prompt = '<PRE> ' .. prefix .. ' <SUF>' .. suffix .. ' <MID>'
+  local job = requestOllamaAsync(prompt, function(body)
+    -- vim.print(body.response)
+    local response = string.gsub(body.response, ' <EOT>$', '')
+    vim.print(response)
+    local lines = vim.split(response, '\n')
+    local virt_text = table.remove(lines, 1)
+    local opts = {}
+    opts.virt_text = { { virt_text, 'Comment' } }
+    opts.virt_text_pos = 'overlay'
+    opts.virt_lines = {}
+    for _, value in pairs(lines) do
+      table.insert(opts.virt_lines, { { value, 'Comment' } })
+    end
+    vim.print(opts)
+    local virt_text_id = vim.api.nvim_buf_set_extmark(0, ns_id, pos[1] - 1, pos[2], opts)
+
+    vim.keymap.set('i', '<C-f>', function()
+      vim.print 'accept'
+      vim.api.nvim_buf_set_text(0, pos[1] - 1, pos[2], pos[1] - 1, pos[2], vim.split(response, '\n'))
+      vim.api.nvim_buf_del_extmark(0, ns_id, virt_text_id)
+      vim.keymap.del('i', '<C-f>')
+    end)
+    vim.api.nvim_create_autocmd('InsertLeave', {
+      once = true,
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_buf_del_extmark(0, ns_id, virt_text_id)
+      end,
+    })
+  end)
+  vim.api.nvim_create_autocmd({ 'TextChangedI', 'CursorMovedI', 'InsertLeave' }, {
+    once = true,
+    pattern = '*',
+    callback = function()
+      job:shutdown()
+    end,
+  })
+end
+
+-- vim.api.nvim_create_autocmd('CursorHoldI', {
+--   once = true,
+--   group = vim.api.nvim_create_augroup('HogeHoge', {}),
+--   pattern = '*',
+--   callback = requestOpilot,
+-- })
 
 vim.api.nvim_create_autocmd('User', {
   once = true,

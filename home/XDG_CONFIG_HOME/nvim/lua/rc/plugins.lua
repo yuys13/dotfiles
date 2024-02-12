@@ -8,7 +8,7 @@ vim.api.nvim_create_user_command('Opilot', function()
   lines = vim.api.nvim_buf_get_text(0, pos[1] - 1, pos[2], -1, -1, {})
   local suffix = table.concat(lines, '\n')
 
-  local prompt = '<PRE> ' .. prefix .. ' <SUF>' .. suffix .. ' <MID>'
+  local prompt = '<PRE>' .. prefix .. ' <SUF>' .. suffix .. ' <MID>'
   local body = vim.json.encode {
     model = 'codellama:7b-code',
     prompt = prompt,

@@ -1,3 +1,8 @@
+-- local signs = { Error = '󰅚 ', Warn = '󰀪 ', Hint = '󰌶 ', Info = ' ' }
+-- for type, icon in pairs(signs) do
+--   local hl = 'DiagnosticSign' .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- end
 ---@type LazySpec[]
 local spec = {
   {
@@ -9,6 +14,18 @@ local spec = {
         -- Use a sharp border with `FloatBorder` highlights
         border = 'single',
       })
+      -- vim.lsp.handlers['textDocument/hover'] = function(_, results, ctx, config)
+      --   local client = vim.lsp.get_client_by_id(ctx.client_id)
+      --   vim.lsp.handlers.hover(
+      --     _,
+      --     results,
+      --     ctx,
+      --     vim.tbl_deep_extend('force', config or {}, {
+      --       border = 'single',
+      --       title = client.name,
+      --     })
+      --   )
+      -- end
       -- diagnostic settings
       vim.diagnostic.config {
         virtual_text = {

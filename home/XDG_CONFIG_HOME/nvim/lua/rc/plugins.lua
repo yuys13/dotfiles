@@ -389,8 +389,8 @@ local spec = {
   {
     'monaqa/dial.nvim',
     keys = {
-      { '<C-a>', '<Plug>(dial-increment)', mode = { 'n', 'v' } },
-      { '<C-x>', '<Plug>(dial-decrement)', mode = { 'n', 'v' } },
+      { '<C-a>', '<Plug>(dial-increment)', mode = { 'n', 'v' }, desc = 'dial increment' },
+      { '<C-x>', '<Plug>(dial-decrement)', mode = { 'n', 'v' }, desc = 'dial decrement' },
       { 'g<C-a>', mode = 'v' },
       { 'g<C-x>', mode = 'v' },
     },

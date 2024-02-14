@@ -2,13 +2,11 @@
 ## Path
 typeset -U path cdpath fpath manpath
 
-export GOPATH=${HOME}/go
-
 path=( \
     ${HOME}/bin(N-/) \
     /opt/homebrew/bin(N-/) \
     ${HOME}/.zplug/bin(N-/) \
-    ${GOPATH}/bin(N-/) \
+    ${HOME}/go/bin(N-/) \
     ${HOME}/.luarocks/bin(N-/) \
     ${HOME}/.local/bin(N-/) \
     $path \

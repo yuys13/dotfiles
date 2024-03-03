@@ -28,7 +28,7 @@ bind generic <Ctrl-F> move-page-down
 bind generic <Ctrl-B> move-page-up
 
 # main bindings
-bind main          F  !git fetch
+bind main          F  ?sh -c "git commit --fixup %(commit) && git -c sequence.editor=true rebase -i --autosquash %(commit)~"
 bind main          ^  ?git reset --soft HEAD^
 bind main          H  ?git reset --hard %(commit)
 bind main          !  ?git revert %(commit)

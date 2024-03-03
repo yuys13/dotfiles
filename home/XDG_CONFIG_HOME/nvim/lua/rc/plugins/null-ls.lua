@@ -53,7 +53,7 @@ local spec = {
           -- Javascript
           null_ls.builtins.formatting.prettier.with { prefer_local = 'node_modules/.bin' },
           -- Lua
-          null_ls.builtins.diagnostics.luacheck.with {
+          require('none-ls-luacheck.diagnostics.luacheck').with {
             condition = function(utils)
               return utils.root_has_file { '.luacheckrc' }
             end,
@@ -62,13 +62,14 @@ local spec = {
           -- Markdown
           null_ls.builtins.diagnostics.markdownlint,
           -- Python
-          null_ls.builtins.diagnostics.flake8,
+          require 'none-ls.diagnostics.flake8',
           -- null_ls.builtins.diagnostics.pylint,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.isort,
           -- null_ls.builtins.formatting.reorder_python_imports,
           -- Shell script
-          null_ls.builtins.code_actions.shellcheck,
+          -- require 'none-ls-shellcheck.diagnostics', -- use bash-language-server
+          require 'none-ls-shellcheck.code_actions',
           null_ls.builtins.formatting.shfmt.with {
             condition = function(utils)
               return utils.root_has_file { '.editorconfig' }
@@ -104,6 +105,9 @@ local spec = {
     end,
     dependencies = {
       'davidmh/cspell.nvim',
+      'nvimtools/none-ls-extras.nvim',
+      'gbprod/none-ls-luacheck.nvim',
+      'gbprod/none-ls-shellcheck.nvim',
     },
   },
 }

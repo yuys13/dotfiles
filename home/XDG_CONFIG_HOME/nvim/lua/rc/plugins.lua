@@ -493,20 +493,6 @@ local spec = {
     end,
   },
 
-  {
-    'rest-nvim/rest.nvim',
-    dependencies = { { 'nvim-lua/plenary.nvim' } },
-    lazy = false,
-    config = function()
-      require('rest-nvim').setup {
-        -- Keep the http file buffer above|left when split horizontal|vertical
-        result_split_in_place = true,
-        -- stay in current windows (.http file) or change to results window (default)
-        stay_in_current_window_after_split = true,
-      }
-    end,
-  },
-
   { 'tyru/capture.vim', cmd = 'Capture' },
 
   { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' },

@@ -1,0 +1,17 @@
+[font]
+size = 14
+
+[font.bold]
+family = "HackGen Console NF"
+style = "Bold"
+
+[font.normal]
+family = "HackGen Console NF"
+style = "Regular"
+
+[window]
+option_as_alt = "Both"
+
+[window.dimensions]
+columns = 200
+lines = 50

@@ -440,6 +440,7 @@ local spec = {
     },
     config = function()
       require('nvim-tree').setup {
+        hijack_netrw = false,
         actions = {
           open_file = {
             quit_on_open = true,

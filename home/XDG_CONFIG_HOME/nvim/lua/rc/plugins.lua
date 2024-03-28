@@ -451,6 +451,16 @@ local spec = {
   },
 
   {
+    'stevearc/oil.nvim',
+    cmd = 'Oil',
+    config = function()
+      require('oil').setup {
+        default_file_explorer = false,
+      }
+    end,
+  },
+
+  {
     'cohama/lexima.vim',
     event = 'InsertEnter',
     init = function()

@@ -28,6 +28,7 @@ local spec = {
       -- end
       -- diagnostic settings
       vim.diagnostic.config {
+        severity_sort = true,
         virtual_text = {
           -- source = 'always',
         },

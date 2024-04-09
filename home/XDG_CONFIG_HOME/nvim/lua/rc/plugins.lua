@@ -343,15 +343,7 @@ local spec = {
     'kannokanno/previm',
     ft = { 'markdown', 'rst', 'asciidoc' },
     dependencies = {
-      {
-        'tyru/open-browser.vim',
-        keys = {
-          { 'gx', '<Plug>(openbrowser-smart-search)', mode = { 'n', 'x' } },
-        },
-        init = function()
-          vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
-        end,
-      },
+      { 'tyru/open-browser.vim' },
     },
   },
 

@@ -5,15 +5,6 @@ local spec = {
   {
     'dracula/vim',
     name = 'dracula',
-    config = function()
-      local augroup = vim.api.nvim_create_augroup('DraculaAutoCmd', {})
-      vim.api.nvim_create_autocmd('colorscheme', {
-        group = augroup,
-        nested = true,
-        pattern = 'dracula',
-        command = 'runtime after/plugin/dracula.vim',
-      })
-    end,
   },
 
   { 'cocopon/iceberg.vim' },

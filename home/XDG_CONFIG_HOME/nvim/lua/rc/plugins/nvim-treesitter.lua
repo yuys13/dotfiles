@@ -155,6 +155,16 @@ local spec = {
       require('nvim-ts-autotag').setup()
     end,
   },
+
+  {
+    'Wansmer/treesj',
+    cmd = { 'TSJToggle', 'TSJSplit', 'TSJJoin' },
+    config = function()
+      require('treesj').setup {
+        use_default_keymaps = false,
+      }
+    end,
+  },
 }
 
 return spec

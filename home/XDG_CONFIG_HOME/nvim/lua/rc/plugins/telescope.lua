@@ -47,8 +47,9 @@ local spec = {
           mappings = {
             i = {
               ['?'] = 'which_key',
-              ['<C-j>'] = 'move_selection_next',
-              ['<C-k>'] = 'move_selection_previous',
+              ['<C-j>'] = false,
+              -- ['<C-j>'] = 'move_selection_next',
+              -- ['<C-k>'] = 'move_selection_previous',
             },
             n = {
               t = 'select_tab',

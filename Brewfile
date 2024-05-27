@@ -1,6 +1,5 @@
 tap "d12frosted/emacs-plus"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "romkatv/powerlevel10k"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
@@ -80,6 +79,7 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# GNU Emacs text editor
 brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-native-comp"]
 # GPU-accelerated terminal emulator
 cask "alacritty"

@@ -300,25 +300,8 @@ local spec = {
     'folke/trouble.nvim',
     cmd = 'Trouble',
     dependencies = 'nvim-tree/nvim-web-devicons',
-    init = function()
-      local function map(mode, lhs, rhs, opts)
-        opts = opts or {}
-        opts.silent = true
-        vim.keymap.set(mode, lhs, rhs, opts)
-      end
-
-      -- Lua
-      map('n', '<Space>xx', '<cmd>Trouble<cr>', { desc = 'Trouble' })
-      map('n', '<Space>xw', '<cmd>Trouble workspace_diagnostics<cr>', { desc = 'Trouble workspace_diagnostics' })
-      map('n', '<Space>xd', '<cmd>Trouble document_diagnostics<cr>', { desc = 'Trouble document_diagnostics' })
-      -- map('n', '<Space>xl', '<cmd>Trouble loclist<cr>', { desc = 'Trouble loclist' })
-      -- map('n', '<Space>xq', '<cmd>Trouble quickfix<cr>', { desc = 'Trouble quickfix' })
-      map('n', '<Space>gR', '<cmd>Trouble lsp_references<cr>', { desc = 'Trouble lsp_references' })
-    end,
     config = function()
-      require('trouble').setup {
-        use_diagnostic_signs = true,
-      }
+      require('trouble').setup {}
     end,
   },
 

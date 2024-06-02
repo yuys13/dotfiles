@@ -63,6 +63,9 @@ set mouse=a
 " Misc
 set updatetime=500
 
+" Enable local rcfiles
+set exrc
+
 " Don't nest neovim
 if executable('nvr')
   let $EDITOR = 'nvr -cc split -c "set bufhidden=delete" --remote-wait'

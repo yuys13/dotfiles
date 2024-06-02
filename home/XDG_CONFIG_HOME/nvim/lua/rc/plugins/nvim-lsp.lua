@@ -145,25 +145,38 @@ local spec = {
           }
         end,
         ['lua_ls'] = function()
-          require('neodev').setup {}
           lspconfig.lua_ls.setup {
             capabilities = capabilities,
             on_attach = function(client)
               client.server_capabilities.semanticTokensProvider = nil
             end,
-            settings = {
-              Lua = {
-                -- runtime = {
-                --   path = { '?.lua', '?/init.lua' },
-                --   pathStrict = true,
-                --   version = 'LuaJIT',
-                -- },
+            on_init = function(client)
+              local path = client.workspace_folders[1].name
+              if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
+                return
+              end
+
+              client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                runtime = {
+                  path = { '?.lua', '?/init.lua' },
+                  pathStrict = true,
+                  version = 'LuaJIT',
+                },
                 workspace = {
                   checkThirdParty = false,
-                  -- Make the server aware of Neovim runtime files
-                  library = vim.api.nvim_get_runtime_file('lua', true),
+                  library = {
+                    vim.env.VIMRUNTIME .. '/lua',
+                    -- Depending on the usage, you might want to add additional paths here.
+                    -- "${3rd}/luv/library"
+                    -- "${3rd}/busted/library",
+                  },
+                  -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                  -- library = vim.api.nvim_get_runtime_file('lua', true),
                 },
-              },
+              })
+            end,
+            settings = {
+              Lua = {},
             },
           }
         end,
@@ -201,10 +214,22 @@ local spec = {
         end,
       },
       { 'williamboman/mason-lspconfig.nvim', config = true },
-      { 'folke/neodev.nvim' },
       { 'b0o/SchemaStore.nvim' },
     },
   },
+
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    config = function()
+      require('lazydev').setup {
+        library = {
+          vim.env.LAZY .. '/luvit-meta/library',
+        },
+      }
+    end,
+  },
+  { 'Bilal2453/luvit-meta', lazy = true },
 
   {
     'ray-x/lsp_signature.nvim',

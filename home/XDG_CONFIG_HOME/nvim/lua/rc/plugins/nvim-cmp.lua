@@ -61,6 +61,8 @@ local spec = {
           end, { 'i', 's' }),
         },
         sources = cmp.config.sources({
+          { name = 'lazydev' },
+        }, {
           { name = 'nvim_lsp' },
           { name = 'vsnip' }, -- For vsnip users.
           -- { name = 'luasnip' }, -- For luasnip users.
@@ -87,6 +89,7 @@ local spec = {
                 buffer = '[Buffer]',
                 -- cmdline = '[CmdLine]',
                 fish = '[fish]',
+                lazydev = '[LAZYDEV]',
                 nvim_lsp = '[LSP]',
                 path = '[Path]',
                 vsnip = '[Vsnip]',

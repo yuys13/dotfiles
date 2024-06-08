@@ -229,6 +229,7 @@ local spec = {
           -- Or relative, which means they will be resolved as a plugin
           -- "LazyVim",
           -- When relative, you can also provide a path to the library in the plugin dir
+          'lazy.nvim',
           'luvit-meta/library', -- see below
         },
       }

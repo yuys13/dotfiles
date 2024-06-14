@@ -71,6 +71,7 @@ local spec = {
           changedelete = { text = '~' },
           untracked = { text = '┆' },
         },
+        signs_staged_enable = false,
         attach_to_untracked = true,
         on_attach = function(bufnr)
           local gs = package.loaded.gitsigns

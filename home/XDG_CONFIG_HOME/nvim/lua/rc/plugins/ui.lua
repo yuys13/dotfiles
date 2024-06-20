@@ -49,11 +49,7 @@ local spec = {
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
     config = function()
-      require('dressing').setup {
-        input = {
-          insert_only = false,
-        },
-      }
+      require('dressing').setup {}
     end,
   },
 

@@ -16,6 +16,9 @@ vim.opt.runtimepath:prepend(lazypath)
 require('lazy').setup('rc.plugins', {
   defaults = { lazy = true },
   concurrency = 16,
+  pkg = {
+    enabled = false,
+  },
   dev = {
     path = '~/src/github.com/yuys13',
   },

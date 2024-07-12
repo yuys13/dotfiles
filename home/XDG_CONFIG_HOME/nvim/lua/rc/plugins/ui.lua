@@ -192,7 +192,17 @@ local spec = {
     cmd = 'ColorizerToggle',
   },
 
-  { 'DanilaMihailov/beacon.nvim', event = { 'CursorMoved' } },
+  {
+    'DanilaMihailov/beacon.nvim',
+    event = { 'CursorMoved' },
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('beacon').setup {
+        speed = 1,
+      }
+    end,
+  },
+
   { 'delphinus/auto-cursorline.nvim', event = 'VeryLazy', config = true, cond = false },
 }
 

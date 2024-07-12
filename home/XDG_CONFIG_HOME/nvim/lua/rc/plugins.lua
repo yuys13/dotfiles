@@ -482,6 +482,32 @@ local spec = {
   { 'tyru/capture.vim', cmd = 'Capture' },
 
   { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' },
+
+  {
+    '4513ECHO/nvim-keycastr',
+    cmd = 'KeycastrToggle',
+    config = function()
+      local config = {
+        win_config = {
+          border = 'single',
+        },
+      }
+
+      local keycastr = require 'keycastr'
+      keycastr.config.set(config)
+
+      local state = false
+      vim.api.nvim_create_user_command('KeycastrToggle', function()
+        if state then
+          keycastr.disable()
+          state = false
+        else
+          keycastr.enable()
+          state = true
+        end
+      end, {})
+    end,
+  },
 }
 
 return spec

@@ -440,6 +440,7 @@ local spec = {
 
   {
     'cohama/lexima.vim',
+    cond = false,
     event = 'InsertEnter',
     init = function()
       vim.g.lexima_ctrlh_as_backspace = 1
@@ -447,6 +448,17 @@ local spec = {
     end,
     config = function()
       vim.keymap.set('i', 'jj', '<Esc>', { remap = true })
+    end,
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = function()
+      require('nvim-autopairs').setup {
+        break_undo = false,
+        map_c_h = true,
+      }
     end,
   },
 

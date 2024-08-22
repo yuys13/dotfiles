@@ -7,6 +7,8 @@ brew "actionlint"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Cross-platform make
+brew "cmake"
 # Platform built on V8 to build network applications
 brew "node"
 # Package acting as bridge between Node projects and their package managers
@@ -15,6 +17,8 @@ brew "corepack"
 brew "deno"
 # Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems
@@ -50,7 +54,7 @@ brew "powerlevel10k"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Rust toolchain installer
-brew "rustup-init"
+brew "rustup"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -67,6 +71,8 @@ brew "tmux"
 brew "tokei"
 # Command-line interface to the freedesktop.org trashcan
 brew "trash-cli"
+# Your CLI home video recorder
+brew "vhs"
 # Vi 'workalike' with many additional features
 brew "vim"
 # Vim script Language Lint
@@ -87,7 +93,6 @@ cask "alacritty"
 cask "brave-browser"
 # Trains AIs to understand and translate texts
 cask "deepl"
-# Japanese programming font which is a composed of Hack and GenJyuu-Gothic
 cask "font-hackgen-nerd"
 # Web browser
 cask "google-chrome"

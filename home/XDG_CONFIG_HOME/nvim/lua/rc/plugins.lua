@@ -231,6 +231,11 @@ local spec = {
   { 'Eandrju/cellular-automaton.nvim', cmd = 'CellularAutomaton' },
 
   {
+    'chrisbra/Recover.vim',
+    lazy = false,
+  },
+
+  {
     '4513ECHO/nvim-keycastr',
     cmd = 'KeycastrToggle',
     config = function()

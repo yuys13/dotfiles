@@ -272,8 +272,11 @@ local spec = {
   {
     'yuys13/collama.nvim',
     -- dev = true,
-    lazy = false,
+    event = 'InsertEnter',
     config = function()
+      if vim.fn.executable 'ollama' == 0 then
+        return
+      end
       -- require('collama.preset.example').codellama()
       -- require('collama.preset.example').starcoder2()
       -- require('collama.preset.example').codegemma()

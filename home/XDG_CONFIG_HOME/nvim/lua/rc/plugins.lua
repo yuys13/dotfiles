@@ -115,6 +115,14 @@ local spec = {
   },
 
   {
+    'tani/dmacro.vim',
+    lazy = false,
+    config = function()
+      vim.keymap.set({ 'i', 'n' }, '<M-q>', '<Plug>(dmacro-play-macro)')
+    end,
+  },
+
+  {
     'stevearc/aerial.nvim',
     cmd = 'AerialToggle',
     config = function()

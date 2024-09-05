@@ -209,6 +209,9 @@ local spec = {
               },
             },
           }
+          nil_conf.on_attach = function(client)
+            require('lsp-format').on_attach(client)
+          end
         end
         lspconfig.nil_ls.setup(nil_conf)
       end

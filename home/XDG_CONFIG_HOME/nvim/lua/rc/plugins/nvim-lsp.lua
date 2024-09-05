@@ -198,6 +198,20 @@ local spec = {
           capabilities = capabilities,
         }
       end
+
+      if vim.fn.executable 'nil' == 1 then
+        local nil_conf = { capabilities = capabilities }
+        if vim.fn.executable 'nixfmt' == 1 then
+          nil_conf.settings = {
+            ['nil'] = {
+              formatting = {
+                command = { 'nixfmt' },
+              },
+            },
+          }
+        end
+        lspconfig.nil_ls.setup(nil_conf)
+      end
     end,
     dependencies = {
       {

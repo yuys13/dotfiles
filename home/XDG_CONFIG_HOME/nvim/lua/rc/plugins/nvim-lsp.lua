@@ -184,7 +184,7 @@ local spec = {
           if is_deno_repo then
             return
           end
-          lspconfig.tsserver.setup {
+          lspconfig.ts_ls.setup {
             server = {
               capabilities = capabilities,
               single_file_support = false, -- for denols

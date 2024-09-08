@@ -180,7 +180,7 @@ local spec = {
             },
           }
         end,
-        ['tsserver'] = function()
+        ['ts_ls'] = function()
           if is_deno_repo then
             return
           end

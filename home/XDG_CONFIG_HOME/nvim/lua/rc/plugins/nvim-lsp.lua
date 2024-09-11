@@ -83,7 +83,7 @@ local spec = {
 
           local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client.server_capabilities.documentHighlightProvider then
+          if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               group = augroup,
               buffer = event.buf,

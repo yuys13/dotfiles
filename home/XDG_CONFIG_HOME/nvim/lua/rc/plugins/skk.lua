@@ -92,12 +92,7 @@ local spec = {
 
   { 'vim-skk/skkdict.vim', lazy = false },
 
-  {
-    'yuys13/skk-develop.nvim',
-    dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-    },
-  },
+  { 'yuys13/skk-develop.nvim' },
 }
 
 return spec

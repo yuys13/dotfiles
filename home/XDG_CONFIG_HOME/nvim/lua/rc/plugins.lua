@@ -28,6 +28,8 @@ vim.api.nvim_create_autocmd('User', {
 
 ---@type LazySpec[]
 local spec = {
+  { 'nvim-lua/plenary.nvim' },
+
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',

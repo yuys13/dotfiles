@@ -74,10 +74,8 @@ local spec = {
       }
       require('telescope').load_extension 'file_browser'
     end,
-    dependencies = {
-      { 'nvim-telescope/telescope-file-browser.nvim' },
-    },
   },
+  { 'nvim-telescope/telescope-file-browser.nvim' },
 }
 
 return spec

@@ -216,24 +216,22 @@ local spec = {
         lspconfig.nil_ls.setup(nil_conf)
       end
     end,
-    dependencies = {
-      {
-        'williamboman/mason.nvim',
-        cmd = 'Mason',
-        build = ':MasonUpdate',
-        config = function()
-          require('mason').setup {
-            ui = {
-              border = 'single',
-            },
-          }
-          require 'mason-lspconfig'
-        end,
-      },
-      { 'williamboman/mason-lspconfig.nvim', config = true },
-      { 'b0o/SchemaStore.nvim' },
-    },
   },
+  {
+    'williamboman/mason.nvim',
+    cmd = 'Mason',
+    build = ':MasonUpdate',
+    config = function()
+      require('mason').setup {
+        ui = {
+          border = 'single',
+        },
+      }
+      require 'mason-lspconfig'
+    end,
+  },
+  { 'williamboman/mason-lspconfig.nvim', config = true },
+  { 'b0o/SchemaStore.nvim' },
 
   {
     'folke/lazydev.nvim',

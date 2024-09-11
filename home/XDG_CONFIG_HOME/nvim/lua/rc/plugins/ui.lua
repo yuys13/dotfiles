@@ -144,9 +144,6 @@ local spec = {
     event = 'BufReadPre',
     name = 'barbecue',
     version = '*',
-    dependencies = {
-      'SmiteshP/nvim-navic',
-    },
     config = function()
       require('barbecue').setup {
         show_dirname = false,

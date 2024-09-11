@@ -46,15 +46,12 @@ local spec = {
   {
     'rcarriga/nvim-dap-ui',
     keys = '<Plug>(dap)d',
-    dependencies = {
-      'mfussenegger/nvim-dap',
-      'nvim-neotest/nvim-nio',
-    },
     config = function()
       vim.keymap.set('n', '<Plug>(dap)d', require('dapui').toggle)
       require('dapui').setup()
     end,
   },
+  { 'nvim-neotest/nvim-nio' },
 }
 
 return spec

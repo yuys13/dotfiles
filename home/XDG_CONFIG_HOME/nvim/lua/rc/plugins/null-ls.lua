@@ -103,13 +103,11 @@ local spec = {
         },
       }
     end,
-    dependencies = {
-      'davidmh/cspell.nvim',
-      'nvimtools/none-ls-extras.nvim',
-      'gbprod/none-ls-luacheck.nvim',
-      'gbprod/none-ls-shellcheck.nvim',
-    },
   },
+  { 'davidmh/cspell.nvim' },
+  { 'nvimtools/none-ls-extras.nvim' },
+  { 'gbprod/none-ls-luacheck.nvim' },
+  { 'gbprod/none-ls-shellcheck.nvim' },
 }
 
 return spec

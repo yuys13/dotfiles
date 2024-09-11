@@ -71,6 +71,7 @@ local spec = {
           { name = 'path' },
           { name = 'buffer' },
         }),
+        ---@diagnostic disable-next-line: missing-fields
         formatting = {
           format = function(entry, vim_item)
             if vim.tbl_contains({ 'path' }, entry.source.name) then

@@ -6,6 +6,7 @@ local spec = {
     event = { 'BufRead', 'BufNewFile' },
     build = ':TSUpdate',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         -- A list of parser names, or "all"
         ensure_installed = 'all',
@@ -134,6 +135,7 @@ local spec = {
       { 'gcc', mode = 'n' },
     },
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       }

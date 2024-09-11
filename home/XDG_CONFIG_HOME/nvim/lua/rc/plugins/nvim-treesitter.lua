@@ -131,6 +131,7 @@ local spec = {
     keys = {
       { 'gc', mode = { 'n', 'x' } },
       { 'gb', mode = { 'n', 'x' } },
+      { 'gcc', mode = 'n' },
     },
     config = function()
       require('Comment').setup {

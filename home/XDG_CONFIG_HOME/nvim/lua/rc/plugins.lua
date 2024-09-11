@@ -33,7 +33,6 @@ local spec = {
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',
-    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('trouble').setup {}
     end,
@@ -155,9 +154,6 @@ local spec = {
   {
     'nvim-tree/nvim-tree.lua',
     cmd = 'NvimTreeToggle',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icon
-    },
     config = function()
       require('nvim-tree').setup {
         hijack_netrw = false,

@@ -1,5 +1,7 @@
 ---@type LazySpec[]
 local spec = {
+  { 'nvim-tree/nvim-web-devicons' },
+
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
@@ -144,7 +146,6 @@ local spec = {
     version = '*',
     dependencies = {
       'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons', -- optional dependency
     },
     config = function()
       require('barbecue').setup {

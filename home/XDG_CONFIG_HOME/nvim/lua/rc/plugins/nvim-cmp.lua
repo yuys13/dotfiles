@@ -21,7 +21,6 @@ local spec = {
         enabled = vim.fn.executable 'fish' == 1,
       },
       { 'onsails/lspkind-nvim' },
-      { 'nvim-tree/nvim-web-devicons' },
     },
     config = function()
       -- nvim-cmp setup

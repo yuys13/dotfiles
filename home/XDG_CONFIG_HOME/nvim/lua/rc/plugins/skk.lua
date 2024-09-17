@@ -2,7 +2,7 @@
 local spec = {
   {
     'vim-skk/eskk.vim',
-    keys = { { '<C-j>', '<Plug>(eskk:enable)', mode = 'i' } },
+    keys = { { '<C-j>', '<Plug>(eskk:enable)', mode = { 'i', 'c' } } },
     init = function()
       vim.g['eskk#no_default_mappings'] = 1
     end,

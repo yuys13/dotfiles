@@ -9,10 +9,6 @@ brew "bash"
 brew "bat"
 # Cross-platform make
 brew "cmake"
-# Platform built on V8 to build network applications
-brew "node"
-# Package acting as bridge between Node projects and their package managers
-brew "corepack"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
 # Modern, maintained replacement for ls
@@ -43,6 +39,8 @@ brew "htop"
 brew "jq"
 # Package manager for the Lua programming language
 brew "luarocks"
+# Platform built on V8 to build network applications
+brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
 brew "markdownlint-cli"
 # Ambitious Vim-fork focused on extensibility and agility

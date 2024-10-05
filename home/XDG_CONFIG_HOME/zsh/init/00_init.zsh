@@ -5,6 +5,7 @@ typeset -U path cdpath fpath manpath
 path=( \
     ${HOME}/bin(N-/) \
     /opt/homebrew/bin(N-/) \
+    /opt/homebrew/sbin(N-/) \
     ${HOME}/.zplug/bin(N-/) \
     ${HOME}/go/bin(N-/) \
     ${HOME}/.luarocks/bin(N-/) \

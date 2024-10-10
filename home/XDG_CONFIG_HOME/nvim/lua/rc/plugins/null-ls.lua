@@ -59,6 +59,8 @@ local spec = {
             end,
           },
           null_ls.builtins.formatting.stylua,
+          -- Makefile
+          null_ls.builtins.diagnostics.checkmake,
           -- Markdown
           null_ls.builtins.diagnostics.markdownlint,
           -- Python

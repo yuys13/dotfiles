@@ -7,6 +7,8 @@ brew "actionlint"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Linter/analyzer for Makefiles
+brew "checkmake"
 # Cross-platform make
 brew "cmake"
 # Secure runtime for JavaScript and TypeScript

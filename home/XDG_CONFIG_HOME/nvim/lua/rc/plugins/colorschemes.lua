@@ -35,6 +35,16 @@ local spec = {
   },
 
   { 'rebelot/kanagawa.nvim' },
+
+  {
+    'miikanissi/modus-themes.nvim',
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('modus-themes').setup {
+        variant = 'deuteranopia',
+      }
+    end,
+  },
 }
 
 return spec

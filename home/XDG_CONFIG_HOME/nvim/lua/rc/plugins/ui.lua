@@ -156,25 +156,6 @@ local spec = {
   },
 
   {
-    'b0o/incline.nvim',
-    cond = false,
-    event = 'LspAttach',
-    config = function()
-      require('incline').setup {
-        render = function(props)
-          return require('nvim-navic').get_location(nil, props.buf)
-        end,
-        window = {
-          placement = {
-            horizontal = 'left',
-            vertical = 'top',
-          },
-        },
-      }
-    end,
-  },
-
-  {
     'SmiteshP/nvim-navic',
     event = 'LspAttach',
     config = function()

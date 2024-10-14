@@ -5,9 +5,11 @@ local spec = {
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
+    init = function()
+      vim.o.showmode = false
+    end,
     config = function()
       vim.o.laststatus = 2
-      vim.o.showmode = false
 
       -- for eskk
       local function eskk_mode()

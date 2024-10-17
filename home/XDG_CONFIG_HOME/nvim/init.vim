@@ -14,9 +14,6 @@ if executable('tig')
   nnoremap <silent> <Space>tig <Cmd>tabnew<CR><Cmd>te tig<CR><Cmd>tunmap <buffer> jj<CR>i
 endif
 
-" Abbr
-cnoreabbrev qa confirm qall
-
 " Display
 set number
 set nowrap
@@ -62,6 +59,7 @@ set mouse=a
 
 " Misc
 set updatetime=500
+set confirm
 
 " Enable local rcfiles
 set exrc

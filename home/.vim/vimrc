@@ -13,9 +13,6 @@ autocmd MyAutoCmd TerminalOpen * tnoremap <buffer> jj <C-w>N
 inoremap <C-v>u <C-r>=nr2char(0x)<Left>
 nnoremap Y y$
 
-" Abbr
-cnoreabbrev qa confirm qall
-
 set backspace=indent,eol,start
 
 " Display
@@ -89,6 +86,7 @@ endif
 
 " Misc
 set updatetime=500
+set confirm
 
 " Setting grep tools
 if executable('rg')

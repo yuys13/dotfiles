@@ -275,36 +275,11 @@ local spec = {
       if vim.fn.executable 'ollama' == 0 then
         return
       end
-      -- require('collama.preset.example').codellama()
+      require('collama.preset.example').codellama()
       -- require('collama.preset.example').starcoder2()
       -- require('collama.preset.example').codegemma()
       -- require('collama.preset.example').stable_code()
 
-      ---@type CollamaConfig
-      local config = {
-        base_url = 'http://localhost:11434/api/',
-        fim = {
-          model = 'codellama:7b-code',
-          tokens = require('collama.preset.tokens').codellama,
-        },
-      }
-
-      local augroup = vim.api.nvim_create_augroup('my_collama_augroup', { clear = true })
-
-      -- auto execute debounced_request
-      vim.api.nvim_create_autocmd({ 'InsertEnter', 'CursorMovedI', 'TextChangedI' }, {
-        group = augroup,
-        callback = function()
-          require('collama.copilot').debounced_request(config, 1000)
-        end,
-      })
-      -- auto cancel
-      vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
-        group = augroup,
-        callback = function()
-          require('collama.copilot').clear()
-        end,
-      })
       -- map accept key
       vim.keymap.set('i', '<M-j>', require('collama.copilot').accept)
 

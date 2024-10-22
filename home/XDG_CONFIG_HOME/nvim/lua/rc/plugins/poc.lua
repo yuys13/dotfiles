@@ -1,3 +1,49 @@
+vim.keymap.set({ 'v' }, '<M-k>', function()
+  -- local start = vim.fn.getpos 'v'
+  -- local en = vim.fn.getpos '.'
+  -- local mode = vim.api.nvim_get_mode()
+  -- local text = vim.fn.getregion(start, en, { type = mode.mode })
+  -- vim.print(text)
+  vim.print(vim.fn.getregion(vim.fn.getpos 'v', vim.fn.getpos '.', { type = vim.fn.mode() }))
+  local lines = vim.fn.getregion(vim.fn.getpos 'v', vim.fn.getpos '.', { type = vim.fn.mode() })
+  vim.system(
+    {
+      'curl',
+      '-sSL',
+      '--compressed',
+      '-d',
+      vim.json.encode {
+        model = 'aya',
+        system = '日本語訳してください。',
+        prompt = table.concat(lines, '\n'),
+        stream = false,
+      },
+      'http://localhost:11434/api/generate',
+    },
+    { text = true },
+    vim.schedule_wrap(function(out)
+      vim.print(vim.inspect(out))
+      local res = vim.json.decode(out.stdout)
+      vim.print(vim.inspect(res.response))
+    end)
+  )
+  ---@Job
+  -- local aaa = require('plenary.curl').post('http://localhost:11434/api/generate', {
+  --   body = vim.json.encode {
+  --     model = 'aya',
+  --     system = '日本語訳してください。',
+  --     prompt = table.concat(lines, '\n'),
+  --     stream = false,
+  --   },
+  --   callback = vim.schedule_wrap(function(output)
+  --     require 'collama.api' -- for get type annotation
+  --     ---@type CollamaGenerateResponse
+  --     local res = vim.json.decode(output.body)
+  --     vim.print(res.response)
+  --   end),
+  -- })
+end)
+
 local context = nil
 vim.api.nvim_create_user_command('Opilot', function()
   local pos = vim.api.nvim_win_get_cursor(0)
@@ -30,7 +76,7 @@ end, {})
 local function requestOllama(prompt, cb)
   require('plenary.curl').post('http://localhost:11434/api/generate', {
     body = vim.json.encode {
-      model = 'mistral',
+      model = 'aya',
       prompt = prompt,
       context = context,
       stream = true,

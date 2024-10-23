@@ -275,10 +275,7 @@ local spec = {
       if vim.fn.executable 'ollama' == 0 then
         return
       end
-      require('collama.preset.example').codellama()
-      -- require('collama.preset.example').starcoder2()
-      -- require('collama.preset.example').codegemma()
-      -- require('collama.preset.example').stable_code()
+      require('collama.preset.example').setup { model = 'codellama:7b-code' }
 
       -- map accept key
       vim.keymap.set('i', '<M-j>', require('collama.copilot').accept)

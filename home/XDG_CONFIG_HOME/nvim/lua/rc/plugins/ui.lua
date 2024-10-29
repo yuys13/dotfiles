@@ -110,9 +110,9 @@ local spec = {
     event = 'VeryLazy',
     config = function()
       require('ibl').setup {
-        -- indent = {
-        --   char = '│', -- default value of v2
-        -- },
+        indent = {
+          char = '│', -- default value of v2
+        },
         scope = {
           enabled = false,
         },

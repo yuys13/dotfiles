@@ -20,7 +20,7 @@ set number
 set nowrap
 set list
 "set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set listchars=tab:\|-,trail:-,extends:»,precedes:«,nbsp:%
 set colorcolumn=80
 set cursorline
 set breakindent

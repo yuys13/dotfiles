@@ -18,7 +18,7 @@ endif
 set number
 set nowrap
 set list
-set listchars=tab:¦-,trail:-,nbsp:+,extends:»,precedes:«
+set listchars=tab:│─,trail:-,nbsp:+,extends:»,precedes:«
 set colorcolumn=80
 set cursorline
 set breakindent

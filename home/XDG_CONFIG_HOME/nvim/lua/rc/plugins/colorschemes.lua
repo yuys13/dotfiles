@@ -25,24 +25,20 @@ local spec = {
 
   { 'sainnhe/edge' },
 
-  {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-    end,
-  },
+  { 'folke/tokyonight.nvim' },
 
   { 'rebelot/kanagawa.nvim' },
 
   {
     'miikanissi/modus-themes.nvim',
+    lazy = false,
+    priority = 1000,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('modus-themes').setup {
         variant = 'deuteranopia',
       }
+      vim.cmd.colorscheme 'modus_vivendi'
     end,
   },
 }

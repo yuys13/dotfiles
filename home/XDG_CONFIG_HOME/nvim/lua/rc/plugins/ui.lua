@@ -142,26 +142,33 @@ local spec = {
   },
 
   {
-    'utilyre/barbecue.nvim',
-    event = 'BufReadPre',
-    name = 'barbecue',
-    version = '*',
+    'Bekaboo/dropbar.nvim',
+    lazy = false,
     config = function()
-      require('barbecue').setup {
-        show_dirname = false,
-        show_basename = false,
-        show_navic = true,
-      }
-    end,
-  },
-
-  {
-    'SmiteshP/nvim-navic',
-    event = 'LspAttach',
-    config = function()
-      require('nvim-navic').setup {
-        lsp = {
-          auto_attach = true,
+      require('dropbar').setup {
+        bar = {
+          sources = function(buf, _)
+            local sources = require 'dropbar.sources'
+            local utils = require 'dropbar.utils'
+            if vim.bo[buf].ft == 'markdown' then
+              return {
+                sources.path,
+                sources.markdown,
+              }
+            end
+            if vim.bo[buf].buftype == 'terminal' then
+              return {
+                sources.terminal,
+              }
+            end
+            return {
+              -- sources.path,
+              utils.source.fallback {
+                sources.lsp,
+                sources.treesitter,
+              },
+            }
+          end,
         },
       }
     end,

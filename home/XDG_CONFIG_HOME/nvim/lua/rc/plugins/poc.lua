@@ -44,6 +44,47 @@ vim.keymap.set({ 'v' }, '<M-k>', function()
   -- })
 end)
 
+vim.keymap.set({ 'n' }, '<M-l>', function()
+  vim.system(
+    {
+      'curl',
+      '-sSL',
+      '-N',
+      '--compressed',
+      '-d',
+      vim.json.encode {
+        model = 'aya',
+        prompt = 'Why is the sky blue?',
+        stream = true,
+      },
+      'http://localhost:11434/api/generate',
+    },
+    {
+      stdout = function(err, data)
+        -- vim.print('err:' .. vim.inspect(err))
+        -- vim.print('data:' .. vim.inspect(data))
+        if not data then
+          vim.print 'data is nil'
+          vim.print('err:' .. vim.inspect(err))
+          return
+        end
+        local res = vim.json.decode(data)
+        if res.done == false then
+          vim.print(vim.inspect(res.response))
+        else
+          vim.print(vim.inspect(res))
+        end
+      end,
+      text = true,
+    },
+    vim.schedule_wrap(function(out)
+      vim.print('out:' .. vim.inspect(out))
+      -- local res = vim.json.decode(out.stdout)
+      -- vim.print(vim.inspect(res.response))
+    end)
+  )
+end)
+
 local context = nil
 vim.api.nvim_create_user_command('Opilot', function()
   local pos = vim.api.nvim_win_get_cursor(0)

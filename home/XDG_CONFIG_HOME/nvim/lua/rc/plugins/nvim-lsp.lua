@@ -30,10 +30,10 @@ local spec = {
       vim.diagnostic.config {
         severity_sort = true,
         virtual_text = {
-          -- source = 'always',
+          -- source = 'if_many',
         },
         float = {
-          -- source = 'always',
+          -- source = 'if_many',
           border = 'single',
           title = 'Diagnostics',
           header = {},
@@ -222,6 +222,7 @@ local spec = {
     cmd = 'Mason',
     build = ':MasonUpdate',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('mason').setup {
         ui = {
           border = 'single',
@@ -237,6 +238,7 @@ local spec = {
     'folke/lazydev.nvim',
     ft = 'lua',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('lazydev').setup {
         library = {
           -- Library items can be absolute paths

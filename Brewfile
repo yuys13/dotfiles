@@ -70,7 +70,7 @@ brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
 # Command-line interface to the freedesktop.org trashcan
-brew "trash-cli"
+brew "trash-cli", link: true
 # Your CLI home video recorder
 brew "vhs"
 # Vi 'workalike' with many additional features

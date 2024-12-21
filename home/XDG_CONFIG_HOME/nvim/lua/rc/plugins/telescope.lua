@@ -44,6 +44,11 @@ local spec = {
             },
           },
           sorting_strategy = 'ascending',
+          -- path_display = {
+          --   filename_first = {
+          --     reverse_directories = false,
+          --   },
+          -- },
           mappings = {
             i = {
               ['?'] = 'which_key',

@@ -53,6 +53,11 @@ local spec = {
           -- Javascript
           null_ls.builtins.formatting.prettier.with { prefer_local = 'node_modules/.bin' },
           -- Lua
+          null_ls.builtins.diagnostics.selene.with {
+            condition = function(utils)
+              return utils.root_has_file { 'selene.toml' }
+            end,
+          },
           require('none-ls-luacheck.diagnostics.luacheck').with {
             condition = function(utils)
               return utils.root_has_file { '.luacheckrc' }

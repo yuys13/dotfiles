@@ -67,20 +67,31 @@ local spec = {
 
             local arg_str = table.concat(use_jisyo, ' + ')
 
-            local arg = {}
+            local command = { 'skkdic-expr2' }
             for word in arg_str:gmatch '%S+' do
-              table.insert(arg, word)
+              table.insert(command, word)
             end
 
-            local Job = require 'plenary.job'
-
-            local result = Job:new({
-              command = 'skkdic-expr2',
-              args = arg,
-              cwd = vim.fn.stdpath 'data' .. '/skk-get-jisyo',
-            }):sync()
-
-            vim.fn.writefile(result, eskk_base_dir .. '/SKK-JISYO.L')
+            vim
+              .system(
+                command,
+                {
+                  cwd = vim.fn.stdpath 'data' .. '/skk-get-jisyo',
+                  text = true,
+                },
+                vim.schedule_wrap(function(out)
+                  if out.code ~= 0 then
+                    vim.notify(string.format('skkdic-expr2 return %s', out.code), vim.log.levels.ERROR)
+                    return
+                  end
+                  if out.stderr ~= '' then
+                    vim.notify(string.format('stderr: %s', out.stderr), vim.log.levels.ERROR)
+                    return
+                  end
+                  vim.fn.writefile(vim.split(out.stdout, '\n'), eskk_base_dir .. '/SKK-JISYO.L')
+                end)
+              )
+              :wait()
           else
             -- fallback to SKK-JISYO.L
             os.rename(vim.fn.stdpath 'data' .. '/skk-get-jisyo/SKK-JISYO.L', large_jisyo)

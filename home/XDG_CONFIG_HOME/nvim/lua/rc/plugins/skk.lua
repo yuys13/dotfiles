@@ -45,59 +45,67 @@ local spec = {
         end,
       })
 
-      -- auto get jisyo
-      if vim.fn.filereadable(large_jisyo) == 0 then
-        -- get jisyo
-        local ok = require('skk-develop').skk_get()
-
-        if ok then
-          if vim.fn.isdirectory(eskk_base_dir) == 0 then
-            vim.fn.mkdir(eskk_base_dir, 'p')
-          end
-          if vim.fn.executable 'skkdic-expr2' == 1 then
-            -- merge jisyo
-            local use_jisyo = {
-              'SKK-JISYO.L',
-              'SKK-JISYO.jinmei',
-              'SKK-JISYO.geo',
-              'SKK-JISYO.station',
-              'SKK-JISYO.propernoun',
-              'SKK-JISYO.zipcode',
-            }
-
-            local arg_str = table.concat(use_jisyo, ' + ')
-
-            local command = { 'skkdic-expr2' }
-            for word in arg_str:gmatch '%S+' do
-              table.insert(command, word)
-            end
-
-            vim
-              .system(
-                command,
-                {
-                  cwd = vim.fn.stdpath 'data' .. '/skk-get-jisyo',
-                  text = true,
-                },
-                vim.schedule_wrap(function(out)
-                  if out.code ~= 0 then
-                    vim.notify(string.format('skkdic-expr2 return %s', out.code), vim.log.levels.ERROR)
-                    return
-                  end
-                  if out.stderr ~= '' then
-                    vim.notify(string.format('stderr: %s', out.stderr), vim.log.levels.ERROR)
-                    return
-                  end
-                  vim.fn.writefile(vim.split(out.stdout, '\n'), eskk_base_dir .. '/SKK-JISYO.L')
-                end)
-              )
-              :wait()
-          else
-            -- fallback to SKK-JISYO.L
-            os.rename(vim.fn.stdpath 'data' .. '/skk-get-jisyo/SKK-JISYO.L', large_jisyo)
-          end
-        end
+      -- check large jisyo
+      if vim.fn.filereadable(large_jisyo) == 1 then
+        -- large_jisyo exists
+        return
       end
+
+      -- auto get jisyo
+      local ok = require('skk-develop').skk_get()
+
+      if not ok then
+        vim.notify('skk_get is not ok', vim.log.levels.ERROR)
+        return
+      end
+
+      if vim.fn.isdirectory(eskk_base_dir) == 0 then
+        vim.fn.mkdir(eskk_base_dir, 'p')
+      end
+
+      if vim.fn.executable 'skkdic-expr2' == 0 then
+        -- use SKK-JISYO.L
+        os.rename(vim.fn.stdpath 'data' .. '/skk-get-jisyo/SKK-JISYO.L', large_jisyo)
+        return
+      end
+
+      -- merge jisyo
+      local use_jisyo = {
+        'SKK-JISYO.L',
+        'SKK-JISYO.jinmei',
+        'SKK-JISYO.geo',
+        'SKK-JISYO.station',
+        'SKK-JISYO.propernoun',
+        'SKK-JISYO.zipcode',
+      }
+
+      local arg_str = table.concat(use_jisyo, ' + ')
+
+      local command = { 'skkdic-expr2' }
+      for word in arg_str:gmatch '%S+' do
+        table.insert(command, word)
+      end
+
+      vim
+        .system(
+          command,
+          {
+            cwd = vim.fn.stdpath 'data' .. '/skk-get-jisyo',
+            text = true,
+          },
+          vim.schedule_wrap(function(out)
+            if out.code ~= 0 then
+              vim.notify(string.format('skkdic-expr2 return %s', out.code), vim.log.levels.ERROR)
+              return
+            end
+            if out.stderr ~= '' then
+              vim.notify(string.format('stderr: %s', out.stderr), vim.log.levels.ERROR)
+              return
+            end
+            vim.fn.writefile(vim.split(out.stdout, '\n'), eskk_base_dir .. '/SKK-JISYO.L')
+          end)
+        )
+        :wait()
     end,
   },
 

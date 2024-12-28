@@ -202,9 +202,17 @@ local spec = {
     end,
   },
 
-  { 'itchyny/vim-qfedit', ft = 'qf' },
+  { 'itchyny/vim-qfedit', ft = 'qf', cond = false },
 
   { 'thinca/vim-qfreplace', ft = 'qf' },
+
+  {
+    'stevearc/quicker.nvim',
+    ft = 'qf',
+    config = function()
+      require('quicker').setup()
+    end,
+  },
 
   {
     'AndrewRadev/linediff.vim',

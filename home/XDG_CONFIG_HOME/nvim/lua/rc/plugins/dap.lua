@@ -51,7 +51,6 @@ local spec = {
       require('dapui').setup()
     end,
   },
-  { 'nvim-neotest/nvim-nio' },
 }
 
 return spec

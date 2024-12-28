@@ -30,6 +30,8 @@ vim.api.nvim_create_autocmd('User', {
 local spec = {
   { 'nvim-lua/plenary.nvim' },
 
+  { 'nvim-neotest/nvim-nio' },
+
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',

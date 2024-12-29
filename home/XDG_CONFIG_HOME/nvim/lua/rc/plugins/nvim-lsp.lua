@@ -248,6 +248,7 @@ local spec = {
           -- When relative, you can also provide a path to the library in the plugin dir
           'lazy.nvim',
           'luvit-meta/library', -- see below
+          'plenary.nvim',
         },
       }
     end,

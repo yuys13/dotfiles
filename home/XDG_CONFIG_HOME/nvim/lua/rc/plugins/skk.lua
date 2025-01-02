@@ -93,9 +93,11 @@ local spec = {
             cwd = vim.fn.stdpath 'data' .. '/skk-get-jisyo',
             text = true,
           },
+          ---@param out vim.SystemCompleted
           vim.schedule_wrap(function(out)
             if out.code ~= 0 then
               vim.notify(string.format('skkdic-expr2 return %s', out.code), vim.log.levels.ERROR)
+              vim.notify(string.format('stderr: %s', out.stderr), vim.log.levels.ERROR)
               return
             end
             if out.stderr ~= '' then

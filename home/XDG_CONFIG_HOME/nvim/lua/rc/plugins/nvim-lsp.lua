@@ -269,8 +269,14 @@ local spec = {
     config = function()
       require('fidget').setup {
         notification = {
+          -- filter = vim.log.levels.DEBUG,
           view = {
             stack_upwards = false,
+          },
+        },
+        integration = {
+          ['nvim-tree'] = {
+            enable = false,
           },
         },
       }

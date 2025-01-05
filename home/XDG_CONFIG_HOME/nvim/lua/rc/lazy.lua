@@ -19,6 +19,9 @@ require('lazy').setup('rc.plugins', {
   pkg = {
     enabled = false,
   },
+  rocks = {
+    enabled = false,
+  },
   dev = {
     path = '~/src/github.com/yuys13',
   },

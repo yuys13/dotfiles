@@ -31,6 +31,7 @@ local spec = {
 
       require('lualine').setup {
         options = {
+          theme = 'dracula',
           icons_enabled = false,
           section_separators = '',
           component_separators = '',
@@ -39,6 +40,21 @@ local spec = {
           lualine_a = { eskk_mode, 'mode' },
         },
       }
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        group = vim.api.nvim_create_augroup('MyLualineAutocmd', { clear = true }),
+        pattern = '*',
+        callback = function(arg)
+          local theme = 'auto'
+          if arg.match == 'default' then
+            theme = 'dracula'
+          end
+          require('lualine').setup {
+            options = {
+              theme = theme,
+            },
+          }
+        end,
+      })
     end,
   },
 

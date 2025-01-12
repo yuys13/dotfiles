@@ -31,14 +31,14 @@ local spec = {
 
   {
     'miikanissi/modus-themes.nvim',
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('modus-themes').setup {
         variant = 'deuteranopia',
       }
-      vim.cmd.colorscheme 'modus_vivendi'
+      -- vim.cmd.colorscheme 'modus_vivendi'
     end,
   },
 }

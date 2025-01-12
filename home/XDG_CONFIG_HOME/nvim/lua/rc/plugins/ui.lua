@@ -143,7 +143,7 @@ local spec = {
 
   {
     'Bekaboo/dropbar.nvim',
-    lazy = false,
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('dropbar').setup {
         bar = {

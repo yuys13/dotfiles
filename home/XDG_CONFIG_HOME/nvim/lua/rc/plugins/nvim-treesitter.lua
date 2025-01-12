@@ -159,6 +159,16 @@ local spec = {
   },
 
   {
+    'andersevenrud/nvim_context_vt',
+    cmd = 'NvimContextVtToggle',
+    config = function()
+      require('nvim_context_vt').setup {
+        enabled = false,
+      }
+    end,
+  },
+
+  {
     'Wansmer/treesj',
     cmd = { 'TSJToggle', 'TSJSplit', 'TSJJoin' },
     config = function()

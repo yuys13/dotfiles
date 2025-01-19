@@ -31,7 +31,6 @@ local spec = {
 
       require('lualine').setup {
         options = {
-          theme = 'dracula',
           icons_enabled = false,
           section_separators = '',
           component_separators = '',

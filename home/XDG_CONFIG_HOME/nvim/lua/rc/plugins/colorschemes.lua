@@ -5,6 +5,11 @@ local spec = {
   {
     'dracula/vim',
     name = 'dracula',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'dracula'
+    end,
   },
 
   { 'cocopon/iceberg.vim' },
@@ -31,14 +36,11 @@ local spec = {
 
   {
     'miikanissi/modus-themes.nvim',
-    -- lazy = false,
-    -- priority = 1000,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('modus-themes').setup {
         variant = 'deuteranopia',
       }
-      -- vim.cmd.colorscheme 'modus_vivendi'
     end,
   },
 }

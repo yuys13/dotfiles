@@ -32,10 +32,6 @@ let g:vimsyn_embed = 'lPr'
 autocmd MyAutoCmd TermOpen * setlocal nonumber
 autocmd MyAutoCmd TermOpen * setlocal norelativenumber
 
-if $COLORTERM ==? 'truecolor'
-  set termguicolors
-endif
-
 autocmd MyAutoCmd VimResized * wincmd =
 
 " Search

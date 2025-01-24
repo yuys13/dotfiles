@@ -67,9 +67,8 @@ endif
 unlet $MANPAGER
 
 " Setting grep tools
-if executable('rg')
+if &grepprg =~# '^rg '
   let &grepprg = 'rg --vimgrep --smart-case --hidden'
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 " Auto mkdir

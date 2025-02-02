@@ -285,16 +285,16 @@ local spec = {
       if vim.fn.executable 'ollama' == 0 then
         return
       end
-      require('collama.preset.example').setup { model = 'codellama:7b-code' }
+      require('collama.preset.example').setup { model = 'qwen2.5-coder:7b' }
 
       -- map accept key
       vim.keymap.set('i', '<M-j>', require('collama.copilot').accept)
 
-      require('collama.logger').setup(require('fidget').notify)
+      require('collama.logger').notify = require('fidget').notify
       -- vim.cmd [[Fidget lsp_suppress]]
-      -- require('collama.logger').setup(vim.notify)
+      -- require('collama.logger').notify = vim.notify
       -- require('notify').setup { level = vim.log.levels.DEBUG }
-      -- require('collama.logger').setup(require('notify').notify)
+      -- require('collama.logger').notify = require('notify').notify
       -- vim.keymap.set('i', '<C-f>', require('collama.copilot').accept)
     end,
   },

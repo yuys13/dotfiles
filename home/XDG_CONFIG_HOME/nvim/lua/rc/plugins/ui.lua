@@ -65,14 +65,6 @@ local spec = {
   },
 
   {
-    'stevearc/dressing.nvim',
-    event = 'VeryLazy',
-    config = function()
-      require('dressing').setup {}
-    end,
-  },
-
-  {
     'lewis6991/gitsigns.nvim',
     event = 'VeryLazy',
     config = function()

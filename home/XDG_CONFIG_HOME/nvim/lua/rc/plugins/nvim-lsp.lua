@@ -54,6 +54,11 @@ local spec = {
       vim.keymap.set('n', '<space>ql', vim.diagnostic.setqflist, { desc = 'LSP diagnostic setqflist' })
       vim.keymap.set('n', '<space>ll', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
 
+      -- inlay hint
+      vim.api.nvim_create_user_command('LspInlayHintToggle', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end, { desc = 'Toggle inlay_hint' })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfigBuffer', {}),
         callback = function(event)
@@ -172,6 +177,9 @@ local spec = {
                   },
                   -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
                   -- library = vim.api.nvim_get_runtime_file('lua', true),
+                },
+                hint = {
+                  enable = true,
                 },
               })
             end,

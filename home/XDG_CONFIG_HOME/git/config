@@ -7,7 +7,8 @@
 [commit]
 	verbose = true
 [push]
-	default = current
+	default = simple
+	autoSetupRemote = true
 	useForceIfIncludes = true
 [pull]
 	ff = only

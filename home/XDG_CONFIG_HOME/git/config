@@ -12,6 +12,9 @@
 	useForceIfIncludes = true
 [pull]
 	ff = only
+[rebase]
+	autoStash = true
+	autoSquash = true
 [diff]
 	tool = nvimdiff
 [difftool]

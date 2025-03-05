@@ -1,6 +1,8 @@
 tap "d12frosted/emacs-plus"
 tap "homebrew/bundle"
 tap "romkatv/powerlevel10k"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -49,14 +51,16 @@ brew "markdownlint-cli"
 brew "neovim"
 # Control nvim processes using `nvr` command-line tool
 brew "neovim-remote"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Theme for zsh
 brew "powerlevel10k"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Rust toolchain installer
 brew "rustup"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
+# Blazing-fast modern Lua linter
+brew "selene"
 # Autoformat shell script source code
 brew "shfmt"
 # SKK dictionary maintenance tools
@@ -86,7 +90,7 @@ brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-native-comp"]
+brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick"]
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Web browser focusing on privacy

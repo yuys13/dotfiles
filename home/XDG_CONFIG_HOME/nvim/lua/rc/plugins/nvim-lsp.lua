@@ -15,6 +15,9 @@ local spec = {
         virtual_text = {
           -- source = 'if_many',
         },
+        jump = {
+          float = true,
+        },
         float = {
           -- source = 'if_many',
           border = 'single',
@@ -32,8 +35,6 @@ local spec = {
       }
       -- diagnostic mapping
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = 'LSP diagnostic open_float' })
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP diagnostic goto_prev' })
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP diagnostic goto_next' })
       vim.keymap.set('n', '<space>ql', vim.diagnostic.setqflist, { desc = 'LSP diagnostic setqflist' })
       vim.keymap.set('n', '<space>ll', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
 

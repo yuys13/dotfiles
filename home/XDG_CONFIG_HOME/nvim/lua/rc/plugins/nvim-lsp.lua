@@ -60,7 +60,9 @@ local spec = {
             vim.lsp.buf.hover { border = 'single' }
           end, { desc = 'LSP hover' })
           map('n', '<space>gi', vim.lsp.buf.implementation, { desc = 'LSP implementation' })
-          map('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'LSP signature_help' })
+          map('n', '<C-k>', function()
+            vim.lsp.buf.signature_help { border = 'single' }
+          end, { desc = 'LSP signature_help' })
           map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP add_workspace_folder' })
           map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP remove_workspace_folder' })
           map('n', '<space>wl', function()

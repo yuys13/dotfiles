@@ -1,4 +1,4 @@
-vim.keymap.set({ 'v' }, '<M-k>', function()
+local function aya()
   -- local start = vim.fn.getpos 'v'
   -- local en = vim.fn.getpos '.'
   -- local mode = vim.api.nvim_get_mode()
@@ -42,9 +42,9 @@ vim.keymap.set({ 'v' }, '<M-k>', function()
   --     vim.print(res.response)
   --   end),
   -- })
-end)
+end
 
-vim.keymap.set({ 'n' }, '<M-l>', function()
+local function stream_test()
   vim.system(
     {
       'curl',
@@ -83,7 +83,7 @@ vim.keymap.set({ 'n' }, '<M-l>', function()
       -- vim.print(vim.inspect(res.response))
     end)
   )
-end)
+end
 
 local context = nil
 vim.api.nvim_create_user_command('Opilot', function()

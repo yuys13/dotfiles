@@ -9,23 +9,6 @@ local spec = {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      -- hover settings
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-        -- Use a sharp border with `FloatBorder` highlights
-        border = 'single',
-      })
-      -- vim.lsp.handlers['textDocument/hover'] = function(_, results, ctx, config)
-      --   local client = vim.lsp.get_client_by_id(ctx.client_id)
-      --   vim.lsp.handlers.hover(
-      --     _,
-      --     results,
-      --     ctx,
-      --     vim.tbl_deep_extend('force', config or {}, {
-      --       border = 'single',
-      --       title = client.name,
-      --     })
-      --   )
-      -- end
       -- diagnostic settings
       vim.diagnostic.config {
         severity_sort = true,
@@ -72,7 +55,9 @@ local spec = {
           -- See `:help vim.lsp.*` for documentation on any of the below functions
           map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP declaration' })
           map('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP definition' })
-          map('n', 'K', vim.lsp.buf.hover, { desc = 'LSP hover' })
+          map('n', 'K', function()
+            vim.lsp.buf.hover { border = 'single' }
+          end, { desc = 'LSP hover' })
           map('n', '<space>gi', vim.lsp.buf.implementation, { desc = 'LSP implementation' })
           map('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'LSP signature_help' })
           map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP add_workspace_folder' })

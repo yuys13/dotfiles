@@ -201,8 +201,6 @@ local spec = {
       }
     end,
   },
-
-  { 'delphinus/auto-cursorline.nvim', event = 'VeryLazy', config = true, cond = false },
 }
 
 return spec

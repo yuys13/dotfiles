@@ -190,17 +190,6 @@ local spec = {
     'norcalli/nvim-colorizer.lua',
     cmd = 'ColorizerToggle',
   },
-
-  {
-    'DanilaMihailov/beacon.nvim',
-    event = { 'CursorMoved' },
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('beacon').setup {
-        speed = 1,
-      }
-    end,
-  },
 }
 
 return spec

@@ -41,8 +41,6 @@ brew "hadolint"
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Package manager for the Lua programming language
-brew "luarocks"
 # Platform built on V8 to build network applications
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
@@ -51,6 +49,8 @@ brew "markdownlint-cli"
 brew "neovim"
 # Control nvim processes using `nvr` command-line tool
 brew "neovim-remote"
+# Pins GitHub Actions to full hashes and versions
+brew "pinact"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Theme for zsh
@@ -102,6 +102,8 @@ cask "font-hackgen-nerd"
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
+# Get up and running with large language models locally
+cask "ollama"
 # Open-source code editor
 cask "visual-studio-code"
 # GPU-accelerated cross-platform terminal emulator and multiplexer

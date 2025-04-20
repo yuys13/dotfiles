@@ -101,112 +101,12 @@ local spec = {
       })
 
       require 'mason'
-      local ls_from_mason = require('mason-lspconfig').get_installed_servers()
+      vim.lsp.enable(require('mason-lspconfig').get_installed_servers())
 
-      vim.lsp.config('jsonls', {
-        settings = {
-          json = {
-            schemas = require('schemastore').json.schemas(),
-          },
-        },
-      })
-
-      vim.lsp.config('rust_analyzer', {
-        on_attach = function(client)
-          require('lsp-format').on_attach(client)
-        end,
-        settings = {
-          ['rust-analyzer'] = {
-            check = {
-              command = 'clippy',
-            },
-          },
-        },
-      })
-
-      vim.lsp.config('lua_ls', {
-        on_attach = function(client)
-          client.server_capabilities.semanticTokensProvider = nil
-        end,
-        on_init = function(client)
-          local path = client.workspace_folders[1].name
-          if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
-            return
-          end
-
-          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-            runtime = {
-              path = { '?.lua', '?/init.lua' },
-              pathStrict = true,
-              version = 'LuaJIT',
-            },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                vim.env.VIMRUNTIME .. '/lua',
-                -- Depending on the usage, you might want to add additional paths here.
-                -- "${3rd}/luv/library"
-                -- "${3rd}/busted/library",
-              },
-              -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-              -- library = vim.api.nvim_get_runtime_file('lua', true),
-            },
-            hint = {
-              enable = true,
-            },
-          })
-        end,
-        settings = {
-          Lua = {},
-        },
-      })
-
-      vim.lsp.config('ts_ls', {
-        root_dir = function(bufnr, callback)
-          local found_dirs = vim.fs.find({
-            'package.json',
-          }, {
-            upward = true,
-            path = vim.fs.dirname(vim.fs.normalize(vim.api.nvim_buf_get_name(bufnr))),
-          })
-          if #found_dirs > 0 then
-            return callback(vim.fs.dirname(found_dirs[1]))
-          end
-        end,
-      })
-
-      vim.lsp.enable(ls_from_mason)
-
-      vim.lsp.config('denols', {
-        root_dir = function(bufnr, callback)
-          local found_dirs = vim.fs.find({
-            'deno.json',
-            'deno.jsonc',
-            'deps.ts',
-          }, {
-            upward = true,
-            path = vim.fs.dirname(vim.fs.normalize(vim.api.nvim_buf_get_name(bufnr))),
-          })
-          if #found_dirs > 0 then
-            return callback(vim.fs.dirname(found_dirs[1]))
-          end
-        end,
-      })
-      vim.lsp.enable 'denols'
-
-      vim.lsp.config('nil_ls', {
-        on_attach = function(client)
-          require('lsp-format').on_attach(client)
-        end,
-        settings = {
-          ['nil'] = {
-            formatting = {
-              command = { 'nixfmt' },
-            },
-          },
-        },
-      })
-      vim.lsp.enable 'nil_ls'
+      vim.lsp.enable {
+        'denols',
+        'nil_ls',
+      }
     end,
   },
   {

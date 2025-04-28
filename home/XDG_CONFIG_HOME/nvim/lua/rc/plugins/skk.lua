@@ -1,5 +1,5 @@
 ---@type LazySpec[]
-local spec = {
+return {
   {
     'vim-skk/eskk.vim',
     keys = { { '<C-j>', '<Plug>(eskk:enable)', mode = { 'i', 'c' } } },
@@ -115,5 +115,3 @@ local spec = {
 
   { 'yuys13/skk-develop.nvim' },
 }
-
-return spec

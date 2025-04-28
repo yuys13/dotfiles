@@ -1,5 +1,5 @@
 ---@type LazySpec[]
-local spec = {
+return {
   {
     'nvimtools/none-ls.nvim',
     event = { 'BufRead', 'BufNewFile' },
@@ -104,7 +104,7 @@ local spec = {
           -- Vim script
           null_ls.builtins.diagnostics.vint,
           -- YAML
-          null_ls.builtins.diagnostics.yamllint,
+          -- null_ls.builtins.diagnostics.yamllint,
           -- zsh
           null_ls.builtins.diagnostics.zsh,
         },
@@ -116,5 +116,3 @@ local spec = {
   { 'gbprod/none-ls-luacheck.nvim' },
   { 'gbprod/none-ls-shellcheck.nvim' },
 }
-
-return spec

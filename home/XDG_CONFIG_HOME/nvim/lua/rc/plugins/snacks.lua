@@ -1,5 +1,5 @@
 ---@type LazySpec[]
-local spec = {
+return {
   {
     'folke/snacks.nvim',
     lazy = false,
@@ -38,5 +38,3 @@ local spec = {
     end,
   },
 }
-
-return spec

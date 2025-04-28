@@ -1,5 +1,5 @@
 ---@type LazySpec[]
-local spec = {
+return {
   { 'nvim-tree/nvim-web-devicons' },
 
   {
@@ -131,6 +131,7 @@ local spec = {
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('bqf').setup {
         auto_enable = true,
         func_map = {
@@ -191,5 +192,3 @@ local spec = {
     cmd = 'ColorizerToggle',
   },
 }
-
-return spec

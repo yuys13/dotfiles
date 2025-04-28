@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
   on_attach = function(client)
     client.server_capabilities.semanticTokensProvider = nil
@@ -10,6 +11,7 @@ return {
       end
     end
 
+    ---@diagnostic disable-next-line: param-type-mismatch
     client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
       runtime = {
         path = { '?.lua', '?/init.lua' },

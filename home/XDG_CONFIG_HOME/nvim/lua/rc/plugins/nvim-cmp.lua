@@ -1,5 +1,5 @@
 ---@type LazySpec[]
-local spec = {
+return {
   {
     'hrsh7th/nvim-cmp',
     -- event = { 'InsertEnter', 'CmdlineEnter' },
@@ -137,5 +137,3 @@ local spec = {
     end,
   },
 }
-
-return spec

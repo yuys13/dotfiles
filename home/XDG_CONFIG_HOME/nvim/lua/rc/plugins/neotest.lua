@@ -1,9 +1,10 @@
 ---@type LazySpec[]
-local spec = {
+return {
   {
     'nvim-neotest/neotest',
     cmd = 'Neotest',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('neotest').setup {
         adapters = {
           require 'neotest-plenary',
@@ -13,5 +14,3 @@ local spec = {
   },
   { 'nvim-neotest/neotest-plenary' },
 }
-
-return spec

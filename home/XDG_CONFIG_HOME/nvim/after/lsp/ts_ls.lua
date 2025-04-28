@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
   root_dir = function(bufnr, callback)
     local found_dirs = vim.fs.find({

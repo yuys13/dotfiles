@@ -4,7 +4,7 @@
 --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 -- end
 ---@type LazySpec[]
-local spec = {
+return {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -186,5 +186,3 @@ local spec = {
     end,
   },
 }
-
-return spec

@@ -1,5 +1,5 @@
 ---@type LazySpec[]
-local spec = {
+return {
   { 'yuys13/hackshark.nvim' },
 
   {
@@ -44,5 +44,3 @@ local spec = {
     end,
   },
 }
-
-return spec

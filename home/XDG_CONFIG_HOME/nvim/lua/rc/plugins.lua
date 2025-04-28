@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd('User', {
 -- end)
 
 ---@type LazySpec[]
-local spec = {
+return {
   { 'nvim-lua/plenary.nvim' },
 
   { 'nvim-neotest/nvim-nio' },
@@ -302,5 +302,3 @@ local spec = {
   },
   { 'rcarriga/nvim-notify' },
 }
-
-return spec

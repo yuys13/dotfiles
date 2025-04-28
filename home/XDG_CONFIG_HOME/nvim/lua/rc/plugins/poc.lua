@@ -353,4 +353,5 @@ end
 --   callback = requestOpilot,
 -- })
 
+---@type LazySpec[]
 return {}

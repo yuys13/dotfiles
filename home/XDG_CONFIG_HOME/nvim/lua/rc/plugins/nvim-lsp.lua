@@ -92,6 +92,13 @@ return {
               end,
             })
           end
+
+          -- built-in auto completion
+          -- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion, event.buf) then
+          --   vim.lsp.completion.enable(true, event.data.client_id, event.buf, {
+          --     autotrigger = true,
+          --   })
+          -- end
         end,
       })
 

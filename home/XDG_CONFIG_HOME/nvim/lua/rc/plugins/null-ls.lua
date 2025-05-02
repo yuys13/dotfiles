@@ -8,9 +8,9 @@ return {
       local cspell = require 'cspell'
       null_ls.setup {
         -- you can reuse a shared lspconfig on_attach callback here
-        on_attach = function(client, bufnr)
-          require('lsp-format').on_attach(client)
-        end,
+        -- on_attach = function(client, bufnr)
+        --   require('lsp-format').on_attach(client)
+        -- end,
         sources = {
           -- All
           cspell.diagnostics.with {
@@ -38,20 +38,11 @@ return {
           },
           -- Dockerfile
           null_ls.builtins.diagnostics.hadolint,
-          -- Fish shell
-          null_ls.builtins.formatting.fish_indent,
           -- Git
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.diagnostics.gitlint,
           -- GitHub Actions
           null_ls.builtins.diagnostics.actionlint,
-          -- Go
-          -- null_ls.builtins.formatting.gofmt.with {
-          --   extra_args = { '-s' },
-          -- },
-          null_ls.builtins.formatting.goimports,
-          -- Javascript
-          null_ls.builtins.formatting.prettier.with { prefer_local = 'node_modules/.bin' },
           -- Lua
           null_ls.builtins.diagnostics.selene.with {
             condition = function(utils)
@@ -63,7 +54,6 @@ return {
               return utils.root_has_file { '.luacheckrc' }
             end,
           },
-          null_ls.builtins.formatting.stylua,
           -- Makefile
           null_ls.builtins.diagnostics.checkmake,
           -- Markdown
@@ -71,17 +61,9 @@ return {
           -- Python
           require 'none-ls.diagnostics.flake8',
           -- null_ls.builtins.diagnostics.pylint,
-          null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.isort,
-          -- null_ls.builtins.formatting.reorder_python_imports,
           -- Shell script
           -- require 'none-ls-shellcheck.diagnostics', -- use bash-language-server
           require 'none-ls-shellcheck.code_actions',
-          null_ls.builtins.formatting.shfmt.with {
-            condition = function(utils)
-              return utils.root_has_file { '.editorconfig' }
-            end,
-          },
           -- Text
           null_ls.builtins.diagnostics.textlint.with {
             prefer_local = 'node_modules/.bin',

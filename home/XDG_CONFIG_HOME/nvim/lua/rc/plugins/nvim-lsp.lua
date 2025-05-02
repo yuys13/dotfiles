@@ -185,11 +185,4 @@ return {
       }
     end,
   },
-
-  {
-    'lukas-reineke/lsp-format.nvim',
-    config = function()
-      require('lsp-format').setup { sync = true }
-    end,
-  },
 }

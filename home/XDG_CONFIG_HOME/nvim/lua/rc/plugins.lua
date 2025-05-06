@@ -1,21 +1,3 @@
-vim.api.nvim_create_autocmd('User', {
-  once = true,
-  pattern = 'VeryLazy',
-  callback = function()
-    vim.api.nvim_create_user_command('LazyLoadAllPlugins', function()
-      local specs = require('lazy').plugins()
-      local names = {}
-      for _, spec in pairs(specs) do
-        -- vim.pretty_print(value)
-        if spec.lazy and not spec['_'].loaded and not spec['_'].dep and not spec['_'].cond then
-          table.insert(names, spec.name)
-        end
-      end
-      require('lazy').load { plugins = names }
-    end, {})
-  end,
-})
-
 ---@type LazySpec[]
 return {
   { 'nvim-lua/plenary.nvim' },

@@ -16,16 +16,6 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
--- local TIMEOUT = 500
--- local n = 0
--- local timer = vim.loop.new_timer()
--- vim.on_key(function()
---   timer:start(TIMEOUT, 0, function()
---     n = n + 1
---     print(n)
---   end)
--- end)
-
 ---@type LazySpec[]
 return {
   { 'nvim-lua/plenary.nvim' },

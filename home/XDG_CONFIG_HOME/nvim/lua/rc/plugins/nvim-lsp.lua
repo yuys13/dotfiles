@@ -108,7 +108,7 @@ return {
       })
 
       require 'mason'
-      vim.lsp.enable(require('mason-lspconfig').get_installed_servers())
+      require 'mason-lspconfig'
 
       vim.lsp.enable {
         'denols',

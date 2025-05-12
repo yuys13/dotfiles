@@ -116,7 +116,7 @@ return {
     end,
   },
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     cmd = 'Mason',
     build = ':MasonUpdate',
     config = function()
@@ -129,7 +129,7 @@ return {
       require 'mason-lspconfig'
     end,
   },
-  { 'williamboman/mason-lspconfig.nvim', config = true },
+  { 'mason-org/mason-lspconfig.nvim', config = true },
   { 'b0o/SchemaStore.nvim' },
 
   {

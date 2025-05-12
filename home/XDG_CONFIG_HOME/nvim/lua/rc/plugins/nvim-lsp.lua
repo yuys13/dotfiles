@@ -108,7 +108,6 @@ return {
       })
 
       require 'mason'
-      require 'mason-lspconfig'
 
       vim.lsp.enable {
         'denols',

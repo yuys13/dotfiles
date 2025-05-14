@@ -35,7 +35,7 @@ autocmd MyAutoCmd TermOpen * setlocal norelativenumber
 autocmd MyAutoCmd VimResized * wincmd =
 
 " Insert
-" set completeopt=fuzzy,menu,popup,noselect,preview
+" set completeopt=fuzzy,menuone,popup,noselect,preview
 
 " Search
 set ignorecase

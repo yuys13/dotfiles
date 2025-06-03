@@ -38,6 +38,14 @@ return {
         sections = {
           lualine_a = { eskk_mode, 'mode' },
         },
+        extensions = {
+          'aerial',
+          'man',
+          'nerdtree',
+          'oil',
+          'quickfix',
+          'trouble',
+        },
       }
       vim.api.nvim_create_autocmd('ColorScheme', {
         group = vim.api.nvim_create_augroup('MyLualineAutocmd', { clear = true }),

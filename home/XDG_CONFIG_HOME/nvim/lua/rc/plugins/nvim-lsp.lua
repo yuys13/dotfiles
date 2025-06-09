@@ -98,8 +98,8 @@ return {
           lsp_map('n', '<space>gr', vim.lsp.buf.references, 'textDocument/references')
           lsp_map('n', '<space>lf', vim.lsp.buf.format, 'textDocument/formatting')
 
-          local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
           if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+            local augroup = vim.api.nvim_create_augroup('LspAutoCmd', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               group = augroup,
               buffer = event.buf,
@@ -122,6 +122,13 @@ return {
           --     autotrigger = true,
           --   })
           -- end
+        end,
+      })
+      vim.api.nvim_create_autocmd('LspDetach', {
+        group = vim.api.nvim_create_augroup('UserLspConfigBufferClear', {}),
+        callback = function(args)
+          local augroup = vim.api.nvim_create_augroup('LspAutoCmd', { clear = false })
+          vim.api.nvim_clear_autocmds { group = augroup, buffer = args.buf }
         end,
       })
 

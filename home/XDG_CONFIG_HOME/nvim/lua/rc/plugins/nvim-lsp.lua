@@ -51,32 +51,52 @@ return {
             return
           end
           -- Mappings.
+          ---@param mode string|string[] Mode "short-name" (see |nvim_set_keymap()|), or a list thereof.
+          ---@param lhs string           Left-hand side |{lhs}| of the mapping.
+          ---@param rhs string|function  Right-hand side |{rhs}| of the mapping, can be a Lua function.
+          ---@param opts? vim.keymap.set.Opts
           local function map(mode, lhs, rhs, opts)
             opts = opts or {}
             opts.buffer = event.buf
             vim.keymap.set(mode, lhs, rhs, opts)
           end
 
+          ---
+          ---@param mode string|string[] Mode "short-name" (see |nvim_set_keymap()|), or a list thereof.
+          ---@param lhs string           Left-hand side |{lhs}| of the mapping.
+          ---@param rhs string|function  Right-hand side |{rhs}| of the mapping, can be a Lua function.
+          ---@param method vim.lsp.protocol.Method
+          local function lsp_map(mode, lhs, rhs, method)
+            if not client:supports_method(method, event.buf) then
+              return
+            end
+            vim.keymap.set(mode, lhs, rhs, { buffer = event.buf, desc = 'LSP ' .. method })
+          end
+
           -- See `:help vim.lsp.*` for documentation on any of the below functions
-          map('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP declaration' })
-          map('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP definition' })
-          map('n', 'K', function()
+          lsp_map('n', 'gD', vim.lsp.buf.declaration, 'textDocument/declaration')
+          lsp_map('n', 'gd', vim.lsp.buf.definition, 'textDocument/definition')
+          lsp_map('n', 'K', function()
             vim.lsp.buf.hover { border = 'single' }
-          end, { desc = 'LSP hover' })
-          map('n', '<space>gi', vim.lsp.buf.implementation, { desc = 'LSP implementation' })
-          map('n', '<C-k>', function()
+          end, 'textDocument/hover')
+          lsp_map('n', '<space>gi', vim.lsp.buf.implementation, 'textDocument/implementation')
+          lsp_map('n', '<C-k>', function()
             vim.lsp.buf.signature_help { border = 'single' }
-          end, { desc = 'LSP signature_help' })
-          map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP add_workspace_folder' })
-          map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP remove_workspace_folder' })
-          map('n', '<space>wl', function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          end, { desc = 'LSP list_workspace_folders' })
-          map('n', '<space>D', vim.lsp.buf.type_definition, { desc = 'LSP type_definition' })
-          map('n', '<space>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
-          map({ 'n', 'x' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'LSP code_action' })
-          map('n', '<space>gr', vim.lsp.buf.references, { desc = 'LSP references' })
-          map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
+          end, 'textDocument/signatureHelp')
+
+          if client:supports_method(vim.lsp.protocol.Methods.workspace_workspaceFolders) then
+            map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'LSP add_workspace_folder' })
+            map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'LSP remove_workspace_folder' })
+            map('n', '<space>wl', function()
+              print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end, { desc = 'LSP list_workspace_folders' })
+          end
+
+          lsp_map('n', '<space>D', vim.lsp.buf.type_definition, 'textDocument/typeDefinition')
+          lsp_map('n', '<space>rn', vim.lsp.buf.rename, 'textDocument/rename')
+          lsp_map({ 'n', 'x' }, '<space>ca', vim.lsp.buf.code_action, 'textDocument/codeAction')
+          lsp_map('n', '<space>gr', vim.lsp.buf.references, 'textDocument/references')
+          lsp_map('n', '<space>lf', vim.lsp.buf.format, 'textDocument/formatting')
 
           local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
           if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then

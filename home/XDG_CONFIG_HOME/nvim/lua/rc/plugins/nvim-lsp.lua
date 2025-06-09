@@ -46,6 +46,10 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfigBuffer', {}),
         callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if not client then
+            return
+          end
           -- Mappings.
           local function map(mode, lhs, rhs, opts)
             opts = opts or {}
@@ -75,8 +79,7 @@ return {
           map('n', '<space>lf', vim.lsp.buf.format, { desc = 'LSP format' })
 
           local augroup = vim.api.nvim_create_augroup('LspAutoCmd', {})
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+          if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               group = augroup,
               buffer = event.buf,
@@ -94,7 +97,7 @@ return {
           end
 
           -- built-in auto completion
-          -- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion, event.buf) then
+          -- if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion, event.buf) then
           --   vim.lsp.completion.enable(true, event.data.client_id, event.buf, {
           --     autotrigger = true,
           --   })

@@ -73,8 +73,6 @@ brew "tig"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
-# Command-line interface to the freedesktop.org trashcan
-brew "trash-cli", link: true
 # Your CLI home video recorder
 brew "vhs"
 # Vi 'workalike' with many additional features
@@ -95,7 +93,7 @@ brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick"]
 cask "alacritty"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Trains AIs to understand and translate texts
+# AI-powered translator
 cask "deepl"
 cask "font-hackgen-nerd"
 # Web browser
@@ -103,7 +101,7 @@ cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Get up and running with large language models locally
-cask "ollama"
+cask "ollama-app"
 # Open-source code editor
 cask "visual-studio-code"
 # GPU-accelerated cross-platform terminal emulator and multiplexer

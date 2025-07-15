@@ -1,8 +1,5 @@
 ---@type vim.lsp.Config
 return {
-  on_attach = function(client)
-    client.server_capabilities.semanticTokensProvider = nil
-  end,
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -32,6 +29,7 @@ return {
       hint = {
         enable = true,
       },
+      semantic = { enable = false },
     })
   end,
   settings = {

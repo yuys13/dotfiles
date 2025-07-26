@@ -9,6 +9,10 @@ return {
         adapters = {
           require 'neotest-plenary',
         },
+        ---@diagnostic disable-next-line: missing-fields
+        floating = {
+          border = 'single',
+        },
       }
     end,
   },

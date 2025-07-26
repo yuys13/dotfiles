@@ -141,5 +141,8 @@ elseif executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+" Auto open quickfix if items exist after a command
+autocmd MyAutoCmd QuickfixCmdPost * if !empty(getqflist()) | copen | endif
+
 colorscheme habamax
 

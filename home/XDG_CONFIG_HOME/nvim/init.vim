@@ -74,6 +74,9 @@ if &grepprg =~# '^rg '
   let &grepprg = 'rg --vimgrep --smart-case --hidden'
 endif
 
+" Auto open quickfix if items exist after a command
+autocmd MyAutoCmd QuickfixCmdPost * if !empty(getqflist()) | copen | endif
+
 " Auto mkdir
 augroup vimrc-auto-mkdir  " {{{
   autocmd!

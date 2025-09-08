@@ -1,5 +1,4 @@
 tap "d12frosted/emacs-plus"
-tap "homebrew/bundle"
 tap "romkatv/powerlevel10k"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
@@ -73,6 +72,8 @@ brew "tig"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Your CLI home video recorder
 brew "vhs"
 # Vi 'workalike' with many additional features

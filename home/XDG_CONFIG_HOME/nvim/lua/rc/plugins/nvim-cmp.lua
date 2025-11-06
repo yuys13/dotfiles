@@ -72,25 +72,26 @@ return {
             if vim.tbl_contains({ 'path' }, entry.source.name) then
               local icon, hl_group = require('nvim-web-devicons').get_icon(entry.completion_item.label)
               if icon then
-                vim_item.kind = icon .. ' ' .. vim_item.kind
-                vim_item.kind_hl_group = hl_group
+                vim_item.icon = icon
+                vim_item.icon_hl_group = hl_group
                 vim_item.menu = '[Path]'
                 return vim_item
               end
             end
-            return require('lspkind').cmp_format {
-              mode = 'symbol_text',
-              menu = {
-                buffer = '[Buffer]',
-                -- cmdline = '[CmdLine]',
-                fish = '[fish]',
-                lazydev = '[LAZYDEV]',
-                nvim_lsp = '[LSP]',
-                path = '[Path]',
-                vsnip = '[Vsnip]',
-                zsh = '[ZSH]',
-              },
-            }(entry, vim_item)
+            local menu = {
+              buffer = '[Buffer]',
+              -- cmdline = '[CmdLine]',
+              fish = '[fish]',
+              lazydev = '[LAZYDEV]',
+              nvim_lsp = '[LSP]',
+              path = '[Path]',
+              vsnip = '[Vsnip]',
+              zsh = '[ZSH]',
+            }
+            if menu[entry.source.name] then
+              vim_item.menu = menu[entry.source.name]
+            end
+            return vim_item
           end,
         },
       }

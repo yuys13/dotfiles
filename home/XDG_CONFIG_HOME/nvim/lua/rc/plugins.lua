@@ -258,7 +258,7 @@ return {
       if vim.fn.executable 'ollama' == 0 then
         return
       end
-      require('collama.preset.example').setup { model = 'qwen2.5-coder:3b', debounce_time = 100 }
+      require('collama.preset.example').setup { model = 'qwen2.5-coder:3b', debounce_time = 300 }
 
       -- map accept key
       vim.keymap.set('i', '<M-l>', require('collama.copilot').accept)

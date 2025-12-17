@@ -28,7 +28,7 @@ clean: ## Unlink dotfiles
 
 .PHONY: brewdump
 brewdump: ## dump to Brewfile
-	@brew bundle dump --describe --no-vscode -f
+	@brew bundle dump --describe --no-vscode --no-go -f
 
 .PHONY: help
 help: ## Show this help messages

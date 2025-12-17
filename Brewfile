@@ -40,7 +40,7 @@ brew "hadolint"
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
 brew "markdownlint-cli"
@@ -92,6 +92,8 @@ brew "zsh-syntax-highlighting"
 brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick"]
 # GPU-accelerated terminal emulator
 cask "alacritty"
+# AI Coding Agent IDE
+cask "antigravity"
 # Web browser focusing on privacy
 cask "brave-browser"
 # AI-powered translator

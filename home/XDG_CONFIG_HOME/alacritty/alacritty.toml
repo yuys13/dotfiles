@@ -9,8 +9,9 @@ style = "Bold"
 family = "HackGen Console NF"
 style = "Regular"
 
-[window]
-option_as_alt = "Both"
+# for Mac
+# [window]
+# option_as_alt = "Both"
 
 [window.dimensions]
 columns = 200

@@ -90,8 +90,6 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # GNU Emacs text editor
 brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick"]
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # AI Coding Agent IDE
 cask "antigravity"
 # Web browser focusing on privacy

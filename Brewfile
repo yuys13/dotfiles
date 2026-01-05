@@ -26,6 +26,10 @@ brew "fish"
 brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
 # GitHub command-line tool
 brew "gh"
 # Remote repository management made easy
@@ -40,8 +44,6 @@ brew "hadolint"
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
 brew "markdownlint-cli"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -94,6 +96,8 @@ brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick"]
 cask "antigravity"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # AI-powered translator
 cask "deepl"
 cask "font-hackgen-nerd"

@@ -67,3 +67,5 @@ $RECYCLE.BIN/
 .nvim.lua
 .nvimrc
 .exrc
+
+**/.claude/settings.local.json

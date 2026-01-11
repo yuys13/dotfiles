@@ -90,8 +90,6 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-imagemagick"]
 # AI Coding Agent IDE
 cask "antigravity"
 # Web browser focusing on privacy
@@ -100,6 +98,8 @@ cask "brave-browser"
 cask "claude-code"
 # AI-powered translator
 cask "deepl"
+# GNU Emacs text editor with patches for macOS
+cask "emacs-plus-app"
 cask "font-hackgen-nerd"
 # Web browser
 cask "google-chrome"

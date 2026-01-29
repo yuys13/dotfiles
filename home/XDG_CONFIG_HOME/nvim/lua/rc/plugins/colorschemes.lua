@@ -5,11 +5,6 @@ return {
   {
     'dracula/vim',
     name = 'dracula',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'dracula'
-    end,
   },
 
   { 'cocopon/iceberg.vim' },
@@ -41,6 +36,16 @@ return {
       require('modus-themes').setup {
         variant = 'deuteranopia',
       }
+    end,
+  },
+
+  {
+    'catppuccin/nvim',
+    lazy = false,
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 }

@@ -57,6 +57,7 @@ setopt hist_verify
 zshaddhistory() {
     emulate -L zsh
     # setopt extendedglob
+    [[ -n ${GEMINI_CLI} || -n ${ANTIGRAVITY_AGENT} ]] && return 1
     [[ ${1%'\n'} != ${~HISTORY_IGNORE} ]]
 }
 

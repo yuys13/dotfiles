@@ -47,7 +47,7 @@ bindkey '^x^e' edit-command-line
 HISTFILE=${XDG_DATA_HOME}/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=${HISTSIZE}
-HISTORY_IGNORE="(cd|cd *|builtin *|:q)"
+HISTORY_IGNORE="(cd|cd *|l[sal]|l[sal] *|builtin *|:q)"
 setopt share_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space

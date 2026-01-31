@@ -99,10 +99,11 @@ case ${OSTYPE} in
 esac
 # alias
 alias la='ls -a'
-alias l.='ls -d .*'
-alias ll='ls -l'
-alias lla='ls -la'
-alias ll.='ls -l -d .*'
+alias ll='ls -la'
+# alias l.='ls -d .*'
+# alias ll='ls -l'
+# alias lla='ls -la'
+# alias ll.='ls -l -d .*'
 if [[ -n ${EDITOR} ]]; then
     alias vi=${EDITOR}
 fi

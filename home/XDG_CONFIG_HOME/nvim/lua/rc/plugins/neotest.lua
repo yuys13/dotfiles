@@ -8,7 +8,6 @@ return {
       require('neotest').setup {
         adapters = {
           require 'neotest-plenary',
-          require 'neotest-golang',
         },
         ---@diagnostic disable-next-line: missing-fields
         floating = {
@@ -18,5 +17,4 @@ return {
     end,
   },
   { 'nvim-neotest/neotest-plenary' },
-  { 'fredrikaverpil/neotest-golang' },
 }

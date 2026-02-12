@@ -99,7 +99,7 @@ cask "claude-code"
 # AI-powered translator
 cask "deepl"
 # GNU Emacs text editor with patches for macOS
-cask "emacs-plus-app"
+cask "d12frosted/emacs-plus/emacs-plus-app"
 cask "font-hackgen-nerd"
 # Web browser
 cask "google-chrome"

@@ -76,6 +76,8 @@ brew "tmux"
 brew "tokei"
 # Parser generator tool
 brew "tree-sitter-cli"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Your CLI home video recorder
 brew "vhs"
 # Vi 'workalike' with many additional features

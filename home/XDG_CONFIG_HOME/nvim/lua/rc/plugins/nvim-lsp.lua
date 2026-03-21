@@ -141,7 +141,6 @@ return {
 
       vim.lsp.enable {
         'denols',
-        'nil_ls',
       }
     end,
   },

@@ -34,7 +34,10 @@ return {
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('modus-themes').setup {
-        variant = 'deuteranopia',
+        variants = {
+          modus_operandi = 'deuteranopia',
+          modus_vivendi = 'deuteranopia',
+        },
       }
     end,
   },

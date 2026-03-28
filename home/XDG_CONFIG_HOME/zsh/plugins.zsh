@@ -44,21 +44,6 @@
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     fi
 
-    # fzf
-    if [[ -d ${github}/junegunn/fzf ]]; then
-        for rc in ${github}/junegunn/fzf/shell/*.zsh; do
-            source $rc
-        done
-    elif [[ -d ${brew_prefix}/opt/fzf ]]; then
-        for rc in ${brew_prefix}/opt/fzf/shell/*.zsh; do
-            source $rc
-        done
-    elif [[ -d /usr/share/fzf ]]; then
-        for rc in /usr/share/fzf/*.zsh; do
-            source $rc
-        done
-    fi
-
     gcd () {
         local dir=$(git rev-parse --show-toplevel)
         if [[ -n $dir ]]; then
@@ -67,6 +52,9 @@
     }
 
     if (( $+commands[fzf] )); then
+        # fzf shell integration
+        source <(fzf --zsh)
+
         if (( $+commands[fd] )); then
             export FZF_ALT_C_COMMAND="fd -t d"
             export FZF_CTRL_T_COMMAND='fd -t f -L -H -E .git'

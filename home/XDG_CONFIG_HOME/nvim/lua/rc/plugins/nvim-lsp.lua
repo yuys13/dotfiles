@@ -16,7 +16,9 @@ return {
           -- source = 'if_many',
         },
         jump = {
-          float = true,
+          on_jump = function(_, bufnr)
+            vim.diagnostic.open_float { bufnr = bufnr, scope = 'cursor', focus = false }
+          end,
         },
         float = {
           -- source = 'if_many',

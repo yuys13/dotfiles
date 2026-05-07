@@ -84,6 +84,8 @@ brew "vhs"
 brew "vim"
 # Vim script Language Lint
 brew "vint"
+# Extensible command-line tool to format YAML files
+brew "yamlfmt"
 # Linter for YAML files
 brew "yamllint"
 # Fish-like fast/unobtrusive autosuggestions for zsh

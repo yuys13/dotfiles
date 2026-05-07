@@ -26,6 +26,7 @@ return {
           typescriptreact = { 'prettier' },
 
           markdown = { 'prettier', 'injected' },
+          yaml = { 'yamlfmt' },
 
           python = function(bufnr)
             if require('conform').get_formatter_info('ruff_format', bufnr).available then

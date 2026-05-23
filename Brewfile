@@ -94,8 +94,10 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# AI Coding Agent IDE
+# Agent orchestration platform
 cask "antigravity"
+# Terminal interface for Antigravity agents
+cask "antigravity-cli"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Terminal-based AI coding assistant

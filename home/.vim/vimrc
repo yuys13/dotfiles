@@ -48,6 +48,10 @@ endif
 
 autocmd MyAutoCmd VimResized * wincmd =
 
+" Highlight yanked text
+packadd hlyank
+let g:hlput_enable = v:true
+
 " Search
 set ignorecase
 set smartcase

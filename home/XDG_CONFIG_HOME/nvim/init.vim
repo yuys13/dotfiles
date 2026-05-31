@@ -34,6 +34,9 @@ autocmd MyAutoCmd TermOpen * setlocal norelativenumber
 
 autocmd MyAutoCmd VimResized * wincmd =
 
+" Highlight yanked text
+autocmd MyAutoCmd TextYankPost * silent! lua vim.hl.on_yank {higroup='IncSearch', timeout=300}
+
 " Insert
 " set completeopt=fuzzy,menuone,popup,noselect,preview
 

@@ -33,6 +33,10 @@ autocmd MyAutoCmd VimResized * wincmd =
 " syntax=OFF in large files
 autocmd MyAutoCmd BufReadPost * if getfsize(@%) > 512 * 1024 | setlocal syntax=OFF | call interrupt() | endif
 
+" Highlight yanked text
+packadd hlyank
+let g:hlput_enable = v:true
+
 " Search
 set ignorecase
 set smartcase

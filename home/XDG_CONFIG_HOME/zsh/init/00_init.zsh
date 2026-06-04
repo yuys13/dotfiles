@@ -3,7 +3,6 @@
 typeset -U path cdpath fpath manpath
 
 path=( \
-    ${HOME}/.antigravity/antigravity/bin(N-/) \
     ${HOME}/bin(N-/) \
     /opt/homebrew/bin(N-/) \
     /opt/homebrew/sbin(N-/) \

@@ -25,9 +25,6 @@ fi
 ## Plugins
 source ${XDG_CONFIG_HOME}/zsh/plugins.zsh
 
-if type hub >/dev/null 2>&1; then
-    eval "$(hub alias -s)"
-fi
 
 ## Local setting
 if [[ -f ${XDG_CONFIG_HOME}/zsh/local/zshrc ]]; then

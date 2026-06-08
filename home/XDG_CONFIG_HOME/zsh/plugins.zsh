@@ -34,13 +34,13 @@
 
     # zsh-autosuggestions
     if [[ -d ${zsh_users}/zsh-autosuggestions ]]; then
-        source ${zsh_users}/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+        source ${zsh_users}/zsh-autosuggestions/zsh-autosuggestions.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     elif [[ -d ${brew_prefix}/share/zsh-autosuggestions ]]; then
         source ${brew_prefix}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     elif [[ -d /usr/share/zsh/plugins/zsh-autosuggestions ]]; then
-        source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+        source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     fi
 

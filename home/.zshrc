@@ -23,25 +23,10 @@ if [[ -f ${XDG_CONFIG_HOME}/zsh/${$(uname):l}/zshrc ]]; then
 fi
 
 ## Plugins
-if [[ -f ~/.zplug/init.zsh ]]; then
-    source ~/.zplug/init.zsh
-    source ${XDG_CONFIG_HOME}/zsh/zplug.zsh
-    #export ZPLUG_LOADFILE=${XDG_CONFIG_HOME}/zsh/zplug.zsh
+source ${XDG_CONFIG_HOME}/zsh/plugins.zsh
 
-    if ! zplug check --verbose; then
-        printf "install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-        echo
-    fi
-    zplug load #--verbose
-    # Oops .zplug/init.zsh cannot use hub alias
-    if type hub >/dev/null 2>&1; then
-        eval "$(hub alias -s)"
-    fi
-else
-    source ${XDG_CONFIG_HOME}/zsh/plugins.zsh
+if type hub >/dev/null 2>&1; then
+    eval "$(hub alias -s)"
 fi
 
 ## Local setting

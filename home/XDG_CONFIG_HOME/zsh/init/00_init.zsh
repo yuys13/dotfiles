@@ -7,7 +7,6 @@ path=( \
     /opt/homebrew/bin(N-/) \
     /opt/homebrew/sbin(N-/) \
     /opt/homebrew/opt/rustup/bin/(N-/) \
-    ${HOME}/.zplug/bin(N-/) \
     ${HOME}/go/bin(N-/) \
     ${HOME}/.cargo/bin(N-/) \
     ${HOME}/.local/bin(N-/) \

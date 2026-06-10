@@ -6,7 +6,7 @@ path=( \
     ${HOME}/bin(N-/) \
     /opt/homebrew/bin(N-/) \
     /opt/homebrew/sbin(N-/) \
-    /opt/homebrew/opt/rustup/bin/(N-/) \
+    /opt/homebrew/opt/rustup/bin(N-/) \
     ${HOME}/go/bin(N-/) \
     ${HOME}/.cargo/bin(N-/) \
     ${HOME}/.local/bin(N-/) \

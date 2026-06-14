@@ -1,5 +1,4 @@
 tap "d12frosted/emacs-plus"
-tap "romkatv/powerlevel10k"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Static checker for GitHub Actions workflow files

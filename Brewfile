@@ -7,6 +7,8 @@ brew "actionlint"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Secrets scanner built for configurability and speed
+brew "betterleaks"
 # Linter/analyzer for Makefiles
 brew "checkmake"
 # Cross-platform make

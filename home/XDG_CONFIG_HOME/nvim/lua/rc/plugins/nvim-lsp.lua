@@ -143,6 +143,10 @@ return {
 
       vim.lsp.enable {
         'denols',
+        'jsonls',
+        'lua_ls',
+        'nixd',
+        'yamlls',
       }
     end,
   },

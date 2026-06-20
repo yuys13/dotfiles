@@ -99,8 +99,6 @@ cask "antigravity"
 cask "antigravity-cli"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # AI-powered translator
 cask "deepl"
 # GNU Emacs text editor with patches for macOS

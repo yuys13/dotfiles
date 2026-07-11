@@ -7,6 +7,10 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -14,10 +18,14 @@
       self,
       nix-darwin,
       nixpkgs,
+      home-manager,
     }:
     {
       darwinConfigurations."eve24" = nix-darwin.lib.darwinSystem {
-        modules = [ ./nix/hosts/eve24/configuration.nix ];
+        modules = [
+          ./nix/hosts/eve24/configuration.nix
+          home-manager.darwinModules.home-manager
+        ];
       };
     };
 }

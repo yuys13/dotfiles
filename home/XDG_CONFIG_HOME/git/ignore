@@ -68,4 +68,8 @@ $RECYCLE.BIN/
 .nvimrc
 .exrc
 
+# direnv
+.envrc
+.direnv
+
 **/.claude/settings.local.json

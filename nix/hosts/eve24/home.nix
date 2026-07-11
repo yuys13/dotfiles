@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
-    ../../home-manager/programs/direnv/defaults.nix
+    ../../nix-darwin/home.nix
   ];
 
   home.username = "yuys13";

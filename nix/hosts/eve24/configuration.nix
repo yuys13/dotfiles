@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    ../../nix.nix
+    ../../nix-darwin
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";

@@ -1,0 +1,128 @@
+{
+    "fish-autols": {
+        "cargoLock": null,
+        "date": "2025-01-26",
+        "extract": null,
+        "name": "fish-autols",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yuys13",
+            "repo": "fish-autols",
+            "rev": "74c52a3f66b5b9f589871c4383e7d7c2e543032c",
+            "sha256": "sha256-5yb6UjPu+QFsR+fe1rzYgSUczQ6olbFgILUQNTGvnf8=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "74c52a3f66b5b9f589871c4383e7d7c2e543032c"
+    },
+    "fish-cdf": {
+        "cargoLock": null,
+        "date": "2025-01-27",
+        "extract": null,
+        "name": "fish-cdf",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yuys13",
+            "repo": "fish-cdf",
+            "rev": "467f549ef6f8b1d8d18a429639f87870b23eef62",
+            "sha256": "sha256-ZA5ZLE/5w9EhT7uB1hlkj0h/C0b5WQl46PpvOz8SlSU=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "467f549ef6f8b1d8d18a429639f87870b23eef62"
+    },
+    "fish-fzf-bd": {
+        "cargoLock": null,
+        "date": "2025-01-27",
+        "extract": null,
+        "name": "fish-fzf-bd",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yuys13",
+            "repo": "fish-fzf-bd",
+            "rev": "fcbe9f6a75510365638dc6f790544c55ecb0ec3b",
+            "sha256": "sha256-NAErU+F7CTf0wOfR1zfxw2TRBLPIHe5QDjEhyjCNLJE=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "fcbe9f6a75510365638dc6f790544c55ecb0ec3b"
+    },
+    "fish-gcd": {
+        "cargoLock": null,
+        "date": "2025-01-25",
+        "extract": null,
+        "name": "fish-gcd",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yuys13",
+            "repo": "fish-gcd",
+            "rev": "e42ccc3c48ecaf2a8efb8a12d7426a8a7fd077e3",
+            "sha256": "sha256-uoqU5XGdMRvhsUQ0C+0rNyaD4fJQX7gf1G6zsC5L4iU=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "e42ccc3c48ecaf2a8efb8a12d7426a8a7fd077e3"
+    },
+    "fish-ghq-fzf": {
+        "cargoLock": null,
+        "date": "2025-01-27",
+        "extract": null,
+        "name": "fish-ghq-fzf",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yuys13",
+            "repo": "fish-ghq-fzf",
+            "rev": "9798eadadda71c3cb43502f88cfce1f9521ee185",
+            "sha256": "sha256-64y5nTQsdz8Qyn0VjEtfI4FvTMjF5XVYW7yTsrkIS30=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "9798eadadda71c3cb43502f88cfce1f9521ee185"
+    },
+    "fish-pathed": {
+        "cargoLock": null,
+        "date": "2025-01-25",
+        "extract": null,
+        "name": "fish-pathed",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yuys13",
+            "repo": "fish-pathed",
+            "rev": "6a761979781c1f4eebb3d0269fab0b3b4fba2b49",
+            "sha256": "sha256-9KmgxaiaCnDXyXXAnvtZ+4YiCqD+mSOg1ymi0adjc5Y=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "6a761979781c1f4eebb3d0269fab0b3b4fba2b49"
+    }
+}

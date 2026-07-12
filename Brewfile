@@ -1,4 +1,4 @@
-tap "d12frosted/emacs-plus"
+tap "d12frosted/emacs-plus", trusted: true
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Static checker for GitHub Actions workflow files
@@ -104,7 +104,7 @@ cask "brave-browser"
 # AI-powered translator
 cask "deepl"
 # GNU Emacs text editor with patches for macOS
-cask "d12frosted/emacs-plus/emacs-plus-app"
+cask "d12frosted/emacs-plus/emacs-plus-app", trusted: true
 cask "font-hackgen-nerd"
 # Web browser
 cask "google-chrome"

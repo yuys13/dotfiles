@@ -21,8 +21,6 @@ brew "eza"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# GitHub command-line tool
-brew "gh"
 # Linting for your git commit messages
 brew "gitlint"
 # Open source programming language to build simple/reliable/efficient software

@@ -7,6 +7,7 @@
     ../home-manager/programs/git
   ];
   home.packages = with pkgs; [
+    gh
     nixd
     nixfmt
   ];

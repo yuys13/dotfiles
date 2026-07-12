@@ -21,8 +21,6 @@ brew "eza"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Linting for your git commit messages
-brew "gitlint"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Smarter Dockerfile linter to validate best practices
@@ -37,10 +35,6 @@ brew "jq"
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
 brew "markdownlint-cli"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
-# Control nvim processes using `nvr` command-line tool
-brew "neovim-remote"
 # Pins GitHub Actions to full hashes and versions
 brew "pinact"
 # Fast, disk space efficient package manager
@@ -65,8 +59,6 @@ brew "tig"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
-# Parser generator tool
-brew "tree-sitter-cli"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Your CLI home video recorder

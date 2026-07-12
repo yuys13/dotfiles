@@ -87,11 +87,6 @@
 
       # Windows shortcuts
       "*.lnk"
-
-      # neovim
-      ".nvim.lua"
-      ".nvimrc"
-      ".exrc"
     ];
     settings = {
       user = {

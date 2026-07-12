@@ -23,8 +23,6 @@ brew "fastfetch"
 brew "fd"
 # GitHub command-line tool
 brew "gh"
-# Remote repository management made easy
-brew "ghq"
 # Linting for your git commit messages
 brew "gitlint"
 # Open source programming language to build simple/reliable/efficient software

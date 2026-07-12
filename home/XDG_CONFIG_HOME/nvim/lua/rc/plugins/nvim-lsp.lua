@@ -41,6 +41,7 @@ return {
       vim.keymap.set('n', '<space>ll', vim.diagnostic.setloclist, { desc = 'LSP diagnostic setloclist' })
 
       -- inlay hint
+      vim.lsp.inlay_hint.enable()
       vim.api.nvim_create_user_command('LspInlayHintToggle', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       end, { desc = 'Toggle inlay_hint' })

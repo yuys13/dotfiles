@@ -53,7 +53,6 @@ in
       nil
       nixd
       nixfmt
-      ripgrep
       selene
       stylua
       tree-sitter

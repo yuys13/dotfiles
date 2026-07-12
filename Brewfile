@@ -41,8 +41,6 @@ brew "pinact"
 brew "pnpm"
 # Theme for zsh
 brew "powerlevel10k"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Rust toolchain installer
 brew "rustup"
 # Blazing-fast modern Lua linter

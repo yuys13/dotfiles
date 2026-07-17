@@ -49,8 +49,6 @@ brew "shfmt"
 brew "skktools"
 # Opinionated Lua code formatter
 brew "stylua"
-# Text interface for Git repositories
-brew "tig"
 # Terminal multiplexer
 brew "tmux"
 # Program that allows you to count code, quickly

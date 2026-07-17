@@ -7,6 +7,7 @@
     ../home-manager/programs/ghq
     ../home-manager/programs/git
     ../home-manager/programs/neovim
+    ../home-manager/programs/tig
   ];
   home.packages = with pkgs; [
     gh

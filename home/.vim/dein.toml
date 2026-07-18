@@ -468,4 +468,3 @@ au MyAutoCmd User asyncomplete_setup call asyncomplete#register_source({
     \ 'completor': function('asyncomplete#sources#gitcommit#completor')
     \ })
 '''
-

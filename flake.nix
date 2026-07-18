@@ -56,11 +56,21 @@
           treefmt = {
             projectRootFile = "flake.nix";
             programs = {
-              nixfmt.enable = true;
-              stylua.enable = true;
-              yamlfmt.enable = true;
               mdformat.enable = true;
+              nixfmt.enable = true;
+              shfmt = {
+                enable = true;
+                useEditorConfig = true;
+              };
+              stylua.enable = true;
+              taplo.enable = true;
+              yamlfmt.enable = true;
             };
+
+            settings.global.excludes = [
+              "_sources/*"
+              "home/XDG_CONFIG_HOME/nvim/lazy-lock.json"
+            ];
           };
 
           devShells.default = pkgs.mkShell {

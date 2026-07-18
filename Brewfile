@@ -23,8 +23,6 @@ brew "fd"
 brew "go"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
-# Agent multiplexer that lives in your terminal
-brew "herdr"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor

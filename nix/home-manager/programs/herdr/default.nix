@@ -17,6 +17,9 @@
       terminal = {
         default_shell = "${pkgs.fish}/bin/fish";
       };
+      ui = {
+        status_indicators = "symbols";
+      };
       update = {
         version_check = false;
       };

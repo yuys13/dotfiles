@@ -23,6 +23,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    comin = {
+      url = "github:nlewo/comin";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
   };
 
   nixConfig = {
@@ -67,6 +72,7 @@
         nixosConfigurations."chocolate" = inputs.nixpkgs.lib.nixosSystem {
           modules = [
             inputs.disko.nixosModules.disko
+            inputs.comin.nixosModules.comin
             ./nix/hosts/chocolate/configuration.nix
             home-manager.nixosModules.home-manager
           ];

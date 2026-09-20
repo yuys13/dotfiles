@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ../nix.nix
+    ./comin.nix
   ];
 
   # Boot loader

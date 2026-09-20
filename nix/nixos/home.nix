@@ -13,6 +13,9 @@
     ../home-manager/programs/tig
   ];
   home.packages = with pkgs; [
+    eza
+    fd
+    jq
     ripgrep
   ];
 }

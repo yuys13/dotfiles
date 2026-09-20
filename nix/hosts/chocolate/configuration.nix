@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ../../nixos
+    ../../nixos/profiles/headless.nix
     ./disko.nix
     ./hardware-configuration.nix
   ];
@@ -12,7 +13,6 @@
   users.users.yuys13 = {
     isNormalUser = true;
     extraGroups = [
-      "networkmanager"
       "wheel"
     ];
     openssh.authorizedKeys.keys = [

@@ -42,9 +42,6 @@
     tailscale.enable = true;
   };
 
-  # Networking
-  networking.useDHCP = pkgs.lib.mkDefault true;
-
   # Packages and Environment
   environment = {
     systemPackages = with pkgs; [

@@ -19,6 +19,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -57,6 +61,14 @@
           modules = [
             ./nix/hosts/eve24/configuration.nix
             home-manager.darwinModules.home-manager
+          ];
+        };
+
+        nixosConfigurations."chocolate" = inputs.nixpkgs.lib.nixosSystem {
+          modules = [
+            inputs.disko.nixosModules.disko
+            ./nix/hosts/chocolate/configuration.nix
+            home-manager.nixosModules.home-manager
           ];
         };
       };

@@ -38,7 +38,8 @@ config.front_end = 'WebGpu'
 config.font = wezterm.font 'HackGen Console NF'
 config.font_size = 14.0
 
-config.color_scheme = 'Modus-Vivendi-Deuteranopia'
+-- config.color_scheme = 'Modus-Vivendi-Deuteranopia'
+config.color_scheme = 'Catppuccin Mocha'
 
 config.tab_max_width = 24
 

@@ -44,9 +44,12 @@
   outputs =
     {
       self,
+      comin,
+      disko,
       flake-parts,
       home-manager,
       nix-darwin,
+      nixpkgs,
       treefmt-nix,
       ...
     }@inputs:
@@ -62,20 +65,24 @@
       ];
 
       flake = {
-        darwinConfigurations."eve24" = nix-darwin.lib.darwinSystem {
-          modules = [
-            ./nix/hosts/eve24/configuration.nix
-            home-manager.darwinModules.home-manager
-          ];
+        darwinConfigurations = {
+          "eve24" = nix-darwin.lib.darwinSystem {
+            modules = [
+              ./nix/hosts/eve24/configuration.nix
+              home-manager.darwinModules.home-manager
+            ];
+          };
         };
 
-        nixosConfigurations."chocolate" = inputs.nixpkgs.lib.nixosSystem {
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.comin.nixosModules.comin
-            ./nix/hosts/chocolate/configuration.nix
-            home-manager.nixosModules.home-manager
-          ];
+        nixosConfigurations = {
+          "chocolate" = nixpkgs.lib.nixosSystem {
+            modules = [
+              ./nix/hosts/chocolate/configuration.nix
+              comin.nixosModules.comin
+              disko.nixosModules.disko
+              home-manager.nixosModules.home-manager
+            ];
+          };
         };
       };
 

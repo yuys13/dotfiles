@@ -59,7 +59,7 @@ return {
           -- Markdown
           null_ls.builtins.diagnostics.markdownlint,
           -- Python
-          require 'none-ls.diagnostics.flake8',
+          -- require 'none-ls.diagnostics.flake8',
           -- null_ls.builtins.diagnostics.pylint,
           -- Shell script
           -- require 'none-ls-shellcheck.diagnostics', -- use bash-language-server

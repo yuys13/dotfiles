@@ -252,6 +252,7 @@ return {
 
   {
     'yuys13/collama.nvim',
+    cond = false,
     -- dev = true,
     event = 'InsertEnter',
     config = function()

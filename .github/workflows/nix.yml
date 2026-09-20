@@ -7,7 +7,7 @@ on:
       - main
   pull_request:
 jobs:
-  check:
+  flake-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,7 +17,6 @@ jobs:
       - name: Flake check
         run: nix flake check --no-build --all-systems --keep-going
   build-aarch64-darwin:
-    needs: check
     runs-on: macos-latest
     steps:
       - name: Checkout repository
@@ -36,7 +35,6 @@ jobs:
             .#darwinConfigurations.eve24.system \
             .#devShells.aarch64-darwin.default
   build-x86_64-linux:
-    needs: check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -54,3 +52,21 @@ jobs:
           nix build --keep-going --no-link --show-trace --eval-system x86_64-linux --print-out-paths \
             .#nixosConfigurations.chocolate.config.system.build.toplevel \
             .#devShells.x86_64-linux.default
+  nix-ci:
+    runs-on: ubuntu-latest
+    needs:
+      - flake-check
+      - build-aarch64-darwin
+      - build-x86_64-linux
+    if: always()
+    steps:
+      - name: Show job results
+        run: |
+          echo "flake-check: ${{ needs.flake-check.result }}"
+          echo "build-aarch64-darwin: ${{ needs.build-aarch64-darwin.result }}"
+          echo "build-x86_64-linux: ${{ needs.build-x86_64-linux.result }}"
+      - name: Check job results
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: |
+          echo "One or more required jobs failed or were cancelled."
+          exit 1

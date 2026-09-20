@@ -45,9 +45,6 @@
     };
   };
 
-  # Security / Sudo
-  security.sudo.wheelNeedsPassword = false;
-
   # Programs
   programs.nix-ld.enable = true;
 }

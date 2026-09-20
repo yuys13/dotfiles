@@ -18,3 +18,5 @@ jobs:
           attributes: |
             - displayName: eve24
               attribute: darwinConfigurations.eve24.system
+            - displayName: chocolate
+              attribute: nixosConfigurations.chocolate.config.system.build.toplevel

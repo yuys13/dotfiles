@@ -83,6 +83,14 @@
               home-manager.nixosModules.home-manager
             ];
           };
+
+          "hyper-nixos" = nixpkgs.lib.nixosSystem {
+            modules = [
+              ./nix/hosts/hyper-nixos/configuration.nix
+              comin.nixosModules.comin
+              home-manager.nixosModules.home-manager
+            ];
+          };
         };
       };
 

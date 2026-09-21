@@ -1,68 +1,28 @@
 tap "d12frosted/emacs-plus", trusted: true
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-# Static checker for GitHub Actions workflow files
-brew "actionlint"
-# Bourne-Again SHell, a UNIX command interpreter
-brew "bash"
 # Secrets scanner built for configurability and speed
 brew "betterleaks"
-# Linter/analyzer for Makefiles
-brew "checkmake"
-# Cross-platform make
-brew "cmake"
-# Secure runtime for JavaScript and TypeScript
-brew "deno"
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
-# Smarter Dockerfile linter to validate best practices
-brew "hadolint"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
-# CLI for Node.js style checker and lint tool for Markdown files
-brew "markdownlint-cli"
 # Pins GitHub Actions to full hashes and versions
 brew "pinact"
-# Fast, disk space efficient package manager
-brew "pnpm"
 # Theme for zsh
 brew "powerlevel10k"
-# Rust toolchain installer
-brew "rustup"
-# Blazing-fast modern Lua linter
-brew "selene"
-# Autoformat shell script source code
-brew "shfmt"
-# SKK dictionary maintenance tools
-brew "skktools"
-# Opinionated Lua code formatter
-brew "stylua"
 # Terminal multiplexer
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Your CLI home video recorder
 brew "vhs"
 # Vi 'workalike' with many additional features
 brew "vim"
-# Vim script Language Lint
-brew "vint"
-# Extensible command-line tool to format YAML files
-brew "yamlfmt"
-# Linter for YAML files
-brew "yamllint"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Additional completion definitions for zsh

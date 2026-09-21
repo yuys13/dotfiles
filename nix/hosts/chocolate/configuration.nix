@@ -15,9 +15,6 @@
     extraGroups = [
       "wheel"
     ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOGJh4ToxAldiT3DvcJYG+b4HJqpHzQRrRFvx9l4z38t yuys13@eve24.local"
-    ];
   };
 
   # Home Manager Configuration

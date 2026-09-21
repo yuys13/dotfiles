@@ -77,7 +77,7 @@ cask "antigravity-cli"
 cask "brave-browser"
 # AI-powered translator
 cask "deepl"
-# GNU Emacs text editor with patches for macOS
+# GNU Emacs text editor with patches
 cask "d12frosted/emacs-plus/emacs-plus-app", trusted: true
 cask "font-hackgen-nerd"
 # Web browser

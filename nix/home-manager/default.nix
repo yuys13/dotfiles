@@ -23,6 +23,5 @@
     pinact
     ripgrep
     tokei
-    vhs
   ];
 }

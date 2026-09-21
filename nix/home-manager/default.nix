@@ -14,6 +14,15 @@
   ];
 
   home.packages = with pkgs; [
+    betterleaks
+    btop
+    eza
+    fastfetch
+    fd
+    jq
+    pinact
     ripgrep
+    tokei
+    vhs
   ];
 }

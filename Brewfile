@@ -1,28 +1,6 @@
 tap "d12frosted/emacs-plus", trusted: true
-# Secrets scanner built for configurability and speed
-brew "betterleaks"
-# Modern, maintained replacement for ls
-brew "eza"
-# Like neofetch, but much faster because written mostly in C
-brew "fastfetch"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
-# Improved top (interactive process viewer)
-brew "htop"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# Pins GitHub Actions to full hashes and versions
-brew "pinact"
 # Theme for zsh
 brew "powerlevel10k"
-# Terminal multiplexer
-brew "tmux"
-# Program that allows you to count code, quickly
-brew "tokei"
-# Your CLI home video recorder
-brew "vhs"
-# Vi 'workalike' with many additional features
-brew "vim"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Additional completion definitions for zsh

@@ -51,6 +51,7 @@ jobs:
         run: |
           nix build --keep-going --no-link --show-trace --eval-system x86_64-linux --print-out-paths \
             .#nixosConfigurations.chocolate.config.system.build.toplevel \
+            .#nixosConfigurations.hyper-nixos.config.system.build.toplevel \
             .#devShells.x86_64-linux.default
   nix-ci:
     runs-on: ubuntu-latest

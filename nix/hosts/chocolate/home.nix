@@ -6,8 +6,4 @@
   home.username = "yuys13";
   home.homeDirectory = "/home/yuys13";
   home.stateVersion = "26.11";
-
-  home.packages = with pkgs; [
-    antigravity-cli
-  ];
 }

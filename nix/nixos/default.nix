@@ -4,6 +4,9 @@
     ./comin.nix
   ];
 
+  # Nixpkgs
+  nixpkgs.config.allowUnfree = true;
+
   # Boot loader
   boot = {
     loader = {

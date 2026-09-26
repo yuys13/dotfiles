@@ -65,33 +65,8 @@
       ];
 
       flake = {
-        darwinConfigurations = {
-          "eve24" = nix-darwin.lib.darwinSystem {
-            modules = [
-              ./nix/hosts/eve24/configuration.nix
-              home-manager.darwinModules.home-manager
-            ];
-          };
-        };
-
-        nixosConfigurations = {
-          "chocolate" = nixpkgs.lib.nixosSystem {
-            modules = [
-              ./nix/hosts/chocolate/configuration.nix
-              comin.nixosModules.comin
-              disko.nixosModules.disko
-              home-manager.nixosModules.home-manager
-            ];
-          };
-
-          "hyper-nixos" = nixpkgs.lib.nixosSystem {
-            modules = [
-              ./nix/hosts/hyper-nixos/configuration.nix
-              comin.nixosModules.comin
-              home-manager.nixosModules.home-manager
-            ];
-          };
-        };
+        darwinConfigurations = import ./nix/hosts/darwin { inherit inputs self; };
+        nixosConfigurations = import ./nix/hosts/nixos { inherit inputs self; };
       };
 
       perSystem =

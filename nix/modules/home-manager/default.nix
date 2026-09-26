@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, user, ... }: {
   imports = [
     ./programs/bat
     ./programs/direnv
@@ -13,6 +13,11 @@
     ./programs/tig
   ];
 
+  home = {
+    username = user;
+    homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${user}" else "/home/${user}";
+  };
+
   home.packages = with pkgs; [
     betterleaks
     btop
@@ -23,5 +28,6 @@
     pinact
     ripgrep
     tokei
+    vim
   ];
 }

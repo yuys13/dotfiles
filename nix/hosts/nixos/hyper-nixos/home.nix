@@ -1,11 +1,8 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
-    ../../nixos/home.nix
     ./sway.nix
   ];
 
-  home.username = "yuys13";
-  home.homeDirectory = "/home/yuys13";
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [

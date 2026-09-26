@@ -28,5 +28,6 @@
     pinact
     ripgrep
     tokei
+    vim
   ];
 }

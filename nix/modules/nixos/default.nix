@@ -1,8 +1,36 @@
-{ pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+{
   imports = [
-    ../nix.nix
+    ../core
+    inputs.home-manager.nixosModules.home-manager
+    inputs.comin.nixosModules.comin
     ./comin.nix
+    ./profiles/headless.nix
+    ./profiles/desktop.nix
   ];
+
+  # User Configuration
+  users.users.${config.mainUser} = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+    ];
+  };
+
+  # Home Manager Configuration
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {
+      inherit inputs;
+      user = config.mainUser;
+    };
+  };
 
   # Boot loader
   boot = {
@@ -39,12 +67,8 @@
     systemPackages = with pkgs; [
       curl
       git
-      nh
       vim
     ];
-    variables = {
-      NH_SHOW_ACTIVATION_LOGS = "1";
-    };
   };
 
   # Programs

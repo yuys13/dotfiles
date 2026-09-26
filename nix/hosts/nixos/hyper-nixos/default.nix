@@ -1,11 +1,5 @@
-{ pkgs, ... }: {
-  imports = [
-    ../../nixos
-    ../../nixos/profiles/desktop.nix
-    ./hardware-configuration.nix
-  ];
-
-  networking.hostName = "hyper-nixos";
+{ config, pkgs, ... }: {
+  profiles.desktop.enable = true;
   system.stateVersion = "24.05";
 
   # Hyper-V settings
@@ -24,21 +18,12 @@
   ];
 
   # User Configuration
-  users.users.yuys13 = {
-    isNormalUser = true;
+  users.users.${config.mainUser} = {
     extraGroups = [
       "networkmanager"
-      "wheel"
     ];
     shell = pkgs.fish;
   };
 
   programs.fish.enable = true;
-
-  # Home Manager Configuration
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.yuys13 = import ./home.nix;
-  };
 }

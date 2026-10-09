@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   programs.foot = {
     enable = true;
     settings = {
@@ -33,7 +33,7 @@
   wayland.windowManager.sway = {
     enable = true;
     config = {
-      bars = [ { command = "${pkgs.waybar}/bin/waybar"; } ];
+      bars = [ { command = lib.getExe pkgs.waybar; } ];
       defaultWorkspace = "workspace number 1";
       modifier = "Mod4";
     };

@@ -4,27 +4,18 @@ let
   merged-skk-jisyo = pkgs.stdenv.mkDerivation {
     name = "merged-skk-jisyo";
     nativeBuildInputs = [ pkgs.skktools ];
-    dicts = with pkgs.skkDictionaries; [
-      l
-      jinmei
-      geo
-      station
-      propernoun
-      zipcode
-    ];
     dontUnpack = true;
-    installPhase = ''
+    installPhase = with pkgs.skkDictionaries; ''
       mkdir -p $out
-      args=""
-      for dict in $dicts; do
-        jisyo=$(find $dict -name "SKK-JISYO.*" | head -n 1)
-        if [ -n "$args" ]; then
-          args="$args + $jisyo"
-        else
-          args="$jisyo"
-        fi
-      done
-      skkdic-expr2 $args > $out/SKK-JISYO.L
+      skkdic-expr2 \
+        ${l}/share/skk/SKK-JISYO.L \
+        + ${jinmei}/share/skk/SKK-JISYO.jinmei \
+        + ${geo}/share/skk/SKK-JISYO.geo \
+        + ${station}/share/skk/SKK-JISYO.station \
+        + ${propernoun}/share/skk/SKK-JISYO.propernoun \
+        + ${zipcode}/share/skk/SKK-JISYO.zipcode \
+        + ${zipcode}/share/skk/SKK-JISYO.office.zipcode \
+        > $out/SKK-JISYO.L
     '';
   };
 in

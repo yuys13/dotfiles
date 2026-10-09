@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.herdr = {
     enable = true;
@@ -8,14 +13,14 @@
           {
             key = "prefix+ctrl+g";
             type = "pane";
-            command = "${pkgs.tig}/bin/tig";
+            command = lib.getExe pkgs.tig;
           }
         ];
         prefix = "ctrl+q";
       };
       onboarding = false;
       terminal = {
-        default_shell = "${pkgs.fish}/bin/fish";
+        default_shell = lib.getExe config.programs.fish.package;
       };
       ui = {
         status_indicators = "symbols";

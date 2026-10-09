@@ -2,9 +2,9 @@
 set refresh-mode = auto
 
 ## display
-# id
-set main-view-id-display = yes
-set refs-view-id-display = yes
+# view settings
+set main-view = id:yes date:default author:full commit-title:yes,graph,refs
+set refs-view = id:yes date:default author:full ref commit-title
 # merge diff
 set diff-options = -m --first-parent
 # color
@@ -48,7 +48,7 @@ bind refs    <Ctrl-R> ?git rebase %(branch)
 # status bindings
 bind status        C  !git commit --verbose
 bind status        +  !git commit --verbose --amend
-bind status        S  !git stash save "%(prompt Enter stash comment: )"
+bind status        S  !git stash push -m "%(prompt Enter stash comment: )"
 bind status        D  ?git clean -df
 
 # stage bindings

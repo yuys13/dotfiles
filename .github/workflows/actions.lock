@@ -6,7 +6,7 @@ workflows:
     '.github/workflows/nix-diff.yml':
         - 'actions/checkout@v7.0.1'
         - 'cachix/install-nix-action@v31.11.3'
-        - 'natsukium/nix-diff-action@v1.1.1'
+        - 'natsukium/nix-diff-action@v1.2.0'
     '.github/workflows/nix.yml':
         - 'actions/checkout@v7.0.1'
         - 'cachix/cachix-action@v17'
@@ -29,8 +29,8 @@ dependencies:
         commit: 'sha1-75c75c31ebece974e48ebc36b4ad125bd97bd97b'
         owner_id: 36824654
         repo_id: 212301524
-    'natsukium/nix-diff-action@v1.1.1':
-        ref: 'v1.1.1'
-        commit: 'sha1-4091452e4c7b3c7ea4ecbaec84be7f0066d810d7'
+    'natsukium/nix-diff-action@v1.2.0':
+        ref: 'v1.2.0'
+        commit: 'sha1-cff4f0f22193912492fd64da21e6c55565254479'
         owner_id: 25083790
         repo_id: 1117974786

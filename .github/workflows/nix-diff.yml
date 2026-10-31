@@ -13,7 +13,7 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v31.11.3
       - name: Diff Nix packages
-        uses: natsukium/nix-diff-action@v1.1.1
+        uses: natsukium/nix-diff-action@v1.2.0
         with:
           attributes: |
             - displayName: eve24

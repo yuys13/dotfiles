@@ -8,6 +8,8 @@ updates:
       github-actions:
         patterns:
           - "*"
+    cooldown:
+      default-days: 3
   - package-ecosystem: "nix"
     directory: "/"
     schedule:
@@ -16,6 +18,3 @@ updates:
       nix:
         patterns:
           - "*"
-    cooldown:
-      exclude:
-        - "*"

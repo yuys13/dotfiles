@@ -87,6 +87,7 @@
             };
 
             settings.global.excludes = [
+              ".agents/*"
               "_sources/*"
               "home/XDG_CONFIG_HOME/nvim/lazy-lock.json"
             ];

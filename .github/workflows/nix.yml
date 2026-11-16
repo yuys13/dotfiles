@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
       - name: Install Nix
-        uses: cachix/install-nix-action@v31.11.3
+        uses: cachix/install-nix-action@v31.11.5
       - name: Flake check
         run: nix flake check --no-build --all-systems --keep-going
   build-aarch64-darwin:
@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
       - name: Install Nix
-        uses: cachix/install-nix-action@v31.11.3
+        uses: cachix/install-nix-action@v31.11.5
       - name: Setup Cachix
         uses: cachix/cachix-action@v17
         with:
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
       - name: Install Nix
-        uses: cachix/install-nix-action@v31.11.3
+        uses: cachix/install-nix-action@v31.11.5
       - name: Setup Cachix
         uses: cachix/cachix-action@v17
         with:

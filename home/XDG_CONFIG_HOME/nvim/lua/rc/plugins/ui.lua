@@ -88,7 +88,7 @@ return {
         signs_staged_enable = false,
         attach_to_untracked = true,
         on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
+          local gs = require 'gitsigns'
           local function map(mode, l, r, opts)
             opts = opts or {}
             opts.buffer = bufnr
@@ -98,23 +98,19 @@ return {
           -- Navigation
           map('n', ']c', function()
             if vim.wo.diff then
-              return ']c'
+              vim.cmd.normal { ']c', bang = true }
+            else
+              gs.nav_hunk 'next'
             end
-            vim.schedule(function()
-              gs.next_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'next hunk' })
+          end, { desc = 'next hunk' })
 
           map('n', '[c', function()
             if vim.wo.diff then
-              return '[c'
+              vim.cmd.normal { '[c', bang = true }
+            else
+              gs.nav_hunk 'prev'
             end
-            vim.schedule(function()
-              gs.prev_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'prev hunk' })
+          end, { desc = 'prev hunk' })
         end,
       }
     end,

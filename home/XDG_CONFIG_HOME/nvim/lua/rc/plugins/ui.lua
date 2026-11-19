@@ -150,11 +150,11 @@ return {
     event = 'VeryLazy',
     config = function()
       require('scrollbar').setup {
-        handlers = {
+        providers = {
           cursor = false,
+          gitsigns = true,
         },
       }
-      require('scrollbar.handlers.gitsigns').setup()
     end,
   },
 

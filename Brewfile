@@ -9,8 +9,6 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # Agent orchestration platform
 cask "antigravity"
-# Terminal interface for Antigravity agents
-cask "antigravity-cli"
 # Web browser focusing on privacy
 cask "brave-browser"
 # AI-powered translator

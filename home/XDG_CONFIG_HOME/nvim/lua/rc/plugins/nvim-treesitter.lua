@@ -6,27 +6,31 @@ return {
     build = ':TSUpdate',
     config = function()
       local ts = require 'nvim-treesitter'
-      -- ts.install 'unstable'
 
       local filetypes = {}
-      for _, lang in ipairs(ts.get_available(2)) do
+      for _, lang in ipairs(ts.get_installed 'parsers') do
         for _, filetype in ipairs(vim.treesitter.language.get_filetypes(lang)) do
           table.insert(filetypes, filetype)
         end
       end
 
+      if #filetypes == 0 then
+        return
+      end
+
       vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('UserTreesitterConfig', { clear = true }),
         pattern = filetypes,
         callback = function(args)
           -- size check
           local max_filesize = 512 * 1024 -- 512[KB]
-          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
           if ok and stats and stats.size > max_filesize then
             return
           end
 
-          vim.treesitter.start()
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          vim.treesitter.start(args.buf)
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
     end,

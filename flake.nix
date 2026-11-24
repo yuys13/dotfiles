@@ -77,10 +77,7 @@
             programs = {
               mdformat.enable = true;
               nixfmt.enable = true;
-              shfmt = {
-                enable = true;
-                useEditorConfig = true;
-              };
+              shfmt.enable = true;
               stylua.enable = true;
               taplo.enable = true;
               yamlfmt.enable = true;

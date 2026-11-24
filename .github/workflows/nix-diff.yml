@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
       - name: Install Nix
-        uses: cachix/install-nix-action@v31.11.5
+        uses: cachix/install-nix-action@v32.0.0
       - name: Diff Nix packages
         uses: natsukium/nix-diff-action@v1.2.1
         with:
